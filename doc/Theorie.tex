@@ -1,0 +1,69 @@
+\subsection{Es’ Hail-2}
+Bei Es'Hail-2 handelt es sich um einen Kommunikationssatelliten, welcher von dem katarischen Unternehmen Es'hailSat betrieben wird.\newline
+Gebaut wurde der Satellit von der Mitsubishi Electric Company (Melco). Es'Hail-2 basiert dabei auf der Melco DS-2000 Plattform. Der Satellit starte am 15.11.2018 an Bord einer Falcon 9 Rakete vom Cape Canaveral Space Center in einen geostationären Testorbit um 24\degree East. Nach der Testphase wurde Es'Hail-2 in seinen endgültigen Geostationären Orbit um 25.9\degree East verschoben. Die geplanten Lebenszeit von Es'Hail-2 beträgt 15 Jahre.\cite{EsHail2}\newline
+An Bord von Es'Hail-2 befinden sich insgesamt 72 verschiedne Transponder für die L-, S-, X- Ku- und Ka-Bänder. Die Hauptaufgabe des Satelliten ist es, die Regionen Nord Afrika und den mittleren Osten mit TV- und Telekommunikationsdiensten zu versorgen. Die Nutzer sind dabei private Haushalte, Unternehmen oder Regierungsorganisationen.\newline
+Neben den Transponder für die kommerzielle Nutzung des Satelliten befinden sich auch zwei Amateurfunk Transponder an Bord von Es'Hail-2. Bei diesen Transponder handelt es sich um die ersten P4-A Transponder im Geostationären Orbit. Sie sind einer Zusammenarbeit zwischen Es'hailSat, dem Qatar Amateur Radio Club (QARS) und AMSAT Deutschland (AMSAT-DL) als technische Leitung entstanden. Vorhanden sind ein Schmallband- (Narrowband) und ein Breitband- (Wideband) Transponder. Die Transponder tragen den Rufnamen QO-100 (Qatar Oscar 100).\cite{EsHail2}\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/EsHail-2 Coverage.png}
+    \caption{Abdeckungsbereich der Amateurfunktranponder von Es'Hail-2\cite{CoverageEsHail2Amateur}}
+    \label{CoverageEsHail2Amateur}
+\end{figure}
+Die Karte in Abbildung \ref{CoverageEsHail2Amateur} zeigt den Abdeckungsbereich der Amateurfunktransponder von Es'Hail-2. Abgedeckt wird runter bis 5° Elevation, in einigen Bereichen auch bis 0°. Die Abdeckung reicht damit von Brasilien, Teile Grönlands und der Antarktis über Afrika und Europa bis nach Thailand. Je nach Region wird für den Optimalen Empfang eine Schüssel von 60cm bis 90 cm empfohlen. Die Regionen mittig in der Abdeckung benötigen nur eine Schüssel mit geringen Durchmesser. In den Regionen am Rand oder in regenreichen Gegenden sind größere Schüsseln vom Vorteil.\cite{EsHail2}.
+
+
+
+\subsubsection{Schmallband Transponder}
+Für den Schmallband Transponder wird ein linearer Transponder verwendet. Ein normaler Repeater empfängt ein Signal auf einer festen Frequenz und sendet dieses auch wieder auf einer Frequenz. Ein linearer Transponder hingegen empfängt und sendet Signale über ein breites Spektrum und hält  dabei ein festes Offset zwischen den empfangenen und gesendeten Signalen ein.\cite{EsHail2}\cite{linearTransponder}\newline
+Lineare Transponder werden häufig für Amateur- und Satellitenfunk verwendet. Ein linearer Transponder empfängt ein breites Spektrum an Frequenzen. Im falle von Es'Hail-2 liegt der Uplink im S-Band zwischen $2400.005$ MHz und $2400.490$ MHz. Der lineare Transponder hat somit eine Bandbreite von $500$ kHz.\cite{EsHail2}\cite{linearTransponder}
+\begin{itemize}
+    \item Mittenfrequenz: $f_{center}$ = $2400.175$ MHz
+    \item Bandbreite: $BW_{Narrow}$ = $0.5$ MHz
+    \item Polarisation: RHCP
+\end{itemize}
+Die empfangen Signale sendet der lineare Transponder dann wieder mit einem festen Offset auf einem anderen Frequenzband. Der Downlink von Es'Hail-2 liegt im X-Band zwischen $10489.500$ MHz
+und $10490$ MHz.\cite{EsHail2}\cite{linearTransponder}
+\begin{itemize}
+    \item Mittenfrequenz: $f_{center}$ = $2400.175$ MHz
+    \item Bandbreite: $BW_{Narrow}$ = $0.5$ MHz
+    \item Polarisation: RHCP
+\end{itemize}
+Wird ein Signal auf $2400.100$ MHz vom Transponder empfangen, wird es vom Transponder auf $10489.650$ MHz wieder versendet. Das Offset wird vom Transponder beibehalten.\cite{linearTransponder}
+Der Schmallband Transponder ist eine Reihe an verschiedenen Kommunikationsarten geeignet. Allgeimein wird dieser Transponder für Sprachübertragungen, Morse Code oder digitale Übertragungen mit geringer Leistung und Bandbreite verwendet. Wichtig ist, dass die dafür vorgsehenen Frequenzen verwendet werden.\cite{EsHail2}\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/AMSAT-QO-100-NB-Transponder-Bandplan-Graph.png}
+    \caption{Von AMSAT freigegebener Bandplan für den Schmallbandtransponder von QO-100\cite{EsHail2NarrowbandBandplan}}
+    \label{NB-Bandplan}
+\end{figure}
+Die Abbildung \ref{NB-Bandplan} zeigt den Bandplan des Up- und Downlinks des Schmallband Transponder. Die drei rot gekennzeichnet Bereiche sind drei Beacons, welche den Frequenzbereich des Transponder eingrenzen. In diesem Bereich darf nicht gesendet werden. Die Beacons senden Daten mit 400 Bit/s mit verschiedensten Modulationen.\cite{EsHail2}\newline
+Der Bereich von $2400.005$ MHz bis $2400.040$ MHz im Uplink oder $10489.505$ bis $10489.540$ MHz im Downlink ist ausschließlich für Übertragungen mit einer CW-Modulation vorgesehen. Der nächste Bereich von $2400.40$ MHz bis $2400.080$ MHz(Up) und $10489.540$ MHz bis $10489.580$ MHz (Down) ist für schmallbandige digitale Kommunikation reserviert. Die maximale Bandbreite beträgt hier $500$ Hz. Auch der nächste Bereich von $2400.080$ MHz bis $2400.150$ MHz (Up) und $10489.580$ MHz bis $10489.650$ MHz (Down) ist für digitale Kommunikation vorgesehen. Allerdings beträgt die maximale Bandbreite in diesem Bereich 2700 Hz. Die Bereiche von $2400.150$ MHz bis $2400.245$ MHz (Up), $10489.650$ MHz bis $10489.745$ MHz (Down) und $2400.255$ bis $2400.350$ MHz (Up), $10489.755$ MHz bis $10489.850$ MHz (Down) ist für Signale mit einer Einseitenband-AM reserviert. Auch hier beträgt die maximale Bandbreite 2700 Hz. Der letzte Bereich von $2400.350$ MHz bis $2400.490$ MHz (Up) und $10489.850$ MHz bis $10489.990$ MHz ist für die Kommunikation mit verschiedensten Modulationen und für spezielle Anlässe vorgesehen. In diesem Bereich findet sich auch ein Kanal für Broadcast und ein Kanal für Notfälle. Auch finden in diesem Bereich verschiedenste Wettbewerbe statt. \cite{EsHail2NarrowbandBandplan}\newline
+Für den Schmalltransponder gibt es noch weitere Regelungen. Zu einem sollte auf eine Frequenz Modulation, in egal welchem Bereich, verzichtet werden. Frequenz modulierte Signale nehmen in Vergleich zu anderen Modulaktionsarten eine größere Bandbreite ein und benötigen auch eine größere Sendeleistung. Da sowohl die Bandbreite als auch die Leistung stark limitiert ist, sollte auf die Frequenz Modulation verzichtet werden. Erwünscht sind schmallbandige Modulationsverfahren wie CW, Einseitenband-AM oder PSK\cite{BarkerFM}\cite{EsHail2}\newline
+Unterhalb von $2400$ MHz, gekennzeichnet im Downlink durch den unteren CW-Beacon, darf keine Übertragung stattfinden. Für Amateur Satellitenfunk ist rechtlich nur der Bereich von $2400$ MHz bis $2450$ MHz vorgesehen und zulässig. So wird eine Störung anderer Dienste verhindert\cite{EsHail2}\cite{FrequenzplanBundesnetzagentur}
+Von AMSAT wird zum senden eine Full-Duplex Operation vorgeschrieben. Das bedeutet, dass der jeweilige Funker gleichzeitig senden und empfangen muss.\cite{EsHail2} Diese Vorschrift wird für den nächsten Punkt wichtig.\newline
+Weiterhin sollte die Sendeleistung so klein wie nötig gehalten werden. AMSAT empfiehlt die Sendeleistung in der gleichen größen Ordnung wie die der Beacon zu halten, da es sonst zu ungewünschte Verzerrungen und Übersteuerungen kommen kann.  Signale mit zu großer Leistung werden von der LEILA-Sirene im Downlink gekennzeichnet. LEILA ist ein Akronym und steht für Leistungs Limit Anzeige. Wird ein Signal mit der LEILA-Sirene gekennzeichnet, muss der jeweilige Funker seine Leistung umgehend reduzieren.\cite{EsHail2}\newline
+Das System für LEILA befindet sich in der Bodenstation bei Doha und in Bochum. Aufgrund der Verzögerung kann keine Bandsperre eingesetzt werden. Da aber zum senden eine Full-Duplex Verbindung vorgeschrieben ist, ist eine akustische Warneinrichtung ausreichend.\cite{EsHail2}
+
+\subsection{Mischer}
+
+Ein Mischer ist ein elektrisches Bauteil, welches unter anderem zur Frequenzumsetzung verwendet wird. Bei der Frequenzumsetzung werden elektrische Signale in höhere oder niedrigere Frequenzbänder umgesetzt. Das ist einer der Gründe, warum Mischer ein breite Anwendung in der Kommunikationstechnik findet.\newline
+
+
+
+\subsubsection{Anwendung von Mischern}
+\subsubsection{Rauschen und Verluste}
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+

@@ -1,0 +1,111 @@
+
+\documentclass[a4paper,12pt]{article}
+
+% Pakete für Zeichencodierung und Spracheinstellungen
+\usepackage[utf8]{inputenc}    % UTF-8 Zeichenkodierung
+\usepackage[T1]{fontenc}       % Korrekte Darstellung von Umlauten
+
+\usepackage[ngerman]{babel}    % Deutsche Spracheinstellungen
+\usepackage{amsmath}
+% Pakete für Layout und Formatierung
+\usepackage{graphicx}          % Einbindung von Bildern
+\usepackage{geometry}          % Anpassung der Seitenränder
+\usepackage{float}             % Exakte Positionierung von Abbildungen
+\usepackage{fancyhdr}          % Anpassung von Kopf- und Fußzeilen
+\usepackage{titlesec}          % Anpassung der Überschriftenformatierung
+\usepackage{tocloft}           % Anpassung des Inhaltsverzeichnisses
+\usepackage{hyperref}
+\usepackage{gensymb}
+
+
+
+% Paket für das Literaturverzeichnis
+\usepackage{csquotes}
+\usepackage[backend=biber, style=numeric-comp]{biblatex} % IEEE-Zitierstil mit Biber als Backend
+\addbibresource{Literaturverzeichnis.bib}       % Einbindung der Literaturdatenbank
+
+% Paket zur Nutzung der letzten Seitenzahl
+\usepackage{lastpage} % Ermöglicht „Seite X von Y“-Format
+
+% Seitenlayout
+\geometry{
+  top=2cm,    % Abstand zum oberen Rand
+  bottom=3cm, % Abstand zum unteren Rand
+  left=2.5cm, % Abstand zum linken Rand
+  right=2.5cm % Abstand zum rechten Rand
+}
+
+% Kein Absatzeinzug
+\setlength\parindent{0pt}
+
+% Kopf- und Fußzeilen
+\setlength{\headheight}{47.698pt}
+\addtolength{\topmargin}{-21.698pt}
+%\setlength\headheight{26pt}  % Höhe der Kopfzeile
+%\setlength\headsep{35pt}     % Abstand zwischen Kopfzeile und Text
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Daniel Albinger (5183249)}
+\chead{Bachelor Thesis}
+\rhead{\includegraphics[width=4cm]{Logo_HSB_Hochschule_Bremen.png}}
+\cfoot{} % Keine Seitenzahl auf Titelseite und Inhaltsverzeichnis
+
+\begin{document}
+
+% Titelseite
+\begin{titlepage}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Logo_HSB_Hochschule_Bremen.png}\\[1cm]
+    {\scshape\LARGE Hochschule Bremen\\}
+    {\scshape\Large Fakultät 4: Elektrotechnik und Informatik\\[1.5cm]}
+    {\huge\bfseries Bachelor Thesis\\[0.5cm]}
+    {\vspace{20mm}}
+    {\Large\bfseries Systems zum Empfang von Geostationären Satelliten durch die IAT Bodenstation\\[0.5cm]}
+    {\Large\bfseries Daniel Albinger (5183249)\\[2cm]}
+    {\Large\bfseries Prüfer\\[0.5cm]}
+    \begin{tabular}{l}
+    1. Prüfer: Prof.\ Dr.\ Peik \\ 
+    2. Prüfer: Prof.\ Dr.\ García \\
+    Gastbegleitung: M.\ Rauwolf
+    \end{tabular}\\[2cm]
+    {\Large\bfseries Abgabe: Datum}\\[2cm]
+    \vfill
+\end{titlepage}
+
+
+\newpage
+
+% Inhaltsverzeichnis ohne Seitenzahl
+\pagenumbering{gobble}  % Keine Seitenzahl auf Inhaltsverzeichnis
+\tableofcontents
+
+\newpage  
+
+% Seitenzahlen beginnen hier im Format „Seite X von Y“
+\pagenumbering{arabic}  
+\setcounter{page}{1}  
+\cfoot{Seite \thepage\ von \pageref{LastPage}}
+
+\section{Theorie und Grundlagen}
+\input{Theorie_Satelliten}
+\input{Theorie}
+
+\section{Theoretische Betrachtung der Empfangskette}
+\input{Theorie_Antennen}
+
+
+\section{Praktischer Aufbau der Empfangskette}
+\input{Praktischer Aufbau der Empfangskette}
+
+\section{Rauschen}
+\input{Rauschen}
+
+
+\section{Anhang}
+\subsection{Literaturverzeichnis}
+\printbibliography
+\subsection{Abbildungsverzeichnis}
+\listoffigures
+\subsection{Tabellenverzeichnis}
+\listoftables
+\end{document}

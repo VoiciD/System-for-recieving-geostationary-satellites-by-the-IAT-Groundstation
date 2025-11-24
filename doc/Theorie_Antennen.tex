@@ -1,0 +1,129 @@
+0\subsection{Antenne}
+Die Antenne ist mit der wichtigste Bestandsteil der Empfangskette an der Satellitenbodenstation. Erst mit einer geeigneten Antenne ist es mögliche die Signale vom Satelliten, welcher ebenfalls eine Antenne braucht um die Signale zu senden, zu empfangen. Die Antenne wandelt die leitungsgebundene Welle um und strahlt diese in den freien Raum ab oder empfängt die Wellen im freien Raum und gibt diese an die Leitung ab. Sie ist also das Verbindungsglied zwischen der leitungsgebundenen Welle und der Welle im freien Raum.\newline
+Die IEEE definiert eine Antenne als ein passives, lineares und reziprokes Bauelement, welches Radiowellen abstrahlen, als auch empfangen kann\cite{IEEE145-1993}\cite{Balanis_2005}.\newline
+Eine Antenne kann über viele verschiedene Parameter beschrieben werden. Diese Parameter helfen dabei eine geeignete Antenne für die jeweilige Anwendung zu finden.
+
+\subsubsection*{Nah- und Fernfeld}
+Die Umgebung einer Antennen kann in mehrere kleinere Bereiche unterteilt werden. Im unmittelbaren Umfeld der Antenne liegt das Nahfeld, welches auch Freßnel-Bereich genannt\cite{Radartutorial-Nahundfernfeld} genannt werden kann.
+
+
+
+
+
+
+
+
+
+\subsubsection*{Nah- und Fernfeld}
+Der Bereich um die Antenne kann in mehrere Bereiche aufgeteilt werden. Im mittelbaren Umfeld liegt das Nahfeld, auch Fresnel-Breich genannt\cite{Radartutorial-Nahundfernfeld}, der Antenne. Neben den abgestrahlten elektromagnetische Wellen wirken hier auch starke stationäre Felder, welche ebenfalls von der Antenne ausgehen. Beschreiben lassen sich die Felder durch die maxwellschen Gleichungen. Im Nahfeld wird die Berechnung der Felder aufgrund der hohen Ordnungen der Polynome erschwert\cite{Radartutorial-Nahundfernfeld}. Aus diesem Grund werden die Strahlungscharakteristiken einer Antenne im Fernfeld bestimmt. \cite{Balanis_2005}.\newline
+Das Fernfeld, auch Fraunhofer-Bereich genannt, ist geometrisch deutlich größer als das Nahfeld. Es beginnt da, wo sich die elektromagnetischen Wellen frei im Raum ausbreiten können. Der Übergang zum Fernfeld kann Näherungsweise bestimmt werden. Für Antennen, welche in ihren geometrischen Abmessung kleiner als ihre Wellenlänge $\lambda$ sind, gilt\cite{Radartutorial-Nahundfernfeld}:
+\begin{equation}
+    r_{fern}=2\cdot\lambda
+    \label{Nahfeld}
+\end{equation}
+Bei größeren Antennen, zum Beispiel Parabolantennen, gilt\cite{Radartutorial-Nahundfernfeld}:
+\begin{equation}
+    r_{fern}=\frac{2\cdot L^2}{\lambda}
+    \label{Fernfeld}
+\end{equation}
+Dabei gibt die Variable L die geometrische Abmessung der Antenne an. Als sichere Faustformel kann ab einem Abstand $r>5\cdot\lambda$ vom Fernfeld ausgegangen werden.\newline
+Im Fernfeld existieren nur die Felder der elektromagnetische Welle, was die Berechnung der Felder deutlich vereinfacht. Die elektrische und magnetische Komponente der EM-Welle befinden sich Phase zu einander und stehen orthogonal zur Ausbreitungsrichtung. Über das Verhältnis vom elektrischen und magnetischen Feld kann der Freiraumwiderstand $\eta_0$ bestimmt werden.
+\begin{equation}
+    \eta_0=\frac{\left|\vec{E}\right|}{\left|\vec{H}\right|}=\sqrt{\frac{\mu_0}{\varepsilon_0}}=\mu_0\sqrt{\frac{1}{\mu_0\cdot\varepsilon_0}}=377\Omega
+    \label{GleichungFreimraumwiderstand}
+\end{equation}
+Bis zur Entfernung $r=\frac{L^2}{2\cdot \lambda}$ um die Antenne liegt die sogenannte Rayleigh-Zone. In diesem Bereich strahlt Antenne nicht nur Energie ab, sondern nimmt auch einen Teil der abgestrahlten Energie als Blindleistung wieder auf.\cite{Radartutorial-Nahundfernfeld}
+
+\subsubsection*{Antennen-/Richtdiagramm}
+Ein Antennen- oder Richtdiagramm stellt die Strahlungscharakteristik einer Antenne grafisch dar. Die Strahlungscharakteristik einer Antenne umfasst dabei die Strahlungsleistungsdichte, die Feldstärke, Intensität, Richtfaktor, Phasenlage und Polarisation.\cite{Balanis_2005} In den meisten Fällen wird im Antennendiagramm allerdings die Intensität der abgestrahlten Energie oder ihre Feldstärke in Abhängigkeit der Richtung dargestellt\cite{Radartutorial-Antennendiagramm}. Da Antennen reziproke Elemente sind gilt ein Antennendiagramm gleichermaßen für das Senden und auch für das Empfangen mit der jeweiligen Antenne. Im Sendefall gibt das Antennendiagramm die richtungsabhängige Ausstrahlung der Antenne an und im Empfangsfall die richtungsabhängige Empfangsempfindlichkeit.\cite{Radartutorial-Antennendiagramm}\newline
+Auch besteht die Möglichkeit die Strahlungscharakteristik der Antenne mithilfe einer mathematische Funktion zu definieren.\cite{Balanis_2005}\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Antennendiagramm.png}
+    \caption{Ein Beispiel für ein horizontales Antennendiagramm im Polarkoordinatensystem\cite{Radartutorial-Antennendiagramm}}
+    \label{Antennendiagrammbeispiel}
+\end{figure}
+Für das Antennendiagramm kann in unterschiedlichen Formen und in verschiednen Ebenen dargestellt werden. Ein Antennendiagramm kann im 2D-Raum entlang der horizontalen (Azimuth), als auch entlang der vertikalen Ebene (Elevation) der Antenne erstellt werden. Auch kann ein Antennendiagramm im 3D-Raum erstellt werden. Die Abbildung \ref{Antennendiagrammbeispiel} zeigt ein horizontales Antennendiagramm im polaren Koordinatensystem.\newline
+Neben dem polaren Koordinatensystem kann auch das kartesische Koordinatensystem verwendet werden, jedoch kann im polaren Koordinatensystem die Richtwirkung der Antenne besser dargestellt werden.
+\cite{Radartutorial-Antennendiagramm}.
+\subsubsection*{Haupt- und Nebenkeulen}\label{Keulen}
+Im Antennendiagramm in Abbildung \ref{Antennendiagrammbeispiel} lassen sich verschiedene Muster in der Strahlungscharakteristik der Antenne erkennen, welche auch Keulen genannt werden. Dabei werden die Keulen weiter in Haupt- und Nebenkeulen unterteilt. \newline
+Bei der Hauptkeule handelt es sich um den Bereich einer Antenne, in dessen Richtung am meisten Energie abgestrahlt oder, im Empfangsfall, empfangen wird.\cite{Balanis_2005}
+Bei einigen Antennen können auch mehrere Hauptkeulen vorhanden sein. Ein Beispiel dafür sind Loop- oder Dipolantennen, welche zwei Hauptkeule im Antennendiagramm aufweisen. Diese Hauptkeulen sind im 180\degree versetzt zu einander. Die Hauptkeulen stellen die bevorzugte Anwendungsrichtung einer Antenne dar, egal ob die Antenne im Sende- oder Empfangsbetrieb verwendet wird.\newline
+Die Nebenkeulen handelt es sich um alle Keulen, welche nicht die Hauptkeule darstellen. Diese sind jedoch deutlich kleiner und sollte auch so klein wie möglich sein. Nebenkeule sind meistens unerwünscht, da sie Enegie in ungewollte Richtungen abstrahlen und so weniger Energie durch die Hauptkeule abgestrahlt wird oder da sie im Empfangsfall dafür sorgen, dass die Antenne aus eventuell unerwünschten Richtungen Signale aufnimmt und so den Empfang stören.\cite{Balanis_2005}. Die größten beiden größten Nebenkeulen werden auch Seitenkeulen genannt.\cite{Balanis_2005}.\newline
+Der Abstand von der Hauptkeule zur größten Nebenkeule ist die Nebenkeulendämpfung. Je größer der Wert ist, desto kleiner sind die Nebenkeulen. Die Nebenkeulendämpfung ist ein wichtiger Parameter für Richtantennen, da damit die Richtschärfe ausgedrückt werden kann.\newline
+Die Haupt- und Nebenkeulen bilden sich bei jeder Antenne, welche kein isotropischer Kugelstrahler ist.
+
+\subsubsection*{Strahlbreite}
+Im Zusammenhang mit dem Strahlungsmuster einer Antenne kann ein weiterer Parameter hergeleitet werden. Die Stahlbreite beschreibt den Öffnungswinkel der Hauptkeule. Gemessen wird die Strahlbreite an zwei identischen Punkten auf beiden Seiten des Maximums der Hauptkeule\cite{Balanis_2005}.\newline
+Oft verwendet wird die 3dB-Strahlbreite, auch Half-Power Beamwidth genannt. Diese wird von der IEEE definiert als der Winkel zwischen den zwei Punkten an der Hauptkeule, wo die abgestrahlte Leistung nur noch die Hälfte des Maximums der Hauptkeule beträgt\cite{Balanis_2005}.\newline
+Es gibt auch noch andere Strahlbreite wie die First Null Beamwith (FNBW), diese findet aber in der Praxis keine große Anwendung\cite{Balanis_2005}.\newline
+Die Strahlbreite ist gerade für Richtantennen ein wichtiger Parameter, da die Strahlbreite ihr Auflösungsvermögen beschreibt. Mit einer kleineren Strahlbreite kann im Empfangsfall eine größere Winkelauflösung erreicht werden. Eine größere Winkelauflösung hilft einer Antenne dabei zwischen mehreren benachbarten Strahlungsquellen zu unterscheiden. Mit einem größeren Öffnungswinkel neigt die Antenne dazu benachbarte Quellen als eine wahrzunehmen. Das kann für zum Beispiel Radaranlagen wichtig sein\cite{Balanis_2005}. Allerdings wachsen mit geringere Strahlbreite auch die Nebenkeulen, was unerwünschte Effekte, wie in \ref{Keulen} beschrieben, führt \cite{Balanis_2005}.
+
+
+
+
+
+
+
+\subsubsection*{Antennengewinn, Richtfaktor und Wirkungsgrad}
+Ein weiterer nützlicher Parameter, welcher für die Beschreibung von Antennen verwendet werden kann, ist der Antennengewinn $G$. Der Antennengewinn ist eng mit dem Richtfaktor und dem Wirkungsrad der Antenne verbunden\cite{Balanis_2005}.\newline
+Eine reale Antenne strahlt die eingespeiste Leistung $P_S$ nicht gleichmäßig in alle Richtungen ab. Eine reale Antenne weißt bevorzugte Richtungen $(\phi,\theta)$ auf, gekennzeichnet durch die Haupt- und Nebenkeulen im Antennendiagramm, in welche sie die Leistung abstrahlt oder aus welcher sie Leistung aufnimmt.\newline
+Im Sendefall entspricht der Antennengewinn $G$ dem Verhältnis der abgestrahlten Strahlungsleistungsdichte $S(\phi,\theta)$ der Antenne zu der abgestrahlten Strahlungsleistungsdichte $S_{ref}(\phi,\theta)$ einer Referenzantenne bei gleicher eingespeisten Leistung $P_S$, Richtung $(\phi,\theta)$ und Entfernung $r$\cite{Balanis_2005}.
+\begin{equation}
+    G(\phi,\theta)=\frac{S(r,\phi,\theta)}{S_{ref}(r,\phi,\theta)}
+    \label{Grunddefinition Antennengewinn}
+\end{equation}
+Die Entfernung r kürzt sich aus der Gleichung raus. Sie ist für den Antennengewinn nicht entscheidend.\newline
+Da Antennen reziproke Elemente sind gilt die Gleichung \ref{Grunddefinition Antennengewinn} gleichermaßen für den Empfangsbetrieb. Die Definition ist allerdings leicht anders. Im Empfangsbetrieb entspricht der Antennengewinn $G$ dem Verhältnis der empfangenen Leistung $P_E(\phi,\theta)$ der jeweiligen Antenne zu der empfangenen Leistung $P_{Eref}(\phi,\theta)$ einer Referenzantenne bei gleicher Sendequelle mit fester Sendeleistung $P_S$ und Entfernung $r$ und gleichen Empfangswinkel $(\phi,\theta)$.\newline
+\begin{equation}
+    G(\phi,\theta)=\frac{P_E(\phi,\theta)}{P_{Eref}(\phi,\theta)}
+    \label{Antennengewinn Empfangsfall}
+\end{equation}
+Als Referenzantenne in beiden Fällen eine beliebige Antenne gewählt werden. In den meisten Fällen wird als Referenzantenne der isotrope Kugelstrahler verwendet. Allerdings kann auch der einfache hertzsche Dipol verwendet werden\cite{Balanis_2005}.\newline
+Der isotrope Kugelstrahler ist eine rein theoretische Antenne. Der isotrope Kugelstrahler strahlt die eingespeiste Leitung $P_S$ in alle Richtungen gleichmäßig aus und empfängt auch aus allen Richtungen die gleiche Leistung $P_E$. Aus diesem Grund eignet sich der isotrope Kugelstrahler besonders gut als Referenzantenne. Für die Strahlungsleistungsdichte eines isotrope Kugelstrahler gilt:
+\begin{equation}
+    S_0=\frac{P_S}{4\cdot \pi \cdot r^2 }
+    \label{Strahlungsleistungsdichte isotroper Kugelstrahler}
+\end{equation}
+Der Gewinn wird meistens logarithmisch in dBi angegeben. Das i in dBi bedeutet, dass der Gewinn auf einen isotropen Kugelstrahler bezogen angeben wird. Aus der Gleichung \ref{Grunddefinition Antennengewinn} und \ref{Strahlungsleistungsdichte isotroper Kugelstrahler} folgt dann für die logarithmische Darstellung:
+\begin{equation}
+    G=10 \cdot \log_{10}\left( \frac{S(\phi,\theta)\cdot 4\cdot \pi \cdot r^2}{P_S} \right)
+    \label{}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection*{EIRP}
+\subsubsection*{Polarisation}
+\subsubsection*{Effektive Antennenfläche}
+\subsubsection*{Antennenfaktor}
+\subsubsection*{Antennengewinn}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
