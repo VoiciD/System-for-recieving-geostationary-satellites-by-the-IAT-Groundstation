@@ -7,6 +7,7 @@
 
 \usepackage[ngerman]{babel}    % Deutsche Spracheinstellungen
 \usepackage{amsmath}
+\usepackage{amssymb}
 % Pakete für Layout und Formatierung
 \usepackage{graphicx}          % Einbindung von Bildern
 \usepackage{geometry}          % Anpassung der Seitenränder
@@ -39,10 +40,8 @@
 \setlength\parindent{0pt}
 
 % Kopf- und Fußzeilen
-\setlength{\headheight}{47.698pt}
-\addtolength{\topmargin}{-21.698pt}
-%\setlength\headheight{26pt}  % Höhe der Kopfzeile
-%\setlength\headsep{35pt}     % Abstand zwischen Kopfzeile und Text
+\setlength\headheight{26pt}  % Höhe der Kopfzeile
+\setlength\headsep{35pt}     % Abstand zwischen Kopfzeile und Text
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{Daniel Albinger (5183249)}
@@ -85,20 +84,24 @@
 \pagenumbering{arabic}  
 \setcounter{page}{1}  
 \cfoot{Seite \thepage\ von \pageref{LastPage}}
+\section{Einleitung}
+
 
 \section{Theorie und Grundlagen}
 \input{Theorie_Satelliten}
 \input{Theorie}
+\input{Theorie_Antennen}
+\input{Rauschen}
 
 \section{Theoretische Betrachtung der Empfangskette}
-\input{Theorie_Antennen}
+\input{Theoretischer Aufbau des Downlinks}
 
 
 \section{Praktischer Aufbau der Empfangskette}
 \input{Praktischer Aufbau der Empfangskette}
 
-\section{Rauschen}
-\input{Rauschen}
+
+
 
 
 \section{Anhang}
