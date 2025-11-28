@@ -1,3 +1,4 @@
+\subsection{Rauschen}
 In jedem System tritt neben dem gewünschten Nutzsignal s(t) zusätzlich noch Rauschen auf. Einfach gesagt ist Rauschen eine unerwünschte Form an Energie, welches das Nutzsignal s(t) überlagert und das  Übertragen, Empfangen stört und die Weiterverarbeitung des Signals s(t) erschwert.\newline
 \begin{figure}[H]
     \centering
@@ -18,14 +19,14 @@ Das SNR ist ein Maß für die Qualität des Nutzsignals s(t). Auch wenn die Raus
 Sinkt das SNR, so sinkt auch der Abstand zwischen dem Nutzsignal s(t) und dem Rauschen. Wird das SNR zu gering kann das Signal s(t) nicht mehr zuverlässig vom Rauschen unterschieden werden.\newline
 
 In Abbildung \ref{BADSNR} ist ein Beispiel für ein sehr niedriges SNR dargestellt. Das Rauschen überlagert das Signal s(t) fast vollständig und es kann nicht mehr einwandfrei vom Rauschen unterschieden werden.\newline
-In Fällen von Signalen mit digitalen Modulationen steigt mit sinkendem SNR die Bitfehlerrate (engl. Bit-Error-Rate), auch BER genannt. Je kleiner also das SNR wird, desto mehr Bitfehler treten auf und erschweren die Kommunikation.\newline
--> Quelle für BER finden und passende Grafik.\newline
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{Bilder/Example SNR bad.png}
     \caption{Das Signal s(t) verschwindet im Rauschen}
     \label{BADSNR}
 \end{figure}
+In Fällen von Signalen mit digitalen Modulationen steigt mit sinkendem SNR die Bitfehlerrate (engl. Bit-Error-Rate), auch BER genannt. Je kleiner also das SNR wird, desto mehr Bitfehler treten auf und erschweren die Kommunikation.\newline
+-> Quelle für BER finden und passende Grafik.\newline
 Die Verteilung der Rauschleistung $N$ über das Frequenzspektrum wird mit dem Leistungsdichtespektrum $S_\text{N}(f)$ angegeben.
 \begin{equation}
     S_\text{N}(f)=\frac{N}{2\cdot B} = \frac{k\cdot T}{2}=\frac{n_\text{0}}{2}

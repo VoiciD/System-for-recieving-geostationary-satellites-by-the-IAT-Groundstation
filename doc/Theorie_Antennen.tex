@@ -1,18 +1,7 @@
-0\subsection{Antenne}
+\subsection{Antenne}
 Die Antenne ist mit der wichtigste Bestandsteil der Empfangskette an der Satellitenbodenstation. Erst mit einer geeigneten Antenne ist es mögliche die Signale vom Satelliten, welcher ebenfalls eine Antenne braucht um die Signale zu senden, zu empfangen. Die Antenne wandelt die leitungsgebundene Welle um und strahlt diese in den freien Raum ab oder empfängt die Wellen im freien Raum und gibt diese an die Leitung ab. Sie ist also das Verbindungsglied zwischen der leitungsgebundenen Welle und der Welle im freien Raum.\newline
 Die IEEE definiert eine Antenne als ein passives, lineares und reziprokes Bauelement, welches Radiowellen abstrahlen, als auch empfangen kann\cite{IEEE145-1993}\cite{Balanis_2005}.\newline
 Eine Antenne kann über viele verschiedene Parameter beschrieben werden. Diese Parameter helfen dabei eine geeignete Antenne für die jeweilige Anwendung zu finden.
-
-\subsubsection*{Nah- und Fernfeld}
-Die Umgebung einer Antennen kann in mehrere kleinere Bereiche unterteilt werden. Im unmittelbaren Umfeld der Antenne liegt das Nahfeld, welches auch Freßnel-Bereich genannt\cite{Radartutorial-Nahundfernfeld} genannt werden kann.
-
-
-
-
-
-
-
-
 
 \subsubsection*{Nah- und Fernfeld}
 Der Bereich um die Antenne kann in mehrere Bereiche aufgeteilt werden. Im mittelbaren Umfeld liegt das Nahfeld, auch Fresnel-Breich genannt\cite{Radartutorial-Nahundfernfeld}, der Antenne. Neben den abgestrahlten elektromagnetische Wellen wirken hier auch starke stationäre Felder, welche ebenfalls von der Antenne ausgehen. Beschreiben lassen sich die Felder durch die maxwellschen Gleichungen. Im Nahfeld wird die Berechnung der Felder aufgrund der hohen Ordnungen der Polynome erschwert\cite{Radartutorial-Nahundfernfeld}. Aus diesem Grund werden die Strahlungscharakteristiken einer Antenne im Fernfeld bestimmt. \cite{Balanis_2005}.\newline
@@ -60,22 +49,16 @@ Oft verwendet wird die 3dB-Strahlbreite, auch Half-Power Beamwidth genannt. Dies
 Es gibt auch noch andere Strahlbreite wie die First Null Beamwith (FNBW), diese findet aber in der Praxis keine große Anwendung\cite{Balanis_2005}.\newline
 Die Strahlbreite ist gerade für Richtantennen ein wichtiger Parameter, da die Strahlbreite ihr Auflösungsvermögen beschreibt. Mit einer kleineren Strahlbreite kann im Empfangsfall eine größere Winkelauflösung erreicht werden. Eine größere Winkelauflösung hilft einer Antenne dabei zwischen mehreren benachbarten Strahlungsquellen zu unterscheiden. Mit einem größeren Öffnungswinkel neigt die Antenne dazu benachbarte Quellen als eine wahrzunehmen. Das kann für zum Beispiel Radaranlagen wichtig sein\cite{Balanis_2005}. Allerdings wachsen mit geringere Strahlbreite auch die Nebenkeulen, was unerwünschte Effekte, wie in \ref{Keulen} beschrieben, führt \cite{Balanis_2005}.
 
-
-
-
-
-
-
-\subsubsection*{Antennengewinn, Richtfaktor und Wirkungsgrad}
+\subsubsection*{Antennengewinn}
 Ein weiterer nützlicher Parameter, welcher für die Beschreibung von Antennen verwendet werden kann, ist der Antennengewinn $G$. Der Antennengewinn ist eng mit dem Richtfaktor und dem Wirkungsrad der Antenne verbunden\cite{Balanis_2005}.\newline
 Eine reale Antenne strahlt die eingespeiste Leistung $P_S$ nicht gleichmäßig in alle Richtungen ab. Eine reale Antenne weißt bevorzugte Richtungen $(\phi,\theta)$ auf, gekennzeichnet durch die Haupt- und Nebenkeulen im Antennendiagramm, in welche sie die Leistung abstrahlt oder aus welcher sie Leistung aufnimmt.\newline
-Im Sendefall entspricht der Antennengewinn $G$ dem Verhältnis der abgestrahlten Strahlungsleistungsdichte $S(\phi,\theta)$ der Antenne zu der abgestrahlten Strahlungsleistungsdichte $S_{ref}(\phi,\theta)$ einer Referenzantenne bei gleicher eingespeisten Leistung $P_S$, Richtung $(\phi,\theta)$ und Entfernung $r$\cite{Balanis_2005}.
+Im Sendefall entspricht der Antennengewinn $G(\varphi,\theta)$ dem Verhältnis der abgestrahlten Strahlungsleistungsdichte $S(\phi,\theta)$ der Antenne zu der abgestrahlten Strahlungsleistungsdichte $S_{ref}(\phi,\theta)$ einer Referenzantenne bei gleicher eingespeisten Leistung $P_S$, Richtung $(\phi,\theta)$ und Entfernung $r$\cite{Balanis_2005}.
 \begin{equation}
     G(\phi,\theta)=\frac{S(r,\phi,\theta)}{S_{ref}(r,\phi,\theta)}
     \label{Grunddefinition Antennengewinn}
 \end{equation}
 Die Entfernung r kürzt sich aus der Gleichung raus. Sie ist für den Antennengewinn nicht entscheidend.\newline
-Da Antennen reziproke Elemente sind gilt die Gleichung \ref{Grunddefinition Antennengewinn} gleichermaßen für den Empfangsbetrieb. Die Definition ist allerdings leicht anders. Im Empfangsbetrieb entspricht der Antennengewinn $G$ dem Verhältnis der empfangenen Leistung $P_E(\phi,\theta)$ der jeweiligen Antenne zu der empfangenen Leistung $P_{Eref}(\phi,\theta)$ einer Referenzantenne bei gleicher Sendequelle mit fester Sendeleistung $P_S$ und Entfernung $r$ und gleichen Empfangswinkel $(\phi,\theta)$.\newline
+Da Antennen reziproke Elemente sind gilt die Gleichung \ref{Grunddefinition Antennengewinn} gleichermaßen für den Empfangsbetrieb. Im Empfangsbetrieb entspricht der Antennengewinn $G$ dem Verhältnis der empfangenen Leistung $P_E(\phi,\theta)$ der jeweiligen Antenne zu der empfangenen Leistung $P_{Eref}(\phi,\theta)$ einer Referenzantenne bei gleicher Sendequelle mit fester Sendeleistung $P_S$ und Entfernung $r$ und gleichen Empfangswinkel $(\phi,\theta)$.\newline
 \begin{equation}
     G(\phi,\theta)=\frac{P_E(\phi,\theta)}{P_{Eref}(\phi,\theta)}
     \label{Antennengewinn Empfangsfall}
@@ -89,29 +72,65 @@ Der isotrope Kugelstrahler ist eine rein theoretische Antenne. Der isotrope Kuge
 Der Gewinn wird meistens logarithmisch in dBi angegeben. Das i in dBi bedeutet, dass der Gewinn auf einen isotropen Kugelstrahler bezogen angeben wird. Aus der Gleichung \ref{Grunddefinition Antennengewinn} und \ref{Strahlungsleistungsdichte isotroper Kugelstrahler} folgt dann für die logarithmische Darstellung:
 \begin{equation}
     G=10 \cdot \log_{10}\left( \frac{S(\phi,\theta)\cdot 4\cdot \pi \cdot r^2}{P_S} \right)
-    \label{}
+    \label{GewinndBi}
 \end{equation}
+Wird nichts weiter angegeben, kann im Datenblatt einer Antenne beim Gewinn $G(\varphi,\theta)$ vom Gewinn in Richtung der Hauptkeule ausgegangen werden, da diese auch die bevorzugte Anwendnugsrichtung der Antenne darstellt.\cite{Balanis_2005}
 
+\subsubsection*{Richtfaktor und Wirkungsgrad}
+Beim Richtfaktor $D$ einer Antenne handelt es sich um  das Verhältnis der Strahlungsintensität bei einem bestimmten Abstrahlwinkel $(\varphi,\theta)$ zu der durchschnittliche Strahlungsintensität der Antenne in alle Richtungen. Dabei wird meistens als Abstrahlwinkel $(\varphi,\theta)$ der Winkel von der maximalen Strahlungsintensität, also der Hauptkeule der Antenne, verwendet.\cite{Balanis_2005}
+\begin{equation}
+    D=\frac{\text{Maximale Strahlungsintensität}}{\text{Durchschnittliche Strahlungsintensität}}=\frac{\phi_\mathrm{max}}{\phi_\mathrm{\varnothing}}
+    \label{RichtfakotrD}
+\end{equation}
+Die durchschnittliche Strahlungsintensität kann über die von der Antenne abgestrahlten Leistung $P_\mathrm{rad}$ bestimmt werden.\cite{Balanis_2005}
+\begin{equation}
+    \phi_\mathrm{\varnothing}=\frac{P_\mathrm{rad}}{4\pi}
+\end{equation}
+Mit dem Richtfaktor $D$ und mithilfe des Antennenwirkungsgrad $\eta$ kann der Gewinn $G$ einer Antenne ermittelt werden.
+\begin{equation}
+    G=\eta\cdot D = \eta\cdot\frac{\phi_\mathrm{max}}{\phi_\mathrm{\varnothing}}
+\end{equation}
+Der Antennenwirkungsgrad $\eta$ berücksichtigt Verluste, welche innerhalb der Antenne auftreten. Zusammensetzen tut sich der Antennenwirkungsgrad $\eta$ aus den ohmschen Verlusten $\epsilon_\mathrm{R}$, den Verlusten durch Reflexion $\epsilon_\mathrm{\Gamma}$ und den dielektrischen Verlusten $\epsilon_\mathrm{d}$.\cite{Balanis_2005}
+\begin{equation}
+    \eta=\epsilon_\mathrm{R}\cdot\epsilon_\mathrm{\Gamma}\cdot\epsilon_\mathrm{d}
+\end{equation}
+Bei verlustlosen Antennen gilt $G=D$, da $\eta=1$. -> Mehr zu den Verlusten raus suchen.
 
+\subsubsection*{Äquivalente Strahlungsleistung}
+Die äquivalente Strahlungsleistung oder auch effektive Strahlungsleistung (ERP) ist eine nützliche Größe um die die Auswirkung des Gewinns $G(\varphi,\theta)$ einer Antenne zu verdeutlichen.\newline
+Die äquivalente Strahlungsleistung gibt die Leistung an welche eine Referenzantenne abstrahlen müsste, um die gleiche Strahlungsleistungsdichte $S(\varphi,\theta)$ der Bezugsantenne in einem bestimmten Abstrahlwinkel $(\varphi,\theta)$ zu erreichen. Beim Abstrahlwinkel $(\varphi,\theta)$ der Bezugsantenne wird in der Regel von Hauptkeule der Antenne ausgegangen.\cite{Radartutorial-ERP}\newline
+Als Referenzantenne kann eine beliebige Antenne verwendet werden. In der Praxis werden für gewöhnlich eine Dipolantenne oder ein isotroper Kugelstrahler als Referenz gewählt. Wird ein Dipol als Referenz gewählt, wird die äquivalente Strahlungsleistung als ERP angegeben. Wird jedoch ein isotroper Kugelstrahler als Referenzantenne verwendet, wird die äquivalente Strahlungsleistung als EIRP angeben. EIRP steht für equivalente isotropic radiated power oder äquivalente isotropische Strahlungsleistung.\cite{Radartutorial-ERP}\newline
+Das EIRP setzt sich aus der Sendeleistung $P_\mathrm{T}$ und dem Gewinn $G$ in Richtung der Hauptkeule und den Verlusten der Antenne $L_\mathrm{ANT}$ zusammen.\cite{Radartutorial-ERP}
+\begin{equation}
+    EIRP=P_\mathrm{T}\cdot \frac{G}{L_\mathrm{ANT}}
+    \label{EIRPdBm}
+\end{equation}
+Das EIRP kann auch logarithmisch, z.B. in dBm, angeben werden.
+\begin{equation}
+    EIRP_\mathrm{dBm}=10 \cdot \log_{10} \left( \frac{P_\mathrm{T}\cdot \frac{G}{L_\mathrm{ANT} }}{1\cdot 10^{-3}}\right) = P_\mathrm{T,dBm}+G_\mathrm{dBi}-L_\mathrm{ANT,dB}
+    \label{EIRPdBm}
+\end{equation}
+Das EIRP und ERP hängen über den Gewinn $G=1.64$ der Dipolantenne gegenüber dem isotropen Kugelstrahler miteinander zusammen.\cite{Radartutorial-ERP}
+\begin{equation*}
+    EIRP = 1.64\cdot ERP
+\end{equation*}
+Mithilfe des ERP und EIRP kann die scheinbare Leistung eines Senders quantifiziert werden. Anwendung findet das im Bereich der Telekommunikationstechnik. Die Bundesnetzagentur gibt mit dem EIRP die maximale zulässige Sendeleistung im sogenannten Frequenznutzungsplan \cite{FrequenzplanBundesnetzagentur} an. So soll eine gemeinschaftliche Nutzung der einzelnen Frequenzbänder garantiert und gegenseitige Störungen minimiert werden.\cite{Radartutorial-ERP}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-\subsubsection*{EIRP}
-\subsubsection*{Polarisation}
 \subsubsection*{Effektive Antennenfläche}
-\subsubsection*{Antennenfaktor}
-\subsubsection*{Antennengewinn}
+Die effektive Antennenfläche $A_\mathrm{E}$ ist ein wichtiger Parameter für Antennen, welche als Empfangsantennen betrieben werden.\newline
+Die effektive Antennenfläche, auch Absoprtionsfläche oder Wirkläche genannt, ist rein theoretische Fläche. Diese kann gleich oder kleiner als die reale Fläche der jeweiligen Antenne sein.\newline
+Bestimmt wird die effektive Antennenfläche $A_\mathrm{E}$, bei verlustlosen Antennen, über das Verhältnis von der am Fuße der Antenne verfügbaren Leistung $P_\mathrm{E}$ zu der Strahlungsleistungsdichte $S_\mathrm{E}$ von der auf die Antenne eintreffende Welle.\cite{Balanis_2005}
+\begin{equation}
+    A_\mathrm{E}=\frac{P_\mathrm{E}}{S_\mathrm{E}}
+\end{equation}
+Dank der Reziprozität von Antennen kann aus der effektiven Antennenfläche $A_\mathrm{E}$ auch der Gewinn $G$ der Antenne ermittelt werden und umgekehrt.
+
+
+
+
+\subsubsection*{Polarisation}
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 
 
 
