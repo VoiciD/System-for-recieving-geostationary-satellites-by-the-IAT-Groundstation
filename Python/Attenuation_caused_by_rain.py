@@ -31,7 +31,7 @@ D_HP = D_s*np.cos(elevation)
 
 #determination of the Rain intensity [mm/h] which exceeding the anual mean by 0.01% of the time
 R_001 = 30                    #Mean in the northern part of Germany 35 to 40 mm/h
-
+R_avg = 5.4                   #Mean Rain intensity for December 2025 Bremen 
 
 
 #determination of the frequency dependend coeffizients
@@ -60,12 +60,14 @@ elif 10 < freq < 12:
 k = (k_H+k_V+(k_H-k_V)*(np.cos(elevation))**2+np.cos(2*tau))/2
 alpha = ((k_H*alpha_H)+(k_V*alpha_V)+((k_H*alpha_H)-(k_V*alpha_V)*(np.cos(elevation))**2+np.cos(2*tau)))/(2*k)
 
-y_R = k*(R_001)**alpha
-print("y_R:",y_R,"dB/km")
-
+y_R001 = k*(R_001)**alpha
+y_Ravg = k*(R_avg)**alpha
+print("y_R001:",y_R001,"dB/km")
+print("y_Ravg:",y_Ravg,"dB/km")
 #calculation horizontal reduction factor
-r001 = (1+0.78*np.sqrt((D_HP*y_R)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
-#calculation vertical reduction factor
+r001 = (1+0.78*np.sqrt((D_HP*y_R001)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
+ravg = (1+0.78*np.sqrt((D_HP*y_Ravg)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
+#calculation vertical adjustment factor
 
 
 
