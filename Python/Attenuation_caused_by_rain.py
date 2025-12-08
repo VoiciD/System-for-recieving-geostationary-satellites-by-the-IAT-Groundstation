@@ -14,7 +14,7 @@ tau = np.deg2rad(-12.412)       #skew of the Antenna
 h_0 = 3                         #Height of the isothermic barrier of the region from the groundstation[km]
 h_Station = 0.023               #Height of the groundstation above Sealevel [km]
 freq = 10.5                    #Frequency at which the link operates [GHz]
-
+cordiantes_station = (53.05515290792716, 8.783348525839578,0.0)
 
 
 
@@ -30,7 +30,7 @@ D_HP = D_s*np.cos(elevation)
 
 
 #determination of the Rain intensity [mm/h] which exceeding the anual mean by 0.01% of the time
-R_001 = 30                    #Mean in the northern part of Germany 35 to 40 mm/h
+R_001 = 32                    #Mean in the northern part of Germany 35 to 40 mm/h
 R_avg = 5.4                   #Mean Rain intensity for December 2025 Bremen 
 
 
@@ -43,17 +43,12 @@ elif freq == 1:
     alpha_H = 0.912
     alpha_V = 0.880
 
-elif 1 < freq < 2:      # NOT CORRECT
-    k_H = 0.0000387
-    k_V = 0.0000352
-    alpha_H = 0.912
-    alpha_V = 0.880
     
 elif 10 < freq < 12:
-    k_H = 3.949*10**(-6)*freq**(3.4078)
-    k_V = 2.785*10**(-6)*freq**(3.5032)
-    alpha_H = -0.7451*np.log10(freq)+2.0211
-    alpha_V = -0.8083*np.log10(freq)+2.0723
+    k_H = 0.01217 
+    k_V = 0.01129
+    alpha_H = 1.2571
+    alpha_V = 1.2156
     
 
 #determination of the specific rain attenuatuion
@@ -61,15 +56,34 @@ k = (k_H+k_V+(k_H-k_V)*(np.cos(elevation))**2+np.cos(2*tau))/2
 alpha = ((k_H*alpha_H)+(k_V*alpha_V)+((k_H*alpha_H)-(k_V*alpha_V)*(np.cos(elevation))**2+np.cos(2*tau)))/(2*k)
 
 y_R001 = k*(R_001)**alpha
-y_Ravg = k*(R_avg)**alpha
+
 print("y_R001:",y_R001,"dB/km")
-print("y_Ravg:",y_Ravg,"dB/km")
+
 #calculation horizontal reduction factor
-r001 = (1+0.78*np.sqrt((D_HP*y_R001)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
-ravg = (1+0.78*np.sqrt((D_HP*y_Ravg)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
+#r001 = (1+0.78*np.sqrt((D_HP*y_R001)/freq)-0.38*(1-np.exp(-2*D_HP)))**(-1)
+r001 = 1 / (0.78 + 0.38 * (1 - np.exp(-0.38 * D_HP)))
 #calculation vertical adjustment factor
+cc = np.rad2deg(np.arctan((h_R-h_Station)/(D_HP*r001)))
 
+if cc > np.rad2deg(elevation):
+    L_R = (D_HP*r001)/np.cos(elevation)
+else:
+    L_R = (h_R-h_Station)/np.sin(elevation)
 
+if abs(cordiantes_station[0]) > 36:
+    X = 36 - abs(cordiantes_station[0])
+else:
+    X = 0
+    
+#v_adj_f = 1/(1+np.sqrt(np.sin(elevation))*(31*(1-np.exp((-1)*(elevation/(1+X))))*(np.sqrt(L_R*y_R001))/(freq**2)-0.45))
+v001 = 1 / (1 + 0.31 * np.sqrt(L_R * freq) * np.sin(elevation) * np.exp(-0.45 * ( X + np.rad2deg(elevation))))
+print("Vertikal adjusmentfaktor:",v_adj_f)
+#calculation effective path length D_Regen
+D_Regen = L_R*v001
+print("Effectiv Path lenght through the rain:",D_Regen,"km")
 
+#calculation worst case attenuation for rain exceeded for 0.01% of an avarage year
+A_001 = y_R001*D_Regen
+print("worst case attenuation caused by rain exceeded for 0.01% of an avarage year:",A_001,"dB")
 
 
