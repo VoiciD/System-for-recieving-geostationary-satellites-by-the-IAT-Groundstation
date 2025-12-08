@@ -1,0 +1,727 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Satellite_Technology}{book}{}
+      \name{author}{2}{}{%
+        {{hash=8e51e478ae8f4c87a95ea2aaf84629a1}{%
+           family={Maini},
+           familyi={M\bibinitperiod},
+           given={Anil\bibnamedelima Kumar},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=d15906d430b4cb5a7a6429a02e2ff459}{%
+           family={Agrawal},
+           familyi={A\bibinitperiod},
+           given={Varsha},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \strng{fullhash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \strng{bibnamehash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \strng{authorbibnamehash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \strng{authornamehash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \strng{authorfullhash}{33ef1355ca252a4f81acd911e6ca0b77}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781118636473}
+      \field{title}{Satellite Technology: Principles and applications}
+      \field{year}{2014}
+    \endentry
+    \entry{Sputnik_1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=fb1171737ee76c6af56237e6f80bafd3}{%
+           family={Schimikowski},
+           familyi={S\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb1171737ee76c6af56237e6f80bafd3}
+      \strng{fullhash}{fb1171737ee76c6af56237e6f80bafd3}
+      \strng{bibnamehash}{fb1171737ee76c6af56237e6f80bafd3}
+      \strng{authorbibnamehash}{fb1171737ee76c6af56237e6f80bafd3}
+      \strng{authornamehash}{fb1171737ee76c6af56237e6f80bafd3}
+      \strng{authorfullhash}{fb1171737ee76c6af56237e6f80bafd3}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Deutsches Spionagemuseum}
+      \field{month}{3}
+      \field{title}{Eine Zeitenwende der Spionagegeschichte: Vor 60 Jahren Startete sputnik 1 als Erster Satellit ins all}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.deutsches-spionagemuseum.de/2017/10/04/eine-zeitenwende-der-spionagegeschichte-vor-60-jahren-startete-sputnik-1
+      \endverb
+      \verb{url}
+      \verb https://www.deutsches-spionagemuseum.de/2017/10/04/eine-zeitenwende-der-spionagegeschichte-vor-60-jahren-startete-sputnik-1
+      \endverb
+    \endentry
+    \entry{Bild_Sputnik}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=0af859665a01f669a93dc7337400bc5c}{%
+           family={Siddiqi},
+           familyi={S\bibinitperiod},
+           given={Asif\bibnamedelima A.},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Deutsches Zentrum für Luft- und Raumfahrt}%
+      }
+      \strng{namehash}{0af859665a01f669a93dc7337400bc5c}
+      \strng{fullhash}{0af859665a01f669a93dc7337400bc5c}
+      \strng{bibnamehash}{0af859665a01f669a93dc7337400bc5c}
+      \strng{authorbibnamehash}{0af859665a01f669a93dc7337400bc5c}
+      \strng{authornamehash}{0af859665a01f669a93dc7337400bc5c}
+      \strng{authorfullhash}{0af859665a01f669a93dc7337400bc5c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Deutsches Zentrum für Luft- und Raumfahrt}
+      \field{title}{Sputnik 1 Vor Dem start}
+      \verb{urlraw}
+      \verb https://www.dlr.de/de/next/multimedia/eine-kurze-geschichte-der-raumfahrt/sputnik-1-vor-dem-start
+      \endverb
+      \verb{url}
+      \verb https://www.dlr.de/de/next/multimedia/eine-kurze-geschichte-der-raumfahrt/sputnik-1-vor-dem-start
+      \endverb
+    \endentry
+    \entry{NASA_Explorer1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9c1d0ac0d8dc381c822f14595430c5cd}{%
+           family={Loff},
+           familyi={L\bibinitperiod},
+           given={Sarah\bibnamedelima A.},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {NASA}%
+      }
+      \strng{namehash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \strng{fullhash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \strng{bibnamehash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \strng{authorbibnamehash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \strng{authornamehash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \strng{authorfullhash}{9c1d0ac0d8dc381c822f14595430c5cd}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{NASA}
+      \field{month}{8}
+      \field{title}{Explorer 1 overview}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.nasa.gov/history/explorer-1-overview/
+      \endverb
+      \verb{url}
+      \verb https://www.nasa.gov/history/explorer-1-overview/
+      \endverb
+    \endentry
+    \entry{DWD}{misc}{}
+      \list{publisher}{1}{%
+        {Deutscher Wetterdienst (DWD)}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{journaltitle}{Wetter und Klima - Deutscher Wetterdienst - Wettersatelliten}
+      \verb{urlraw}
+      \verb https://www.dwd.de/DE/forschung/atmosphaerenbeob/wettersatelliten/wettersatelliten_node.html
+      \endverb
+      \verb{url}
+      \verb https://www.dwd.de/DE/forschung/atmosphaerenbeob/wettersatelliten/wettersatelliten_node.html
+      \endverb
+    \endentry
+    \entry{Satellitenkommunikation}{book}{}
+      \name{author}{2}{}{%
+        {{hash=21fb083d1af20db160f086104bd4c77a}{%
+           family={Dodel},
+           familyi={D\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod}}}%
+        {{hash=d313babdd9fe1489a6ee883ff0870fe6}{%
+           family={Eberle},
+           familyi={E\bibinitperiod},
+           given={Sabrina},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \strng{fullhash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \strng{bibnamehash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \strng{authorbibnamehash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \strng{authornamehash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \strng{authorfullhash}{3a51c78a517e67dc1989f7154a7f8db5}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9783540295761}
+      \field{title}{Satellitenkommunikation}
+      \field{year}{2007}
+    \endentry
+    \entry{N2YO_SATLIST}{misc}{}
+      \list{publisher}{1}{%
+        {N2YO}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{journaltitle}{N2YO}
+      \field{note}{Kategorien mehrere Satellitenkonstellationen}
+      \verb{urlraw}
+      \verb https://www.n2yo.com/satellites/
+      \endverb
+      \verb{url}
+      \verb https://www.n2yo.com/satellites/
+      \endverb
+    \endentry
+    \entry{AMSAT-DL}{misc}{}
+      \list{publisher}{1}{%
+        {AMSAT-DL}%
+      }
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{journaltitle}{AMSAT}
+      \field{note}{AMSAT-DL}
+      \verb{urlraw}
+      \verb https://amsat-dl.org/wer-sind-wir/
+      \endverb
+      \verb{url}
+      \verb https://amsat-dl.org/wer-sind-wir/
+      \endverb
+    \endentry
+    \entry{EsHail2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8dedea8e4a35fe5961c705075e2d07f2}{%
+           family={Gülzow},
+           familyi={G\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \strng{fullhash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \strng{bibnamehash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \strng{authorbibnamehash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \strng{authornamehash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \strng{authorfullhash}{8dedea8e4a35fe5961c705075e2d07f2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Es’hail-2 / AMSAT Phase 4-A / Qatar-OSCAR 100}
+      \verb{urlraw}
+      \verb https://amsat-dl.org/en/eshail-2-amsat-phase-4-a/
+      \endverb
+      \verb{url}
+      \verb https://amsat-dl.org/en/eshail-2-amsat-phase-4-a/
+      \endverb
+      \warn{\item misc entry 'EsHail2' (Literaturverzeichnis.bib): Invalid format '09.09.2025' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{CoverageEsHail2Amateur}{misc}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{note}{Abdeckungsbereich von Es'Hail-2/QO-100}
+      \verb{urlraw}
+      \verb https://www.n2yo.com/?s=43700
+      \endverb
+      \verb{url}
+      \verb https://www.n2yo.com/?s=43700
+      \endverb
+      \warn{\item misc entry 'CoverageEsHail2Amateur' (Literaturverzeichnis.bib): Invalid format '12.09.2025' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{linearTransponder}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=21232f297a57a5a743894a0e4a801fc3}{%
+           family={admin},
+           familyi={a\bibinitperiod}}}%
+      }
+      \strng{namehash}{21232f297a57a5a743894a0e4a801fc3}
+      \strng{fullhash}{21232f297a57a5a743894a0e4a801fc3}
+      \strng{bibnamehash}{21232f297a57a5a743894a0e4a801fc3}
+      \strng{authorbibnamehash}{21232f297a57a5a743894a0e4a801fc3}
+      \strng{authornamehash}{21232f297a57a5a743894a0e4a801fc3}
+      \strng{authorfullhash}{21232f297a57a5a743894a0e4a801fc3}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{rtl-sdr.com}
+      \field{month}{5}
+      \field{title}{Creating a linear transponder with an RTL-SDR, hackrf and Raspberry Pi}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.rtl-sdr.com/creating-a-linear-transponder-with-an-rtl-sdr-hackrf-and-raspberry-pi/
+      \endverb
+      \verb{url}
+      \verb https://www.rtl-sdr.com/creating-a-linear-transponder-with-an-rtl-sdr-hackrf-and-raspberry-pi/
+      \endverb
+    \endentry
+    \entry{EsHail2NarrowbandBandplan}{misc}{}
+      \list{publisher}{1}{%
+        {AMSAT}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{Bandplan des Schmallbandtransponder}
+      \verb{urlraw}
+      \verb https://amsat-dl.org/wp-content/uploads/2020/02/AMSAT-QO-100-NB-Transponder-Bandplan-Graph-1140x641.png
+      \endverb
+      \verb{url}
+      \verb https://amsat-dl.org/wp-content/uploads/2020/02/AMSAT-QO-100-NB-Transponder-Bandplan-Graph-1140x641.png
+      \endverb
+      \warn{\item misc entry 'EsHail2NarrowbandBandplan' (Literaturverzeichnis.bib): Invalid format '15.09.2025' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{BarkerFM}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5be0791052e62ebc705c7ba47cafbbce}{%
+           family={Barker},
+           familyi={B\bibinitperiod},
+           given={Keith},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AMSAT}%
+      }
+      \strng{namehash}{5be0791052e62ebc705c7ba47cafbbce}
+      \strng{fullhash}{5be0791052e62ebc705c7ba47cafbbce}
+      \strng{bibnamehash}{5be0791052e62ebc705c7ba47cafbbce}
+      \strng{authorbibnamehash}{5be0791052e62ebc705c7ba47cafbbce}
+      \strng{authornamehash}{5be0791052e62ebc705c7ba47cafbbce}
+      \strng{authorfullhash}{5be0791052e62ebc705c7ba47cafbbce}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Getting Started on the Amateur Radio Satellites (Part V)}
+      \field{title}{Getting started 5.PDF}
+      \verb{urlraw}
+      \verb https://www.amsat.org/wordpress/xtra/Getting%20Started%205.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.amsat.org/wordpress/xtra/Getting%20Started%205.pdf
+      \endverb
+      \warn{\item misc entry 'BarkerFM' (Literaturverzeichnis.bib): Invalid format '12.09.2025' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{FrequenzplanBundesnetzagentur}{misc}{}
+      \list{publisher}{1}{%
+        {Bundesnetzagentur}%
+      }
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{note}{Allgemeiner Frequenzplan der Bundesnetzagentur}
+      \verb{urlraw}
+      \verb https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/20210114_frequenzplan.pdf
+      \endverb
+      \verb{url}
+      \verb https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/20210114_frequenzplan.pdf
+      \endverb
+      \warn{\item misc entry 'FrequenzplanBundesnetzagentur' (Literaturverzeichnis.bib): Invalid format '15.09.2025' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{IEEE145-1993}{report}{}
+      \list{institution}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers (IEEE)}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 13.10.2025}
+      \field{number}{Std 145-1993}
+      \field{title}{IEEE Standard Definitions of Terms for Antennas}
+      \field{type}{Standard}
+      \field{urlday}{13}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{1993}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ece.mcmaster.ca/faculty/nikolova/antenna_dload/IEEEStandard_AntennaTerms.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.ece.mcmaster.ca/faculty/nikolova/antenna_dload/IEEEStandard_AntennaTerms.pdf
+      \endverb
+    \endentry
+    \entry{Balanis_2005}{book}{}
+      \name{author}{1}{}{%
+        {{hash=300a12a82930b359f126eb819d7831ba}{%
+           family={Balanis},
+           familyi={B\bibinitperiod},
+           given={Constantine\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley}%
+      }
+      \strng{namehash}{300a12a82930b359f126eb819d7831ba}
+      \strng{fullhash}{300a12a82930b359f126eb819d7831ba}
+      \strng{bibnamehash}{300a12a82930b359f126eb819d7831ba}
+      \strng{authorbibnamehash}{300a12a82930b359f126eb819d7831ba}
+      \strng{authornamehash}{300a12a82930b359f126eb819d7831ba}
+      \strng{authorfullhash}{300a12a82930b359f126eb819d7831ba}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-471-66782-X}
+      \field{title}{Antenna theory: Analysis and design}
+      \field{year}{2005}
+    \endentry
+    \entry{Radartutorial-Nahundfernfeld}{online}{}
+      \name{author}{1}{}{%
+        {{hash=59015f0f88a7f676bfe9dc39b43c7814}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{fullhash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{bibnamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authorbibnamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authornamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authorfullhash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \field{extraname}{1}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 15.10.2025}
+      \field{title}{Nahfled/Fernfeld}
+      \field{urlday}{15}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.radartutorial.eu/06.antennas/an60.de.html
+      \endverb
+      \verb{url}
+      \verb https://www.radartutorial.eu/06.antennas/an60.de.html
+      \endverb
+    \endentry
+    \entry{Radartutorial-Antennendiagramm}{online}{}
+      \name{author}{1}{}{%
+        {{hash=59015f0f88a7f676bfe9dc39b43c7814}{%
+           family={Wolf},
+           familyi={W\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{fullhash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{bibnamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authorbibnamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authornamehash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \strng{authorfullhash}{59015f0f88a7f676bfe9dc39b43c7814}
+      \field{extraname}{2}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 15.10.2025}
+      \field{title}{Antennendiagramm}
+      \field{urlday}{15}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.radartutorial.eu/06.antennas/Antennendiagramm.de.html
+      \endverb
+      \verb{url}
+      \verb https://www.radartutorial.eu/06.antennas/Antennendiagramm.de.html
+      \endverb
+    \endentry
+    \entry{Radartutorial-ERP}{online}{}
+      \name{author}{1}{}{%
+        {{hash=008b1ae2e4d4269e0f98610c47e9e777}{%
+           family={{Christian Wolf}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \strng{fullhash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \strng{bibnamehash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \strng{authorbibnamehash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \strng{authornamehash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \strng{authorfullhash}{008b1ae2e4d4269e0f98610c47e9e777}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 21.10.2025}
+      \field{title}{Äquivalente Strahlungsleistung (EIRP)}
+      \field{urlday}{21}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.radartutorial.eu/08.transmitters/tx57.de.html
+      \endverb
+      \verb{url}
+      \verb https://www.radartutorial.eu/08.transmitters/tx57.de.html
+      \endverb
+    \endentry
+    \entry{Wellentypen}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b18c523e872ac427f4140082fee87b65}{%
+           family={Studyflix},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{b18c523e872ac427f4140082fee87b65}
+      \strng{fullhash}{b18c523e872ac427f4140082fee87b65}
+      \strng{bibnamehash}{b18c523e872ac427f4140082fee87b65}
+      \strng{authorbibnamehash}{b18c523e872ac427f4140082fee87b65}
+      \strng{authornamehash}{b18c523e872ac427f4140082fee87b65}
+      \strng{authorfullhash}{b18c523e872ac427f4140082fee87b65}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Wellentypen}
+      \field{urlday}{30}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://studyflix.de/ingenieurwissenschaften/transversalwelle-6799
+      \endverb
+      \verb{url}
+      \verb https://studyflix.de/ingenieurwissenschaften/transversalwelle-6799
+      \endverb
+    \endentry
+    \entry{linear_polarization_image}{online}{}
+      \name{author}{1}{}{%
+        {{hash=712045e0fd57911d24265a93831bb1d0}{%
+           family={RJB1},
+           familyi={R\bibinitperiod},
+           given={Dave3457},
+           giveni={D\bibinitperiod},
+           prefix={derivative\bibnamedelimb work\bibnamedelima by},
+           prefixi={d\bibinitperiod\bibinitdelim w\bibinitperiod\bibinitdelim b\bibinitperiod}}}%
+      }
+      \strng{namehash}{712045e0fd57911d24265a93831bb1d0}
+      \strng{fullhash}{712045e0fd57911d24265a93831bb1d0}
+      \strng{bibnamehash}{712045e0fd57911d24265a93831bb1d0}
+      \strng{authorbibnamehash}{712045e0fd57911d24265a93831bb1d0}
+      \strng{authornamehash}{712045e0fd57911d24265a93831bb1d0}
+      \strng{authorfullhash}{712045e0fd57911d24265a93831bb1d0}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Circularly Polarized Light and Linearly Polarized Light Comparison}
+      \field{urlday}{1}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2010}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/w/index.php?curid=12101095
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/w/index.php?curid=12101095
+      \endverb
+    \endentry
+    \entry{circular_polarization_image}{online}{}
+      \name{author}{1}{}{%
+        {{hash=fb91b8bda6b3b72ada700345931cffd1}{%
+           family={Averse},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb91b8bda6b3b72ada700345931cffd1}
+      \strng{fullhash}{fb91b8bda6b3b72ada700345931cffd1}
+      \strng{bibnamehash}{fb91b8bda6b3b72ada700345931cffd1}
+      \strng{authorbibnamehash}{fb91b8bda6b3b72ada700345931cffd1}
+      \strng{authornamehash}{fb91b8bda6b3b72ada700345931cffd1}
+      \strng{authorfullhash}{fb91b8bda6b3b72ada700345931cffd1}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Zirkulare Polarisation: Auslenkung (z. B. einer Seilwelle) in x- und y-Richtung (in Ausbreitungsrichtung beträgt sie Null) in Abhängigkeit von der Zeit und von der z-Komponente des Ortes. Rot und blau die Komponenten der Auslenkung, schwarz die 3D-Ansicht. Der Pfeil illustriert den umlaufenden Auslenkungsvektor für einen Raumpunkt.}
+      \field{urlday}{1}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/w/index.php?curid=4849061
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/w/index.php?curid=4849061
+      \endverb
+    \endentry
+    \entry{HEUERMANN_2018}{book}{}
+      \name{author}{1}{}{%
+        {{hash=618e8a3ec45c29866183587166f8670e}{%
+           family={HEUERMANN},
+           familyi={H\bibinitperiod},
+           given={HOLGER},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden : Imprint : Springer Vieweg}%
+      }
+      \strng{namehash}{618e8a3ec45c29866183587166f8670e}
+      \strng{fullhash}{618e8a3ec45c29866183587166f8670e}
+      \strng{bibnamehash}{618e8a3ec45c29866183587166f8670e}
+      \strng{authorbibnamehash}{618e8a3ec45c29866183587166f8670e}
+      \strng{authornamehash}{618e8a3ec45c29866183587166f8670e}
+      \strng{authorfullhash}{618e8a3ec45c29866183587166f8670e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{alt: 978-3-658-23197-2 neu:978-3-658-37825-7}
+      \field{title}{Hochfrequenztechnik: Komponenten Fr High-Speedund Hochfrequenzschaltungen}
+      \field{year}{2018}
+    \endentry
+    \entry{Thiede_2013}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d6e45959cbfa54c216934db0f4e3a45e}{%
+           family={Thiede},
+           familyi={T\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Fachmedien Wiesbaden : Imprint : Springer Vieweg}%
+      }
+      \strng{namehash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \strng{fullhash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \strng{bibnamehash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \strng{authorbibnamehash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \strng{authornamehash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \strng{authorfullhash}{d6e45959cbfa54c216934db0f4e3a45e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-8348-1246-9}
+      \field{title}{Integrierte Hochfrequenzschaltkreise: Grundlagen des Computergestützten Entwurfs}
+      \field{year}{2013}
+    \endentry
+    \entry{leifiphysik-elementarladung}{online}{}
+      \name{author}{1}{}{%
+        {{hash=3f2905e100c58490506192775130a31d}{%
+           family={{LEIFIphysik}},
+           familyi={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{3f2905e100c58490506192775130a31d}
+      \strng{fullhash}{3f2905e100c58490506192775130a31d}
+      \strng{bibnamehash}{3f2905e100c58490506192775130a31d}
+      \strng{authorbibnamehash}{3f2905e100c58490506192775130a31d}
+      \strng{authornamehash}{3f2905e100c58490506192775130a31d}
+      \strng{authorfullhash}{3f2905e100c58490506192775130a31d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 10.11.2025}
+      \field{title}{Elementarladung}
+      \field{urlday}{10}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.leifiphysik.de/elektrizitaetslehre/ladungen-elektrisches-feld/grundwissen/elementarladung
+      \endverb
+      \verb{url}
+      \verb https://www.leifiphysik.de/elektrizitaetslehre/ladungen-elektrisches-feld/grundwissen/elementarladung
+      \endverb
+    \endentry
+    \entry{liquid-flicker}{online}{}
+      \name{author}{1}{}{%
+        {{hash=6806e23a9223344bc3b601afaa3ff5fa}{%
+           family={Insturments},
+           familyi={I\bibinitperiod},
+           given={Liquid},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \strng{fullhash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \strng{bibnamehash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \strng{authorbibnamehash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \strng{authornamehash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \strng{authorfullhash}{6806e23a9223344bc3b601afaa3ff5fa}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Zugriff am 11.11.2025}
+      \field{title}{Understanding 1/f noise (flicker noise)}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://liquidinstruments.com/blog/understanding-1-f-noise-flicker-noise/
+      \endverb
+      \verb{url}
+      \verb https://liquidinstruments.com/blog/understanding-1-f-noise-flicker-noise/
+      \endverb
+      \warn{\item online entry 'liquid-flicker' (Literaturverzeichnis.bib): Invalid format '5 September 2025' of date field 'date' - ignoring}
+    \endentry
+    \entry{Starwalk}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=bd594696e67ae705dc10ed99dfa2282e}{%
+           family={Vito\bibnamedelima Technology},
+           familyi={V\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Inc.},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Vito Technology, Inc.}%
+      }
+      \strng{namehash}{bd594696e67ae705dc10ed99dfa2282e}
+      \strng{fullhash}{bd594696e67ae705dc10ed99dfa2282e}
+      \strng{bibnamehash}{bd594696e67ae705dc10ed99dfa2282e}
+      \strng{authorbibnamehash}{bd594696e67ae705dc10ed99dfa2282e}
+      \strng{authornamehash}{bd594696e67ae705dc10ed99dfa2282e}
+      \strng{authorfullhash}{bd594696e67ae705dc10ed99dfa2282e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Star Walk}
+      \field{month}{7}
+      \field{title}{Himmlische Koordinaten: Ultimativer Leitfaden}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://starwalk.space/de/news/celestial-coordinates
+      \endverb
+      \verb{url}
+      \verb https://starwalk.space/de/news/celestial-coordinates
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

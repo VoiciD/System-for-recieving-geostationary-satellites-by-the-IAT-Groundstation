@@ -1,0 +1,22 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {section}{\numberline {1}Einleitung}{1}{section.1}%
+\contentsline {section}{\numberline {2}Theorie und Grundlagen}{1}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Was ist ein Satellit}{1}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Umlaufbahnen für Satelliten}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Postion eines Satelliten}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Es’ Hail-2}{4}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Schmallband Transponder}{5}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}Mischer}{7}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Anwendung von Mischern}{7}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Rauschen und Verluste}{7}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.6}Antenne}{7}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Rauschen}{15}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Arten und Quellen von Rauschen}{17}{subsection.2.8}%
+\contentsline {section}{\numberline {3}Theoretische Betrachtung der Empfangskette}{20}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Darstellung des Downlinks}{20}{subsection.3.1}%
+\contentsline {section}{\numberline {4}Praktischer Aufbau der Empfangskette}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Ausrichten der Antenne}{21}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Anhang}{22}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Literaturverzeichnis}{22}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Abbildungsverzeichnis}{24}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Tabellenverzeichnis}{24}{subsection.5.3}%
