@@ -30,16 +30,21 @@ D_HP = D_s*np.cos(elevation)
 
 
 #determination of the Rain intensity [mm/h] which exceeding the anual mean by 0.01% of the time
-R_001 = 37.5                    #Mean in the northern part of Germany 35 to 40 mm/h
-R_avg = 5.4                   #Mean Rain intensity for December 2025 Bremen 
-R_graph = np.arange(0,40, 0.1 )
+R_001 = 35                    #Mean in the northern part of Germany 35 to 40 mm/h 
+R_graph = np.arange(0,40, 0.1 ) #For Graph Plotting 0 mm/H to 40mm/h
 
-#determination of the frequency dependend coeffizients
+#determination of the frequency dependend coeffizients. Equations from the Book
 
-k_H = 3.949*10**(-6)*freq**(3.4078)
-k_V = 2.785*10**(-6)*freq**(3.5032)
-alpha_H = -0.7451*np.log10(freq)+2.0211
-alpha_V = -0.8083*np.log10(freq)+2.0723
+# k_H = 3.949*10**(-6)*freq**(3.4078)
+# k_V = 2.785*10**(-6)*freq**(3.5032)
+# alpha_H = -0.7451*np.log10(freq)+2.0211
+# alpha_V = -0.8083*np.log10(freq)+2.0723
+
+#von ITU-R P.838-3
+k_H = 0.01217
+k_V = 0.01129
+alpha_H = 1.2571
+alpha_V = 1.2156
     
 
 #determination of the specific rain attenuatuion
@@ -47,28 +52,20 @@ k = (k_H + k_V + (k_H-k_V) * (np.cos(elevation))**2 * np.cos(2*tau))/2
 alpha = (k_H * alpha_H + k_V * alpha_V + (k_H * alpha_H - k_V * alpha_V) * (np.cos(elevation))**2 * np.cos(2*tau)) / (2*k)
 
 gamma_R001 = k*(R_001)**alpha
-gamma_Ravg = k*(R_avg)**alpha
-
 print("y_R001:",gamma_R001,"dB/km")
-print("y_Ravg:",gamma_Ravg,"dB/km")
+
 #calculation horizontal reduction factor
 r001 = 1 / (1 + 0.78 * np.sqrt((D_HP*gamma_R001) / freq) - 0.38 * (1 - np.exp(-2 * D_HP)))
-ravg = 1 / (1 + 0.78 * np.sqrt((D_HP*gamma_Ravg) / freq) - 0.38 * (1 - np.exp(-2 * D_HP)))
-
 #calculation vertical adjustment factor
 
 cc001 = np.rad2deg(np.arctan((h_R-h_Station)/(D_HP*r001)))
-ccavg = np.rad2deg(np.arctan((h_R-h_Station)/(D_HP*ravg)))
 
 if cc001 > np.rad2deg(elevation):
     D_R001 = (D_HP*r001)/np.cos(elevation)
 else:
     D_R001 = (h_R-h_Station)/np.sin(elevation)
 
-if ccavg > np.rad2deg(elevation):
-    D_Ravg = (D_HP*ravg)/np.cos(elevation)
-else:
-    D_Ravg = (h_R-h_Station)/np.sin(elevation)
+
 
 if abs(cordiantes_station[0]) > 36:
     X = 36 - abs(cordiantes_station[0])
@@ -76,7 +73,7 @@ else:
     X = 0
 
 v001 = 1 / (1 + np.sqrt(np.sin(elevation)) * (31 * (1 - np.exp( (-1)* ( elevation/(1+X))))*(np.sqrt(D_R001 *gamma_R001))/(freq**2)-0.45))
-vavg = 1 / (1 + np.sqrt(np.sin(elevation)) * (31 * (1 - np.exp( (-1)* ( elevation/(1+X))))*(np.sqrt(D_Ravg *gamma_Ravg))/(freq**2)-0.45))
+
 
 #for graph 
 A_graph = np.empty_like(R_graph)
@@ -101,17 +98,17 @@ for i, R in enumerate(R_graph):
     
 
 print("Vertikal adjusmentfaktor 0.01:",v001)
-print("Vertikal adjusmentfaktor Avg:",vavg)
+
 #calculation effective path length D_Regen
 D_Regen001 = D_R001*v001
-D_Regenavg = D_Ravg*vavg
+
 print("Effectiv Path lenght through the rain 0.01:",D_Regen001,"km")
-print("Effectiv Path lenght through the rain avg:",D_Regenavg,"km")
+
 #calculation worst case attenuation for rain exceeded for 0.01% of an avarage year
 A_001 = gamma_R001*D_Regen001
-A_avg = gamma_Ravg*D_Regenavg
+
 print("worst case attenuation caused by rain exceeded for 0.01% of an avarage year:",A_001,"dB")
-print("avergae attenuation caused by rain exceeded for 99.99% of an avarage year:",A_avg,"dB")
+
 
 plt.figure()
 plt.title("Attenuation caused by rain")
