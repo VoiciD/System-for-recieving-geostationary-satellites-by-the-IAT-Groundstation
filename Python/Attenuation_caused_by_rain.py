@@ -111,13 +111,10 @@ print("worst case attenuation caused by rain exceeded for 0.01% of an avarage ye
 
 
 plt.figure()
-plt.title("Attenuation caused by rain")
+plt.title("Attenuation caused by rain for f = 10 GHz")
 plt.plot(R_graph,A_graph)
 plt.ylabel("Attenuation [dB]")
 plt.xlabel("Rain intensity [mm/h]")
+plt.grid()
 
-plt.figure()
-plt.title("Attenuation caused by rain")
-plt.plot(R_graph,gamma_Rgraph)
-plt.ylabel("Attenuation [dB/km]")
-plt.xlabel("Rain intensity [mm/h]")
+
