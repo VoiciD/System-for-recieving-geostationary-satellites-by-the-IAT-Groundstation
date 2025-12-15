@@ -110,11 +110,35 @@ A_001 = gamma_R001*D_Regen001
 print("worst case attenuation caused by rain exceeded for 0.01% of an avarage year:",A_001,"dB")
 
 
-plt.figure()
+plt.figure("Attenuation caused by rain 10 GHz")
 plt.title("Attenuation caused by rain for f = 10 GHz")
 plt.plot(R_graph,A_graph)
 plt.ylabel("Attenuation [dB]")
 plt.xlabel("Rain intensity [mm/h]")
 plt.grid()
+
+# Attenuatuion for other percanteges
+unit = 1
+
+p = 5*unit
+long = 53.055
+
+
+if p >= 1*unit or abs(long) >= 36:
+    beta = 0
+elif p < 1*unit and abs(long) < 36 and elevation >= 25:
+    beta = (-1)*0.005*(abs(long)-36)
+else:
+    beta = (-1)*0.005*(abs(long)-36)+1.8-4.25*np.sin(elevation)
+
+exponent = (-1)*(0.655+0.033*np.log(p)-0.045*np.log(A_001)-beta*(1-p)*np.sin(elevation))
+
+A_other = A_001*(p/0.01)**exponent
+print("Attenuation for Rainrates exceeding",p,"% of the time the anual avarage:",A_other,"dB")
+
+
+
+
+
 
 
