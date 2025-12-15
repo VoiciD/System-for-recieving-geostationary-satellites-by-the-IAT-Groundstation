@@ -123,7 +123,6 @@ unit = 1
 p = 5*unit
 long = 53.055
 
-
 if p >= 1*unit or abs(long) >= 36:
     beta = 0
 elif p < 1*unit and abs(long) < 36 and elevation >= 25:
