@@ -20,7 +20,7 @@ t = np.arange(0,1,ts)   #time axis
 
 #Define the signals and noise
 A_s = 1*10**(-3)
-A_r = 1*10**(-4)
+A_r = 3*10**(-3)
 
 f_s_t = 50
 
@@ -52,16 +52,17 @@ plt.plot(t,n_t*1000,label = "Noise")
 plt.ylabel("Voltage in [mV]")
 plt.xlabel("Time in [s]")
 plt.grid()
-plt.legend()
+plt.legend(loc='upper right')
 plt.subplot(312)
 plt.plot(t,x_t*1000,label = "Mixed signal")
 plt.ylabel("Voltage in [mV]")
 plt.xlabel("Time in [s]")
 plt.grid()
-plt.legend()
+plt.legend(loc='upper right')
 plt.subplot(313)
 plt.plot(freq,mag, label = "FFT of the mixed signal")
 plt.ylabel("Signalstrength in [dBm]")
 plt.xlabel("Frequency in [Hz]")
 plt.grid()
-plt.legend()   
+plt.legend(loc='upper right')
+plt.tight_layout(h_pad=1.5, w_pad=0.8)   
