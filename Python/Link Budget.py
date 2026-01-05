@@ -145,7 +145,7 @@ print("Eingangsleistung am SDR bei starken Regen:",S_in5,"dBm")
 
 #Linkbudget
 Linkbudget_Rain_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung $L_{FR}$","Dämpfung\n in der Atmosphäre\n $L_{ATRain}$","Ausrichtungs-\n verluste $L_{\\theta T}$ $L_{\\theta R}$","Eingangsleisung\n am SDR $P_{RX}$"])
-Linkbudget_Rain_Werte = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR,EIRP_dBm-L_FR-L_ATlightRain,EIRP_dBm-L_FR-L_ATlightRain-L_OT-L_OR,S_in5])
+Linkbudget_Rain_Werte = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR,EIRP_dBm-L_FR-L_ATRain,EIRP_dBm-L_FR-L_ATRain-L_OT-L_OR,S_in5])
 
 plt.figure("LinkBudget Rain")
 plt.title("Link Budget bei starken Regen")

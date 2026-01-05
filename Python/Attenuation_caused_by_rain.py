@@ -121,7 +121,7 @@ plt.grid()
 unit = 1
 
 p = 5*unit
-long = 53.055
+long = 8.78
 
 if p >= 1*unit or abs(long) >= 36:
     beta = 0

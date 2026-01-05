@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0" version="29.2.9">
+  <diagram name="Page-1" id="ycMickTYGBasNC11ByRk">
+    <mxGraphModel dx="1373" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-29" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="140" width="870" x="50" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-1" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="20" y="140" as="sourcePoint" />
+            <mxPoint x="70" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-2" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="10" y="90" as="sourcePoint" />
+            <mxPoint x="70" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-3" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="70" y="90" as="sourcePoint" />
+            <mxPoint x="20" y="30" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-4" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="70" y="90" as="sourcePoint" />
+            <mxPoint x="150" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-5" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Koax 1}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="80" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-6" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$l=1.5\,\text{m}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="80" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-7" parent="kyesuiSOR97XOkDhH7Ok-29" style="whiteSpace=wrap;html=1;" value="$$\text{LNC}$$" vertex="1">
+          <mxGeometry height="80" width="80" x="150" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-11" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Koax 2}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="240" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-12" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$l=13.5\,\text{m}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="240" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-13" parent="kyesuiSOR97XOkDhH7Ok-29" style="whiteSpace=wrap;html=1;" value="$$\text{Bias-Tee}$$" vertex="1">
+          <mxGeometry height="80" width="80" x="310" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-14" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" source="kyesuiSOR97XOkDhH7Ok-7" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="kyesuiSOR97XOkDhH7Ok-13" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="340" y="150" as="sourcePoint" />
+            <mxPoint x="390" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-15" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Koax 3}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="400" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-16" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$l=1.5\,\text{m}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="400" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-17" parent="kyesuiSOR97XOkDhH7Ok-29" style="whiteSpace=wrap;html=1;" value="$$\text{Patch-\\Feld}$$" vertex="1">
+          <mxGeometry height="80" width="80" x="470" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-18" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="kyesuiSOR97XOkDhH7Ok-17" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="390" y="90" as="sourcePoint" />
+            <mxPoint x="550" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-20" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Koax 4}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="560" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-21" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$l=0.35\,\text{m}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="560" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-22" parent="kyesuiSOR97XOkDhH7Ok-29" style="whiteSpace=wrap;html=1;" value="$$\text{RF-Switch}$$" vertex="1">
+          <mxGeometry height="80" width="80" x="630" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-23" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="kyesuiSOR97XOkDhH7Ok-22" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="550" y="90" as="sourcePoint" />
+            <mxPoint x="710" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-24" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Koax 5}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="720" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-25" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$l=0.35\,\text{m}$$" vertex="1">
+          <mxGeometry height="30" width="60" x="720" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-26" parent="kyesuiSOR97XOkDhH7Ok-29" style="whiteSpace=wrap;html=1;" value="$$\text{SDR}$$" vertex="1">
+          <mxGeometry height="80" width="80" x="790" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-27" edge="1" parent="kyesuiSOR97XOkDhH7Ok-29" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="kyesuiSOR97XOkDhH7Ok-26" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="710" y="90" as="sourcePoint" />
+            <mxPoint x="870" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kyesuiSOR97XOkDhH7Ok-28" parent="kyesuiSOR97XOkDhH7Ok-29" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$\text{Antenne}$$" vertex="1">
+          <mxGeometry height="30" width="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
