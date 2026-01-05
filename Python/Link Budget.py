@@ -62,9 +62,9 @@ G_LNC = 55
 L_Koax2 = 2.282
 L_BiasTee = 1.5
 L_Koax3 = 0.254
-L_PatchPanel = 0.3 
+L_PatchPanel = 0.007 
 L_Koax4 = 0.106
-L_RFSwitch = 1
+L_RFSwitch = 0.3
 L_Koax5 = 0.106
 
 G_ges = G_LNC-L_Koax1-L_Koax2-L_Koax3-L_Koax4-L_Koax5-L_BiasTee-L_PatchPanel-L_RFSwitch
@@ -84,19 +84,20 @@ S_in5 = S_out4-L_Koax5
 print("Eingangsleistung am SDR bei klaren Himmel:",S_in5,"dBm")
 
 #Linkbudget
-Linkbudget_clearsky_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung","Dämpfung\n in der Atmosphäre","Ausrichtungs-\n verluste","Eingangsleisung\n am SDR $P_{RX}$"])
+Linkbudget_clearsky_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung $L_{FR}$","Dämpfung\n in der Atmosphäre\n $L_{ATclearSky}$","Ausrichtungs-\n verluste $L_{\\theta T}$ $L_{\\theta R}$","Eingangsleisung\n am SDR $P_{RX}$"])
 Linkbudget_clearsky_Werte = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR,EIRP_dBm-L_FR-L_ATclearSky,EIRP_dBm-L_FR-L_ATclearSky-L_OT-L_OR,S_in5])
 
 plt.figure("LinkBudget clear Sky")
 plt.title("Link Budget bei klaren Himmel")
 for i, val in enumerate(Linkbudget_clearsky_Werte):
-    plt.annotate(f'{val:.0f}', (i, val), textcoords="offset points",
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
                  xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
 plt.plot(Linkbudget_clearsky_labels,Linkbudget_clearsky_Werte,'o-')
 plt.ylabel("Leistung in [dBm]")
 plt.grid()
+plt.ylim([-180,90])
 plt.xticks(range(len(Linkbudget_clearsky_labels)), Linkbudget_clearsky_labels, rotation=45)
-plt.tight_layout()
+plt.tight_layout(pad=0.5)
 plt.show()
 
 S_in = P_R_lightRain
@@ -113,17 +114,18 @@ S_in5 = S_out4-L_Koax5
 print("Eingangsleistung am SDR bei leichte Regen:",S_in5,"dBm")
 
 #Linkbudget
-Linkbudget_lightRain_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung","Dämpfung\n in der Atmosphäre","Ausrichtungs-\n verluste","Eingangsleisung\n am SDR $P_{RX}$"])
+Linkbudget_lightRain_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung $L_{FR}$","Dämpfung\n in der Atmosphäre\n $L_{ATlightRain}$","Ausrichtungs-\n verluste $L_{\\theta T}$ $L_{\\theta R}$","Eingangsleisung\n am SDR $P_{RX}$"])
 Linkbudget_lightRain_Werte = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR,EIRP_dBm-L_FR-L_ATlightRain,EIRP_dBm-L_FR-L_ATlightRain-L_OT-L_OR,S_in5])
 
 plt.figure("LinkBudget lightRain")
 plt.title("Link Budget bei leichten Regen")
 for i, val in enumerate(Linkbudget_lightRain_Werte):
-    plt.annotate(f'{val:.0f}', (i, val), textcoords="offset points",
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
                  xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
 plt.plot(Linkbudget_clearsky_labels,Linkbudget_lightRain_Werte,'o-')
 plt.ylabel("Leistung in [dBm]")
 plt.grid()
+plt.ylim([-180,90])
 plt.xticks(range(len(Linkbudget_lightRain_labels)), Linkbudget_lightRain_labels, rotation=45)
 plt.tight_layout()
 plt.show()
@@ -142,17 +144,18 @@ S_in5 = S_out4-L_Koax5
 print("Eingangsleistung am SDR bei starken Regen:",S_in5,"dBm")
 
 #Linkbudget
-Linkbudget_Rain_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung","Dämpfung\n in der Atmosphäre","Ausrichtungs-\n verluste","Eingangsleisung\n am SDR $P_{RX}$"])
+Linkbudget_Rain_labels = np.array(["Sendeleistung\n $P_T$","EIRP","Freiraum-\ndämpfung $L_{FR}$","Dämpfung\n in der Atmosphäre\n $L_{ATRain}$","Ausrichtungs-\n verluste $L_{\\theta T}$ $L_{\\theta R}$","Eingangsleisung\n am SDR $P_{RX}$"])
 Linkbudget_Rain_Werte = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR,EIRP_dBm-L_FR-L_ATlightRain,EIRP_dBm-L_FR-L_ATlightRain-L_OT-L_OR,S_in5])
 
 plt.figure("LinkBudget Rain")
 plt.title("Link Budget bei starken Regen")
 for i, val in enumerate(Linkbudget_Rain_Werte):
-    plt.annotate(f'{val:.0f}', (i, val), textcoords="offset points",
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
                  xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
 plt.plot(Linkbudget_Rain_labels,Linkbudget_Rain_Werte,'o-')
 plt.ylabel("Leistung in [dBm]")
 plt.grid()
+plt.ylim([-180,90])
 plt.xticks(range(len(Linkbudget_Rain_labels)), Linkbudget_Rain_labels, rotation=45)
 plt.tight_layout()
 plt.show()
