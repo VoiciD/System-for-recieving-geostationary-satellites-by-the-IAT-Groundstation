@@ -5,8 +5,8 @@
 # SPDX-License-Identifier: GPL-3.0
 #
 # GNU Radio Python Flow Graph
-# Title: Not titled yet
-# Author: daniel
+# Title: SDR Software für Es'Hail-2 (QO-100)
+# Author: Daniel Albinger
 # GNU Radio version: 3.10.9.2
 
 from PyQt5 import Qt
@@ -34,9 +34,9 @@ import sip
 class test(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet", catch_exceptions=True)
+        gr.top_block.__init__(self, "SDR Software für Es'Hail-2 (QO-100)", catch_exceptions=True)
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Not titled yet")
+        self.setWindowTitle("SDR Software für Es'Hail-2 (QO-100)")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -68,7 +68,8 @@ class test(gr.top_block, Qt.QWidget):
         ##################################################
         self.volume = volume = 0.5
         self.samp_rate = samp_rate = 10e6
-        self.filter_breite = filter_breite = 100e3
+        self.qtgui_msgdigitalnumbercontrol_0 = qtgui_msgdigitalnumbercontrol_0 = 100e6
+        self.filter_breite = filter_breite = 10e3
         self.channel_freq = channel_freq = 96.7e6
         self.center_freq = center_freq = 100e6
 
@@ -77,9 +78,9 @@ class test(gr.top_block, Qt.QWidget):
         ##################################################
 
         self._volume_range = qtgui.Range(0, 1, 0.1, 0.5, 200)
-        self._volume_win = qtgui.RangeWidget(self._volume_range, self.set_volume, "Lautstärke", "eng_slider", float, QtCore.Qt.Horizontal)
+        self._volume_win = qtgui.RangeWidget(self._volume_range, self.set_volume, "Lautstärke", "dial", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._volume_win)
-        self._filter_breite_range = qtgui.Range(0, 200e3, 1e3, 100e3, 200)
+        self._filter_breite_range = qtgui.Range(0, 200e3, 1e3, 10e3, 200)
         self._filter_breite_win = qtgui.RangeWidget(self._filter_breite_range, self.set_filter_breite, "Filter Breite", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._filter_breite_win)
         self._channel_freq_range = qtgui.Range(80e6, 120e6, 10e5, 96.7e6, 200)
@@ -88,11 +89,6 @@ class test(gr.top_block, Qt.QWidget):
         self._center_freq_range = qtgui.Range(80e6, 120e6, 10e5, 100e6, 200)
         self._center_freq_win = qtgui.RangeWidget(self._center_freq_range, self.set_center_freq, "Mittenfrequenz", "eng_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._center_freq_win)
-        self.rational_resampler_xxx_0_0 = filter.rational_resampler_ccc(
-                interpolation=12,
-                decimation=5,
-                taps=[],
-                fractional_bw=0)
         self.rational_resampler_xxx_0 = filter.rational_resampler_ccc(
                 interpolation=12,
                 decimation=5,
@@ -133,6 +129,55 @@ class test(gr.top_block, Qt.QWidget):
         self._qtgui_waterfall_sink_x_0_win = sip.wrapinstance(self.qtgui_waterfall_sink_x_0.qwidget(), Qt.QWidget)
 
         self.top_layout.addWidget(self._qtgui_waterfall_sink_x_0_win)
+        self._qtgui_msgdigitalnumbercontrol_0_msgdigctl_win = qtgui.MsgDigitalNumberControl(lbl='', min_freq_hz=30e6, max_freq_hz=1700e6, parent=self, thousands_separator=",", background_color="black", fontColor="white", var_callback=self.set_qtgui_msgdigitalnumbercontrol_0, outputmsgname='freq')
+        self._qtgui_msgdigitalnumbercontrol_0_msgdigctl_win.setValue(100e6)
+        self._qtgui_msgdigitalnumbercontrol_0_msgdigctl_win.setReadOnly(False)
+        self.qtgui_msgdigitalnumbercontrol_0 = self._qtgui_msgdigitalnumbercontrol_0_msgdigctl_win
+
+        self.top_layout.addWidget(self._qtgui_msgdigitalnumbercontrol_0_msgdigctl_win)
+        self.qtgui_freq_sink_x_0_0 = qtgui.freq_sink_f(
+            1024, #size
+            window.WIN_BLACKMAN_hARRIS, #wintype
+            0, #fc
+            30e3, #bw
+            "", #name
+            1,
+            None # parent
+        )
+        self.qtgui_freq_sink_x_0_0.set_update_time(0.10)
+        self.qtgui_freq_sink_x_0_0.set_y_axis((-140), 10)
+        self.qtgui_freq_sink_x_0_0.set_y_label('Relative Gain', 'dB')
+        self.qtgui_freq_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
+        self.qtgui_freq_sink_x_0_0.enable_autoscale(True)
+        self.qtgui_freq_sink_x_0_0.enable_grid(False)
+        self.qtgui_freq_sink_x_0_0.set_fft_average(0.1)
+        self.qtgui_freq_sink_x_0_0.enable_axis_labels(True)
+        self.qtgui_freq_sink_x_0_0.enable_control_panel(True)
+        self.qtgui_freq_sink_x_0_0.set_fft_window_normalized(False)
+
+
+        self.qtgui_freq_sink_x_0_0.set_plot_pos_half(not True)
+
+        labels = ['', '', '', '', '',
+            '', '', '', '', '']
+        widths = [1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1]
+        colors = ["blue", "red", "green", "black", "cyan",
+            "magenta", "yellow", "dark red", "dark green", "dark blue"]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+            1.0, 1.0, 1.0, 1.0, 1.0]
+
+        for i in range(1):
+            if len(labels[i]) == 0:
+                self.qtgui_freq_sink_x_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_freq_sink_x_0_0.set_line_label(i, labels[i])
+            self.qtgui_freq_sink_x_0_0.set_line_width(i, widths[i])
+            self.qtgui_freq_sink_x_0_0.set_line_color(i, colors[i])
+            self.qtgui_freq_sink_x_0_0.set_line_alpha(i, alphas[i])
+
+        self._qtgui_freq_sink_x_0_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0_0.qwidget(), Qt.QWidget)
+        self.top_layout.addWidget(self._qtgui_freq_sink_x_0_0_win)
         self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
             1024, #size
             window.WIN_BLACKMAN_hARRIS, #wintype
@@ -146,8 +191,8 @@ class test(gr.top_block, Qt.QWidget):
         self.qtgui_freq_sink_x_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
-        self.qtgui_freq_sink_x_0.enable_autoscale(False)
-        self.qtgui_freq_sink_x_0.enable_grid(False)
+        self.qtgui_freq_sink_x_0.enable_autoscale(True)
+        self.qtgui_freq_sink_x_0.enable_grid(True)
         self.qtgui_freq_sink_x_0.set_fft_average(0.1)
         self.qtgui_freq_sink_x_0.enable_axis_labels(True)
         self.qtgui_freq_sink_x_0.enable_control_panel(True)
@@ -190,15 +235,6 @@ class test(gr.top_block, Qt.QWidget):
         self.osmosdr_source_0.set_bb_gain(20, 0)
         self.osmosdr_source_0.set_antenna('', 0)
         self.osmosdr_source_0.set_bandwidth(0, 0)
-        self.low_pass_filter_0_0 = filter.fir_filter_ccf(
-            50,
-            firdes.low_pass(
-                1,
-                samp_rate,
-                filter_breite,
-                25e3,
-                window.WIN_HAMMING,
-                6.76))
         self.low_pass_filter_0 = filter.fir_filter_ccf(
             50,
             firdes.low_pass(
@@ -208,10 +244,6 @@ class test(gr.top_block, Qt.QWidget):
                 25e3,
                 window.WIN_HAMMING,
                 6.76))
-        self.blocks_selector_0_0 = blocks.selector(gr.sizeof_gr_complex*1,0,0)
-        self.blocks_selector_0_0.set_enabled(True)
-        self.blocks_selector_0 = blocks.selector(gr.sizeof_float*1,0,0)
-        self.blocks_selector_0.set_enabled(True)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(volume)
         self.audio_sink_1 = audio.sink(48000, '', True)
@@ -225,32 +257,21 @@ class test(gr.top_block, Qt.QWidget):
         	gain=1.0,
         	tau=(75e-6),
         )
-        self.analog_am_demod_cf_0 = analog.am_demod_cf(
-        	channel_rate=480e3,
-        	audio_decim=10,
-        	audio_pass=5000,
-        	audio_stop=5500,
-        )
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_am_demod_cf_0, 0), (self.blocks_selector_0, 1))
-        self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_selector_0, 0))
+        self.connect((self.analog_fm_demod_cf_0, 0), (self.blocks_multiply_const_vxx_0, 0))
+        self.connect((self.analog_fm_demod_cf_0, 0), (self.qtgui_freq_sink_x_0_0, 0))
         self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.audio_sink_1, 0))
-        self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_selector_0_0, 0))
-        self.connect((self.blocks_selector_0, 0), (self.blocks_multiply_const_vxx_0, 0))
-        self.connect((self.blocks_selector_0_0, 0), (self.low_pass_filter_0, 0))
-        self.connect((self.blocks_selector_0_0, 1), (self.low_pass_filter_0_0, 0))
+        self.connect((self.blocks_multiply_xx_0, 0), (self.low_pass_filter_0, 0))
         self.connect((self.low_pass_filter_0, 0), (self.rational_resampler_xxx_0, 0))
-        self.connect((self.low_pass_filter_0_0, 0), (self.rational_resampler_xxx_0_0, 0))
         self.connect((self.osmosdr_source_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.osmosdr_source_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.osmosdr_source_0, 0), (self.qtgui_waterfall_sink_x_0, 0))
         self.connect((self.rational_resampler_xxx_0, 0), (self.analog_fm_demod_cf_0, 0))
-        self.connect((self.rational_resampler_xxx_0_0, 0), (self.analog_am_demod_cf_0, 0))
 
 
     def closeEvent(self, event):
@@ -275,10 +296,15 @@ class test(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, self.filter_breite, 25e3, window.WIN_HAMMING, 6.76))
-        self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate, self.filter_breite, 25e3, window.WIN_HAMMING, 6.76))
         self.osmosdr_source_0.set_sample_rate(self.samp_rate)
         self.qtgui_freq_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
         self.qtgui_waterfall_sink_x_0.set_frequency_range(self.center_freq, self.samp_rate)
+
+    def get_qtgui_msgdigitalnumbercontrol_0(self):
+        return self.qtgui_msgdigitalnumbercontrol_0
+
+    def set_qtgui_msgdigitalnumbercontrol_0(self, qtgui_msgdigitalnumbercontrol_0):
+        self.qtgui_msgdigitalnumbercontrol_0 = qtgui_msgdigitalnumbercontrol_0
 
     def get_filter_breite(self):
         return self.filter_breite
@@ -286,7 +312,6 @@ class test(gr.top_block, Qt.QWidget):
     def set_filter_breite(self, filter_breite):
         self.filter_breite = filter_breite
         self.low_pass_filter_0.set_taps(firdes.low_pass(1, self.samp_rate, self.filter_breite, 25e3, window.WIN_HAMMING, 6.76))
-        self.low_pass_filter_0_0.set_taps(firdes.low_pass(1, self.samp_rate, self.filter_breite, 25e3, window.WIN_HAMMING, 6.76))
 
     def get_channel_freq(self):
         return self.channel_freq

@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Äquivalente Rauschtemperatur
-Te1 = 133.4
+Te1 = 133.4  /2               #133.4
 TeLNC = 139.2
 Te2 = 200.1
 TeBiasTee = 118.9

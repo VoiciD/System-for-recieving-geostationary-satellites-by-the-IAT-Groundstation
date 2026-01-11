@@ -9,14 +9,14 @@ Created on Mon Nov  3 10:56:20 2025
 import numpy as np
 
 
-lat_ant = np.deg2rad(53.05515)
-long_ant = np.deg2rad(8.78335)
+lat_ant = np.deg2rad(53.055)
+long_ant = np.deg2rad(8.78)
 
 lat_sat = np.deg2rad(0)
 long_sat = np.deg2rad(25.8)
 
-r_geo = 38600
-r_earth = 6370
+r_geo = 35790
+r_earth = 6378
 
 d_long = long_ant-long_sat
 

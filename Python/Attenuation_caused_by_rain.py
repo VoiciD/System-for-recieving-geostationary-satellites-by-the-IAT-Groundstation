@@ -9,7 +9,7 @@ Created on Fri Dec  5 15:38:21 2025
 import numpy as np
 import matplotlib.pyplot as plt
 
-elevation = np.deg2rad(27.888)  #elevation of the Antenna [°]
+elevation = np.deg2rad(27.36)  #elevation of the Antenna [°]
 tau = np.deg2rad(-12.412)       #skew of the Antenna
 h_0 = 3                         #Height of the isothermic barrier of the region from the groundstation[km]
 h_Station = 0.023               #Height of the groundstation above Sealevel [km]
@@ -45,7 +45,7 @@ k_H = 0.01217
 k_V = 0.01129
 alpha_H = 1.2571
 alpha_V = 1.2156
-    
+   
 
 #determination of the specific rain attenuatuion
 k = (k_H + k_V + (k_H-k_V) * (np.cos(elevation))**2 * np.cos(2*tau))/2
@@ -111,10 +111,10 @@ print("worst case attenuation caused by rain exceeded for 0.01% of an avarage ye
 
 
 plt.figure("Attenuation caused by rain 10 GHz")
-plt.title("Attenuation caused by rain for f = 10 GHz")
+plt.title("Dämpfung durch starke Niederschläge bei f = 10 GHz")
 plt.plot(R_graph,A_graph)
-plt.ylabel("Attenuation [dB]")
-plt.xlabel("Rain intensity [mm/h]")
+plt.ylabel("Dämpfung in dB")
+plt.xlabel("Niederschlagsmenge in mm/h")
 plt.grid()
 
 # Attenuatuion for other percanteges
