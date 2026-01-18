@@ -1,0 +1,400 @@
+\subsection{Literaturverzeichnis}
+\printbibliography
+\subsection{Abbildungsverzeichnis}
+\listoffigures
+\subsection{Tabellenverzeichnis}
+\listoftables
+
+
+\subsection{Python Skripts}
+\begin{lstlisting}[caption={Simulation eines Mischers in Python}, label={lst:mischer-python}]
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.signal as sig
+#Define Samplingtime and Sampling Frequency
+ts = 0.001              #Samplingtime 0.001s
+t = np.arange(0,1,ts)   #time axis
+#Define the signals and noise
+A_s = 1*10**(-3)
+A_r = 1*10**(-3)
+A_i = 0.1*10**(-3)
+f_s_t = 200                                 #Input Frequency
+f_i_t = 100                                 #Image Frequency
+f_n_t = 150                                 #LO Frequency
+s_t = A_s * np.cos(2*np.pi*f_s_t*t)         #Input Signal
+i_t = A_i * np.cos(2*np.pi*f_i_t*t)         #Image Signal
+n_t = A_r * np.cos(2*np.pi*f_n_t*t)         #LO Signal
+x_t = s_t * n_t                             #Mixing
+xsp_t = i_t * n_t                             #Mixing
+#Using the FFT
+n = len(t)
+fs = int(1/ts)                              #Defining the Sampling Frequency and those the sampling points
+x_t_fft = np.fft.fft(x_t,fs)                #Doing the FFT
+s_t_fft = np.fft.fft(s_t,fs)                #Doing the FFT
+n_t_fft = np.fft.fft(n_t,fs)                #Doing the FFT
+i_t_fft = np.fft.fft(i_t,fs)                #Doing the FFT
+xsp_t_fft = np.fft.fft(xsp_t,fs)                #Doing the FFT
+shifted_x_t_fft = np.fft.fftshift(x_t_fft)  #bringing the 0 Hz into the center
+shifted_s_t_fft = np.fft.fftshift(s_t_fft)  #bringing the 0 Hz into the center
+shifted_n_t_fft = np.fft.fftshift(n_t_fft)  #bringing the 0 Hz into the center
+shifted_i_t_fft = np.fft.fftshift(i_t_fft)  #bringing the 0 Hz into the center
+shifted_xsp_t_fft = np.fft.fftshift(xsp_t_fft)  #bringing the 0 Hz into the center
+mag_x = abs(shifted_x_t_fft)/n                          #calculating the magnitude
+mag_s = abs(shifted_s_t_fft)/n                          #calculating the magnitude
+mag_n = abs(shifted_n_t_fft)/n                          #calculating the magnitude
+mag_i = abs(shifted_i_t_fft)/n                          #calculating the magnitude
+mag_xsp = abs(shifted_xsp_t_fft)/n                          #calculating the magnitude
+mag_x_dB = 10*np.log10(mag_x[int(fs/2):]/0.001)
+mag_s_dB = 10*np.log10(mag_s[int(fs/2):]/0.001)
+mag_n_dB = 10*np.log10(mag_n[int(fs/2):]/0.001)
+mag_i_dB = 10*np.log10(mag_i[int(fs/2):]/0.001)
+mag_xsp_dB = 10*np.log10(mag_xsp[int(fs/2):]/0.001)
+freq = np.arange(0,500,len(t)/fs)
+#Plotting
+plt.figure()
+plt.subplot(211)
+plt.plot(freq,mag_s_dB, label = "HF-Signal")
+plt.plot(freq,mag_n_dB, label = "LO-Signal")
+plt.plot(freq,mag_i_dB, label = "SP-Signal")
+plt.ylabel("Signalstrength in [dBm]")
+plt.xlabel("Frequency in [MHz]")
+plt.grid()
+plt.legend(loc='upper right')
+plt.tight_layout(h_pad=1.5, w_pad=0.8) 
+plt.subplot(212)
+plt.plot(freq,mag_x_dB, label = "ZF-Signal")
+plt.plot(freq,mag_xsp_dB, label = "SP-Signal")
+plt.ylabel("Signalstrength in [dBm]")
+plt.xlabel("Frequency in [MHz]")
+plt.grid()
+plt.legend(loc='upper right')
+plt.tight_layout(h_pad=1.5, w_pad=0.8)  
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Simulation von Rauschen und SNR in Python}, label={lst:Rauschen-SNR-python}]
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.signal as sig
+#Define Samplingtime and Sampling Frequency
+ts = 0.001              #Samplingtime 0.001s
+t = np.arange(0,1,ts)   #time axis
+#Define the signals and noise
+A_s = 1*10**(-3)
+A_r = 3*10**(-3)
+f_s_t = 50
+s_t = A_s * np.sin(2*np.pi*f_s_t*t)         #wanted signal
+n_t = A_r * np.random.randn(len(t))         #Generating Noise with the length of the time axis
+x_t = s_t + n_t
+#Using the FFT
+n = len(t)
+fs = int(1/ts)                              #Defining the Sampling Frequency and those the sampling points
+s_t_fft = np.fft.fft(x_t,fs)                #Doing the FFT
+shifted_s_t_fft = np.fft.fftshift(s_t_fft)  #bringing the 0 Hz into the center
+mag = abs(shifted_s_t_fft)/n                          #calculating the magnitude
+freq = np.arange(-500,500,len(t)/fs)
+mag = 10*np.log10(mag[int(fs/2):]/0.001)
+freq = np.arange(0,500,len(t)/fs)
+#Plotting
+plt.figure()
+plt.subplot(311)
+plt.plot(t,s_t*1000,label = "Wanted signal")
+plt.plot(t,n_t*1000,label = "Noise")
+plt.ylabel("Voltage in [mV]")
+plt.xlabel("Time in [s]")
+plt.grid()
+plt.legend(loc='upper right')
+plt.subplot(312)
+plt.plot(t,x_t*1000,label = "Mixed signal")
+plt.ylabel("Voltage in [mV]")
+plt.xlabel("Time in [s]")
+plt.grid()
+plt.legend(loc='upper right')
+plt.subplot(313)
+plt.plot(freq,mag, label = "FFT of the mixed signal")
+plt.ylabel("Signalstrength in [dBm]")
+plt.xlabel("Frequency in [Hz]")
+plt.grid()
+plt.legend(loc='upper right')
+plt.tight_layout(h_pad=1.5, w_pad=0.8)    
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Berechnung der Dämpfung durch Regen}, label={lst:Dämpfung-durch-Regen-python}]
+import numpy as np
+import matplotlib.pyplot as plt
+elevation = np.deg2rad(27.36)  #elevation of the Antenna [°]
+tau = np.deg2rad(-12.412)       #skew of the Antenna
+h_0 = 3                         #Height of the isothermic barrier of the region from the groundstation[km]
+h_Station = 0.023               #Height of the groundstation above Sealevel [km]
+freq = 10.5                    #Frequency at which the link operates [GHz]
+cordiantes_station = (53.055, 8.78,0.0)
+#determination of the effective rain height [km]
+h_R = h_0 + 0.36
+#determination of path length the EM-Wave has to travel below the 
+D_s = (h_R-h_Station)/(np.sin(elevation))
+#determination of the horizontal projection caused by the path length of the EM-Wave
+D_HP = D_s*np.cos(elevation)
+#determination of the Rain intensity [mm/h] which exceeding the anual mean by 0.01% of the time
+R_001 = 35                    #Mean in the northern part of Germany 35 to 40 mm/h 
+R_graph = np.arange(0,40, 0.1 ) #For Graph Plotting 0 mm/H to 40mm/h
+#determination of the frequency dependend coeffizients. Equations from the Book
+# k_H = 3.949*10**(-6)*freq**(3.4078)
+# k_V = 2.785*10**(-6)*freq**(3.5032)
+# alpha_H = -0.7451*np.log10(freq)+2.0211
+# alpha_V = -0.8083*np.log10(freq)+2.0723
+#von ITU-R P.838-3
+k_H = 0.01217
+k_V = 0.01129
+alpha_H = 1.2571
+alpha_V = 1.2156
+#determination of the specific rain attenuatuion
+k = (k_H + k_V + (k_H-k_V) * (np.cos(elevation))**2 * np.cos(2*tau))/2
+alpha = (k_H * alpha_H + k_V * alpha_V + (k_H * alpha_H - k_V * alpha_V) * (np.cos(elevation))**2 * np.cos(2*tau)) / (2*k)
+gamma_R001 = k*(R_001)**alpha
+print("y_R001:",gamma_R001,"dB/km")
+#calculation horizontal reduction factor
+r001 = 1 / (1 + 0.78 * np.sqrt((D_HP*gamma_R001) / freq) - 0.38 * (1 - np.exp(-2 * D_HP)))
+#calculation vertical adjustment factor
+cc001 = np.rad2deg(np.arctan((h_R-h_Station)/(D_HP*r001)))
+if cc001 > np.rad2deg(elevation):
+    D_R001 = (D_HP*r001)/np.cos(elevation)
+else:
+    D_R001 = (h_R-h_Station)/np.sin(elevation)
+if abs(cordiantes_station[0]) > 36:
+    X = 36 - abs(cordiantes_station[0])
+else:
+    X = 0
+v001 = 1 / (1 + np.sqrt(np.sin(elevation)) * (31 * (1 - np.exp( (-1)* ( elevation/(1+X))))*(np.sqrt(D_R001 *gamma_R001))/(freq**2)-0.45))
+#for graph 
+A_graph = np.empty_like(R_graph)
+gamma_Rgraph = np.empty_like(R_graph)
+for i, R in enumerate(R_graph): 
+    gamma_Rgraph[i] = k * (R)**alpha
+    rgraph = 1 / (1 + 0.78 * np.sqrt((D_HP * gamma_Rgraph[i]) / freq) - 0.38 * (1 - np.exp(-2 * D_HP)))
+    ccgraph = np.rad2deg(np.arctan((h_R - h_Station) / (D_HP * rgraph)))
+    if ccgraph > np.rad2deg(elevation):
+        D_Rgraph = (D_HP * rgraph) / np.cos(elevation)
+    else:
+        D_Rgraph = (h_R - h_Station) / np.sin(elevation)
+    if abs(cordiantes_station[0]) > 36:
+        X = 36 - abs(cordiantes_station[0])
+    else:
+        X = 0
+    vgraph = 1 / (1 + np.sqrt(np.sin(elevation)) * (31 * (1 - np.exp(-1 * (elevation / (1 + X)))) * 
+                      np.sqrt(D_Rgraph * gamma_Rgraph[i]) / (freq**2) - 0.45))
+    D_Regengraph = D_Rgraph * vgraph
+    A_graph[i] = gamma_Rgraph[i] * D_Regengraph
+print("Vertikal adjusmentfaktor 0.01:",v001)
+#calculation effective path length D_Regen
+D_Regen001 = D_R001*v001
+print("Effectiv Path lenght through the rain 0.01:",D_Regen001,"km")
+#calculation worst case attenuation for rain exceeded for 0.01% of an avarage year
+A_001 = gamma_R001*D_Regen001
+print("worst case attenuation caused by rain exceeded for 0.01% of an avarage year:",A_001,"dB")
+plt.figure("Attenuation caused by rain 10 GHz")
+plt.title("Dämpfung durch starke Niederschläge bei f = 10 GHz")
+plt.plot(R_graph,A_graph)
+plt.ylabel("Dämpfung in dB")
+plt.xlabel("Niederschlagsmenge in mm/h")
+plt.grid()
+# Attenuatuion for other percanteges
+unit = 1
+p = 5*unit
+long = 8.78
+if p >= 1*unit or abs(long) >= 36:
+    beta = 0
+elif p < 1*unit and abs(long) < 36 and elevation >= 25:
+    beta = (-1)*0.005*(abs(long)-36)
+else:
+    beta = (-1)*0.005*(abs(long)-36)+1.8-4.25*np.sin(elevation)
+exponent = (-1)*(0.655+0.033*np.log(p)-0.045*np.log(A_001)-beta*(1-p)*np.sin(elevation))
+A_other = A_001*(p/0.01)**exponent
+print("Attenuation for Rainrates exceeding",p,"% of the time the anual avarage:",A_other,"dB")   
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption={Berechnung des Link Budgets}, label={lst:Link-Budget-python}]
+import numpy as np
+import matplotlib.pyplot as plt
+#Allgemeine Parameter
+k = 1.38*10**(-23)
+P_T = 17.78                         #Sendeleistung Es'Hail-2 in W
+P_T_dBm = 42.5
+G_T = 50.12                         #Gewinn der Sendeantenne
+EIRP = P_T * G_T                    #EIRP von Es'Hail-2
+EIRP_dBm = 59.5
+B = 2.7*10**3                       #Bandbreite des Downlinks
+L_FR = 2.9*10**(20)                 #Freiraumdämpfung
+L_FR_dB = 204.61
+L_OT = 3.33                         #Senderseitige Fehlausrichtung
+L_OT_dB = 5.23
+L_OR = 0.69                         #Empfangsseitige Fehlasusrichtung
+L_OR_dB = 0.69
+G_R = 7244.36
+G_LNC = 316227.76
+G_SDR = 1000
+L_sys = 5.02  
+G_sys = G_LNC*G_SDR*(1/L_sys)
+T0 = 290
+#Äquivalente Rauschtemperatur
+Te1 = 133.4                #133.4
+TeLNC = 139.2
+Te2 = 200.1
+TeBiasTee = 118.9
+Te3 = 17.4
+TePatchfeld = 58
+Te4 = 8.7
+TeRFSwitch = 20.3
+Te5 = 8.7
+TeSDR = 1539.9
+G1 = 0.685
+GLNC = 316227.77
+G2 = 0.59
+GBiasTee = 0.71
+G3 = 0.94
+GPatchfeld = 0.83
+G4 = 0.97
+GRFSwitch = 0.93
+G5 = 0.97
+T_esys = Te1 + (TeLNC/(G1) ) + (Te2/(G1*GLNC) ) + (TeBiasTee/(G1*GLNC*G2) ) + (Te3/(G1*GLNC*G2*GBiasTee) ) + (TePatchfeld/(G1*GLNC*G2*G3) ) + (Te4/(G1*GLNC*G2*G3*GPatchfeld) ) + (TeRFSwitch /(G1*GLNC*G2*G3*GPatchfeld*G4) )+ (Te5 /(G1*GLNC*G2*G3*GPatchfeld*G4*GRFSwitch) )+ (TeSDR /(G1*GLNC*G2*G3*GPatchfeld*G4*GRFSwitch*G5) )
+print("Äquivalente Rauschtemperatur Te,sys:",T_esys,"K")
+#klarer Himmel
+print("Für Bedingung klarer Himmel:")
+L_ATklarerHimmel = 1.13             #Dämpfung in der Atmosphäre bei klarem Himmel
+L_ATklarerHimmel_dB = 0.547
+T_AklarerHimmel = 6.5               #Antennentemperatur bei klaren Himmel
+P_R_klarer_Himmel = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATklarerHimmel)
+P_R_klarer_Himmel_dB = 10*np.log10(P_R_klarer_Himmel/(0.001))
+print("empfangene Leistung $P_R$:",P_R_klarer_Himmel,"W")
+print("empfangene Leistung $P_R$",P_R_klarer_Himmel_dB,"dBm")
+P_RX_klarer_Himmel = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATklarerHimmel)*G_sys
+P_RX_klarer_Himmel_dB = 10*np.log10(P_RX_klarer_Himmel/(0.001))
+print("Ausgangsleistung des Empfangssystems $P_{RX}$:",P_RX_klarer_Himmel,"W")
+print("Ausgangsleistung des Empfangssystems $P_{RX}$",P_RX_klarer_Himmel_dB,"dBm")
+N_i = k*T_AklarerHimmel*B
+SNR_i_klarerHimmel = P_R_klarer_Himmel/N_i
+SNR_i_klarerHimmel_dB = 10*np.log10(SNR_i_klarerHimmel)
+print("SNR am Eingang bei klaren Himmel:",SNR_i_klarerHimmel_dB,"dB")
+N_o = k*(T_AklarerHimmel+T_esys)*B
+SNR_o_klarer_Himmel = P_R_klarer_Himmel/N_o
+SNR_o_klarer_Himmel_dB = 10*np.log10(SNR_o_klarer_Himmel)
+print("SNR am Ausgang des Empfangssystems:",SNR_o_klarer_Himmel_dB,"dB")
+T_S_klarer_Himmel = (T_AklarerHimmel/L_sys)+T0*(1-(1/L_sys))+T_esys
+CN0_klarer_Himmel = P_RX_klarer_Himmel/(k*T_S_klarer_Himmel)
+CN0_klarer_Himmel_dBHz = 10*np.log10(CN0_klarer_Himmel)
+print("Qualität des Downlinks:",CN0_klarer_Himmel_dBHz,"dBHz")
+Link_Budget_klarer_Himmel_label = np.array(["Sende-\nLeistung","EIRP","Freiraum-\nDämpfung","Ausrichtungs-\nVerluste","Dämpfung\n Atmosphäre","Empfangene\nLeistung","Leistung\n am Ausgang"])
+Link_Budget_klarer_Himmel = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB-L_ATklarerHimmel_dB,P_R_klarer_Himmel_dB,P_RX_klarer_Himmel_dB])
+plt.figure("LinkBudget clear Sky")
+plt.title("Link Budget bei klaren Himmel")
+for i, val in enumerate(Link_Budget_klarer_Himmel):
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
+                 xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
+plt.plot(Link_Budget_klarer_Himmel_label,Link_Budget_klarer_Himmel,'o-')
+plt.ylabel("Leistung in dBm")
+plt.grid()
+plt.ylim([-180,90])
+plt.xticks(range(len(Link_Budget_klarer_Himmel_label)), Link_Budget_klarer_Himmel_label, rotation=45)
+plt.tight_layout(pad=0.5)
+plt.show()
+#leichter Regen
+print("Für die Bedingung leichter Regen:")
+L_ATleichterRegen = 1.24
+L_ATleichterRegen_dB = 0.947
+T_AleichterRegen = 19.29
+P_R_leichter_Regen = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATleichterRegen)
+P_R_leichter_Regen_dB = 10*np.log10(P_R_leichter_Regen/(0.001))
+print("empfangene Leistung $P_R$:",P_R_leichter_Regen,"W")
+print("empfangene Leistung $P_R$",P_R_leichter_Regen_dB,"dBm")
+P_RX_leichter_Regen = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATleichterRegen)*G_sys
+P_RX_leichter_Regen_dB = 10*np.log10(P_RX_leichter_Regen/(0.001))
+print("Ausgangsleistung des Empfangssystems $P_{RX}$:",P_RX_leichter_Regen,"W")
+print("Ausgangsleistung des Empfangssystems $P_{RX}$",P_RX_leichter_Regen_dB,"dBm")
+N_i = k*T_AleichterRegen*B
+SNR_i_leichter_Regen = P_R_leichter_Regen/N_i
+SNR_i_leichter_Regen_dB = 10*np.log10(SNR_i_leichter_Regen)
+print("SNR am Eingang bei klaren Himmel:",SNR_i_leichter_Regen_dB,"dB")
+N_o = k*(T_AleichterRegen+T_esys)*B
+SNR_o_leichter_Regen = P_R_leichter_Regen/N_o
+SNR_o_leichter_Regen_dB = 10*np.log10(SNR_o_leichter_Regen)
+print("SNR am Ausgang des Empfangssystems:",SNR_o_leichter_Regen_dB,"dB")
+T_S_leichter_Regen = (T_AleichterRegen/L_sys)+T0*(1-(1/L_sys))+T_esys
+CN0_leichter_Regen = P_RX_leichter_Regen/(k*T_S_leichter_Regen)
+CN0_leichter_Regen_dBHz = 10*np.log10(CN0_leichter_Regen)
+print("Qualität des Downlinks:",CN0_leichter_Regen_dBHz,"dBHz")
+Link_Budget_leichter_Regen_label = np.array(["Sende-\nLeistung","EIRP","Freiraum-\nDämpfung","Ausrichtungs-\nVerluste","Dämpfung\n Atmosphäre","Empfangene\nLeistung","Leistung\n am Ausgang"])
+Link_Budget_leichter_Regen = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB-L_ATleichterRegen_dB,P_R_leichter_Regen_dB,P_RX_leichter_Regen_dB])
+plt.figure("LinkBudget light Rain")
+plt.title("Link Budget bei leichten Regen")
+for i, val in enumerate(Link_Budget_leichter_Regen):
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
+                 xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
+plt.plot(Link_Budget_leichter_Regen_label,Link_Budget_leichter_Regen,'o-')
+plt.ylabel("Leistung in dBm")
+plt.grid()
+plt.ylim([-180,90])
+plt.xticks(range(len(Link_Budget_leichter_Regen_label)), Link_Budget_leichter_Regen_label, rotation=45)
+plt.tight_layout(pad=0.5)
+plt.show()
+#Regen
+print("Für die Bedingung Regen:")
+L_ATRegen = 9.14
+L_ATRegen_dB = 9.61
+T_ARegen = 240.1
+P_R_Regen = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATRegen)
+P_R_Regen_dB = 10*np.log10(P_R_Regen/(0.001))
+print("empfangene Leistung $P_R$:",P_R_Regen,"W")
+print("empfangene Leistung $P_R$",P_R_Regen_dB,"dBm")
+P_RX_Regen = EIRP*G_R*(1/L_FR)*(1/L_OT)*(1/L_OR)*(1/L_ATRegen)*G_sys
+P_RX_Regen_dB = 10*np.log10(P_RX_Regen/(0.001))
+print("Ausgangsleistung des Empfangssystems $P_{RX}$:",P_RX_Regen,"W")
+print("Ausgangsleistung des Empfangssystems $P_{RX}$",P_RX_Regen_dB,"dBm")
+N_i = k*T_ARegen*B
+SNR_i_Regen = P_R_Regen/N_i
+SNR_i_Regen_dB = 10*np.log10(SNR_i_Regen)
+print("SNR am Eingang bei klaren Himmel:",SNR_i_Regen_dB,"dB")
+N_o = k*(T_ARegen+T_esys)*B
+SNR_o_Regen = P_R_Regen/N_o
+SNR_o_Regen_dB = 10*np.log10(SNR_o_Regen)
+print("SNR am Ausgang des Empfangssystems:",SNR_o_Regen_dB,"dB")
+T_S_Regen = (T_ARegen/L_sys)+T0*(1-(1/L_sys))+T_esys
+CN0_Regen = P_RX_Regen/(k*T_S_Regen)
+CN0_Regen_dBHz = 10*np.log10(CN0_Regen)
+print("Qualität des Downlinks:",CN0_Regen_dBHz,"dBHz")
+Link_Budget_Regen_label = np.array(["Sende-\nLeistung","EIRP","Freiraum-\nDämpfung","Ausrichtungs-\nVerluste","Dämpfung\n Atmosphäre","Empfangene\nLeistung","Leistung\n am Ausgang"])
+Link_Budget_Regen = np.array([P_T,EIRP_dBm,EIRP_dBm-L_FR_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB,EIRP_dBm-L_FR_dB-L_OR_dB-L_OT_dB-L_ATRegen_dB,P_R_Regen_dB,P_RX_Regen_dB])
+plt.figure("LinkBudget Rain")
+plt.title("Link Budget bei Regen")
+for i, val in enumerate(Link_Budget_Regen):
+    plt.annotate(f'{val:.2f}', (i, val), textcoords="offset points",
+                 xytext=(0,10), ha='center')  # 10 Pkt über dem Punkt
+plt.plot(Link_Budget_Regen_label,Link_Budget_Regen,'o-')
+plt.ylabel("Leistung in dBm")
+plt.grid()
+plt.ylim([-180,90])
+plt.xticks(range(len(Link_Budget_Regen_label)), Link_Budget_Regen_label, rotation=45)
+plt.tight_layout(pad=0.5)
+plt.show()
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Berechnung von Azimut, Elevatin und Skew der Antenne}, label={lst:Antenne-berechnung-python}]
+import numpy as np
+lat_ant = np.deg2rad(53.055)
+long_ant = np.deg2rad(8.78)
+lat_sat = np.deg2rad(0)
+long_sat = np.deg2rad(25.8)
+r_geo = 35790
+r_earth = 6378
+d_long = long_ant-long_sat
+#Brechnung der Azimut
+azimut = np.rad2deg(np.arctan((np.tan(d_long))/(np.sin(lat_ant))))+180
+print("Azimut:",azimut,"°")
+#Berechnung der Elevation
+ratio = r_earth/(r_earth+r_geo)
+elevation = np.rad2deg(np.arctan((np.cos(lat_ant)*np.cos(d_long)-ratio)/(np.sqrt(1-(np.cos(lat_ant)*np.cos(d_long))**2))))
+print("Elevation:",elevation,"°")
+#Berechnung Skew
+offset = 0
+skew = np.rad2deg(np.arctan((np.sin(d_long))/(np.tan(lat_ant))))-offset
+print("Skew:",skew,"°")
+\end{lstlisting}
+

@@ -1,5 +1,6 @@
 
-\documentclass[a4paper,12pt]{article}
+
+\documentclass[a4paper,11pt]{article}
 
 % Pakete für Zeichencodierung und Spracheinstellungen
 \usepackage[utf8]{inputenc}    % UTF-8 Zeichenkodierung
@@ -10,6 +11,7 @@
 \usepackage{amssymb}
 % Pakete für Layout und Formatierung
 \usepackage{graphicx}          % Einbindung von Bildern
+\usepackage{svg}               % Einbinden von .svg
 \usepackage{geometry}          % Anpassung der Seitenränder
 \usepackage{float}             % Exakte Positionierung von Abbildungen
 \usepackage{fancyhdr}          % Anpassung von Kopf- und Fußzeilen
@@ -17,8 +19,20 @@
 \usepackage{tocloft}           % Anpassung des Inhaltsverzeichnisses
 \usepackage{hyperref}
 \usepackage{gensymb}
+\usepackage{tabularx}
 
+\usepackage{listings}
+\usepackage{xcolor}
 
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true
+}
 
 % Paket für das Literaturverzeichnis
 \usepackage{csquotes}
@@ -65,14 +79,39 @@
     \begin{tabular}{l}
     1. Prüfer: Prof.\ Dr.\ Peik \\ 
     2. Prüfer: Prof.\ Dr.\ García \\
-    Gastbegleitung: M.\ Rauwolf
     \end{tabular}\\[2cm]
-    {\Large\bfseries Abgabe: Datum}\\[2cm]
+    {\Large\bfseries Abgabe: 03. Februar 2026}\\[2cm]
     \vfill
 \end{titlepage}
 
 
 \newpage
+\section*{Abstrakt}
+Das Ziel der Arbeit ist die Planung, Entwicklung und Umsetzung eines Empfangssystem für geostationäre Satelliten im X-Band. Als Satellite bietet sich dabei der Amateurfunksatellit Es'Hail-2 (QO-100) an. Dieser besitzt einen Schmal- und Breitbandtransponder, welche beide ihren Downlink im X-Band haben.\newline
+Zur Planung und Entwicklung des Empfangssystem gehören neben der Untersuchung des Satelliten und seiner Empfangsparameter auch die Überprüfung einer an der Hochschule bereits vorhandenen Satellitenschüssel und der Auswahl eines geeigneten Antennenfeeds für den Empfang des Downlink vom Schmalbandtransponders auf Es'Hail-2 (QO-100). Ebenso muss ein geeigneter Abwärtsmischer, um die Signale in einen für Software-Defined-Radios üblichen Frequenzbereich zu bringen, sowie ein rauscharmer Verstärker zur Verstärkung der schwachen empfangenen Signale ausgewählt werden. Ebenfalls müssen geeigneten Koaxialleitungen für die verschiedenen Bereiche des Empfangssystems ausgewählt und eine SDR-Software zur Dekodierung der empfangenen Signale entwickelt werden.\newline
+Im Zuge der Planung und Entwicklung des Empfangssystem wird eine theoretische Betrachtung des Downlink vorgenommen. Besonderer Fokus wird dabei auf die Übertragungsstrecke zwischen dem Satelliten und der Empfangsstation am IAT (Institut für Aerospace Technologie) gesetzt. Dabei werden verschiedene auftretenden Dämpfungen ermittelt und Einflüsse durch verschiedene Wetterbedingungen auf die Qualität und das Link Budget des Downlink untersucht. Erwähnenswert sind dabei die Dämpfung in der Atmosphäre bei einem klaren Himmel $L_\mathrm{ATklarerHimmel}=0.547\,\text{dB}$, bei leichten Niederschlägen $L_\mathrm{ATleichterRegen}=0.947\,\text{dB}$ und bei starken Niederschlägen $L_\mathrm{ATRegen}=9.61\,\text{dB}$.\newline
+Im Zuge der theoretischen Betrachtung wird auch das Rauschen des Empfangssystems untersucht. Dabei wird eine äquivalente Rauschtemperatur des Empfangssystems $T_\mathrm{e,sys}=336.63\,\text{K}$ und eine Rauschzahl von $F_\mathrm{sys}=3.34\,\text{dB}$ ermittelt. Auch wird die Rauschleistung im und der Signal-zu-Rauschabstand am Ein- und Ausgang des Empfangssystems bei den unterschiedlichen Wetterbedingungen klarer Himmel, leichter Regen und Regen betrachtet. Mit dem Signal-zu-Rauschabstand kann eine Aussage drüber getroffen werden, ob der Downlink bei den unterschiedlichen Wetterbedienungen aufrechterhalten werden kann. Bei einem klaren Himmel und leichten Regen kann der Downlink bei einer reduzierten Bandbreite von $B=25\,\text{kHz}$ aufrecht erhalten werden. Bei starken Niederschlägen muss die Bandbreite auf $B=2.7\,\text{kHz}$ reduziert werden, um den Downlink aufrecht erhalten zu können.\newline
+Zum Schluss werden noch die mit dem Empfangssystem aufgenommen Werte mit der Goonhilly Bodenstation in Cornwall, England verglichen.
+
+
+
+\newpage
+\section*{Eidesstattliche Erklärung}
+Ich versichere, die vorliegende Arbeit selbstständig und nur unter Benutzung der angegebenen Hilfsmittel angefertigt zu haben.
+\vspace{25mm}  % Abstand oben
+
+\begin{minipage}[t]{10cm}
+\flushleft
+Bremen, \today \\
+\centering
+\dotfill \\  % Gepunktete Linie
+Daniel Albinger (5183249)
+\end{minipage}
+\newpage
+\section*{Danksagung}
+\newpage 
+\section*{Aufgabenstellung}
+
 
 % Inhaltsverzeichnis ohne Seitenzahl
 \pagenumbering{gobble}  % Keine Seitenzahl auf Inhaltsverzeichnis
@@ -81,34 +120,39 @@
 \newpage  
 
 % Seitenzahlen beginnen hier im Format „Seite X von Y“
+
+
+
+
+
 \pagenumbering{arabic}  
 \setcounter{page}{1}  
 \cfoot{Seite \thepage\ von \pageref{LastPage}}
 \section{Einleitung}
+\input{Einleitung}
 
-
-\section{Theorie und Grundlagen}
+\section{Geschichte von Satelliten}
 \input{Theorie_Satelliten}
+\section{Theorie und Grundlagen}
 \input{Theorie}
 \input{Theorie_Antennen}
 \input{Rauschen}
 
-\section{Theoretische Betrachtung der Empfangskette}
+\section{Theoretische Betrachtung des Downlinks vom Schmalbandtransponder auf Es'Hail-2 (QO-100)}
+\label{chap:Theoretische-Betrachtung-des-Downlinks}
 \input{Theoretischer Aufbau des Downlinks}
 
 
-\section{Praktischer Aufbau der Empfangskette}
+\section{Aufbau des Empfangssystems}
 \input{Praktischer Aufbau der Empfangskette}
 
+\section{Auswerten und Vergleichen der Ergebnisse}
+\input{Auswertung}
 
-
-
+\section{Zusammenfassung}
+\input{Fazit}
 
 \section{Anhang}
-\subsection{Literaturverzeichnis}
-\printbibliography
-\subsection{Abbildungsverzeichnis}
-\listoffigures
-\subsection{Tabellenverzeichnis}
-\listoftables
+\input{Anhang}
+
 \end{document}

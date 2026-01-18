@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="539"
+   height="525"
+   id="svg2"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="Atmosphäre_Stufen_web.svg"
+   style="display:inline">
+  <metadata
+     id="metadata283">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     id="namedview281"
+     showgrid="false"
+     inkscape:zoom="1"
+     inkscape:cx="558.44115"
+     inkscape:cy="224.69076"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3" />
+  <defs
+     id="defs5">
+    <linearGradient
+       id="linearGradient3175-7">
+      <stop
+         id="stop3177-4"
+         style="stop-color: rgb(4, 7, 14); stop-opacity: 1;"
+         offset="0" />
+      <stop
+         id="stop3179-0"
+         style="stop-color: rgb(91, 114, 148); stop-opacity: 1;"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3175-7"
+       id="linearGradient4517"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.0015574,-30,0)"
+       x1="340"
+       y1="165"
+       x2="340"
+       y2="505" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="BG"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:url(#linearGradient4517);fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect3173"
+       y="-1.8413927e-13"
+       x="0"
+       height="505.7865"
+       width="540" />
+    <path
+       style="fill:#5d6152;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="path2393"
+       d="m 0,505 540,0 0,20 -540,0 0,0 540,0 -540,0 0,-20 z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Sterne"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <path
+       style="opacity:0.8;fill:#baffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       d="m 134.34375,11.3125 c -1.70522,1.161758 1.6128,1.462288 0,0 z M 94.75,19.71875 c -1.746155,1.153153 1.634211,1.432196 0,0 z m -65.53125,0.875 c -1.882678,1.28964 2.054308,1.54146 0,0 z m 121.40625,0.3125 c -1.93318,1.361889 1.96425,1.342674 0,0 z m 11.28125,2.1875 c -1.86383,1.288303 2.0532,1.526394 0,0 z m 158.1875,5.46875 c -1.87715,1.303053 2.10859,1.505965 0,0 z M 66.15625,28.875 c -1.876984,1.303046 2.108704,1.505975 0,0 z m 294,0.0625 c -1.92608,1.223343 2.14922,1.567654 0,0 z m 128.5625,7.625 c -1.6837,1.166563 1.65452,1.45751 0,0 z m -249.125,0.40625 c -1.69492,1.153207 1.67216,1.372531 0,0 z m -65.5,0.875 c -1.74661,1.161771 1.64309,1.376269 0,0 z m -132.25,1.3125 c -1.693325,1.162826 1.676843,1.385197 0,0 z m 45.125,0.25 c -1.878879,1.216385 2.10191,1.550324 0,0 z m 59.40625,0.75 c -1.71394,1.161037 1.62911,1.383052 0,0 z m 162.40625,0.1875 c -1.95497,1.279756 1.90382,1.375491 0,0 z m 140.34375,4.625 c -1.88266,1.289639 2.05431,1.541442 0,0 z m -65.53125,0.875 c -1.94501,1.199419 2.14909,1.599165 0,0 z m -172.5625,0.25 c -1.91683,1.263608 2.09868,1.564169 0,0 z m -151.5,0.4375 c -1.921622,1.196778 1.994091,1.576321 0,0 z m 10.65625,1.125 c -1.742771,1.162956 1.631647,1.453099 0,0 z m -54.65625,0.125 c -1.878074,1.232258 2.039633,1.5713 0,0 z m 500.75,0.5625 c -1.89904,1.344838 1.93813,1.376897 0,0 z M 420.5625,54.125 c -1.72355,1.17721 1.63904,1.404906 0,0 z m -304.03125,0.3125 c -1.9058,1.339299 1.9328,1.336783 0,0 z m 70.1875,1.9375 c -1.9112,1.248573 2.09151,1.530411 0,0 z m -147.75,0.1875 c -1.687922,1.150615 1.656772,1.43531 0,0 z m 192.875,0.0625 c -1.76007,1.139122 1.63263,1.443922 0,0 z m 59.375,0.75 c -1.90088,1.340532 1.92819,1.340974 0,0 z M 204.375,63.78125 c -1.69095,1.15948 1.67457,1.38235 0,0 z m 191.875,0.625 c -1.71394,1.161037 1.62911,1.383052 0,0 z m 45.09375,0.25 c -1.96353,1.130912 2.19496,1.645619 0,0 z m -226.3125,0.25 c -1.69205,1.161087 1.66993,1.385027 0,0 z m -54.625,0.125 c -1.91578,1.197703 2.12357,1.569214 0,0 z m 340.34375,0.375 c -1.70581,1.173992 1.67759,1.39135 0,0 z m -239.34375,6.25 c -1.93413,1.321323 1.91455,1.380424 0,0 z m 152.5,0.125 c -1.91832,1.366664 1.94666,1.340669 0,0 z m 10.65625,1.125 c -1.9111,1.34306 1.91341,1.380761 0,0 z m -54.625,0.125 c -1.72996,1.15143 1.61619,1.47253 0,0 z m -186.09375,0.75 c -1.70522,1.161758 1.6128,1.462288 0,0 z M 169.6875,74.75 c -2.02984,1.19207 1.9504,1.433855 0,0 z m -81.71875,4.5 c -1.710736,1.181823 1.682974,1.40316 0,0 z m 382.96875,0.4375 c -1.7095,1.144993 1.61581,1.431383 0,0 z m -77.59375,2.125 c -1.70317,1.161214 1.68766,1.425585 0,0 z M 26.8125,83.75 c -2.013665,1.151199 2.304182,1.718478 0,0 z m 134.09375,4.53125 c -1.93362,1.212184 2.10206,1.530778 0,0 z m 153.625,3.6875 c -1.70122,1.177362 1.67904,1.406763 0,0 z m -81.6875,4.5 c -1.73811,1.139867 1.62162,1.451476 0,0 z M 524.0625,100 c -1.94204,1.20932 2.11312,1.52354 0,0 z m -352.375,1 c -1.71153,1.15761 1.62674,1.38019 0,0 z m 80.1875,0.125 c -1.68928,1.15812 1.6677,1.38181 0,0 z m 190.46875,3.375 c -1.7143,1.18574 1.70754,1.39926 0,0 z m -136.59375,1 c -1.70311,1.15798 1.68735,1.41995 0,0 z m 74.6875,3.25 c -1.66474,1.858 3.45995,1.37891 0,0 z m 0.2813,0.9375 0.12644,0.12642 -0.12644,-0.12642 z m 134.5625,3.84375 c -2.00443,1.11053 2.26556,1.68225 0,0 z m -174.4375,3.625 c -1.87999,1.25719 2.17017,1.54241 0,0 z m -65.5,0.875 c -1.7095,1.14503 1.61581,1.43145 0,0 z m 132.6875,2.5 c -1.71891,1.14874 1.62469,1.43642 0,0 z M 90.7188,124.8125 c -1.69022,1.1347 1.653309,1.39217 0,0 z m 319.5625,0.375 c -1.93738,1.20061 2.13272,1.55659 0,0 z m -98,1.125 c -1.89546,1.22299 2.1031,1.53406 0,0 z m -261.15625,6.875 c -1.707166,1.15448 1.669927,1.43187 0,0 z m 67.15625,3.375 c -1.69974,1.1747 1.68548,1.45082 0,0 z m 169.6875,0 c -1.69294,1.17036 1.658,1.45446 0,0 z m 45.125,0.25 c -1.72994,1.15143 1.61619,1.47252 0,0 z m 59.375,0.78125 c -1.70227,1.16694 1.69576,1.37397 0,0 z m -279.9375,3.625 c -1.88906,1.24647 2.12558,1.53967 0,0 z m 386.71875,0 c -1.88906,1.24647 2.12558,1.53967 0,0 z m -65.53125,0.875 c -1.87394,1.30178 2.1244,1.50608 0,0 z m -411.15625,0.25 c -1.917846,1.24014 2.129749,1.54351 0,0 z m 283.0625,1.625 c -1.70317,1.16124 1.68765,1.42566 0,0 z m 10.65625,1.125 c -1.93929,1.18026 2.13725,1.62586 0,0 z m -54.625,0.125 c -1.88264,1.28976 2.0541,1.54143 0,0 z m -20.5625,3.625 c -1.86734,1.27297 2.13123,1.56395 0,0 z m 229.59375,1.53125 c -1.71153,1.15761 1.62674,1.38019 0,0 z m -108.03125,1.5 c -1.87883,1.21645 2.10193,1.5504 0,0 z m -319.3125,1 c -1.898674,1.34018 1.95882,1.31503 0,0 z m 59.40625,0.75 c -1.70122,1.1774 1.67904,1.40684 0,0 z M 285.09375,154 c -1.94842,1.31475 1.92149,1.35841 0,0 z M 201.5,157.25 c -1.68804,1.15067 1.65681,1.43535 0,0 z m -65.5,0.875 c -1.7691,1.13966 1.64049,1.44336 0,0 z M 15.90625,160 c -1.878003,1.23239 2.039471,1.57123 0,0 z m 252.78125,0.625 c -1.75626,1.15135 1.63027,1.47075 0,0 z m 177.6875,0 c -1.70521,1.16175 1.61279,1.46229 0,0 z m 45.09375,0.25 c -1.68599,1.16809 1.6617,1.45824 0,0 z m -464.90625,0.25 c -1.683648,1.16647 1.654386,1.45759 0,0 z m 146.375,5.28125 c -1.92601,1.22342 2.14916,1.56774 0,0 z m -100,1.5 c -1.917846,1.24014 2.129749,1.54351 0,0 z m 391.09375,0.125 c -1.68811,1.14706 1.65661,1.43015 0,0 z m 10.65625,1.125 c -1.87491,1.26458 2.08389,1.52114 0,0 z m -54.625,0.125 c -1.7342,1.13824 1.61911,1.44693 0,0 z m -4.28125,2.875 c -1.87813,1.23236 2.03949,1.57123 0,0 z m 105.28125,3.78125 c -1.71153,1.15761 1.62674,1.38019 0,0 z m -372.4375,0.75 c -1.91557,1.20238 2.10544,1.55164 0,0 z m 185.46875,0 c -1.92725,1.29095 1.90515,1.35985 0,0 z m -140.34375,0.25 c -1.76238,1.1502 1.64319,1.39227 0,0 z m 59.375,0.75 c -1.9549,1.13163 2.21604,1.66039 0,0 z m 190.375,0.375 c -1.77231,1.1649 1.65321,1.4155 0,0 z m -170.5625,3.125 c -1.91509,1.23857 2.13036,1.55361 0,0 z m -106.65625,2.875 c -1.8978,1.20098 2.08276,1.60038 0,0 z m 10.65625,1.125 c -1.90871,1.22105 2.10086,1.6103 0,0 z m -54.625,0.125 c -1.91155,1.21477 1.98024,1.57321 0,0 z m 284.71875,0.375 c -1.75626,1.15135 1.63027,1.47075 0,0 z m -280.96875,2.53125 c -1.69842,1.16192 1.67114,1.37861 0,0 z m 97.25,3.75 c -1.94843,1.31475 1.92149,1.35841 0,0 z m -178.9375,0.75 c -1.971702,1.30262 1.917216,1.37365 0,0 z m 101.375,1.375 c -1.70942,1.14831 1.61597,1.43711 0,0 z M 492.46875,200.75 c -1.70227,1.16694 1.69576,1.37397 0,0 z m -375.1875,1 c -2.01361,1.12138 2.31364,1.68678 0,0 z m 314.0625,3.5 c -1.76002,1.13613 1.63231,1.43798 0,0 z m -154.90625,7.03125 c -1.95792,1.29977 2.0135,1.35836 0,0 z m -81.6875,4.5 c -1.75934,1.18107 1.65606,1.40153 0,0 z m 153.6875,0.4375 c -1.74268,1.16305 1.6317,1.4531 0,0 z m -214.84375,4.0625 c -1.71891,1.14874 1.62469,1.43642 0,0 z m 134.0625,4.53125 c -1.70227,1.16694 1.69576,1.37397 0,0 z m -200.5,1.40625 c -1.878003,1.23239 2.039471,1.57123 0,0 z M 376,229 c -1.95177,1.18261 2.02322,1.58821 0,0 z m -5.78125,4.65625 c -1.92266,1.29204 1.97703,1.3694 0,0 z m 149.125,4 c -1.87999,1.25719 2.17017,1.54241 0,0 z M 94.71875,239 c -1.71204,1.1613 1.695458,1.4257 0,0 z m 404.09375,2.28125 c -1.74368,1.13847 1.62731,1.44655 0,0 z m -409.84375,2.375 c -1.895476,1.223 2.103063,1.53405 0,0 z m 271.5,2.40625 c -1.99984,1.25398 1.98218,1.41131 0,0 z m -122.375,1.59375 c -1.94666,1.30404 1.91579,1.37495 0,0 z m 221.09375,2.03125 c -1.70311,1.15798 1.68735,1.41995 0,0 z m -65.5,0.875 c -1.91509,1.23857 2.13036,1.55361 0,0 z m -176.15625,0.71875 c -1.93929,1.18026 2.13725,1.62586 0,0 z M 526.375,253.0625 c -1.95177,1.18261 2.02322,1.58821 0,0 z m -447.1875,3 c -1.950368,1.30306 2.003018,1.36976 0,0 z m 351.4375,2.78125 c -1.68928,1.15812 1.6677,1.38181 0,0 z m -252.6875,0.84375 c -1.68811,1.14706 1.65661,1.43015 0,0 z m 152.6875,0.65625 c -1.69638,1.16959 1.67379,1.39501 0,0 z m -218.1875,0.21875 c -1.76007,1.13914 1.63262,1.44399 0,0 z m 132.65625,2.5 c -1.71217,1.16132 1.69548,1.42568 0,0 z m -95.71875,5.78125 c -1.93738,1.20061 2.13272,1.55659 0,0 z m 256.9375,0.25 c -1.68378,1.16648 1.65442,1.45758 0,0 z m 45.125,0.25 c -1.89916,1.27203 2.06653,1.53788 0,0 z m 59.40625,0.78125 c -2.02976,1.19209 1.95035,1.43386 0,0 z M 49.375,270.34375 c -1.90848,1.20659 2.119692,1.55891 0,0 z m 481.25,3.28125 c -1.70122,1.1774 1.67904,1.40684 0,0 z M 424,276.5 c -1.7342,1.13824 1.61911,1.44693 0,0 z m 10.625,1.125 c -1.71217,1.16132 1.69548,1.42568 0,0 z M 380,277.75 c -2.0133,1.15137 2.30328,1.71808 0,0 z m -254.9375,1.34375 c -1.89916,1.27203 2.06653,1.53788 0,0 z m 45.125,0.25 c -1.75626,1.15135 1.63027,1.47075 0,0 z m 59.375,0.78125 c -1.69034,1.13471 1.65333,1.39215 0,0 z m 154.1875,0.5 c -1.87045,1.28359 2.15707,1.56057 0,0 z M 375,283 c -1.71891,1.14874 1.62469,1.43642 0,0 z m -125.625,0.625 c -1.92601,1.22342 2.14916,1.56774 0,0 z M 481,284.40625 c -1.69204,1.16113 1.66994,1.38509 0,0 z M 142.71875,286.5 c -1.8776,1.25811 2.17138,1.55007 0,0 z m 260.71875,0.0312 c -1.88906,1.24647 2.12558,1.53967 0,0 z m -250.0625,1.09375 c -2.0133,1.15137 2.30328,1.71808 0,0 z m -54.625,0.125 c -1.954463,1.32069 1.93591,1.37537 0,0 z m 3.75,2.875 c -1.91651,1.35827 1.95479,1.37038 0,0 z m 97.25,3.78125 c -1.91573,1.19777 2.12355,1.56929 0,0 z m -77.5625,2.125 c -1.72355,1.17724 1.63903,1.40499 0,0 z m -28.46875,7.65625 c -1.708585,1.14485 1.686067,1.38297 0,0 z m 144.71875,3.03125 c -1.74268,1.16305 1.6317,1.4531 0,0 z m 214,2 c -1.91557,1.20238 2.10544,1.55164 0,0 z m -61.15625,4.5 c -1.87491,1.26458 2.08389,1.52114 0,0 z M 266,319 c -1.95177,1.18261 2.02322,1.58821 0,0 z m -94.8125,0.21875 c -1.76238,1.1502 1.64319,1.39227 0,0 z m 89.03125,4.4375 c -1.92266,1.29204 1.97703,1.3694 0,0 z m -150.1875,0.0625 c -1.70942,1.14831 1.61597,1.43711 0,0 z m 299.3125,3.9375 c -1.87999,1.25719 2.17017,1.54241 0,0 z m -20.53125,3.625 c -1.74368,1.13847 1.62731,1.44655 0,0 z M 38.4375,335 c -1.746157,1.15013 1.633951,1.4263 0,0 z m 212.03125,1.0625 c -1.99984,1.25398 1.98218,1.41131 0,0 z m 98.71875,3.625 c -1.70311,1.15798 1.68735,1.41995 0,0 z m -65.5,0.875 c -1.91509,1.23857 2.13036,1.55361 0,0 z m 132.6875,2.5 c -1.95177,1.18261 2.02322,1.58821 0,0 z M 66,346.78125 c -1.917846,1.24014 2.129749,1.54351 0,0 z m 254.625,2.0625 c -1.68928,1.15812 1.6677,1.38181 0,0 z m -100,1.5 c -1.69638,1.16959 1.67379,1.39501 0,0 z m -160.40625,1.0625 c -1.878003,1.23239 2.039471,1.57123 0,0 z m 149.125,4.03125 c -2.00443,1.11053 2.26556,1.68225 0,0 z m -20.53125,3.625 c -1.73425,1.13498 1.61894,1.4412 0,0 z m 107.5,0.0312 c -1.68378,1.16648 1.65442,1.45758 0,0 z m 45.125,0.25 c -1.89916,1.27203 2.06653,1.53788 0,0 z m 59.40625,0.78125 c -2.02976,1.19209 1.95035,1.43386 0,0 z m 19.78125,3.5 c -1.70122,1.1774 1.67904,1.40684 0,0 z m -370.15625,0.1875 c -2.026669,1.11432 2.229844,1.78587 0,0 z M 314,366.5 c -1.7342,1.13824 1.61911,1.44693 0,0 z m -164.8125,0.96875 c -1.94369,1.31452 2.03717,1.35103 0,0 z M 324.625,367.625 c -1.71217,1.16132 1.69548,1.42568 0,0 z m 9.28125,0.0312 c -1.91784,1.32859 1.90671,1.3533 0,0 z M 270,367.75 c -2.0133,1.15137 2.30328,1.71808 0,0 z m -186.3125,0.59375 c -1.915675,1.19772 2.12335,1.56936 0,0 z M 273.75,370.625 c -1.91168,1.35466 1.9636,1.36882 0,0 z m -57.375,0.21875 c -1.92601,1.22342 2.14916,1.56774 0,0 z M 371,374.40625 c -1.69204,1.16113 1.66994,1.38509 0,0 z m -77.5625,2.125 c -1.88906,1.24647 2.12558,1.53967 0,0 z m -172.8125,0.0625 c -1.90871,1.22105 2.10086,1.6103 0,0 z m -100,1.5 c -1.683648,1.16647 1.654386,1.45759 0,0 z m 340.84375,1.34375 c -1.68811,1.14706 1.65661,1.43015 0,0 z m -5.75,4.625 c -1.91155,1.21477 1.98024,1.57321 0,0 z M 265,384.1875 c -1.71697,1.1538 1.63064,1.36961 0,0 z M 96.3125,386.875 c -2.013152,1.1514 2.303208,1.71805 0,0 z m 45.125,0.25 c -1.95177,1.18261 2.02322,1.58821 0,0 z m 59.40625,0.75 c -1.75539,1.15414 1.64269,1.43096 0,0 z m 304,0.21875 c -1.71153,1.15761 1.62674,1.38019 0,0 z m -284.21875,3.3125 c -1.69491,1.1532 1.67215,1.37253 0,0 z m 263.65625,0.3125 c -1.7107,1.18189 1.68293,1.4032 0,0 z M 114,394.28125 c -1.73792,1.15006 1.63145,1.3941 0,0 z m 10.625,1.125 c -1.7143,1.18574 1.70754,1.39926 0,0 z M 70,395.53125 c -1.701087,1.17739 1.679016,1.40684 0,0 z m 275.9375,0.9375 c -1.87667,1.2321 1.97552,1.56333 0,0 z M 73.75,398.40625 c -1.87259,1.30261 2.12375,1.51287 0,0 z m 268.6875,0.8125 c -1.91557,1.20238 2.10544,1.55164 0,0 z m 102.25,0.90625 c -1.96283,1.27617 1.95568,1.37318 0,0 z M 379.15625,401 c -1.96323,1.13116 2.19432,1.64526 0,0 z M 171,402.15625 c -1.68378,1.16648 1.65442,1.45758 0,0 z M 511.84375,403.5 c -1.87712,1.30313 2.10844,1.50601 0,0 z m -230.5625,0.21875 c -1.87491,1.26458 2.08389,1.52114 0,0 z M 93.4375,404.3125 c -1.903564,1.21873 2.117372,1.53073 0,0 z M 416.125,409.25 c -1.74268,1.16305 1.6317,1.4531 0,0 z m -100,1.5 c -1.74216,1.16533 1.6315,1.4589 0,0 z M 65,411.9375 c -1.718874,1.14866 1.624563,1.43649 0,0 z m 326.8125,7.59375 c -1.71891,1.14874 1.62469,1.43642 0,0 z m 45.09375,0.25 c -1.93929,1.18026 2.13725,1.62586 0,0 z m 59.40625,0.75 c -1.70713,1.15451 1.66989,1.43185 0,0 z m 19.8125,3.53125 c -2.02976,1.19209 1.95035,1.43386 0,0 z m -106.65625,2.875 c -1.70118,1.1649 1.67341,1.3819 0,0 z m -267.03125,0.0312 c -1.91368,1.21487 1.97942,1.57433 0,0 z m 277.6875,1.09375 c -1.9263,1.22885 2.13041,1.54857 0,0 z m -54.625,0.125 c -1.77231,1.1649 1.65321,1.4155 0,0 z m 3.75,2.875 c -1.91509,1.23857 2.13036,1.55361 0,0 z M 81.28125,431.5 c -1.878852,1.21644 2.101908,1.55041 0,0 z M 466.5,434.8125 c -1.98328,1.12792 2.17109,1.74685 0,0 z m -77.59375,2.15625 c -1.70748,1.16264 1.6993,1.36407 0,0 z m -28.4375,7.625 c -1.68804,1.15067 1.65681,1.43535 0,0 z m 77.4375,15.03125 c -1.87813,1.23236 2.03949,1.57123 0,0 z M 376.75,464.15625 c -1.91617,1.33255 1.97863,1.31922 0,0 z"
+       id="path3191" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text"
+     style="display:inline">
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16, 16;stroke-dashoffset:0;display:inline"
+       id="path3459"
+       d="m 50,95.00002 490,0" />
+    <g
+       id="g5459"
+       style="stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none">
+      <path
+         d="m 28,-5 0,240"
+         id="path3461"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline" />
+      <path
+         d="M 17.999999,235 28,245 38,235"
+         id="path3463"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline" />
+    </g>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3469"
+       y="491"
+       x="220"><tspan
+         id="tspan3471"
+         y="491"
+         x="220"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Troposphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3473"
+       y="403.82813"
+       x="216.08594"><tspan
+         id="tspan3475"
+         y="403.82813"
+         x="216.08594"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Stratosphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3477"
+       y="293.82813"
+       x="222.69531"><tspan
+         id="tspan3479"
+         y="293.82813"
+         x="222.69531"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Mesosphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3481"
+       y="173.82813"
+       x="204.34375"><tspan
+         id="tspan3483"
+         y="173.82813"
+         x="204.34375"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Thermosphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3485"
+       y="71"
+       x="235.10156"><tspan
+         id="tspan3487"
+         y="71"
+         x="235.10156"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Exosphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3729"
+       y="225"
+       x="50"><tspan
+         id="tspan3731"
+         y="225"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Mesopause</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3733"
+       y="325"
+       x="50"><tspan
+         id="tspan3735"
+         y="325"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Stratopause</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3737"
+       y="445"
+       x="50"><tspan
+         id="tspan3739"
+         y="445"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Tropopause</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:18.00000191px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3741"
+       transform="matrix(5.1534993e-4,-0.99999987,0.99999987,5.1534993e-4,0,0)"
+       y="24.085001"
+       x="-164.98795"><tspan
+         id="tspan3743"
+         y="24.085001"
+         x="-164.98795"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">Ionosphäre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3745"
+       y="475"
+       x="50"><tspan
+         id="tspan3747"
+         y="475"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">≈ 15 km</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3749"
+       y="355"
+       x="50"><tspan
+         id="tspan3751"
+         y="355"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">≈ 50 km</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3753"
+       y="255"
+       x="50"><tspan
+         id="tspan3755"
+         y="255"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">≈ 80 km</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans"
+       xml:space="preserve"
+       id="text3757"
+       y="115"
+       x="50"><tspan
+         id="tspan3759"
+         y="115"
+         x="50"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DejaVu Sans;-inkscape-font-specification:DejaVu Sans">≈ 500 km</tspan></text>
+    <g
+       style="display:inline;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g4520">
+      <path
+         d="m 320.10156,5 0,30"
+         id="path3763"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccc"
+         d="m 330.10156,15 -10,-10 -10,10"
+         style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="path3765" />
+    </g>
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       id="path3453"
+       d="m 50,455 490,0" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       id="path3455"
+       d="m 50,335 490,0" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       id="path3457"
+       d="m 50,234.99997 490,0" />
+  </g>
+</svg>

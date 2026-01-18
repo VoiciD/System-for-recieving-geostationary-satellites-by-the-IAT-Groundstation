@@ -6,13 +6,1277 @@ Beim Downlink handelt es sich um eine Datenverbindung zwischen einem Satelliten 
     \caption{Vereinfachte Darstellung des Downlinks}
     \label{SkizzeDownlink}
 \end{figure}
-Die Abbdildung \ref{SkizzeDownlink} zeigt die eine vereinfachte Darstellung des Downlinks zwischen dem Schmallbandtransponder auf dem geostationären Satelliten Es'Hail-2 und der Bodenstation am IAT. Einteilen lässt sich der Downlink in drei kleinere Bereiche.\newline
-Den ersten Bereich des Downlinks bildet der Sender, welche in diesem Fall der Schmallbandtransponder auf Es'Hail-2. Der Satellit sendet die Informationstragenden Signale $s(t)$ mit der Sendeleistung $P_\text{T}$ über eine Atennne mit dem Gewinn $G_\text{T}(\varphi,\theta)$ in Richtung Erde. Zusammen mit der Gleichung \ref{}
-
-
-
-Das EIRP unterscheidet sich je nach Region auf der Erde, da sich der Gewinn $G_\text{T}(\varphi,\theta)$ der Sendeantenne abhängig vom Abstrahlwinkel ist.
+Die Abbildung \ref{SkizzeDownlink} zeigt eine vereinfachte Darstellung des Downlinks zwischen dem Satelliten Es'Hail-2 und der Bodenstation am IAT. Einteilen lässt sich der Downlink in drei kleinere Bereiche - dem Sender, der Übertragungsstrecke und dem Empfänger.
 
 
 
 
+
+
+\subsection{Sender - Schmalbandtransponder auf Es'Hail-2 (QO-100)}
+Beim ersten Bereich des Downlinks handelt es sich um den Sender. In diesem Fall handelt es sich um den Schmalbandtransponder auf Es'Hail-2 (QO-100).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Vereinfachter Sender BSB.png}
+    \caption{Vereinfachte Darstellung des Schmalbandtransponders auf Es'Hail-2\cite{Satellite_Communications_Systems}}
+    \label{fig:Vereinfachter Sender}
+\end{figure}
+Die Abbildung \ref{fig:Vereinfachter Sender} zeigt ein vereinfachtes Blockschaltbild des Schmalbandtransponders auf Es'Hail-2 (QO-100). Der Schmalbandtransponder deckt ungefähr $1/3$ der Erdoberfläche ab, siehe Abbildung \ref{fig:CoverageEsHail2Amateur}, und hat die Aufgabe die Signale, welche von Amateurfunkern über den Uplink zum Satelliten gesendet werden, wieder in Richtung Erde mit der zusenden.\newline
+Der Schmalbandtransponder verwendet zur Verstärkung der über den Uplink gesendeten Signale einen TWTA (engl.Traveling-Wave Tube Amplifier) mit einer Ausgangsleistung von $P_\mathrm{TX}=100\space\text{W} = 50\space\text{dBm}$\cite{PräsiEsHail2}. Die internen Verluste des Schmalbandtransponders werden mit $L_\mathrm{SAT}=1.5\space\text{dB}$ angegeben\cite{PräsiEsHail2}. Mit den beiden Angaben und mit einer $OBO = 6\space\text{dB}$ (engl. Output Back Off)\cite{PräsiEsHail2} lässt sich die Sendeleistung $P_\text{T}$ des Schmalbandtransponders ermitteln.\newline
+\begin{equation}
+    \label{Sendeleistung Es'Hail-2}
+    P_\mathrm{T}=P_\mathrm{TX,dB}-L_\mathrm{SAT,dB}-OBO_\mathrm{dB}=50\space\text{dBm}-1.5\space\text{dB}-6\space\text{dB}=42.5\space\text{dBm}
+\end{equation}
+Der Schmalbandtransponder auf Es'Hail-2  verwendet eine Hornantenne mit einem Gewinn von $G_\mathrm{T}=17\space\text{dBi}$\cite{PräsiEsHail2} und einer 3dB-Strahlungsbreite von $\theta_\mathrm{3dB}=17.4\space\degree$\cite{PräsiEsHail2}. Mit der Sendeleistung $P_\mathrm{T}$ und Gewinn $G_\mathrm{T}$ der Antenne kann dann das $EIRP$ des Satelliten über die Gleichung \ref{eq:EIRPdBm} bestimmt werden. Zu den Verlusten der verwendeten Antenne lassen sich keine Informationen finden, weshalb eine verlustlose Antenne angenommen wird.
+\begin{equation}
+    EIRP_\mathrm{dBm}=P_\mathrm{T,dBm}+G_\mathrm{T,dBi}-L_\mathrm{SATANT,dB}=42.5\,\mathrm{dBm}+17\,\mathrm{dBi}-0\,\mathrm{dB}=59.5\,\mathrm{dBm}
+    \label{eq:EIRP_dBm_Eshail2}
+\end{equation}
+Das in Gleichung \ref{eq:EIRP_dBm_Eshail2} $EIRP_\mathrm{dBm}$ kann in auch in $\text{[W]}$ angegeben werden.
+\begin{equation}
+    EIRP=10^{\frac{EIRP_\mathrm{dBM}}{10}}\cdot0.001\,\text{W}=891.251\,\text{W}
+    \label{eq:EIRP_W_EsHail2}
+\end{equation}
+Ebenfalls kann die Strahlungsleistungsdichte $S_\mathrm{SAT}$ der von Es'Hail-2 abgestrahlten EM-Welle bestimmt werden. Diese ist für die spätere Bestimmung der Empfangsleistung von Bedeutung.\newline
+Ermittelt werden kann die Strahlungsleistungsdichte $S_\mathrm{SAT}$ mit der Gleichung \ref{eq:isotroperkugelstrahler-strahlungsleistungsdichte} unter der Berücksichtigung des Gewinns $G_\mathrm{T}=17\space\mathrm{dBi}$ der Hornantenne, sowie der Entfernung $D_\mathrm{SAT}$, welche in Gleichung \ref{eq:EntfernungEsHail2} ermittelt wird.
+
+\begin{equation}
+    S_\mathrm{SAT}=\frac{P_\mathrm{T}\cdot \frac{G_\mathrm{T}}{L_\mathrm{ANT}}}{4\pi\cdot D_\mathrm{SAT}}=\frac{EIRP}{4\pi\cdot D_\mathrm{SAT}}=\frac{891.251\,\text{W}}{4\pi\cdot 38676\,\text{km}}=1.834\cdot10^{-6}\,\frac{\text{W}}{\text{m}^2}
+    \label{eq:Strahlungsleistungsdichte_EsHail2}
+\end{equation}
+
+
+\subsection{Übertragungsstrecke zwischen Es'Hail-2 und der Bodenstation am IAT}
+Den zweiten Bereich bildet die Übertragungsstrecke zwischen dem Satelliten Es'Hail-2 und der Bodenstation am IAT. Bevor die vom Schmalbandtransponder abgestrahlten EM-Wellen von der Bodenstation am IAT empfangen werden können legen diese eine große Entfernung zurück. Auf dem Weg verlieren die abgestrahlten EM-Wellen einen großen Teil ihrer Leistung, was mit der Dämpfung $L$ ausgedrückt wird. Die gesamt Dämpfung $L$ setzt sich dabei aus mehreren einzelnen Dämpfungen zusammen, welche in unterschiedlichen Abschnitten der Übertragungsstrecke auftreten.
+\subsubsection*{Freiraumdämpfung}
+Die Freiraumdämpfung, auch Pfadverlust genannt, $L_\mathrm{FR}$ bildet den größten Teil der auftretenden Dämpfung $L$. Sie ist abhängig von der Entfernung $D_\mathrm{SAT}$ zwischen dem Sender und Empfänger, Es'Hail-2 und der Bodenstation am IAT, sowie die Wellenlänge $\lambda$ von der Frequenz $f$, mit welcher der Downlink betrieben wird.
+\begin{equation}
+    \label{eq:Freiraumdämpfung}
+    L_\mathrm{FR,dB}=10\cdot\log_\mathrm{10}\left( \left( \frac{4\pi\cdot D_\mathrm{SAT}}{\lambda} \right)^2\right)=20\cdot\log_\mathrm{10} \left( \frac{4\pi\cdot D_\mathrm{SAT}}{\lambda} \right)
+\end{equation}
+Mit der Freiraumdämpfung $L_\mathrm{FR}$ wird die Abnahme der Strahlungsleistungsdichte $S_\mathrm{SAT}$ beschrieben. Ein isotroper Kugelstrahler strahlt die Energie, in Form von EM-Wellen, gleichmäßig in allen Richtung ab. Somit verteilt sich die Energie gleichmäßig in Form einer Kugel um die Quelle herum, wie es auch in Gleichung \ref{eq:isotroperkugelstrahler-strahlungsleistungsdichte} und \ref{eq:Strahlungsleistungsdichte_EsHail2} ausgedrückt wird. Wird die Oberfläche der Kugel in gleichgroße Bereiche aufgeteilt, weisen alle Bereiche die gleiche Strahlungsleistungsdichte $S_\mathrm{SAT,xy}$ auf\cite{RadartutorialFreiraumdämpfung}.\newline
+Mit steigender Entfernung $r$ zur Quelle, welche dem Radius der Kugel entspricht, wird auch die Oberfläche der Kugel größer. Da aber die von dem isotropen Kugelstrahler abgestrahlte Energie gleichbleibend ist, hat die steigende Oberfläche der Kugel eine Abnahme der Strahlungsleistungsdichte $S_\mathrm{SAT}$ zur Folge.\cite{RadartutorialFreiraumdämpfung}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/Freiraumdämpfung Beispiel.svg}
+    \caption{Graphische Repräsentation der Freiraumdämpfung}
+    \label{Graphische Repräsentation der Freiraumdämpfung}
+\end{figure}
+Mit der Wellenlänge 
+\begin{equation*}
+   \lambda_\mathrm{center}=\frac{c}{f_\mathrm{center}}=\frac{3\cdot 10\,\frac{\text{m}}{\text{s}}}{10489.750\,\text{MHz}}=0.0286\,\text{m} 
+\end{equation*}
+und der Entfernung $D_\mathrm{SAT}$ aus Gleichung \ref{eq:EntfernungEsHail2} kann die Freiraumdämpfung $L_\mathrm{FR}$ über Gleichung \ref{eq:Freiraumdämpfung} bestimmt werden.
+\begin{equation}
+    \label{eq:BestimmteFreiraumdämpfung}
+    L_\mathrm{FR,dB}=20\cdot\log_\mathrm{10}\left( \frac{4\pi\cdot D_\mathrm{SAT}}{\lambda} \right)=20\cdot\log_\mathrm{10}\left( \frac{4\pi\cdot 38676\,\text{km}}{0.0286\,\text{m}}\right)=204.61\,\text{dB}
+\end{equation}
+Die Freiraumdämpfung $L_\mathrm{FR,dB}$ ist zusammen mit der Strahlungsleistungsdichte $S_\mathrm{SAT}$ oder dem $EIRP$ wichtig für Bestimmung der empfangen Leistung $P_\mathrm{R}$ an der IAT Bodenstation.\newline
+Obwohl sich der größte Teil der Übertragungsstrecke im freien Raum befindet, müssen neben der Freiraumdämpfung $L_\mathrm{FR,dB}$ noch zusätzlich Dämpfungen innerhalb der Atmosphäre berücksichtigt werden. Beim durchqueren der Atmosphäre erfahren die elektromagentischen Wellen eine nicht zu vernachlässigende Dämpfung. Die Dämpfung basiert dabei hauptsächlich durch die Absorption und Entpolarisierung der elektromagnetischen Wellen, welche durch Gase, Partikel und Dämpfe innerhalb der Atmosphäre hervorgerufen werden. \cite{Satellite_Communications_Systems}\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/Atmosphäre_Stufen}
+    \caption{Aufbau der Atmosphäre\cite{Bild_Atmosphäre}}
+    \label{fig:Aufbau-der-Atmosphäre}
+\end{figure}
+Im Frequenzbereich von $1\,\text{GHz}$ bis $30\,\text{GHz}$ haben hauptsächlich Wasser- und Sauerstoffmoleküle eine großen Einfluss auf die elektromagnetischen Wellen. Daher sind hauptsächlich zwei Schichten der Atmosphäre von Interesse. Die Troposphäre, in welcher sich das Wettergeschehen abspielt, und die Ionosphäre, in welcher die UV-Strahlung der Sonne Gasmoleküle ionisiert.\cite{Ionosphäre} \cite{Satellite_Communications_Systems}\newline
+
+\subsubsection*{Dämpfung durch Regen und Schnee}
+Das Wetter, hauptsächlich Regen und Schnee, in der Troposphäre bildet den größten Teil der Dämpfung innerhalb der Atmosphäre. Gerade bei höheren Frequenzen $(f\geq10\,\text{GHz})$ darf die Dämpfung durch Regen $L_\mathrm{Regen}$ nicht vernachlässigt werden.
+Für die Dämpfung durch Regen sind Niederschlagsraten $R_\mathrm{p}$ in $\text{mm/h}$ interessant, welche nur zu einem bestimmte Prozentsatz $p$ die durchschnittliche Niederschlagsmenge $\text{mm/h}$ eines Jahres überschreiten.\cite{Satellite_Communications_Systems}\newline
+Für de Betrieb des Downlinks können drei Wetterbedingungen festgelegt werden.
+\begin{itemize}
+    \item Klarer Himmel (Clear Sky): Den größten Teil der Zeit $(p\approx20\,\%)$ sind mit niedrigen Regenraten zu rechnen. Je kleiner die Niederschlagsrate $R_\mathrm{p}$ in $\text{mm/h}$ ist, desto geringer ist die zu erwartende Dämpfung $L_\mathrm{Regen}$. Bei der Bedingung klarer Himmel sind die Niederschlagsmengen so gering, dass die resultierende Dämpfung vernachlässigt werden können.\cite{Satellite_Communications_Systems}
+    
+    \item leichter Regen (light Rain): Die häufigsten zu erwartenden Regenschauer sind leichte Regenschauer. Zu leichten Regenschauern zählen Regenschauer dessen Niederschlagsrate $R_\mathrm{p}$ in $\text{mm/h}$ zu $p=5\,\%$ der Zeit den jährlichen Durchschnitt $\text{mm/h}$ überschreiten. Die zu erwartende Dämpfung $L_\mathrm{leichterRegen}$ ist überschaubar und bietet einen guten Schätzwert für durchschnittliche Regenschauer.
+    
+    \item Regen (Rain): Starke Niederschläge haben eine sehr große Auswirkung auf die elektromagnetischen Wellen. Die starken Niederschläge verursachen eine nicht zu vernachlässigende Dämpfung $L_\mathrm{Regen}$. Zu starken Niederschlägen zählen Regenschauer deren Niederschlagsmenge $R_\mathrm{p}$ in $\text{mm/h}$ die durchschnittliche Niederschlagsmenge $\text{mm/h}$ eines Jahres zu $p=0.01\,\%$ der Zeit überschreiten.\cite{Satellite_Communications_Systems}
+\end{itemize}
+
+
+Die durch starke Niederschläge verursachte Dämpfung $L_\mathrm{Regen}$ ist das Produkt aus der spezifischen Dämpfung $\gamma_\mathrm{Regen}$ in $\text{dB/km}$ und der effektiven Pfadlänge $D_\mathrm{Regen}$ $(\text{km})$, welche die elektromagnetischen Wellen durch den Regen zurücklegen müssen.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    L_\mathrm{Regen}=\gamma_\mathrm{Regen}\cdot D_\mathrm{Regen}
+    \label{eq:Dämpfung-durch-Regen}
+\end{equation}
+Die spezifische Dämpfung $\gamma_\mathrm{Regen}$ ist abhängig von der Frequenz $f$ und der Niederschlagsmenge $R_\mathrm{\mathrm{0.01}}$, welche die durchschnittliche Niederschlagsmenge $\text{mm/h}$ eines Jahres zu $p=0.01\,\%$
+überschreitet. Diese Niederschlagsmenge ist wichtig, da dann die spezifische Dämpfung $\gamma_\mathrm{Regen}$ am größten ist und der Downlink eventuell nicht mehr aufrecht erhalten werden kann. Damit steigt dann auch die Ausfallzeit.\cite{Satellite_Communications_Systems}\newline
+Die Dämpfung für andere Niederschlagsrate $R_\mathrm{p}$, welche zu $0\,\%\leq p\leq5\,\%$ der Zeit den Jahresdurchschnitt überschreiten können aus der Dämpfung $L_\mathrm{Regen}$ für $R_\mathrm{0.01}$ gewonnen werden.\cite{Satellite_Communications_Systems}\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Rainrate.png}
+    \caption{Karte zeigt die Niederschlagsmenge $(\text{mm/h})$ welche zu $p=0.01\,\%$ den jährlichen Durchschnitt überschreitet \cite{ITU-RP.837-8}}
+    \label{fig:ITUR-Regenrate}
+\end{figure}
+Die Karte in Abbildung \ref{fig:ITUR-Regenrate} zeigt eine globale Übersicht über die Niederschlagsmenge $R_\mathrm{p}$ $(\text{mm/h)}$ welche zu $p=0.01\,\%$ den Jahresdurchschnitt in der jeweiligen Region überschreitet. Für den Norddeutschen Raum kann eine Niederschlagsrate $R_\mathrm{0.01}\approx35\,\text{mm/h}$ entnommen werden.\newline
+Die durch starke Niederschläge verursachte Dämpfung $L_\mathrm{Regen}$ wird in mehreren Schritten bestimmt. Im ersten Schritt muss die effektive Regenhöhe $h_\mathrm{R}$ bestimmt werden. Dafür ist die Höhe $h_\mathrm{iso}$ der durchschnittliche $0\degree$ isothermische Schicht über dem Meeresspiegel wichtig. Die isothermische Höhe $h_\mathrm{iso}$ ist eine fiktive Grenze zwischen zwei Luftmassen. Oberhalb der Grenze weisen die Luftmassen eine negative Temperatur und unterhalb eine positive Temperatur auf. Sie kann aus einer Karte entnommen werden.\cite{isothermehöhe} Im Raum Europa beträgt diese $h_\mathrm{iso}=3\,\text{km}$.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    h_\mathrm{R} = h_\mathrm{iso}+0.36\,\text{km}=3\,\text{km}+0.36\,\text{km}=3.36\,\text{km}
+    \label{eq:effekitve-Regenhöhe}
+\end{equation} 
+Mithilfe der effektiven Regenhöhe $h_\mathrm{R}$ kann die Länge des Pfade unter den Regenwolken $D_\mathrm{S}$ bestimmt werden. Dafür ist auch der Elevationswinkel $\varepsilon$ der Antenne notwendig und die Höhe $h_\mathrm{Station}$der Bodenstation über dem Meeresspiegel. Das Gebäude der Hochschule Bremen am Flughafen, in welchem die Bodenstation errichtet wird, befindet sich $7\,\text{m ü.N.N}$\cite{höhebremen}. Die Höhe des Gebäudes kann mit $12\,\text{m}$ angenommen werden. Daraus ergibt sich für die Höhe der Station über dem Meeresspiegel $h_\mathrm{Station}=7\,\text{m}+12\text{m}=19\,\text{m}$. Für die Berechnung der Pfadlänge $D_\mathrm{S}$ wird der Elevationswinkel $\varepsilon$ der Antenne benötigt. Dieser wird in der Gleichung \ref{eq:Elevation-Antenne} mit $\varepsilon=27.36\degree$ angegeben.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    D_\mathrm{S}=\frac{h_\mathrm{R}-h_\mathrm{Station}}{\sin(\epsilon)}=\frac{3.36\,\text{km}-0.019\,\text{km}}{\sin(27.36\degree)}=7.26\,\text{km}
+    \label{eq:länge-des-schrägen-Pfads-unter-den-Wolken}
+\end{equation}
+Im nächsten Schritt wird die horizontale Projektion $D_\mathrm{HP}$ der Pfadlänge $D_\mathrm{S}$ bestimmt. Diese wird für die Bestimmung der spezifische Dämpfung $\gamma_\mathrm{Regen}$ benötigt.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    D_\mathrm{HP}=D_\mathrm{S}\cdot\cos(\varepsilon)=7.26\,\text{km}\cdot{\cos(27.36\degree)}=6.44\,\text{km}
+    \label{eq:horizontale-Projektion}
+\end{equation}
+Die spezifische Dämpfung $\gamma_\mathrm{Regen}$ ist von der bestimmten Niederschlagsrate 
+$R_\mathrm{0.01}\approx35\,\frac{\text{mm}}{\text{h}}$ abhängig.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    \gamma_\mathrm{Regen}=k\cdot(R_\mathrm{0.01})^\alpha
+\end{equation}
+Dabei sind $k$ und $\alpha$ frequenzabhängige Koeffizienten, welche mit\cite{Satellite_Communications_Systems} 
+\begin{equation}
+    k=\frac{k_\mathrm{H}+k_\mathrm{V}+(k_\mathrm{H}-k_\mathrm{V})\cos^2{\epsilon}\cdot\cos{2\tau}}{2}
+\end{equation}
+beziehungsweise
+\begin{equation} \alpha=\frac{k_\mathrm{H}\cdot\alpha_\mathrm{H}+k_\mathrm{V}\cdot\alpha_\mathrm{V}+(k_\mathrm{H}\cdot\alpha_\mathrm{H}-k_\mathrm{V}\cdot\alpha_\mathrm{V})\cos^2{\epsilon}\cdot\cos{2\tau}}{2k}
+\end{equation}
+bestimmt werden können. Die Werte für $k_\mathrm{H}$, $k_\mathrm{V}$, $\alpha_\mathrm{H}$ und $\alpha_\mathrm{V}$ sind von der Frequenz des Downlinks abhängig und können aus einer Tabelle in ITU-R P.838 entnommen werden. Für $f=10\,\text{GHz}$ gilt\cite{ITU-RP.838-3}:
+\begin{itemize}
+    \item $k_\mathrm{H}=0.01217 $
+    \item $k_\mathrm{V}=0.01129 $
+    \item $\alpha_\mathrm{H}=1.2571 $
+    \item $\alpha_\mathrm{V}=1.2156 $
+\end{itemize}
+Die weitere Berechnung der spezifischen Dämpfung $\gamma_\mathrm{Regen}$ erfolgt in Python. Das Pythonskript ist im Github-Repository und im Anhang \ref{lst:Dämpfung-durch-Regen-python} hinterlegt. Für die spezifischen Dämpfung $\gamma_\mathrm{Regen\,0.01}$ ergibt sich für eine Niederschlagsmenge $R_\mathrm{0.01}=35\,\text{mm/h}$ ein Wert von 
+\begin{equation*}
+    \gamma_\mathrm{Regen}=1.03\,\frac{\text{dB}}{\text{km}}
+\end{equation*}
+Für die effektive Pfadlänge ergibt sich ein Länge von
+\begin{equation*}
+    D_\mathrm{Regen}= 8.59\,\text{km}
+\end{equation*}
+Die mit Gleichung \ref{eq:Dämpfung-durch-Regen} bestimmte Dämpfung $L_\mathrm{Regen}$ durch Niederschläge, welche zu $p=0.01\,\%$ den Jahresdurchschnitt überschreitet, beträgt damit 
+\begin{equation}
+    L_\mathrm{Regen}=\gamma_\mathrm{Regen}\cdot D_\mathrm{Regen}=1.03\,\frac{\text{dB}}{\text{km}}\cdot8.59\,\text{km}=8.86\,\text{dB}
+    \label{eq:bestimmte-Regendämpfung}
+\end{equation}
+Die Dämpfung $L_\mathrm{Regen}$ gilt für eine Niederschlagsmenge $R_\mathrm{0.01}=35\,\text{mm/h}$. Diese Niederschlagsmenge überschreitet im Bereich Norddeutschland den Jahresdurchschnitt zu $p=0.01\,\%$ der Zeit. Diese Dämpfung ist für die Wetterbedingung Regen relevant und bietet einen guten Schätzwert für die Dämpfung, welche bei stärkeren Regenschauern auftritt.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Attenuation_caused_by_rain_10_GHz.png}
+    \caption{Graph zeigt die Dämpfung $L_\mathrm{Regen}$ in Abhängigkeit von der Niederschlagsrate $R_\mathrm{0.01}$ in $\text{mm/h}$ für die Frequenz $f=10\,\text{GHz}$ }
+    \label{RegenDämpdungGraph}
+\end{figure}
+Die Abbildung \ref{RegenDämpdungGraph} zeigt die Dämpfung $L_\mathrm{Regen}$ in Abhängigkeit von der Niederschlagsrate für die Frequenz $f=10\,\text{GHz}$. Wichtig ist, dass die Niederschlagsraten $R_\mathrm{p}$ in $\text{mm/h}$ dabei die Niederschlagsraten sind, welche den Jahresdurchschnitt zu $p = 0.01\,\%$ der Zeit überschreiten.\newline
+Wie bereits erwähnt können die geschätzte Dämpfungen für Niederschlagsmengen $R_\mathrm{p}$, welche den Jahresdurchschnitt zu  $0\,\%\leq p\leq5\,\%$ der Zeit überschreiten, aus der Dämpfung $L_\mathrm{Regen}$ bestimmt werden.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    L_\mathrm{Regen\,p}=L_\mathrm{Regen}\cdot\left(\frac{p}{0.01}\right)^{-(0.655+0.033\cdot\ln(p)-0.045\ln(L_\mathrm{Regen})-\beta(1-p)\cdot\sin(\varepsilon)}
+    \label{eq:Dämpfung-durch-Regen-für-0-bis-5}
+\end{equation}
+Der Koeffizient $\beta$ ist abhängig von der Wahrscheinlichkeit $p$, dem Längengrad $long_\mathrm{BS}$, sowie dem Elevationswinkel $\varepsilon$ der Antenne.\cite{Satellite_Communications_Systems}
+\begin{equation}
+ \beta = \begin{cases} 
+  0 & \text{,}\, p \geq1\,\% \,\text{oder}\,|long_\mathrm{BS}|\geq36\degree \\ 
+  -0.005(|long_\mathrm{BS}|-36) & \text{,}\, p <1\,\% \,\&\,|long_\mathrm{BS}|<36\degree\,\&\,\epsilon\geq27\degree \\ 
+  -0.005(|long_\mathrm{BS}|-36)+1.8-4.25\cdot\sin(\varepsilon) & \text{,}\,\text{sonst}
+  \label{eq:beta}
+\end{cases} 
+\end{equation}
+Zur Bestimmung der Dämpfung $L_\mathrm{leichterRegen}$ für Niederschlagsmenge $R_\mathrm{p}$, welche zu $p=5\,\%$ der Zeit den Jahresdurchschnitt $(\text{mm/h})$ überschreiten, werden die Koordinaten der Bodenstation benötigt. Diese können aus der Karte in Abbildung \ref{fig:Koordinaten der Bodenstation} gewonnen werden. Die Bodenstation befindet sich an den Koordinaten $53.055\degree, 8.78\degree$, womit $long_\mathrm{BS} =8.78\degree$ ist. Der Elevationswinkel der Antenne wird in Gleichung \ref{eq:Elevation-Antenne} bestimmt und beträgt $e=27.88\degree$.\newline
+Die Dämpfung $L_\mathrm{leichterRegen}$ für Niederschlagsmenge, welche zu $p=5\,\%$ der Zeit den Jahresdurchschnitt $(\text{mm/h})$ überschreiten, wird mithilfe der Gleichungen \ref{eq:Dämpfung-durch-Regen-für-0-bis-5} und \ref{eq:beta} in Python bestimmt.
+\begin{equation}
+    L_\mathrm{leichterRegen}=0.2\,\text{dB}
+    \label{eq:Dämpfung-durch-leichten-Regen}
+\end{equation}
+Die Dämpfung $L_\mathrm{leichterRegen}$ aus Gleichung \ref{eq:Dämpfung-durch-leichten-Regen} ist deutlich geringer als die Dämpfung $L_\mathrm{Regen}$ in Gleichung \ref{eq:bestimmte-Regendämpfung}, da in $L_\mathrm{leichterRegen}$ auch niedrigere Regenrate mitberücksichtigt. Die Dämpfung $L_\mathrm{leichterRegen}$ bietet einen bessere Schätzung für die durchschnittliche Dämpfung bei normalen Regenschauern, während die die Dämpfung $L_\mathrm{Regen}$ eine gute Schätzung für starke Regenschauer ist.
+
+
+\subsubsection*{Dämpfung durch Gase und Dämpfe in der Atmosphäre}
+Neben Regen und Schnee haben auch Gase, Dämpfe und andere Partikel in der Atmosphäre eine dämpfende Wirkung auf die elektromagnetischen Wellen. In den Frequenzen $f\leq1000\,\text{GHz}$ tragen hauptsächlich Sauerstoff und Wasserdampf, welche in der Ionosphäre ionisiert werden, zur Dämpfung $L_\mathrm{Gas}$ bei.\cite{ITU-RP.676-13}\newline
+Durch die Addition der einzelnen Spektrallinien von Wasserdampf und Sauerstoff kann, in Kombination mit einem kleinen Faktor, die spezifische Dämpfung $\gamma_\mathrm{Gas}$ präzise für verschiedene Drücke, Temperatur und Luftfeuchtigkeit bestimmt werden.\cite{ITU-RP.676-13}\cite{Satellite_Communications_Systems}
+\begin{equation}
+    \gamma_\mathrm{Gas}=\gamma_\mathrm{Oxygen}+\gamma_\mathrm{Waterwapor}=0.1820\cdot f(N^{\glqq}_\mathrm{0xygen}(f)+N^{\glqq}_\mathrm{Waterwapor}(f))
+\end{equation}
+Dabei wird die Frequenz $f$ in GHz angegeben und die $N^"_\mathrm{0xygen}(f)$und$N^"_\mathrm{Waterwapor}(f)$ sind von der Frequenzabhängige Funktionen. Ihre Werte können für eine bestimmte Frequenz in einem Graphen nachgeschaut werden.\cite{ITU-RP.676-13}
+Für eine Standard Atmosphäre, bedeutet Druck am Boden $p=1013\,\text{hPa}$, Temperatur am Boden $T=19\degree\text{C}$ und Wasserdampfkonzentration am Boden $c=7.5\,\frac{\text{g}}{\text{m}³}$, lässt sich die Dämpfung $L_\mathrm{Gas}$ in Abhängigkeit der Frequenz $f$ für verschiedene Elevationswinkel $\epsilon\geq10\degree$ in einem Graphen darstellen.\cite{Satellite_Communications_Systems} 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Bilder/Dämpfung durch Gase.png}
+    \caption{Die Dämpfung durch Gase und Dämpfe $L_\mathrm{Gas}$ in Abhängigkeit der Frequenz für verschiedene Elevationswinkel $\epsilon$.\cite{Satellite_Communications_Systems}}
+    \label{DämpfungdurchGaseGraph}
+\end{figure}
+Die Abbildung \ref{DämpfungdurchGaseGraph} zeigt die Dämpfung durch Gase und Dämpfe $L_\mathrm{Gas}$ in der Atmosphäre in Abhängigkeit von der Frequenz $f$ für verschiedene Elevationswinkel $\epsilon$ der Antenne.\newline
+Für Frequenzen $f\leq15\,\text{GHz}$ ist die Dämpfung eher gering. Die maximale Dämpfung im dargestellten Frequenzbereich liegt bei $L_\mathrm{Gas}=2,7\,\text{dB}$ bei $f=22.24\,\text{GHz}$. Die Dämpfung an dieser Frequenz folgt aus dem Absorptionsband von Wasserdampf.\cite{Satellite_Communications_Systems}\newline
+Die Mittenfrequenz $f_\mathrm{center}$ des Schmalbandtransponders auf Es'Hail-2 (QO-100) liegt bei $f_\mathrm{center}=10489.750\,\text{MHz}\approx 10.5\,\text{GHz}$. Der Elevationswinkel der Antenne an der Bodenstation ist in Gleichung \ref{eq:Elevation-Antenne} mit $\epsilon=27.36\degree\approx30\degree$ angeben. Aus dem Graph kann für die angegeben Werte eine Dämpfung von $L_\mathrm{Gas}\approx0.1\,\text{dB}$ entnommen werden.
+
+
+\subsubsection*{Verluste durch nicht optimale Ausrichtung der Antennen}
+Die Antenne des Schmalbandtransponders auf Es’Hail‑2 (QO-100) und die Antenne der Bodenstation am IAT sind nicht ideal aufeinander ausgerichtet, wie in Abbildung\ref{fig:Ausrichtungsverluste} dargestellt. 
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/Ausrichtunsgverluste}
+    \caption{Veranschaulichung der Ausrichtungsverluste. Die optimale Ausrichtung ist in schwarz dargestellt, die tatsächliche Ausrichtung in rot.}
+    \label{fig:Ausrichtungsverluste}
+\end{figure}
+Die Antenne des Transponders ist senkrecht auf den Äquator ausgerichtet, um eine möglichst gleichmäßige Abdeckung großer Teile der Erde zu gewährleisten. Dadurch ergibt sich jedoch ein Gewinnverlust $ G_\mathrm{T} $ gegenüber dem maximal möglichen Gewinn $ G_\mathrm{T,max} $ auf der Seite des Senders. Dieser Verlust im Gewinn führt wiederum zu einer Reduzierung der empfangenen Leistung $ P_\mathrm{R} $ im Vergleich zur maximal erreichbaren Empfangsleistung $ P_\mathrm{R,max} $. Diese Verluste werden auch Ausrichtungsverluste genannt (engl. Depointing Losses).\cite{Satellite_Communications_Systems}\newline
+Die Ausrichtungsverluste lassen sich auf der Seite des Senders mit\cite{Satellite_Communications_Systems}
+\begin{equation}
+    L_\mathrm{\theta T}=12\cdot \left(\frac{\theta_\mathrm{T}}{\theta_\mathrm{3dB}}\right)^2
+\end{equation}
+beziehungsweise auf der Empfängerseite mit\cite{Satellite_Communications_Systems}
+\begin{equation}
+    L_\mathrm{\theta R}=12\cdot \left(\frac{\theta_\mathrm{R}}{\theta_\mathrm{3dB}}\right)^2
+\end{equation}
+bestimmen. Dabei sind $\theta_\mathrm{T}$,beziehungsweise $\theta_\mathrm{R}$ der Winkel der Fehlausrichtung und $\theta_\mathrm{3dB}$ die 3dB-Strahlbreite der Antenne des Senders.\cite{Satellite_Communications_Systems}\newline
+Die $3\,\text{dB-Strahlbreite}$ der Hornantenne auf Es'Hail-2 (QO-100) beträgt $\theta_\mathrm{3dB}=17.4\degree$.\cite{EsHail2} Zur Bestimmung der Ausrichtungsverluste auf der Seite des Senders $L_\mathrm{\theta T}$ muss zunächst der Winkel der Fehlausrichtung $\theta_\mathrm{T}$ bestimmt werden. Die Hornantenne des Schmalbandtransponders auf Es'Hail-2 (QO-100) ist für gleichmäßige Abdeckung über die Erde auf den Äquator gerichtet. Die Ausrichtung von Es'Hail-2 (QO-100) und der Bodenstation sind in Abbildung \ref{eq:EntfernungEsHail2} dargestellt. Dabei entspricht der Winkel der Fehlausrichtung $\theta_\mathrm{T}$ dem Winkel $\beta$ zwischen dem Abstand $r+r_\mathrm{02}$ von Es'Hail-2 (QO-100) zur Höhe der Bodenstation über den Äquator und dem Abstand zur Bodenstation am IAT $D_\mathrm{SAT}$.
+\begin{equation*}
+    \theta_\mathrm{T}=\beta= \arccos\left(\frac{r+r_\mathrm{02}}{D_\mathrm{SAT}}\right)=\arccos\left(\frac{35790\,\text{km}+2548.22\,\text{km}}{38676\,\text{km}}\right)=7.58\degree
+\end{equation*}
+Damit beträgt der Ausrichtungsverlust auf der Seite des Senders
+\begin{equation}
+     L_\mathrm{\theta T}=12\cdot \left(\frac{\theta_\mathrm{T}}{\theta_\mathrm{3dB}}\right)^2=12\cdot\left(\frac{7.58\degree}{17.4\degree}\right)^2=5.23\,\text{dB}
+     \label{eq:Senderseitige-Fehlausrichtung}
+\end{equation}
+Auf der Empfängerseite kann mit einem maximalen Winkel der Fehlausrichtung von $\theta_R=1\degree$ ausgegangen werden. So ergibt sich ein Ausrichtungsverlust auf der Seite des Empfängers von
+\begin{equation}
+     L_\mathrm{\theta R}=12\cdot \left(\frac{\theta_\mathrm{R}}{\theta_\mathrm{3dB}}\right)^2=12\cdot\left(\frac{1\degree}{17.4\degree}\right)^2=0.69\,\text{dB}
+     \label{eq:Empfängerseitige-Fehlausrichtung}
+\end{equation}
+
+
+\subsubsection*{Weitere Einflüsse und Gesamtdämpfung}
+Weiterhin kann auch die Dämpfung durch Regen- und Eiswolken, sowie Nebel berücksichtigt werden. Die spezifische Dämpfung $\gamma_\mathrm{REN}$ in $\text{dB/km}$ wird folgend bestimmt.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    \gamma_\mathrm{REN}=K\cdot M
+\end{equation}
+Wobei $K=1.2\cdot10^{-3}\cdot f^{1.9}\,\text{in}\frac{\text{dB/km}}{\text{g/}\text{m}^3}$ ein approximierter Wert ist. Die Frequenz $f$ wird in $\text{GHz}$ angeben. Die Variable $M$ in $\text{g/}\text{m}^3$ ist die Wasserkonzentration in den Wolken oder Nebel.\cite{Satellite_Communications_Systems}\newline
+Die Dämpfung durch Regen- und Eiswolken ist im Vergleich zu der Dämpfung durch Regen sehr gering $L_\mathrm{Wolken}\approx0.2\,\text{dB}$.\cite{Satellite_Communications_Systems}\newline
+Für dichten Nebel, welcher im Raum Bremen schon häufiger auftritt, kann von einer Wasserkonzentration $M=0.5\,\text{g/}\text{m}^3$ ausgegangen werden\cite{Satellite_Communications_Systems}. Damit ergibt sich für eine Frequenz $f\approx10.5\,\text{GHz}$ eine spezifische Dämpfung $\gamma_\mathrm{REN}$ von
+\begin{equation*}
+    \gamma_\mathrm{REN}=K\cdot M=1.2\cdot 10^{-3}\cdot (10.5\,\text{GHz})^{1.9}\frac{\text{dB/km}}{\text{g/}\text{m}^3}\cdot0.5\,\text{g/}\text{m}^3=0.052\,\text{dB/km}
+\end{equation*}
+Was zusammen mit der in Gleichung effektiven Pfadlängen $D_\mathrm{Regen}=8.59\,\text{km}$ zu einer Dämpfung
+\begin{equation}
+     L_\mathrm{Nebel}=\gamma_\mathrm{REN}\cdot D_\mathrm{Regen}=0.052\,\text{dB/km}\cdot 8.59\,\text{km}=0.447\,\text{dB}
+\end{equation}
+führt. Die einzelnen in der Atmosphäre bestimmten Dämpfungen $L_\mathrm{Regen}$,$L_\mathrm{leichterRegen}$, $L_\mathrm{Gas}$, $L_\mathrm{Wolken}$ und $L_\mathrm{Nebel}$ können für die jeweilige Wetterbedienung zu einer gesamten Dämpfung $L_\mathrm{At}$ zusammengefasst werden.\newline
+Bei der Wetterbedingung klarer Himmel (engl. clear Sky) kann die Dämpfung durch Regen und Wolken vernachlässigt werden. Die einzigen auftretenden Dämpfungen in der Atmosphäre entstehen durch Gase und Dämpfe in der Atmosphäre und gegebenenfalls durch Nebel auf dem Boden.\newline
+\begin{equation}
+    L_\mathrm{ATklarerHimmel}=L_\mathrm{Gas,\,dB}+L_\mathrm{Nebel,\,dB}=0.1\,\text{dB}+0.447\,\text{dB}=0.547\,\text{dB}
+    \label{eq:Dämpfung-in-der-Atmosphäre-klarer-Himmel}
+\end{equation}
+In der Bedingung leichter Regen wird die Dämpfung durch Niederschlagsraten $R_\mathrm{p}$ in $\text{mm/h}$ berücksichtigt, welche zu $p=5\,\%$ der Zeit den Jahresdurchschnitt $(\text{mm/h})$ überschreiten. Ebenfalls werden auch die Verluste durch Gase und Dämpfe in der Atmosphäre, durch Wolken und gegebenenfalls durch Nebel berücksichtigt.
+\begin{equation}
+\begin{split}
+    L_\mathrm{ATleichterRegen} & =L_\mathrm{leichterRegen\,dB}+L_\mathrm{Gas,\,dB}+L_\mathrm{Wolken,\,dB}+L_\mathrm{Nebel,\,dB}\\
+    & = 0.2\,\text{dB}+0.1\,\text{dB}+0.2\,\text{dB}+0.447\,\text{dB} = 0.947\,\text{dB}
+\end{split} 
+\label{eq:Dämpfung-in-der-Atmosphäre-leichter-Regen}
+\end{equation}
+In der Bedingung Regen dominiert die Dämpfung durch starke Niederschläge. Es wird die Dämpfung durch Niederschlagsraten $R_\mathrm{p}$ in $\text{mm/h}$ berücksichtigt, welche den Jahresdurchschnitt $(\text{mm/h})$ zu $p=0.01\,\%$ der Zeit überschreiten. Auch werden wieder die Dämpfungen durch Gase und Dämpfe in der Atmosphäre, durch die Wolken und gegebenenfalls auch wieder durch Nebel berücksichtigt.
+\begin{equation}
+\begin{split}
+    L_\mathrm{ATRegen} & =L_\mathrm{Regen,\,dB}+L_\mathrm{Gas,\,dB}+L_\mathrm{Wolken,\,dB}+L_\mathrm{Nebel,\,dB}\\
+    & = 8.86\,\text{dB}+0.1\,\text{dB}+0.2\,\text{dB}+0.447\,\text{dB} = 9.61\,\text{dB}
+\end{split}
+\label{eq:Dämpfung-in-der-Atmosphäre-Regen}
+\end{equation}
+
+\subsection{Empfänger - Bodenstation am IAT}
+Um die Signale des Schmalbandtransponders von Es'Hail-2 (QO-100) empfangen und weiterverarbeiten zu können, benötigt es ein geeignetes Empfangssystem. Das Empfangssystem muss mehrere Voraussetzung erfüllen.
+\begin{enumerate}
+    \item Das Empfangssystem sollte technisch dazu fähig sein den Downlink von Es'Hail-2 (QO-100) im X-Band empfangen und verarbeiten zu können.
+    \item Das Empfangssystem sollte eine großen Dynamikbereich besitzen. Mit einem hohen Dynamikbereich kann das Empfangssystem Signale mit sehr kleinen Pegel in der Nähe des Rauschflurs, als auch Signale mit sehr großem Pegel ohne zu übersteuern verarbeiten.
+    \item Die Bandbreite des Empfangssystem sollte mindestens $B_\mathrm{min}=2.7\,\text{kHz}$ breit sein, um die maximal zulässige Einzelsignalbandbreite gemäß des Bandplans vom Schmalbandtransponders auf Es'Hail-2 (Q0-100) empfangen zu können.
+    \item Das Empfangssystem sollte ein möglichst hohes $SNR$ an seinem Eingang und Ausgang aufweisen. So können Fehler in der Demodulation der Signale von Es'Hail-2 (QO-100) gering gehalten werden. Ein hohes $SNR$ am Ausgang erfordert einen möglichst rauscharmen RF-Bereich des Empfangssystem. Daher sollte die möglichen Rauschquellen im RF-Bereich des Empfangssystem und die Rauschzahl $F$ so gering wie möglich gehalten werden.
+    \item Gleichzeitig muss das Empfangssystem eine gewissen Verstärkung $G_\mathrm{sys}$ aufweisen. Mit einer passenden Verstärkung $G_\mathrm{sys}$ kann der schwache Pegel der Signale von Es'Hail-2 (QO-100) so angehoben werden, dass es vom SDR optimal verarbeiten werden kann.
+    \item Das Empfangssystem sollte auch bei leichten Regenschauern, spricht Niederschlagsmengen $\text{mm/h}$, welche zu $5\,\%$ der Zeit die Durchschnittsniederschlagsmenge $\text{mm/h}$ eines Jahres überschreiten, den Downlink von Es'Hail-2 (QO-100) aufrechterhalten können.
+    \item Die Verluste im RF-Fronted $L_\mathrm{sys}$ des Empfangssytems sollte so gering wie möglich gehalten werden. 
+    \item Die neu zu beschaffenden Komponenten sollte mit den vorhandenen Komponenten der Bodenstation vom IAT kompatibel sein und den Standards in der Telekommunikation entsprechen.
+    \item Für das Software Defined Radio (SDR) muss eine geeignete SDR-Software mithilfe von GNU-Radio Companion erstellt werden.
+\end{enumerate}
+Damit das Empfangssystem den Downlink im X-Band empfangen kann, braucht es hierfür eine geeignete Antenne. Am Flughafen Standort der Hochschule Bremen ist bereits eine Parabolantenne, wie sie für Satellitenfernsehen üblich ist, vorhanden. Diese müsste hinsichtlich ihrer Eignung für den Empfang des Downlinks von Es'Hail-2 (QO-100) im X-Band überprüft werden.\newline
+Die Größe des Dynamikbereich wird vom ADC des SDR bestimmt. In der Bodenstation vorhanden ist ein USRP X310 SDR von National Instruments (NI). Auch wird die maximale Bandbreite $B_\mathrm{max}$ mit vom SDR bestimmt. Das SDR muss ebenfalls auf die Eignung, Hardware und Softwareunterstützung, für den Einsatz im Empfangssystem für den Downlink von Es'Hail-2 (QO-100) überprüft werden.\newline
+Mithilfe der Gleichungen \ref{eq:Gesamtrauschzahl-Kaskade} und \ref{eq:Gesamt-äquivalente-Rauschtemperatur-Kaskade} lassen sich mehrere Vorschriften und Bedienungen für den Aufbau der Empfangskette herleiten.
+\begin{enumerate}
+    \item Das erste Zweitor nach der Antenne hat den größten Einfluss auf die Gesamtrauschzahl $F_\mathrm{sys}$ der Empfangskette. Daher sollte das erste Zweitor ein niedriges Eigenrauschen und damit verbundene niedrige Rauschzahl $F_\mathrm{1}$, sowie eine hohe Verstärkung $G_\mathrm{1}$ besitzen, da die folgenden Zweitore mit dem Gewinn $G_\mathrm{1}$ des ersten Zweitores gewichtet werden.\cite{HEUERMANN_2018}
+    \item Die folgenden Zweitore haben bei einem entsprechend großen Gewinn $G_\mathrm{1}$ nur noch geringe Auswirkung auf die Gesamtrauschzahl $F_\mathrm{sys}$ oder der äquivalenten Rauschtemperatur des Gesamtsystems $T_\mathrm{e,sys}$.\cite{HEUERMANN_2018}
+    \item Wie in Gleichung \ref{eq:Rauschzahl-passives-Zweitor} gezeigt, ist der Verlust $L$ passiver Zweitore gleich ihrer Rauschzahl $F$. Daher sollten Koaxialleitung mit niedrigen Verlust verwendet und Lange Wege reduziert werden. Auch sollte auf Dämpfungsglieder verzichtet werden.
+    \item Da jedes Zweitor zwangsläufig das $SNR$ verschlechtert, sollte die Anzahl der Zweitore im RF-Frontend auf das mögliche Minimum reduziert werden.
+\end{enumerate}
+Mithilfe dieser Vorschriften und Bedienungen kann ein geeigneter RF-Bereich der Empfangssystems geplant werden.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Empfangskette}
+    \caption{Blockschaltbild vom RF-Bereich des Empfangssystems}
+    \label{fig:geplante-Empfangskette}
+\end{figure}
+In der Abbildung \ref{fig:geplante-Empfangskette} ist ein Blockschaltbild vom geplanten RF-Bereich des Empfangssystems zusehen. Als erstes Zweitor wird eine Koaxialleitung mit sehr geringen Verlusten eingesetzt. Die Koaxialleitung ist notwendig, da das zweite Zweitor, ein LNC, nicht direkt an die Antenne angeschlossen werden kann. Der LNC ist rauscharmer Mischer mit integrierten Verstärker. Montiert wird der LNC in der Nähe der Antenne, damit die Länge der ersten Koaxialleitung gering gehalten werden kann. Das dritte Zweitor ist wieder eine Koaxialleitung, welche die lange Strecke vom LNC auf dem Dach bis zum Serverschrank, wo sich die Fernspeiseweiche befindet, überbrückt wird. Über die Fernspeiseweiche wird der LNC mit der nötigen Betriebsspannung $V_\mathrm{cc}$ und ggf. einem $10\,\text{MHz}$ Referenzsignal versorgt. Das fünfte Zweitor ist ebenfalls wieder eine Koaxialleitung, mit welcher die Fernspeiseweiche mit dem Patchfeld verbunden wird. Über das Patchfeld, welches das sechste Zweitor ist, kann eine einfache Verkablung im Serverschrank vorgenommen werden. Vom Patchfeld gibt es eine weitere Koaxialleitung zur Schaltmatrix (engl. RF-Switch). Die Schaltmatrix hat mehrere Eingänge und kann einen beliebigen Eingang auf seinen Ausgang durchschalten. So könnten mit einem SDR mehrere verschiedene Empfangssysteme betrieben werden. Vom Ausgang der Schaltmatrix führt anschließend noch eine Koaxialleitung zum SDR, welches das letzte Zweitor im RF-Bereich vom Empfangssystem ist. Mit dem SDR werden die Datensignale von Es'Hail-2 (Q0-100) in brauchbare Daten und Informationen umgewandelt und anschließend an einen PC weitergegeben.\newline
+Als Systemimpedanz werden $50\,\Omega$ gewählt. Alle verwendeten Komponenten im RF-Frontend sind auf dieses Systemimpedanz angepasst. Die $50\,\Omega$ Impedanz hat sich als Standard in der Telekommunikationstechnik etabliert. Begründet werden kann das mit der Impedanz von Koaxialleitungen.\cite{Altium-Impedanz}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Impedanzkompromiss.png}
+    \caption{Darstellung der Verluste (blau) und der maximalen Leistungsübertragung (rot)  von luftgefüllten Koaxialleitungen ($\varepsilon_\mathrm{r}=1$) über die Impedanz\cite{Altium-Impedanz}}
+    \label{fig:Kompromiss-Impedanz}
+\end{figure}
+Eine Koaxialleitung soll drei Kriterien erfüllen. Sie soll möglichst geringe Verluste aufweisen. Das Dielektrikum soll dabei hohen Spannungen und damit verbunden hohen Feldstärke standhalten und die Koaxialleitung soll in der Lage sein, hohe Leistungen zu übertragen.\cite{Altium-Impedanz}\newline 
+In der Grafik \ref{fig:Kompromiss-Impedanz} sind zwei Graphen zu sehen. Dargestellt sind die normierten Verluste (blau) und die normierte maximale übertragbare Leistung (rot) von luftgefüllten Koaxialleitungen über deren Impedanz. Die höchste maximal übertragbare Leistung wird bei einer Impedanz von $30\,\Omega$ erreicht. Jedoch sind dann auch die Verluste vergleichsweise hoch. Am niedrigsten sind die Verluste bei einer Impedanz von $77\,\Omega$, jedoch ist hier die maximale übertragbare Leistung eher gering. Mit dieser Gegebenheit kann möglicherweise die $75\,\Omega$ Impedanz im Rundfunkbereich erklärt werden. Im TE10-Modus erreicht das elektrische Feld sein Maximum bei einer Impedanz von $60\,\Omega$.\cite{Altium-Impedanz}\newline
+Die $50\,\Omega$ Impedanz ist der beste Kompromiss aus minimaler Dämpfung, maximaler Leistungsübertragung und maximaler Feldstärke. Aus diesem Grund hat sie sich als Standard Referenz Impedanz etabliert.\cite{Altium-Impedanz}
+
+\subsubsection*{Antenne und Antennenfeed}
+Bei der verwendeten Antenne handelt es sich um eine Parabolantenne, wie sie z.B. für Satellitenfernsehen üblich ist. Die Parabolantenne gehört zu der Gruppe der Reflektorantennen, welche eine Kombination aus einem Reflektor und einem Antennenfeed sind.\cite{Balanis_2005}\newline
+Der Reflektor hat die Aufgabe, einfallende elektromagnetische Wellen in eine bestimmte Richtung zu reflektieren und damit die abgestrahlte Energie gezielt zu bündeln. Anders als bei flachen Reflektoren werden bei Parabolspiegeln die auftretenden EM-Wellen durch die parabolische Krümmung des Reflektors in einem gemeinsamen Punkt fokussiert. Dieser Punkt wird Brennpunkt (engl. focal point) genannt.\cite{Balanis_2005}\newline
+Im Brennpunkt der Parabolantenne befindet sich der Antennenfeed. Der Antennenfeed ist nichts anderes als eine gewöhnliche Antenne, welche die fokussierten EM-Wellen empfängt oder in Richtung des Reflektors abstrahlt. Hier wird eine Hornantenne als Antennenfeed verwendet. Diese bietet gegenüber einer Dipolantenne einen höheren Richtfaktor $D$ und damit verbunden auch einen höheren Gewinn $G$.\cite{Balanis_2005}\newline
+An der Hochschule ist bereits eine Parabolantenne vorhanden. Diese ist im Zuge eines Sturmes umgeknickt und soll nun wieder verwendet werden. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Parabolantenne.jpg}
+    \caption{Vorhandene Parabolantenne -> Bild noch austauschen}
+    \label{fig:vorhandene-Parabolantenne}
+\end{figure}
+Die Bild \ref{fig:vorhandene-Parabolantenne} zeigt die auf dem Dach der Hochschule vorhandene Parabolantenne. Beim Parabolspiegel handelt es sich um eine Kathrein CAS 90 HD ohne Logo. \newline
+Dieser Parabolspiegel hat einen Durchmesser von $d_\mathrm{Antenne}=0.9\,\text{m}$ und ist für den Betrieb im X-Band und unteres Ku-Band, genauer zwischen $10.7\,\text{GHz}$ und $12.75\,\text{GHz}$, vorgesehen.\cite{KathreinCAS90HD}\newline
+Aus dem Datenblatt lässt sich für den maximalen Gewinn $G_\mathrm{R,max}$ folgende Werte entnehmen.\cite{KathreinCAS90HD}
+\begin{equation}
+    G_\mathrm{R,max}=
+    \begin{cases}
+        38.6\,\mathrm{dBi}&,10.7\,\text{GHz}\leq f\leq 11.7\,\text{GHz}\\
+        39.2\,\mathrm{dBi}&,11.7\,\text{GHz}\leq f\leq 12.5\,\text{GHz}\\
+        39.6\,\mathrm{dBi}&,12.5\,\text{GHz}\leq f\leq 12.75\,\text{GHz}\\
+    \end{cases}
+    \label{eq:Gewinn-der-Empfangsantenne}
+\end{equation}
+Der bisherigen LNB zum Empfang von Satellitenfernsehen wird gegen neuen Feed zum Empfang von Es'Hail-2 ausgetauscht.\newline 
+Als Antennenfeed wird ein Triplebandfeed von der Firma BaMaTech eingesetzt. Dieser Antennenfeed ist speziell für den Einsatz an Es'Hail-2 (QO-100) entwickelt und kann in drei verschiedenen Frequenzbänder eingesetzt werden. Daher kommt auch der folgt auch sein Name.\cite{amatech-feed}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Triplebandfeed.jpg}
+    \caption{Das Bild zeigt den ausgewählten Triplebandfeed von BaMaTech. Die weiße Halterung am Antennenfeed dient zur Montage des Antennenfeeds in einem Halter. Diese wird durch eine eigene Halterung ausgetauscht.}
+    \label{fig:verwendeter Triplebandfeed}
+\end{figure}
+Das Abbildung \ref{fig:verwendeter Triplebandfeed} zeigt den Triplebandfeed von der Firma BaMaTech. Im Grunde handelt es sich dabei um eine Hornantenne mit drei Anschlüssen für die einzelnen Frequenzbänder. Verwendet werden kann der Triplebandfeed im S-Band bei $2.4\,\text{GHz}$, im C-Band bei $5.6\,\text{GHz}$ und im X-Band bei $10.5\,\text{GHz}$.\cite{amatech-feed}\newline
+Interessant ist in dieser Arbeit nur der Anschluss für das X-Band, wo sich der Downlink von Es'Hail-2 (QO-100) befindet. Allerdings kann somit der Feed auch für einen späteren Uplink zu Es'Hail-2 (QO-100), welcher im S-Band liegt, verwendet werden.\newline 
+Angeschlossen werden kann der Triplebandfeed mittels SMA-Steckverbindungen.\cite{amatech-feed}\newline
+Um die Tauglichkeit der Parabolantenne und des Feed für die Anwendung an Es'Hail-2 zu überprüfen kann zu einem die Effizienz $\eta_\mathrm{ANT}$ der effektive Antennenfläche $A_\mathrm{E}$ bestimmt werden. Auch kann die Reflexion $S11$ des Antennenfeeds gemessen und anschließend das $VSWR$ werden.\newline
+Die effektive Antennenfläche $A_\mathrm{E}$ der Parabolantenne kann über die Gleichung \ref{eq:effektive-Antennenfläche} bestimmt werden. Benötigt wird dafür der Gewinn $G_\mathrm{R,max}$ der Parabolantenne und die Wellenlänge $\lambda$ der betrachteten Frequenz $f$. Von Interesse ist die Frequenz des Downlink von Es'Hail-2 (QO-100). Die Mittenfrequenz beträgt $f_\mathrm{center}=10489.750\,\text{MHz}\approx 10.5\,\text{GHz}$, was zu einer Wellenlänge $\lambda_\mathrm{center}=0.0286\,\text{m}$ führt. Der Gewinn der Antenne kann aus Gleichung \ref{eq:Gewinn-der-Empfangsantenne} mit $G_\mathrm{R,max}=38.6\,\text{dBi}$ angenommen werden.
+\begin{equation}
+    A_\mathrm{E}=\frac{G_\mathrm{R,max}\cdot\lambda_\mathrm{center}^2}{4\cdot\pi}=\frac{38.6\,\text{dBi}\cdot(0.0286\,\text{m})^2}{4\cdot\pi}=0.472\,\text{m}^2
+    \label{eq:effektive-Antennenfläche-der-Empfangsantenne}
+\end{equation}
+Um die Effizienz der effektiven Antennenfläche $A_\mathrm{E}$ zu bestimmen, muss zunächst die physikalische Fläche $A_\mathrm{phy}$ der Parabolantenne bestimmt werden. Diese kann mithilfe der Mantelfläche eines Rotationsparaboloid bestimmt werden.\newline 
+Die Mantelfläche des Rotationsparaboloid kann mit der Höhe $h$ des Rotationsparaboloid und dessen Radius $r=\frac{d}{2}$ bestimmt werden. Die Höhe von Boden bis zur Kante der Parabolantenne beträgt $h=0.1\,\text{m}$.
+\begin{equation}
+\begin{split}
+   A_\mathrm{phy}
+   &=\frac{\pi\cdot r}{6h^2}\cdot\left((r^2+4h^2)^{\frac{3}{2}}-r^3\right)\\
+   &=\frac{\pi\cdot 0.45\,\text{m}}{6\cdot(0.1\,\text{m})^2}\cdot\left(((0.45\,\text{m})^2+4\cdot(0.1\,\text{m})^2)^{\frac{3}{2}}-(0.45\,\text{m})^3\right)\\
+   &=0.667\,\text{m}^2 
+\end{split}
+\label{eq:physikalische-Fläche-der-Empfangsantenne}
+\end{equation}
+Zusammen mit der effektiven Antennenfläche $A_\mathrm{E}$ in \ref{eq:effektive-Antennenfläche-der-Empfangsantenne} und der physikalischen Antennenfläche $A_\mathrm{phy}$ in \ref{eq:physikalische-Fläche-der-Empfangsantenne} kann die Effizienz $\eta_\mathrm{ANT}$ der Parabolantenne mit Gleichung \ref{eq:Effizienz-effektive-Antennenfläche} bestimmt werden.
+\begin{equation}
+    \eta_\mathrm{ANT}=\frac{A_\mathrm{E}}{A_\mathrm{phy}}=\frac{0.472\,\text{m}^2}{0.667\,\text{m}^2}=0.708=70.8\,\%
+    \label{eq:Effizienz-der-Antennenfläche-der-Empfangsantenne}
+\end{equation}
+Mit $\eta_\mathrm{Ant}= 70.8\,\%$ liegt die Effizienz der effektiven Antennenfläche $A_\mathrm{E}$ im typischen Bereich $(60\,\%-80\,\%)$ für Parabolantennen. Damit ist diese Parabolantenne für den Empfang des Downlinks von Es'Hail-2 (QO-100) geeignet.\newline
+Die Reflexion $S11$ des Antennenfeeds kann mithilfe eines Vektor Netzwerk Analysator (VNA) gemessen werden. Verwendet wird hierfür ein VNA von Rohde und Schwarz, genauer der R\&S ZVL. Vor der Messung wird dieser entsprechend in einem Frequenzbereich von $2\,\text{GHz}$ bis $12\,\text{GHz}$ für Offen (Open), Kurzschluss (Short) und einer Last (Load) $50\,\Omega$ kalibriert. Beim Kalibrierkit handelt es sich um ein 01 BN 533828 vom Hersteller Spinner. Der Messaufbau ist in der Abbildung \ref{fig:Messaufbau-für-S11-des-Antennenfeeds} dargestellt.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/Messaufbau S11}
+    \caption{Messaufbau zur Ermittlung der Reflexion $S11$ des Antennenfeeds}
+    \label{fig:Messaufbau-für-S11-des-Antennenfeeds}
+\end{figure}
+Für die Reflexion im X-Band wird der Frequenzbereich von $9\,\text{GHz}$ bis $12\,\text{GHz}$ mit $201$ Messpunkten betrachtet. Die Leistung wird auf $0\,\text{dBm}$ gesetzt, da es sich um ein passives Element handelt. Die Auflösung wird auf $5\,\text{dB/div}$ und das Referenzlevel auf $0\,\text{dB}$ eingestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Antennenfeed 10_5_GHz.PNG}
+    \caption{Gemessene Reflexion $S11$ des Antennenfeeds im X-Band}
+    \label{fig:S11-Antennenfeed-X-Band}
+\end{figure}
+Der Graph in Abbildung \ref{fig:S11-Antennenfeed-X-Band} zeigt die gemessene Reflexion $S11$ des Antennenfeeds zwischen $9\,\text{GHz}$ und $12\,\text{GHz}$. Der Marker 1 befindet sich bei $10.498\,\text{GHz}$, was nahe der Mittenfrequenz des Downlins von $f_\mathrm{center}=10489.750\,\text{MHz}$ ist. Gemessen wird an der Stelle eine Reflexion von $S11=-24.1\,\text{dB}$. Mithilfe der Reflexion kann das $VSWR$ bestimmt werden. Das $VSWR$ ist das Stehwellenverhältnis ist ein Maß für die Impedanzanpassung zwischen der Antenne und der Koaxialleitung (Quelle) an. Es entspricht dem Verhältnis der maximalen zur minimalen Spannung einer stehenden Welle und gibt damit an, wie viel Leistung von der Antenne zurück zur Quelle reflektiert wird. Bei $VSWR=1$ wird keine Leistung zurück zur Quelle reflektiert und die gesamte Leistung wird von der Antenne abgestrahlt. Das $VSWR$ kann mithilfe des Reflexionsfaktors $\Gamma=10^{\frac{S11}{20}}$bestimmt werden.\newline
+\begin{equation}
+    VSWR=\frac{U_\mathrm{max}}{U_\mathrm{min}}=\frac{1+|\Gamma|}{1-|\Gamma|}=\frac{1+|10^{\frac{-24.1\,\text{dB}}{20}}|}{1-|10^{\frac{-24.1\,\text{dB}}{20}}|}=1.13
+    \label{eq:VSWR-Empfangsantenne-X-Band}
+\end{equation}
+Mit einem $VSWR=1.13$ ist die Antenne sehr gut für den Frequenzbereich des Downlinks von Es'Hail-2 (QO-100) angepasst und ist somit für diese Anwendung geeignet.\newline
+Auch kann die Reflexion des S-Band gemessen werden, falls in der Zukunft noch ein Uplink zu Es'Hail-2 (QO-100) an der Bodenstation eingerichtet werden soll. Der Messaufbau bleibt der gleiche. Betrachtet wird für die Reflexion $S11$ der Bereich von $2\,\text{GHz}$ bis $3\,\text{GHz}$. Ebenfalls mit $201$ Messpunkten und einer Leistung von $0\,\text{dBm}$. Die Auflösung wird auf $5\,\text{dB/div}$ und das Referenzlevel auf $0\,\text{dB}$ eingestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Antennenfeed 2_4_GHz_Band.PNG}
+    \caption{Gemessene Reflexion $S11$ zwischen $2\,\text{GHz}$ und $3\,\text{GHz}$}
+    \label{fig:S11-Antennenfeed-S-Band}
+\end{figure}
+Die Abbildung \ref{fig:S11-Antennenfeed-S-Band} zeigt die gemessene Reflexion $S11$ des Antennenfeeds zwischen $2\,\text{GHz}$ und $3\,\text{GHz}$. Der Marker befindet sich bei $2.4\,\text{GHz}$, was nah an der Mittenfrequenz $f_\mathrm{center}=2400.250\,\text{MHz}$ des Uplinks zu Es'Hail-2 (QO-100) ist. An diesem Punkt wird eine Reflexion von $S11=-24.9\,\text{dB}$ gemessen. Mithilfe der Gleichung \ref{eq:VSWR-Empfangsantenne-X-Band} kann das $VSWR$ bestimmt werden.
+\begin{equation}
+    VSWR=\frac{U_\mathrm{max}}{U_\mathrm{min}}=\frac{1+|\Gamma|}{1-|\Gamma|}=\frac{1+|10^{\frac{-24.9\,\text{dB}}{20}}|}{1-|10^{\frac{-24.9\,\text{dB}}{20}}|}=1.12
+    \label{eq:VSWR-Empfangsantenne-S-Band}
+\end{equation}
+Das Ergebnis in Gleichung \ref{eq:VSWR-Empfangsantenne-S-Band} zeigt, dass die Antenne für Frequenzbereich des Uplinks zu Es'Hail-2 (QO-100) angepasst ist. Somit kann der Antennenfeed auch für den Uplink verwendet werden.\newline
+\subsubsection*{Low Noise Converter und Bias-Tee}
+Der von der Antenne empfangene Frequenzbereich wird über eine Koaxialleitung an das Empfangssystem weitergegeben. Jedoch ist ist die Leistung der gewünschte Signale zu gering und die Frequenz des Signals mit $f\approx10.5\,\text{GHz}$ viel zu hoch um direkt vom SDR verarbeitet werden zu können. Zuvor müssen die Signale also verstärkt und in niedriges Frequenzband umgesetzt werden.\newline
+Für diesen Zweck wird rauscharmer Signalumsetzer (engl. low Noise Converter) LNC der Firma Kuhne Electronic. Der MKU LNC 10 QO-100 ist für die Anwendung im $3\,\text{cm-Amateurfunkband}$, speziell für die Anwendung an Es'Hail-2 (QO-100), vorgesehen.\cite{kuhne-downconverter}\newline
+Dieser LNC kombiniert einen rauscharmen Verstärker (engl. Low Noise Amplifier) LNA und einen Mischer in einem Gerät und hat mehrere Vorteile gegenüber einem diskreten Aufbau aus Mischer und LNA. Gegenüber dem diskreten Aufbau benötigt der LNC weniger Platz und nur eine Stromversorgung gegenüber zwei beim diskreten Aufbau. Somit werden auch weniger Komponenten und Leitungen benötigt, was die Anzahl der Rauschquellen reduziert.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/MKU LNC10 QO 100.png}
+    \caption{MKU LNC 10 QO-100 von Kuhne Electronic\cite{kuhne-downconverter}}
+    \label{MKU LNC 10 QO-100}
+\end{figure}
+Der MKU LNC 10 QO-100 verfügt über einen HF-Eingang und einen ZF-Ausgang, wobei am Eingang eine SMA-Buchse und am Ausgang eine N-Buchse verbaut ist. Er unterstützt vier verschiedene Frequenzbänder zwischen wischen $10.35\,\text{GHz}$ und $10.5\,\text{GHz}$, welche über die Frequenz des lokalen Oszillator $f_\mathrm{LO}$ ausgewählt werden können.\cite{kuhne-downconverter}\newline
+Die Frequenz des lokalen Oszillator $f_\mathrm{ZF}$ kann mithilfe der Betriebsspannung $V_\mathrm{CC}$ ausgewählt werden. Die Betriebsspannung $V_\mathrm{CC}$ wird über die ZF-Buchse eingespeist.\cite{kuhne-bias-tee}\newline
+Mit der Veränderung der Frequenz des lokalen Oszillator $f_\mathrm{LO}$ wird auch die Frequenz des ZF-Signals $f_\mathrm{ZF}$ am ZF-Ausgang verändert.\cite{kuhne-downconverter}
+\begin{itemize}
+    \item Q0-100 SSB-Betrieb: Bei einer Betriebsspannung $12\,\text{V}\leq V_\mathrm{CC} \leq 17\,\text{V}$ befindet sich der LNC im Einseitenbandbetrieb. Die Frequenz des HF-Bereiches $f_\mathrm{HF}$ befindet sich dann zwischen $10489\,\text{MHz}$ und $10490\,\text{MHz}$ und die Frequenz des lokalen Oszillator liegt bei $f_\mathrm{LO}=10056\,\text{MHz}$.\cite{kuhne-downconverter} Die Frequenz des ZF-Signals $f_\mathrm{ZF}$ kann mit Gleichung \ref{eq:Frequenz-des-Mischproduktes} bestimmt werden.
+    \begin{equation}
+    \label{eq:fZF-QO100-SSB}
+        \begin{split}
+            &f_\mathrm{ZF,min}=f_\mathrm{HF,min}-f_\mathrm{LO}=10489\,\text{MHz}-10056\,\text{MHz}=433\,\text{MHz}\\  
+            &f_\mathrm{ZF,max}=f_\mathrm{HF,max}-f_\mathrm{LO}=10490\,\text{MHz}-10056\,\text{MHz}=434\,\text{MHz}
+        \end{split}
+    \end{equation}
+    \item QO-100 ATV-Betrieb: Um den QO-100 Betriebsmodus verwenden zu können muss die Betriebsspannung $V_\mathrm{CC}$ zwischen $18\,\text{V}$ und $23\,\text{V}$ DC liegen. Die Frequenz des HF-Bereich $f_\mathrm{HF}$befindet sich dann zwischen $10490\,\text{MHz}$ und $10500\,\text{MHz}$. Der lokale Oszillator hat damit dann eine Frequenz von $f_\mathrm{LO}=9240\,\text{MHz}$.\cite{kuhne-downconverter} 
+    \begin{equation}
+    \label{eq:fZF-QO100-ATV}
+        \begin{split}
+            &f_\mathrm{ZF,min}=f_\mathrm{HF,min}-f_\mathrm{LO}=10490\,\text{MHz}-9240\,\text{MHz}=1250\,\text{MHz}\\  
+            &f_\mathrm{ZF,max}=f_\mathrm{HF,max}-f_\mathrm{LO}=10500\,\text{MHz}-9240\,\text{MHz}=1260\,\text{MHz}
+        \end{split}
+    \end{equation}
+    \item SSB-Betrieb: Bei einer Betriebsspannung $V_\mathrm{CC}$ zwischen $9\,\text{V}$ und $11\,\text{V}$ DC befindet sich der LNC im Einseitenbandbetrieb im HF-Bereich zwischen $10368\,\text{MHz}$ und $10370\,\text{MHz}$. Der lokale Oszillator hat in diesem Betriebsmodus eine Frequenz von $f_\mathrm{LO}=9936\,\text{MHz}$.\cite{kuhne-downconverter}
+    \begin{equation}
+    \label{eq:fZF-SSB1}
+        \begin{split}
+            &f_\mathrm{ZF,min}=f_\mathrm{HF,min}-f_\mathrm{LO}=10368\,\text{MHz}-9936\,\text{MHz}=433\,\text{MHz}\\  
+            &f_\mathrm{ZF,max}=f_\mathrm{HF,max}-f_\mathrm{LO}=10370\,\text{MHz}-9936\,\text{MHz}=434\,\text{MHz}
+        \end{split}
+    \end{equation}    
+    \item SSB-Betrieb: Das letzte unterstütze Frequenzband von $10450\,\text{MHz}$ bis $10452\,\text{MHz}$ im HF-Bereich, kann mit einer Betriebsspannung $V_\mathrm{CC}$ zwischen $24\,\text{V}$ und $36\,\text{V}$ DC ausgewählt werden. Der LNC befindet sich wieder in einem Einseitenbandbetrieb. Der lokale Oszillator schwingt dabei mit einer Frequenz $f_\mathrm{LO}=10016\,\text{MHz}$.\cite{kuhne-downconverter} 
+    \begin{equation}
+    \label{eq:fZF-SSB1}
+        \begin{split}
+            &f_\mathrm{ZF,min}=f_\mathrm{HF,min}-f_\mathrm{LO}=10450\text{MHz}-10016\,\text{MHz}=434\,\text{MHz}\\  
+            &f_\mathrm{ZF,max}=f_\mathrm{HF,max}-f_\mathrm{LO}=10452\,\text{MHz}-10016\,\text{MHz}=436\,\text{MHz}
+        \end{split}
+    \end{equation}  
+\end{itemize}
+Der LNC hat eine typische Verstärkung von $G_\mathrm{LNC}=55\,\text{dB}$ und wird mit einer Rauschzahl von $F_\mathrm{LNC}=1.7\,\text{dB}=1.48$ bei $T_\mathrm{0}=291\,\text{K}$ angegeben, was für eine Kombination aus Mischer und Verstärker gute Werte sind.\cite{kuhne-downconverter}\newline
+Mit Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0} lässt sich die äquivalente Rauschtemperatur $T_\mathrm{e,LNC}$ des LNC bestimmen.
+\begin{equation}
+    T_\mathrm{eLNC}=(F_\mathrm{LNC}-1)T_\mathrm{0}=(1.48-1)290\,\text{K}=139.2\,\text{K}
+    \label{eq:TE-LNC}
+\end{equation}
+Für den Betrieb des LNC ist nur die Einspeisung der Betriebsspannung $V_\mathrm{CC}$ notwendig. Die Einspeisung eines $10\,\text{MHz}$ Referenzsignals ist nicht erforderlich, kann aber zu einer besseren Frequenzstabilität beitragen.\cite{kuhne-downconverter}\newline
+Die Betriebsspannung $V_\mathrm{CC}$ und ggf. das $10\,\text{MHz}$ Referenzsignal werden mithilfe einer Fernspeiseweiche (engl. Bias-Tee) in die Leitung am ZF-Ausgang eingespeist. Verwendet wird hier für die Fernspeiseweiche KU BT 10 REF. Diese stammt ebenfalls von der Firma Kuhne Electronic und ist für den MKU LNC 10 QO-100 vorgesehen.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/KU BT 10 REF.png}
+    \caption{Fernspeiseweiche KU BT 10 REF \cite{kuhne-bias-tee}}
+    \label{fig:KU-BT-10-REF}
+\end{figure}
+Die Fernspeiseweiche verfügt über drei Anschlüsse. Über de beiden N-Buchsen wird die Fernspeiseweiche in den RF-Weg zwischen dem ZF-Ausgang am LNC und dem Patchfeld geschaltet. Über die SMA-Buchse kann ein sinusförmiges $10\,\text{MHz}$ Referenzsignal mit maximal $2\,\text{Vss}$ für den LNC eingespeist werden. Die Versorgungsspannung $V_\mathrm{CC}$ für den LNC wird über die beide Pins auf der linken Seite in Abbildung \ref{fig:KU-BT-10-REF} in die Leitung zum LNC eingespeist.\cite{kuhne-bias-tee}\newline
+Auslegt ist die Fernspeiseweiche im RF-Weg für Frequenzen $f_\mathrm{ZF}$ zwischen $140\,\text{MHz}$ und $1500\,\text{MHz}$. Die Verluste der Fernspeiseweiche betragen typisch $L_\mathrm{BiasTee}=1\,\text{dB}$ und maximal $L_\mathrm{BiasTee}=1.5\,\text{dB}$. Die maximale Leistung des Signals im RF-Weg darf $100\,\text{mW}=20\,\text{dBm}$ nicht überschreiten, da sonst die Fernspeiseweiche beschädigt werden könnte.\cite{kuhne-bias-tee}\newline
+Die eingespeiste Versorgungsspannung $V_\mathrm{CC}$ kann im Bereich von $0\,\text{V}$ bis maximal $36\,\text{V}$ DC liegen und der Strom darf nicht größer als $500\,\text{mA}$ DC werden.\cite{kuhne-bias-tee}
+\subsubsection*{Patchfeld und Schaltmatrix}
+Bei der verwendeten Schaltmatrix handelt es sich um das Model RC-2SP4T-A18 von der Firma Mini-Circuits. Diese kann mit einer PC-Software über USB oder Ethernet gesteuert werden kann. Auch Remotezugriffe über eine Webseite sollten möglich sein.\cite{RFSP4T_Switch}\newline
+Insgesamt bietet die Schaltmatrix 10 SMA Anschlüsse, welche für Signale mit einer Frequenz $f$ von $\text{DC}$ bis $18\,\text{GHz}$ und einer Leistung bis zu $20\,\text{W}$ sind. Die Schaltgeschwindigkeit beträgt dabei typischerweise $25\,\text{ms}$.\cite{RFSP4T_Switch}\newline
+Die maximalen auftretenden Verluste sind von der Frequenz $f$ abhängig.\cite{RFSP4T_Switch}
+\begin{equation}
+    L_\mathrm{RF-Switch,max}=
+    \begin{cases}
+        0.3\,\text{dB}&,\text{DC}\leq f\leq 8\text{GHz}\\
+        0.4\,\text{dB}&,8\,\text{GHz}\leq f\leq 12\text{GHz}\\
+        0.8\,\text{dB}&,12\,\text{GHz}\leq f\leq 20\text{GHz}\\
+    \end{cases}
+\label{eq:max-Verluste-RF-Switch}    
+\end{equation}
+Auch bei hohen Frequenzen bleibt der maximale Verlust der Schaltmatrix gering. Bei den zu erwartenden Frequenzen $f_\mathrm{ZF}\leq1.3\,\text{GHz}$ würde ein maximaler Verlust durch die RF-Switch Matrix von $L_\mathrm{RF-Switch}=0.3\,\text{dB}$ auftreten. Das macht diese Schaltmatrix geeignet für die Anwendung im RF-Bereich des Empfangssystems.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/RF-Switch und Patchfeld.jpg}
+    \caption{Verwendete Schaltmatrix RC-2SP4T-A18 und das Patchfeld}
+    \label{fig:RF-Switch und Patchfeld}
+\end{figure}
+Die Abbildung \ref{fig:RF-Switch und Patchfeld} zeigt die verwendete Schaltmatrix (blau/silbernede Box in linken Mitte des Bildes) und das Patchfeld (schwarze Leiste mit den einzelnen SMA-Anschlüssen) im Serverschrank. Beim eingesetzten Patchfeld handelt es sich um ein Eigenbau. Insgesamt besteht das Patchfeld aus 7 N zu SMA Adapter Buchsen und einer N auf N Buchse. In diesem Empfangssystem wird eine N zu SMA Adapter Buchse verwendet. Der Verlust durch die Apapter Buchse kann ebenfalls mit einem VNA gemessen werden.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.4\linewidth]{Bilder/Messaufbau S21 Patchfeld}
+    \caption{Messaufbau zum Messen des Verlustes durch Adapter Buchse}
+    \label{fig:Messaufbau-S21-Patchfeld}
+\end{figure}
+Die Abbildung \ref{fig:Messaufbau-S21-Patchfeld} zeigt den angewendeten Messaufbau. Gemessen werden die Einspeiseverluste $S21$ zwischen $400\,\text{MHz}$ und $1.5\,\text{GHz}$, da die zu erwartenden Frequenzen $f_\mathrm{ZF}$ des ZF-Signals zwischen $433\,\text{MHz}$ und $1.26\,\text{GHz}$ liegen. Vor dem durchführen der Messung wird der VNA für den entsprechenden Frequenzbereich für Offen (Open), Kurzschluss (Short), Last (Load) von $50\,\Omega$ und Durchgang (Through) kalibriert. Das verwendete Kalibriertkit ist das 01 BN 533828 vom Hersteller Spinner.\newline
+Das es sich um ein passives Element handelt, wird die Leistung auf $0\,\text{dBm}$ gestellt. Die Anzahl der Messpunkte beträgt $201$, die Auflösung $0.2\,\text{dB/div}$ und das Referenzlevel $0\,\text{dB}$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Verluste Patch Panel.PNG}
+    \caption{Gemessene Einspeiseverluste $S21$ zwischen $400\,\text{MHz}$ und $1.5\,\text{GHz}$ des Patchfeld }
+    \label{fig:S21-Patchfeld}
+\end{figure}
+Der Graph in Abbildung \ref{fig:S21-Patchfeld} zeigt die gemessenen Einspeiseverluste $S21$ des Patchfeld zwischen $400\,\text{MHz}$ und $1.5\,\text{GHz}$. Der Marker 1 befindet sich bei $433\,\text{MHz}$, was die niedrigste zu erwartende Frequenz $f_\mathrm{ZF}$ des ZF-Signals ist. Gemessen wird hier ein Verlust von $S21=0.008\,\text{dB}$. Der zweite Marker befindet sich bei $1.225\text{GHz}$. Der gemessene Verlust liegt hier bei $S21=0.076\,\text{dB}$. Beider Verluste sind sehr niedrig und fallen kaum ins Gewicht. Daher kann das Patchfeld problemlos im RF-Frontend des Empfangsystems verwendet werden. Für einen allgemeinen Wert wird die Dämpfung durch das Patchfeld mit dem höchsten gemessenen Dämpfungswert angegeben.
+\begin{equation}
+    L_\mathrm{Patchfeld}=0.076\,\text{dB}\approx0.8\,\text{dB}
+\end{equation}
+
+
+
+
+\subsubsection*{Wahl der Koaxialleitungen}
+Die Koaxialleitungen sind notwendig um die einzelnen Komponenten mit einander zu verbinden. Es gibt viele verschiedene Arten an Koaxialleitungen, jedoch kann nicht eine beliebige genommen für jeden Abschnitt im RF-Bereich des Empfangssystems genommen werden. Jede Art an Koaxialleitung hat unterschiedliche Eigenschaften, welche es für bestimmte Anwendungsgebiete geeignet und für andere wiederum ungeeignet machen. Zum Beispiel kann je nach Art der Frequenzbereich, die Leitungsimpedanz ,die Dämpfung $\text{dB/m}$, die Anschlussmöglichkeiten, maximale Spannungsfestigkeit, sowie Umweltanforderungen und Preis stark variieren. Deshalb muss für jeden Abschnitt im RF-Frontend eine geeignete Koaxialleitung ausgewählt werden. Die jeweilige Koaxialleitung muss die folgenden Voraussetzungen erfüllen.
+\begin{enumerate}
+    \item Um mit der Systemimpedanz kompatibel zu sein, müssen die die Koaxialleitungen eine Impedanz von von $50\,\Omega$ aufweisen.
+    \item Die jeweilige Koaxialleitung sollte für den jeweiligen Frequenzbereich im RF-Bereich des Empfangsystems geeignet sein. So können unnötigen Dämpfungen, etc. vermieden werden.
+    \item Um die Rauschzahl $F_\mathrm{sys}$ des RF-Frontends und um die Verluste allgemein gering zu halten, sollte die Koaxialleitung eine niedrige Dämpfung und um das Signal gegen äußere elektromagnetische Strahlung zu schützen, ein hohes Schirmmaß aufweisen.
+    \item Um das Verlegen der Koaxialleitungen zu vereinfachen und diese ebenfalls nicht zu beschädigen, sollte die Koaxialleitungen entsprechend geeignet für die Verlegung sein. Auch sollten die Koaxialleitungen für die jeweilige Umwelteinflüsse an ihrem Einsatzort geeignet sein.
+    \item Die Koaxialleitung sollte die jeweiligen Steckverbindungen der Komponenten, ohne die Verwendung von Adapter, unterstützen. So können Verluste und damit verbunden mögliche Rauschquellen verringert werden.
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/RF-Frontend}
+    \caption{Darstellung des RF-Bereiches des Empfangssystems mit den einzelnen notwendigen Längen der Koaxialleitungen}
+    \label{fig:länge-Koaxialleitungen}
+\end{figure}
+In der Abbildung \ref{fig:länge-Koaxialleitungen} ist eine Skizze vom RF-Bereich des Empfangsystems zu sehen. Dargestellt sind die einzelne Zweitore und die Koaxialleitungen, welche diese miteinander verbinden. Ebenfalls sind die notwendigen Längen der Koaxialleitungen eingetragen.\newline
+Die erste Koaxialleitung (Koax 1) verbindet den Antennenfeed mit dem LNC. Diese Koaxialleitung ist das wichtigste Zweitor im gesamten RF-Frontend, da es das erste Zweitor in der Kette ist. Somit hat es die größte Auswirkung auf die Rauschzahl $F_\mathrm{ges}$ vom RF-Bereich des Empfangssystems. Da es eine Koaxialleitung ein passives Zweitor ist, wird die Rauschzahl $F_\mathrm{1}$, nach Gleichung \ref{eq:Rauschzahl-passives-Zweitor}, direkt aus den Verlusten der Koaxialleitung gewonnen. Daher muss eine Koaxialleitung mit besonders niedrigen Verlusten ausgewählt werden und die Länge der Koaxialleitung zu kurz wie möglich gehalten werden. Weiterhin muss die Koaxialleitung für eine Frequenz $f\approx10.5\,\text{GHz}$ ausgelegt sein, da diese Koaxialleitung das Signal des Downlink von Es'Hail-2 (QO-100) im X-Band zum LNC bringt, wo es dann in einen niedrigeren Frequenzbereich umgesetzt wird. Auch muss die Koaxialleitung für die Anwendung im Außenbereich geeignet sein, da sowohl Antenne und der LNC auf dem Dach der Hochschule montiert werden und die Leitung sollte flexibel sein, da vom Antennenfeed zum LNC enge Biegeradien zu erwarten sind. Als Steckverbindung sollte die Koaxialleitung SMA unterstützen.\newline
+Für diese Verbindung wird die S\_04212\_B $50\,\Omega$ LOW-LOSS Koaxialleitung von Huber\&Suhner gewählt. Diese bestimmte Koaxialleitung ist für Frequenzen bis $18\,\text{GHz}$ geeignet und bietet mit einem Schirmmaß von $90\,\text{dB/m}$ guten Schutz vor elektromagnetischer Strahlung.\cite{S_04212_B}\newline 
+Die Verluste in $\text{dB/m}$ können mithilfe einer Gleichung im Datenblatt für die gewünschte Frequenz bestimmt werden. Für eine Frequenz von $f\approx10.5\,\text{GHz}$ kann die folgende Dämpfung ermittelt werden.\cite{S_04212_B}
+\begin{equation*}
+    L=0.197\cdot \sqrt{f}+ 0.045\cdot f=0.197\cdot\sqrt{10.5\,\text{GHz}}+ 0.045 \cdot 10.5\,\text{GHz}=1.11\,\text{dB/m}
+\end{equation*}
+Das führt mit eine Länge von $l=1.5\,\text{m}$ zu einer Gesamtdämpfung von
+\begin{equation}
+    L_\mathrm{Koax1}=1.11\,\text{dB/m} \cdot 1.5\,\text{m}=1.655\,\text{dB}
+    \label{eq:Dämpfung_Koax1}
+\end{equation}
+Die Dämpfung ist mit $1.655\,\text{dB}$, im Vergleich zum LL142 STR mit $\sim 1\,\text{dB}$\cite{LL142_koax24}, etwas höher. Jedoch ist die S\_04212\_B Koaxialleitung dank ihres SPE-Dielektrikum mit $50\,\%$ Luftanteil besonders flexibel und so auch führe engere statisch Biegeradien $\geq25\,\text{mm}$ geeignet\cite{S_04212_B}. Auch ist die S\_04212\_B Koaxialleitung deutlich günstiger \cite{LL142_koax24}\cite{S_04212_B_koax24} und mit ihren Mantel aus PUR (Polyurethan) besonders witterungsbeständig und für Temperaturen von $-40\degree\text{C}$ bis $+85\degree\text{C}$ geeignet.\cite{PUR_koax24}\newline
+Die zweite Koaxialleitung (Koax2) verbindet den LNC mit der Fernspeiseweiche (Bias-Tee). Diese Koaxialleitung legt den größten Weg mit $l=13.5\,\text{m}$ zurück und sollte daher eine niedrige Dämpfung $\text{[db/m]}$ aufweisen. Zu erwarten sind nach der Abwärtsmischung Frequenzen $f_\mathrm{ZF}\leq1.3\,\text{GHz}$, was eine große Auswahlmöglichkeit an möglichen Koaxialleitung bietet. Zusätzlich sollte die Koaxialleitung für die Anwendung im Außenbereich und für Spannung $V_\mathrm{cc}\leq36\,\text{V}$ geeignet sein. Auch sollte die Koaxialleitung N-Stecker als Steckverbindung unterstützen.\newline
+Ursprünglich ist für die zweiten Koaxialleitung eine LMR 600 Koaxialleitung vorgesehen gewesen. Diese ist bietet mit $0.109\,\text{dB/m}$ bei $f=1.5\,\text{GHz}$ eine sehr niedrige Dämpfung. Allerdings ist LMR 600 Koaxialleitung mit einem Biegeradius von $\geq38.1\,\text{mm}$ sehr starr, was zu Problemen bei der Verlegung führen könnte.\cite{LMR600}\newline
+Aus diesem Grund wird die LMR 400 FR Koaxialleitung von Times Microwave verwendet. Diese hat mit $0.169\,\text{dB/m}$ bei $f=1.5\,\text{GHz}$ eine geringfügig höhere Dämpfung als das LMR 600 Kabel, ist jedoch mit einem Biegeradius $\geq25.4\,\text{mm}$ deutlich flexibler.\cite{LMR400_koax24}\cite{LMR400}\newline
+Die Gesamtdämpfung $L_\mathrm{Koax2}$ dieser Koaxialleitung wird in Gleichung \ref{eq:Dämpfung_Koax2} mit einer Gesamtlänge $l=13.5\,\text{m}$ bestimmt.
+\begin{equation}
+    L_\mathrm{Koax2}=0.169\,\text{dB/m} \cdot 13.5\,\text{m}=2.282\,\text{dB}
+    \label{eq:Dämpfung_Koax2}
+\end{equation}
+Dank des Mantels aus FRPE (Feuer Resistenten Polyethylen) ist die LMR 400 FR Koaxialleitung Wetterbeständig und für einen Temperaturbereich von $-40\degree\text{C}$ bis $+85\degree\text{C}$ geeignet.\cite{LMR400_koax24}\cite{FRPE_koax24}\newline
+Mit einem Schirmmaß von $90\,\text{dB/m}$ schützt die LMR 400 FR Leitung gut gegen von außen einwirkende elektromagnetische Strahlung. Auch sind Spannungen bis $2500\,\text{V}$ und N-Stecker als Steckverbindung unterstützt.\cite{LMR400_koax24}\newline
+Für die dritte Koaxialleitung (Koax3), welche die Fernspeiseweiche mit dem Patchfeld verbindet, wird ebenfalls die LMR 400 FR Koaxialleitung verwendet. Die Gesamtlänge dieser Leitung beträgt $l=1.5\,\text{m}$.
+\begin{equation}
+    L_\mathrm{Koax3}=0.169\,\text{dB/m} \cdot 1.5\,\text{m}=0.254\,\text{dB}
+    \label{eq:Dämpfung_Koax3}
+\end{equation}
+Damit beträgt die Dämpfung der dritten Koaxialleitung $L_\mathrm{Koax3}=0.254\,\text{dB}$.\newline
+Für die vierte (Koax4) und fünfte (Koax5) Koaxialleitung, welche das Patchfeld mit der Schaltmatrix und anschließend mit dem SDR verbinden, braucht es flexible Leitungen. Die flexiblen Leitung würden die Verkabelung im Serverschrank vereinfachen. Die Koaxialleitungen sollten zudem eine möglichst geringe Dämpfung und hohes Schirmmaß aufweisen, sowie für Frequenzen $f_\mathrm{ZF}\leq1.3\,\text{GHz}$ geeignet sein und SMA-Steckverbindung unterstützen.\newline
+Verwendet werden für die beiden Koaxialleitungen die Hyperflex 5/ $50\,\Omega$ LOW-LOSS Koaxialleitung von Messi\&Paoloni. Diese Koaxialleitung ist für Frequenzen bis $6\,\text{GHz}$ geeignet und ist mit einem wiederholbaren Biegeradius von $50\,\text{mm}$ flexibel genug für diese Anwendung.\cite{Hyperflex5}\newline
+Bei einer Frequenz $f=1.296\,\text{GHz}$ hat die Hyperflex 5 Koaxialleitung eine Dämpfung von $0.305\,\text{dB/m}$ und hat damit eine geringfügig bessere Dämpfung als eine Aircell 5 Koaxialleitung. Bei einer Länge von jeweils $l=0.35\,\text{m}$ führt das zu folgender Dämpfung je Koaxialleitung.\cite{Hyperflex5_koax24}
+\begin{equation}
+    L_\mathrm{Koax4}=L_\mathrm{Koax5}=0.309\,\text{dB/m} \cdot 0.35\,\text{m}=0.108\,\text{dB}
+    \label{eq:Dämpfung_Koax4 und Koax5}
+\end{equation}
+Auch bietet die Hyperflex 5 Koaxialleitung mit $105\,\text{dB/m}$ ein sehr hohes Schirmmaß und es werden SMA-Steckverbindungen unterstützt.\cite{Hyperflex5_koax24}\newline
+Damit die Kabel nicht unter ihren zulässigen Biegeradius gebogen werden können werden die Hyperflex 5 Koaxialleitungen mit einem Knickschutz versehen.\newline
+
+
+\subsubsection*{Software Defined Radio und SDR Software}
+Bei dem vorhandenen Software Defined Radio (SDR) handelt es sich um einen USRP X310 von Nationale Instruments. Der USRP X310 ist bestandteil einer skalierbaren SDR-Plattform, welche für die Entwicklung, Testung und Einsatz von Kommunikationsequipment vorgesehen ist.\cite{USRP-X310}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/NI-Ettus-X310.jpeg}
+    \caption{Der URSP X310 von National Instruments\cite{USRP-X310}}
+    \label{fig:USRP-X310}
+\end{figure}
+Der USRP X310 basiert auf einem  XC7K410T FPGA, welcher eine schnelle Verbindung zu den Erweiterungskarten, dem $1\,\text{GB}$ DDR3 Arbeitsspeicher und verschiedenen Schnittstellen bietet, über welche das SDR mit einem PC verbunden werden kann.\cite{USRP-X310}\newline
+Das SDR bietet die Möglichkeit über PCIe, über zwei $10\,\text{Gig}$ Ethernet- oder über zwei $1\,\text{Gig}$ Ethernetschnittstellen mit einem PC verbunden zu werden \cite{USRP-X310}. In diesem Fall ist der USRP X310 über eine $10\,\text{Gig}$ Ethernetschnittstelle mit dem PC verbunden.\newline
+Die beiden Herzstücke des USRP X310 sind die modulare Erweitertungskarten. Insgesamt stehen 10 verschiedene Erweiterungskarten zur Auswahl mit denen ein Frequenzbereich von $0\,\mathrm{Hz}$ bis zu $6\,\text{GHz}$ abgedeckt werden kann. Insgesamt stehen dem USRP X310 zwei Kanäle, welche Voll-Duplex fähig sind, mit einer Bandbreite bis zu $160\,\text{MHz}$ zu Verfügung. Die Bandbreite ist von den jeweiligen Erweiterungskarten abhängig.\cite{USRP-X310}\cite{USRP-X310-Doku}\newline
+Je nach Erweiterungskarte ist eine maximale Verstärkung zwischen$G_\mathrm{SDR}=31.5\,\text{dB}$\cite{USRP-X310-UBX-Doku} und $G_\mathrm{SDR}=93\,\text{dB}$\cite{USRP-X310-TwinRX-Doku} möglich.\cite{USRP-X310-Doku} 
+Da eine Verstärkung von $G_\mathrm{SDR}=93\,\text{dB}$ viel zu hoch für die geplante Anwendung ist, wird folgend mit einer maximalen Verstärkung von $G_\mathrm{SDR,max}=30\,\text{dB}$ gerechnet.\newline
+Jeder Kanal verfügt über einen 14-Bit ADC und einen 16-Bit DAC, wobei die maximale Abtastrate des ADC $200\,\text{MS/s}$. Die maximale Abtastrate des DAC beträgt $800\,\text{MS/s}$.\cite{USRP-X310}\newline
+Mit der Bitgröße des ADC $n=14$ kann der Dynamikumfang des SDR ermittelt werden.\cite{DynamicRange}
+\begin{equation}
+\mathrm{DR} = 20 \cdot \log_{10}\left( 2^n \sqrt{\frac{3}{2}} \right)
+= 20 \cdot \log_{10}\left( 2^{14} \sqrt{\frac{3}{2}} \right)
+\approx 86\,\text{dB}.
+\label{eq:dynamic-Range-USRP-X310}
+\end{equation}
+Mit dem Dynamikumfang wird das Verhältnis vom stärksten und schwächsten Signal angegeben, welches der SDR verarbeiten kann. Das stärkste Signal ist dabei das Signal, welches der SDR verarbeiten kann, ohne dabei zu übersteuern und das schwächste Signal stellt das Grundrauschen des SDR da. Der Dynamikumfang ist unter anderem wichtig für die zu wählende Verstärkung. Ist das verstärkte Signal zu groß für den Dynamikumfang kommt es zu einer Übersteuerung.\cite{DynamicRange}\newline
+Mit der Gleichung \ref{eq:Rauschleistung-Ausgang-Zweitor} kann das Grundrauschen des SDR bestimmt werden. Die entschiedenen Faktoren für das thermische Grundrauschen ist die betrachtete Bandbreite $B$, die physikalische Temperatur $T_\mathrm{0}$ des SDR und die äquivalente Rauschtemperatur $T_\mathrm{eSDR}$ des SDR. Die Bandbreite $B$ wird mit der maximalen zulässigen Bandbreite $B=2.7\,\text{kHz}$ eines Signals über den Schmalbandtransponder angenommen. Bei physikalischen Temperatur wird von der Raumtemperatur $T_\mathrm{0}=290\,\text{K}$ ausgegangen. Die äquivalente Rauschtemperatur des SDR kann über die Umstellung der Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0} aus der Rauschzahl $F_\mathrm{SDR}$ ermittelt werden. Diese wird mit typisch $F_\mathrm{SDR,dB}=8\,\text{dB}=6.31$ angegeben \cite{USRP-X310}.\newline
+\begin{equation}
+    T_\mathrm{eSDR}=(F_\mathrm{SDR}-1)\cdot T_\mathrm{0}=(6.31-1)\cdot290\,\text{K}=1539,9\,\text{K}
+    \label{eq:äquivalente-Rauschtemperatur-SDR}
+\end{equation}
+Mit der äquivalente Rauschzahl aus Gleichung \ref{eq:äquivalente-Rauschtemperatur-SDR} kann dann das Grundrauschen vom SDR bestimmt werden.
+\begin{equation}
+\begin{split}
+     N_\mathrm{oSDR}&=k\cdot(T_\mathrm{o}+T_\mathrm{eSDR})\cdot B=1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot (290\,\text{K}+1539.9\,\text{K})\cdot2.7\,\text{kHz}\\
+     &=6.82\cdot10^{-17}\,\text{W}=-131.66\,\text{dBm}
+\end{split}
+ \label{eq:Grundrauschen-SDR}  
+\end{equation}
+Der Pegel eines Siganls am Eingang des SDR müsste also größer als $-131.66\,\text{dBm}$ sein, um nicht im Grundrauschen des SDR zu verschwinden.\newline
+Der maximale Eingangspegel am SDR darf $-15\,\mathrm{dBm}$ nicht überschreiten.\cite{USRP-X310-Doku}
+Dank des Open-Source Software Support bietet der USRP X310 UHD Treiberunterstützung für verschiedene Plattformen, wie Windows und Linux Betriebssysteme, und ist mit C++ und Python APIs, sowie GNU Radio und anderen Frameworks und Programmen kompatibel.\cite{USRP-X310}\newline
+Der Open-Source Software Support und die Kompatibilität mit GNU Radio bieten die Möglichkeit eine eigene geeignete SDR Software, speziell für den Einsatz an Es'Hail-2 (QO-100), zu erstellen. Bei GNU Radio handelt es sich um eine freie Software-Toolkit-Sammlung zur Implementierung von Software Defined Radio, kurz SDR. GNU Radio bietet eine umfangreiche Bibliothek an Signalverarbeitungsblöcken, welche zu einem gemeinsamen Flussgraphen einfach zusammengefügt werden können. Neben der Realisierung von Software Defined Radios, kann GNU Radio auch ohne Hardware für Simulation verwendet werden.\cite{GNU-Radio}\newline
+Die in GNU Radio erstelle SDR Software muss mehrere Voraussetzungen erfüllen, um für die Anwendung an Es'Hail-2 (QO-100) geeignet zu sein.
+\begin{enumerate}
+    \item Die Software muss in der Lage sein den USRP X310 ansteuern zu können.
+    \item Innerhalb der Software sollte es verschiedene Optionen für die Demodulation geben, um die Signale von Es'Hail-2 (QO-100) richtig demodulieren zu können. Gewünscht sind Einseitenband-AM (LSB/USB),CW und FM. Obwohl FM nicht auf Es'Hail-2 (Q0-100) verwendet werden darf,sollte diese Option für andere Anwendungszwecke der Software vorhanden sein.
+    \item Die demodulierten Signale sollten als Audio ausgegeben werden. Auch sollten die demodulierten Signale als Audio abgespeichert werden können.
+    \item Das empfangene Frequenzspektrum sollte als FFT und Wasserfalldiagramm korrekt dargestellt werden können.
+    \item Die Frequenz, Filterbandbreite, Art der Modulation und Lautstärke sollte im Betrieb verändert werden können.
+\end{enumerate}
+Die Erstellung der SDR-Software erfolgt im Kapitel \ref{kap:SDR Software}.
+
+
+
+
+\subsection{Bewertung des Empfangssystems}
+Um die Eignung des zusammengestellten Empfangssystems für den geplanten Einsatz zu überprüfen, muss dessen Leistungsfähigkeit überprüft werden. Für die Bewertung der Leistungsfähigkeit stehen mehrere Möglichkeiten zur Verfügung. 
+\subsubsection*{Rauschen des Empfangssystems}
+Zwei wichtige Größen für das Empfangssystem sind seine äquivalente Rauschtemperatur $T_\mathrm{e,sys}$
+und seine Rauschzahl $F_\mathrm{sys}$. Die beiden Größen drücken das eigen Rauschen des Systems und die Verschlechterung des $SNR$ vom Eingang des Empfangssystems bis zum Eingang des SDR aus.\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.9\linewidth]{Bilder/Rauschen der Empfangskette}
+    \caption{Blockschaltbild des Empfangssystems mit den einzelnen äquivalenten Rauschtemperaturen $T_\mathrm{e}$, Rauschzahlen $F$ und Verstärkungen $G$ }
+    \label{fig:Rauschen-des-Empfangssystems}
+\end{figure}
+In der Abbildung \ref{fig:Rauschen-des-Empfangssystems} ist ein Blockschaltbild des Empfangssystems zu sehen. Eingetragen sind neben den Namen der einzelnen Zweitore auch ihre äquivalente Rauschtemperatur $T_\mathrm{e}$, Rauschzahl $F$ und ihre Verstärkung $G$.\newline 
+Die äquivalente Rauschtemperatur $T_\mathrm{e,sys}$ setzt sich aus äquivalenten Rauschtemperaturen $T_\mathrm{e}$ der einzelnen Zweitore im Empfangssystem zusammen. Deren äquivalente Rauschzahl $T_\mathrm{e}$ kann mithilfe der Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0} mit ihrer Rauschzahl $F$ bestimmt werden. Die Rauschzahl passiver Zweitore, wie den Koaxialleitungen, der Fernspeiseweiche, dem Patchfeld und dem RF-Switch können mit der Gleichung \ref{eq:Rauschzahl-passives-Zweitor} aus ihrem Verlust $L$ bestimmt werden.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+      Name   & Rauschzahl $F\,\text{in Absolut}$& $T_\mathrm{e}\,\text{in K}$ & Gewinn $G\,\text{in Absolut}$\\
+      \hline
+      Koax1   & $F_\mathrm{1}=L_\mathrm{Koax1}=1.46$& $T_\mathrm{e1}=133.4$ & $G_\mathrm{1}=\frac{1}{1.46}=0.685$\\
+      LNC   & $F_\mathrm{LNC}=1.48$& $T_\mathrm{eLNC}=139.2$ & $G_\mathrm{LNC}=316227.77$\\
+      Koax2   & $F_\mathrm{2}=L_\mathrm{Koax2}=1.69$& $T_\mathrm{e2}=200.1$ & $G_\mathrm{2}=\frac{1}{1.69}=0.59$\\
+      BiasTee   & $F_\mathrm{BiasTee}=L_\mathrm{BiasTee}=1.41$& $T_\mathrm{eBiasTee}=118.9$ & $G_\mathrm{BiasTee}=\frac{1}{1.41}=0.71$\\
+      Koax3   & $F_\mathrm{3}=L_\mathrm{Koax3}=1.06$& $T_\mathrm{e3}=17.4$ & $G_\mathrm{3}=\frac{1}{1.06}=0.94$\\
+      Patchfeld   & $F_\mathrm{Patchfeld}=L_\mathrm{Patchfeld}=1.2$& $T_\mathrm{ePatchfeld}=58$ & $G_\mathrm{Patchfeld}=\frac{1}{1.2}=0.83$\\
+      Koax4   & $F_\mathrm{4}=L_\mathrm{Koax4}=1.03$& $T_\mathrm{e4}=8.7$ & $G_\mathrm{4}=\frac{1}{1.03}=0.97$\\
+      RF-Switch & $F_\mathrm{RF-Switch}=L_\mathrm{RF-Switch}=1.07$& $T_\mathrm{eRF-Switch}=20.3$ & $G_\mathrm{RF-Switch}=\frac{1}{1.97}=0.93$\\
+      Koax5   & $F_\mathrm{5}=L_\mathrm{Koax5}=1.03$& $T_\mathrm{e5}=8.7$ & $G_\mathrm{5}=\frac{1}{1.03}=0.97$\\
+      SDR  & $F_\mathrm{SDR}=6.31$& $T_\mathrm{eSDR}=1539.9$ & $G_\mathrm{SDR}=30\,\text{dB}$\\
+    \end{tabular}
+    \caption{Bestimmte Rauschzahl $F$, äquivalente Rauschtemperatur $T_\mathrm{e}$ und Verstärkung $G$ der einzelnen Zweitore}
+    \label{tab:Bestimmte-Werte-der-Zweitore-für-Te}
+\end{table}
+Mit den Werten in Tabelle \ref{tab:Bestimmte-Werte-der-Zweitore-für-Te} kann die äquivalente Rauschtemperatur $T_\mathrm{sys}$ des Empfangssystems mithilfe der Gleichung \ref{eq:Gesamt-äquivalente-Rauschtemperatur-Kaskade} bestimmt werden. Der für die Berechnung verwendete Python Code ist im Github-Repository und im Anhang \ref{lst:Link-Budget-python} hinterlegt.
+\begin{equation}
+\begin{split}
+        T_\mathrm{e,sys}=&T_\mathrm{e1}+\frac{T_\mathrm{eLNC}}{G_\mathrm{1}}+\frac{T_\mathrm{e2}}{G_\mathrm{1}\cdot G_\mathrm{LNC}}+\frac{T_\mathrm{eBiasTee}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}}+\frac{T_\mathrm{e3}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}}\\
+        &+\frac{T_\mathrm{ePatchfeld}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}\cdot G_\mathrm{3}}\\&+\frac{T_\mathrm{e4}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}\cdot G_\mathrm{3}\cdot G_\mathrm{Patchfeld}}\\
+        &+\frac{T_\mathrm{eRF-Switch}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}\cdot G_\mathrm{3}\cdot G_\mathrm{Patchfeld}\cdot G_\mathrm{4}}\\
+        &+\frac{T_\mathrm{e5}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}\cdot G_\mathrm{3}\cdot G_\mathrm{Patchfeld}\cdot G_\mathrm{4}\cdot G_\mathrm{RF-Switch}}\\
+        &+\frac{T_\mathrm{eSDR}}{G_\mathrm{1}\cdot G_\mathrm{LNC}\cdot G_\mathrm{2}\cdot G_\mathrm{BiasTee}\cdot G_\mathrm{3}\cdot G_\mathrm{Patchfeld}\cdot G_\mathrm{4}\cdot G_\mathrm{RF-Switch}\cdot G_\mathrm{5}}\\
+        &=336.63\,\text{K}
+\end{split}
+\label{eq:äquivalente-Rauschtemperatur-Empfangsystem}
+\end{equation}
+Mit der bestimmten äquivalenten Rauschtemperatur $T_\mathrm{e,sys}$ des Empfangssystems kann die Rauschzahl $F_\mathrm{sys}$ des Empfangssystems mit Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0}.
+\begin{equation}
+    F_\mathrm{sys}=1+\frac{T_\mathrm{e,sys}}{T_\mathrm{0}}=1+\frac{336.63\,\text{K}}{290\,\text{K}}=2.161=3.34\,\text{dB}
+\end{equation}
+ Die größte Auswirkung auf $T_\mathrm{e,sys}$ und $F_\mathrm{sys}$ haben die erste Koaxialleitung und der LNC. Dank der hohen Verstärkung des LNC mit $G_\mathrm{LNC}=55\,\text{dB}=316227.66$ als zweites Element werden die Rauschzahlen $F$, bzw. die äquivalenten Rauschtemperaturen $T_\mathrm{e}$ der folgenden Zweitore stark reduziert, sodass diese keine große Auswirkung mehr auf den Gesamtwert haben. Jedoch wird die äquivalente Rauschtemperatur des LNC $T_\mathrm{eLNC}$ durch die Dämpfung der ersten Koaxialleitung stärker gewichtet und nicht reduziert wird. Das erklärt die  Rauschzahl $F_\mathrm{sys}=3.34\,\text{dB}$ und die äquivalente Rauschtemperatur des Empfangssystems von $ T_\mathrm{e,sys}=336.63\,\text{K}$.
+
+\subsubsection*{Verstärkungen und Dämpfungen im Empfangssystem}
+Im Empfangssystem treten verschiedene Verstärkungen und Dämpfungen auf. Diese können in einer Größe, der Verstärkung $G_\mathrm{sys}$ des Empfangssystems, zusammengefasst werden. Mit dieser Größe kann übersichtliche Angabe zur Verstärkung des Empfangssystems gemacht werden.\newline
+Im Empfangssystem sind nur zwei Verstärkenden Komponenten vorhanden. Die erste Komponente ist der LNC, welcher mit einer typischen Verstärkung von $G_\mathrm{LNC}=55\,\text{dB}$ angeben wird. Die zweite Komponente ist der USRP X310, welcher eine variable Verstärkung besitzt. Für Rechenzwecke wird hier von einer Verstärkung von $G_\mathrm{SDR}=30\,\text{dB}$ angegeben. Diese beiden Verstärkungen können in eine Größe $G$ zusammengefasst werden.
+\begin{equation*}
+    G=G_\mathrm{LNC,dB}+G_\mathrm{SDR,dB}=55\,\text{dB}+30\,\text{dB}=85\,\text{dB}
+\end{equation*}
+Dämpfungen treten im Empfangssystem an mehreren Stellen auf. Die größte Dämpfung wird durch Koaxialleitungen verursacht. Ihre Dämpfung ist in den Gleichung \ref{eq:Dämpfung_Koax1} bis \ref{eq:Dämpfung_Koax4 und Koax5} angegeben und kann in einer gemeinsamen Größe $L_\mathrm{Koax}$ zusammengefasst werden.
+\begin{equation*}
+    \begin{split}
+        L_\mathrm{Koax}&=L_\mathrm{Koax1,dB}+L_\mathrm{Koax2,dB}L_\mathrm{Koax3,dB}L_\mathrm{Koax4,dB}L_\mathrm{Koax5,dB}\\
+        &=1.655\,\text{dB}+2.282\,\text{dB}+0.254\,\text{dB}+0.108\,\text{dB}+0.108\,\text{dB}=4.407\,\text{dB}
+    \end{split}
+\end{equation*}
+Eine weitere dämpfende Komponente ist die Fernspeiseweiche. Ihre Dämpfung wird mit $L_\mathrm{BiasTee}=1.5\,\text{dB}$ angegeben. Weitere Dämpfungen treten am Patchfeld $L_\mathrm{Patchfeld}=0.8\,\text{dB}$ und an der Schaltmatrix auf. Bei einer Frequenz $f_\mathrm{ZF}\leq1.3\,\text{GHz}$ tritt durch die Schaltmatrix eine maximale Dämpfung von $L_\mathrm{RF-Switch}=0.3\,\text{dB}$ auf. Die Dämpfungen $L_\mathrm{Koax}$, $L_\mathrm{BiasTee}$, $L_\mathrm{Patchfeld}$ und $L_\mathrm{RF-Switch}$
+können zur besseren Übersicht in einer Größe $L_\mathrm{sys}$ zusammengefasst werden.
+\begin{equation}
+    \begin{split}
+        L_\mathrm{sys}&=L_\mathrm{Koax,dB}+L_\mathrm{BiasTee,dB}+L_\mathrm{Patchfeld,dB}+L_\mathrm{RF-switch,dB}\\
+        &=4.407\,\text{dB}+1.5\,\text{dB}+0.8\,\text{dB}+0.3\,\text{dB}=7.01\,\text{dB}
+    \end{split}
+    \label{eq:Verluste-Empfangsystem}
+\end{equation}
+Mit der Verstärkung $G$ und der Dämpfung $L_\mathrm{sys}$ kann die Gesamtverstärkung des Empfangssystems in einer übersichtlichen Größe $G_\mathrm{sys}$ dargestellt werden.
+\begin{equation}
+    G_\mathrm{sys}=G_\mathrm{LNC,dB}-L_\mathrm{sys,dB}=85\,\text{dB}-7.01\,\text{dB}=77.99\,\text{dB}
+    \label{eq:Gesamtverstärkung-Empfangssystems}
+\end{equation}
+Die Gesamtverstärkung des Empfangssystems beträgt maximal $G_\mathrm{sys}=77.99\,\text{dB}$. Mit dieser Verstärkung ist es problemlos möglich die schwache Signale von Es'Hail-2 (QO-100) zu verstärken. 
+
+\subsubsection*{Empfangsgüte $G/T$}
+Mit der Empfangsgüte $G/T$ kann die Empfindlichkeit des Empfangssystems angegeben werden. Sie ist ein Maß für die Qualität des Empfangssystems, einschließlich der Antenne. Sie entspricht dem Verhältnis des Antennengewinn $G_\mathrm{R,max}$ und des Rauschens $T_\mathrm{A}+T_\mathrm{e,sys}$ des Empfangssystems.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,max}}{T_\mathrm{e,sys}+T_\mathrm{A}}
+    \label{eq:Empfangsgüte}
+\end{equation}
+Die Einheit der Empfangsgüte ist dabei $\text{1/K}$ oder $\text{dB/K}$. Je höher der Wert $(\text{dB/K})$ ist, desto besser ist die Empfangsgüte, da das Empfangssystem mehr Gewinn pro Rauschtemperatur hat.\newline
+Da sich die Antennentemperatur $T_\mathrm{A}$ je nach Bedingung unterscheidet, muss diese zuerst für jede Bestimmung ermittelt werden.\newline
+Für die Bedingung klarer Himmel kann die Antennentemperatur mit der Gleichung \ref{eq:Antennentemperatur-klarer-Himmel} bestimmt werden. Da für die verwendete Parabolantenne kein 
+Antennendiagramm vorhanden ist, wird diese als eine ideale Antenne ohne Nebenkeulen Richtung Boden ausgegangen. Damit wird $T_\mathrm{Ground}=0\,\text{K}$. Die Helligkeitstemperatur kann für den jeweiligen Elevationswinkel der Antenne aus der Abbildung \ref{fig:Temperatur-Himmel} entnommen werden. Der Elevationswinkel $\varepsilon$ der Antenne ist in Gleichung \ref{eq:Elevation-Antenne} mit $\varepsilon=27.36\degree\approx30°$ angegeben. Zusammen mit einer Frequenz $f\approx10.5\,\text{GHz}$ kann eine Helligkeitstemperatur von $T_\mathrm{Sky}\approx6.5\,\text{K}$ ermittelt werden.\newline
+\begin{equation}
+    T_\mathrm{A,klarerHimmel}=T_\mathrm{Sky}+T_\mathrm{Ground}=6.5\,\text{K}+0\,\text{K}=6.5\,\text{K}
+    \label{eq:Antennentemperatur-Bedingung-klarer-Himmel}
+\end{equation}
+Mit der Gleichung \ref{eq:Empfangsgüte} kann die Empfangsgüte $G/T$ für die Bedingung klarer Himmel bestimmt werden. Die äquivalente Rauschtemperatur ist in Gleichung \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} angegeben. Der Gewinn der Empfangsantenne ist in Gleichung \ref{eq:Gewinn-der-Empfangsantenne} angegeben und wird für eine Frequenz $f=10.5\,\text{GHz}$ mit $G_\mathrm{R,max}=38.6\,\text{dBi}=7244.36$ angenommen.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,max}}{T_\mathrm{e,sys}+T_\mathrm{A,klarerHimmel}}=\frac{7244.36}{336.63\,\text{K}+6.5\,\text{K}}=21.11\,\text{1/K}=13.24\,\text{dB/K}
+    \label{eq:Empfangsgüte-Bedingung-klarer-Himmel}
+\end{equation}
+Eine Empfangsgüte von $13.24\,\text{dB/K}$ ist ein solider Wert für die geplante Anwendung, kann aber nicht mit der Empfangsgüte $G/T=26.5\,\text{dB/K}$ professionellen Empfangssystemen mithalten.\cite{Vergleich-GT}
+Für die Bedingung leichter Regen muss bei der Antennentemperatur $T_\mathrm{A}$ die Dämpfung durch leichte Regenschauer berücksichtigt werden. Die Dämpfung ist in Gleichung     \ref{eq:Dämpfung-durch-leichten-Regen} mit $L_\mathrm{leichterRegen}=0.2\,\text{dB}=1.05$.Auch die Temperatur der Wolken $T_\mathrm{m}=275\,\text{K}$ spielt dabei eine Rolle. Die Antennentemperatur für die Bedingung leichter Regen kann mit der Gleichung \ref{eq:Antennentemperatur-bei-Regen} bestimmt werden.
+\begin{equation}
+\begin{split}
+        T_\mathrm{A,leichterRegen}&=\frac{T_\mathrm{Sky}}{L_\mathrm{leichterRegen}}+T_\mathrm{m}\left(1-\frac{1}{L_\mathrm{leichterRegen}}\right)+T_\mathrm{Ground}\\
+        &=\frac{6.5\,\text{K}}{1.05}+275\,\text{K}\left(1-\frac{1}{1.05}\right)+0\,\text{K}=19.29\,\text{K}
+\end{split}
+\label{eq:Antennentemperatur-leichterRegen}
+\end{equation}
+Im Vergleich zur Antennentemperatur bei klaren Himmel $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$ ist die Antennentemperatur bei leichten Regenfälle mit $T_\mathrm{A,leicherRegen}=19.29\,\text{K}$ fast dreimal so groß. Das zeigt auf, wie wichtig die Berücksichtigung der Dämpfung durch Regenschauer in der Antennentemperatur ist. Die höhere Antennentemperatur bedeutet mehr Rauschen am Eingang des Empfangssystem, was zur einer Verschlechterung des $G/T$ führt.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,max}}{T_\mathrm{e,sys}+T_\mathrm{A,leichterRegen}}=\frac{7244.36}{336.63\,\text{K}+19.29\,\text{K}}=20.35\,\text{1/K}=13.12\,\text{dB/K}
+    \label{eq:Empfangsgüte-Bedingung-leichter-Regen}
+\end{equation}
+Im Vergleich zur Empfangsgüte bei klaren Himmel $G/T=13.24\,\text{dB/K}$ sinkt die Empfangsgüte bei leichten Regenschauern auf $G/T=13.12\,\text{dB/K}$. Das entspricht einem Verlust von $0.12\,\text{dB/K}$, was im ersten Moment nicht viel wirkt. In Absoluten Zahlen entspricht ein Verlust von $0.12\,\text{dB}$ einem Verlust von ca. $3.6\,\%$\newline
+Die Antennentemperatur für die Bedingung Regen kann wird auch mit der Gleichung \ref{eq:Antennentemperatur-bei-Regen} bestimmt. Die Dämpfung durch stärkere Niederschläge ist in Gleichung \ref{eq:bestimmte-Regendämpfung} mit $L_\mathrm{Regen}=8.86\,\text{dB}=7.69$ angegeben.
+\begin{equation}
+\begin{split}
+        T_\mathrm{A,Regen}&=\frac{T_\mathrm{Sky}}{L_\mathrm{Regen}}+T_\mathrm{m}\left(1-\frac{1}{L_\mathrm{Regen}}\right)+T_\mathrm{Ground}\\
+        &=\frac{6.5\,\text{K}}{7.69}+275\,\text{K}\left(1-\frac{1}{7.69}\right)+0\,\text{K}=240.1\,\text{K}
+\end{split}
+\label{eq:Antennentemperatur-Regen}
+\end{equation}
+Verglichen mit der Antennentemperatur bei leichten Regen $T_\mathrm{A,leichterRegen}=19.29\,\text{K}$ ist die Antennentemperatur bei stärkeren Niederschläge $T_\mathrm{A,Regen}=240.1\,\text{K}$ deutlich höher. Die hohe Antennentemperatur ist den stärkeren Niederschlägen geschuldet. Die höhere Antennentemperatur führt zu einer deutlichen Erhöhung des Rausches im System, was sich negativ auf die Empfangsgüte $G/T$ und das $SNR$ auswirken wird.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,max}}{T_\mathrm{e,sys}+T_\mathrm{A,Regen}}=\frac{7244.36}{336.63\,\text{K}+240.1\,\text{K}}=12.56\,\text{1/K}=10.99\,\text{dB/K}
+    \label{eq:Empfangsgüte-Bedingung-Regen}
+\end{equation}
+Wie vermutet wirkt sich die deutlich höhere Antennentemperatur negativ auf die Empfangsgüte $G/T$ aus. Im Vergleich zur Empfangsgüte bei klaren Himmel $G/T=13.24\,\text{dB/K}$ sinkt die Empfangsgüte bei starken Niederschlägen auf $G/T=10.99\,\text{dB/K}$. Das entspricht einem Verlust von $2.25\,\text{dB}$ oder ca.$40.5\,\%$. Das wird sich deutlich negativ auf das $SNR$ des Empfängers auswirken und eventuell zu Ausfällen des Downlinks führen.
+
+
+
+\subsection{Link Budget und Link Qualität}
+Die Bestimmung des Link Budget ist ein wichtiger Schritt in der Planung von Satelliten Kommunikationssystemen. Mit dem Link Budget wird die Leistungsbilanz des jeweiligen Satellitenlink angeben. Es setzt sich aus der eingespeisten Leistung $P_\mathrm{T}$ des  und allen auftretenden Verlusten $L$ und Verstärkungen $G$ vom Sender bis zum Empfänger zusammen.\cite{Satellite_Communications_Systems}\cite{Link-Budget} 
+\begin{equation}
+    P_\mathrm{RX,dB}=P_\mathrm{T,dB}-L_\mathrm{dB}+G_\mathrm{dB}
+    \label{eq:Linkbudget}
+\end{equation}
+Die Gleichung \ref{eq:Linkbudget} ist vereinfachte Form der Bestimmung des Link Budgets. Die Leistung $P_\mathrm{RX}$ aus Gleichung \ref{eq:Linkbudget} ist dann die zu erwartende Leistung am Ausgang des RF-Bereiches vom Empfangssystem.\cite{Satellite_Communications_Systems}\cite{Link-Budget}\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Link Budget}
+    \caption{Grafische Darstellung des Link Budgets}
+    \label{fig:Grafische Darstellung des Link Budgets}
+\end{figure}
+Die Abbildung \ref{fig:Grafische Darstellung des Link Budgets} zeigt eine grafische Darstellung des Link Budgets. Das Link Budget kann in drei Bereich aus Kapitel \ref{chap:Theoretische-Betrachtung-des-Downlinks} eingeteilt werden.\newline
+Im ersten Abschnitt befindet sich der Sender, in diesem Fall der Satellit Es'Hail-2 (QO-100). In diesem Abschnitt sind für das Link Budget die Sendeleistung $P_\mathrm{T}$, der Gewinn der Sendeantenne $G_\mathrm{T}$ und das daraus resultierende $EIRP$. Auch die Bandbreite $B$ ist für die spätere Bestimmung der Rauschleistung im Empfangssystem von Bedeutung.\newline 
+Die Sendeleistung von Es'Hail-2 (QO-100) ist in Gleichung \ref{Sendeleistung Es'Hail-2} angegeben. Der Gewinn der Sendeantenne beträgt $G_\mathrm{T}=17\,\text{dBi}$ und das $EIRP$ ist in Gleichung \ref{eq:EIRP_dBm_Eshail2} in $\text{dB}$ und in Gleichung \ref{eq:EIRP_W_EsHail2} in $\text{W}$ angegeben. Diese Werte können in einer Tabelle zusammengefasst werden. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Name & Variable & Wert & Einheit\\
+        \hline
+         Sendeleistung & $P_\mathrm{T}$ & $42.5$ & $\text{dBm}$\\
+                       & $P_\mathrm{T}$ & $17.78$ & $\text{W}$\\
+         Gewinn& $G_\mathrm{T}$ & $17$ & $\text{dBi}$\\
+                & $G_\mathrm{T}$ & $50.12$ & \\
+        EIRP & $EIRP$ & $59.5$ & $\text{dBm}$\\
+            & $EIRP$ & $891.25$ & $\text{W}$\\
+        Bandbreite & $B$ & $500$ $\text{kHz}$
+    \end{tabular}
+    \caption{Bestimmte Parameter des Schmalbandtransponder auf Es'Hail-2 (QO-100)}
+    \label{tab:LinkBudet-EsHail-2}
+\end{table}
+Den zweiten Abschnitt bildet die Übertragungsstrecke zwischen Es'Hail-2 (QO-100) und der Bodenstation am IAT. In diesem Abschnitt treten nur Dämpfungen auf. Die Dämpfungen setzen sich aus der Freiraumdämpfung $L_\mathrm{FR}$ aus Gleichung \ref{eq:BestimmteFreiraumdämpfung}, der Verluste durch nicht optimale Ausrichtung $L_\mathrm{\theta T}$ aus Gleichung \ref{eq:Senderseitige-Fehlausrichtung} auf der Sendeseite und $L_\mathrm{\theta R}$ aus Gleichung \ref{eq:Empfängerseitige-Fehlausrichtung} auf der Empfangsseite. Die einzige nicht feste Dämpfung ist die Dämpfung durch die Atmosphäre. Diese unterscheidet sich je nach den festgelegten Bedingung klarer Himmel, leicher Regen und Regen. Die Dämpfung durch die Atmosphäre bei klaren Himmel $L_\mathrm{ATklarerHimmel}$ist in Gleichung \ref{eq:Dämpfung-in-der-Atmosphäre-klarer-Himmel} angegeben. Für die Bedingung leichter Regen $L_\mathrm{ATleicherRegen}$ in \ref{eq:Dämpfung-in-der-Atmosphäre-leichter-Regen} und für stärkere Niederschläge $L_\mathrm{ATRegen}$ in \ref{eq:Dämpfung-in-der-Atmosphäre-Regen}.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Name & Variable & Wert & Einheit\\
+        \hline
+         Freiraumdämpfung& $L_\mathrm{FR}$ & $204.61$ & $\text{dB}$\\
+        & $L_\mathrm{FR}$ & $2.9\cdot10^{20}$ & \\
+         Sendeseite Fehlausrichtung& $L_\mathrm{\theta T}$ & $5.23$ & $\text{dB}$\\
+        & $L_\mathrm{\theta T}$ & $3.33$ & \\
+        Empfangsseitige Fehlausrichtung & $L_\mathrm{\theta R}$ & $0.69$ & $\text{dB}$\\
+         & $L_\mathrm{\theta R}$ & $1.17$ & \\
+         Dämpfung klarer Himmel & $L_\mathrm{ATklarerHimmel}$ & $0.547$ & $\text{dB}$\\
+         & $L_\mathrm{ATklarerHimmel}$ & $1.13$ & \\
+        Dämpfung leichter Regen & $L_\mathrm{ATleicherRegen}$ & $0.947$ & $\text{dB}$\\
+         & $L_\mathrm{ATleicherRegen}$ & $1.24$ & \\
+        Dämpfung Regen & $L_\mathrm{ATRegen}$ & $9.61$ & $\text{dB}$\\
+         & $L_\mathrm{ATRegen}$ & $9.14$ & \\
+    \end{tabular}
+    \caption{Bestimmte Parameter des Abschnittes Übertragungsstrecke zwischen Es'Hail-2 (QO-100) und der Bodenstation am IAT}
+    \label{tab:LinkBudet-Übertragungsstrecke}
+\end{table}
+Den letzten Abschnitt bildet die Bodenstation. Diese ist der Empfänger der Signale des Schmalbandtransponders von Es'Hail-2 (QO-100). Wichtige Parameter des Empfangssystems sind die empfangene Leistung $P_\mathrm{R}$ am Eingang des Empfangssystems, sowie die Leistung am Ausgang des Empfangssystems $P_\mathrm{RX}$. Die Leistung am Eingang des Empfangssystems $P_\mathrm{R}$ kann mit einer Ergänzung der Gleichung \ref{eq:Linkbudget} durch die Werte in den Tabellen \ref{tab:LinkBudet-EsHail-2} und \ref{tab:LinkBudet-Übertragungsstrecke}, sowie dem Gewinn der Empfangsantenne $G_\mathrm{R,max}$ ermittelt werden.
+\begin{equation}
+    P_\mathrm{R}=P_\mathrm{T}\cdot G_\mathrm{T}\cdot G_\mathrm{R}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATx}}
+    \label{eq:empfangene-Leistung}
+\end{equation}
+Dabei ist die Dämpfung $L_\mathrm{ATx}$ die Dämpfung durch die Atmosphäre für die jeweilige Wetterbedingung. Diese Gleichung ist eine Erweiterung der Friis'sche Übertragungsgleichung, welche nur die Freiraumdämpfung berücksichtigt.\newline 
+Die Leistung am Ausgang des Empfangssystems kann mit einer Erweiterung der Gleichung \ref{eq:empfangene-Leistung} um die Verstärkung des Empfangssystems ermittelt werden.
+\begin{equation}
+    P_\mathrm{RX}=P_\mathrm{T}\cdot G_\mathrm{T}\cdot G_\mathrm{R}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATx}}
+    \label{eq:Ausgang-Leistung}
+\end{equation}
+Auch hier ist die Dämpfung $L_\mathrm{ATx}$ die Dämpfung durch die Atmosphäre für die jeweilige Wetterbedingung.\newline
+Ebenfalls ist es wichtig die Qualität des Downlinks zu bestimmen. Die Qualität des Downlinks wird über $C/N_\mathrm{0}$ angegeben. Je größer $C/N_\mathrm{0}$ wird, desto mehr Leistung wird pro $\degree\text{K}$ Rauschen empfangen.\cite{Satellite_Communications_Systems}\newline
+Dabei ist $C$ die Ausgangsleistung des Empfangssystems $P_\mathrm{RX}$ und $N_\mathrm{0}$ die Rauschleistungsdichte. Die Rauschleistungsdichte entspricht $n_\mathrm{0}$ aus Gleichung \ref{eq:PDS-Funktion}. Nur wird die Temperatur $T_\mathrm{0}$ durch die Rauschtemperatur $T_\mathrm{S}$ des Empfangssystems ersetzt.\cite{Satellite_Communications_Systems}\newline
+\begin{equation}
+    C/N_\mathrm{0}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S}}
+    \label{eq:Qualität-Downlink}
+\end{equation}
+Die Rauschtemperatur des Empfangssystems $T_\mathrm{S}$ setzt sich aus der jeweiligen Antennentemperatur $T_\mathrm{A}$, der physikalischen Temperatur $T_\mathrm{0}$, der äquivalenten Rauschtemperatur des Empfangssystems $T_\mathrm{e,sys}$ und den Verlusten des Empfangssystems zusammen.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{S}=\frac{T_\mathrm{A}}{L_\mathrm{sys}}+T_\mathrm{0}\left( 1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys}
+    \label{eq:Rauschen-Temperatur-System}
+\end{equation}
+Auch ist es wichtig das $SNR$ am Eingang und Ausgang des Empfangssystems zu bestimmen. Mit dem $SNR$ können Aussagen zur Qualität des Empfangssystems und zur Qualität des Ausgangssignals getroffen und mögliche Fehlerrate in der Demodulation bestimmt werden.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/SNR-Empfangssytem}
+    \caption{Das $SNR$ am Eingang und Ausgang des Empfangssystems}
+    \label{fig:SNR-Empfangssystem}
+\end{figure}
+Die Abbildung \ref{fig:SNR-Empfangssystem} zeigt das $SNR_\mathrm{i}$ am Eingang und das $SNR_\mathrm{0}$ am Ausgang des Empfangssystems.\newline 
+Das $SNR_i$ am Eingang des Empfangssystems kann mit der Gleichung \ref{eq:SNR} bestimmt werden. Die Eingangsleistung $S_\mathrm{i}$ entspricht dabei der von der Antenne empfangenen Leistung $P_\mathrm{R}$. Die Rauschleistung am Eingang $N_\mathrm{i}$ ist von der jeweiligen Antennentemperatur $T_\mathrm{A}$ und der Bandbreite $B$ abhängig.
+\begin{equation}
+    SNR_\mathrm{i}=\frac{S_\mathrm{i}}{N_\mathrm{i}}=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A}\cdot B}
+    \label{eq:SNR-Eingang-Empfangsystem}
+\end{equation}
+Das am $SNR_\mathrm{o}$ am Ausgang des Empfangssystems kann auch mit der Gleichung \ref{eq:SNR} bestimmt werden. Die Leistung am Ausgang $S_\mathrm{o}$ ist abhängig von Eingangsleistung $S_\mathrm{i}$ und der Verstärkung des Empfangssystems $G_\mathrm{sys}$ aus Gleichung \ref{eq:Gesamtverstärkung-Empfangssystems}. Die Rauschleistung am Ausgang $N_\mathrm{o}$kann mit der Gleichung \ref{eq:Rauschleistung-Ausgang-Zweitor} bestimmt werden. Diese setzt sich aus der jeweiligen Antennentemperatur $T_\mathrm{A}$, der Bandbreite $B$, der äquivalenten Rauschleistung des Empfangssystems $T_\mathrm{e,sys}$, sowie der Verstärkung des Empfangssystems $G_\mathrm{sys}$ aus Gleichung \ref{eq:Gesamtverstärkung-Empfangssystems} zusammen.
+\begin{equation}
+    SNR_\mathrm{o}=\frac{S_\mathrm{o}}{N_\mathrm{o}}=\frac{P_\mathrm{R}\cdot G_\mathrm{sys}}{k\cdot (T_\mathrm{A}+T_\mathrm{e,sys})\cdot B \cdot G_\mathrm{sys}}=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A}+T_\mathrm{e,sys})\cdot B}
+    \label{eq:SNR-Ausgang-Empfangsystem}
+\end{equation}
+Anhand von Gleichung \ref{eq:SNR-Ausgang-Empfangsystem} lässt sich zeigen, dass das $SNR_\mathrm{o}$ unabhängig von der Verstärkung $G_\mathrm{sys}$ des Empfangssystem ist. Es kann also nicht durch verstärken verbessert werden. Sollte das $SNR$ verbessert werden sollen, muss das über die Verringerung der Rauschleistung $N_\mathrm{o}$ geschehen. Je höher das $SNR_\mathrm{o}$ ist, desto besser können Signale von Es'Hail-2 (QO-100) vom Rauschen unterschieden und demoduliert werden. Im Falle von digitalen Modulationen sinkt die Bitfehlerrate $BER$, wie in Abbildung \ref{fig:BeispielBER} zu erkennen.\newline
+In den folgenden Abschnitten wird das Link Budget, sowie die Qualität des Downlinks und das $SNR$ für die jeweiligen Wetterbedingungen klarer Himmel, leichter Regen und Regen betrachtet.\newline
+Der für die Bestimmung der einzelnen Link Budgets verwendete Python Code ist im Github-Repository und im Anhang \ref{lst:Link-Budget-python} hinterlegt.
+\subsubsection*{Link Budget und Link Qualität für die Bedingung klarer Himmel}
+Die empfangene Leistung $P_\mathrm{R}$ wird mit der Gleichung \ref{eq:empfangene-Leistung} bestimmt und den Werten in den Tabellen \ref{tab:LinkBudet-EsHail-2} und \ref{tab:LinkBudet-Übertragungsstrecke} bestimmt. Für die Dämpfung durch die Atmosphäre $L_\mathrm{ATx}$ wird für die Wetterbedingung die in Gleichung \ref{eq:Dämpfung-in-der-Atmosphäre-klarer-Himmel}
+bestimmten Dämpfung $L_\mathrm{ATklarerHimmel}=0.544\,\text{dB}=1.13$ eingesetzt. Der Gewinn der Empfangsantenne ist in Gleichung \ref{eq:Gewinn-der-Empfangsantenne} zu finden und beträgt $G_\mathrm{R,max}=38.6\,\text{dBi}=7244.36$.
+\begin{equation}
+\begin{split}
+        P_\mathrm{R}&=EIRP\cdot G_\mathrm{R,max}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATklarerHimmel}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{1.13}\\
+        &=8.57\cdot 10^{-15}\,\text{W} =-110.67\,\text{dBm}
+\end{split}
+    \label{eq:empfangene-Leistung-klarer-Himmel}
+\end{equation}
+Der Pegel des von der Antenne empfangenen Signals ist mit $P_\mathrm{R}=-110.67\,\text{dBm}$ sehr schwach und liegt nur ca. $21\,\text{dB}$ über dem Grundrauschen des SDR. Das ist in Gleichung \ref{eq:Grundrauschen-SDR} mit $N_\mathrm{oSDR}=-131.66\,\text{dBm}$ angegeben.\newline
+ Aus diesem Grund verstärkt der RF-Bereich des Empfangssystem das empfangene Signal weiter. Mit der Gleichung \ref{eq:Ausgang-Leistung} kann die Leistung am Ausgang des RF-Bereiches vom Empfangssystem bestimmt werden. Die Gesamtverstärkung des Systems ist in Gleichung \ref{eq:Gesamtverstärkung-Empfangssystems} mit $G_\mathrm{sys}=77.99\,\text{dB}=62.99\cdot10^{6}$ angegeben.
+\begin{equation}
+\begin{split}
+        P_\mathrm{RX}&=EIRP\cdot G_\mathrm{R,max}\cdot G_\mathrm{sys}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATklarerHimmel}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot62.99\cdot10^{6}\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{1.13}\\
+        &=5.4\cdot 10^{-7}\,\text{W} =-32.68\,\text{dBm}
+\end{split}
+    \label{eq:Ausgang-Leistung-klarer-Himmel}
+\end{equation}
+Durch die Verstärkung des Eingangssignals um $77.99\,\text{dB}$ beträgt die Leistung am Ausgang des RF-Bereiches $P_\mathrm{RX}=-32.68\,\text{dBm}$. Der Pegel des Signals liegt deutlich über dem Grundrauschen des SDR. Allerdings kommt durch das restlichen Empfangssystem noch zusätzliches Rauschen in den SDR, weshalb noch keine Aussage auf die mögliche Verarbeitung des Signals getroffen werden kann. Dafür muss noch das $SNR$ bestimmt werden.\newline
+Das $SNR_\mathrm{i}$ am Eingang des Empfangssystems kann mit der Gleichung \ref{eq:SNR-Eingang-Empfangsystem} bestimmt werden. Die Antennentemperatur bei klaren Himmel ist in \ref{eq:Antennentemperatur-Bedingung-klarer-Himmel} mit $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$ angegeben. Am Anfang wird die Bandbreite $B$ mit der Bandbreite des Downlinks von $B=500\,\text{kHz}$ angenommen
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,klarerHimmel}\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot6.5\,\text{K}\cdot500\,\text{kHz}}=195.09=22.9\,\text{dB}
+\end{split}
+    \label{eq:SNRi-klarer-Himmel-B500}
+\end{equation}
+Bei einer Bandbreite von $B=500\,\text{kHz}$ weißt das Empfangssystem am Eingang ein $SNR_\mathrm{i,klarerHimmel}=22.9\,\text{dB}$ auf. Das ist ein guter Wert, welcher noch Puffer für das zusätzliche Rauschen des RF-Bereiches vom Empfangssystem bieten sollte.\newline
+ Das $SNR_\mathrm{o,klarerHimmel}$ kann über die Gleichung \ref{eq:SNR-Ausgang-Empfangsystem} bestimmt werden. Die äquivalente Rauschtemperatur des Empfangssystems ist in \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} mit $T_\mathrm{e,sys}=336.63\,\text{K}$ angegeben.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,klarerHimmel}+T_\mathrm{e,sys})\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(6.5\,\text{K}+336.63\,\text{K})\cdot500\,\text{kHz}}=3.67=5.68\,\text{dB}
+\end{split}
+    \label{eq:SNRo-klarer-Himmel-B500}
+\end{equation}
+Das $SNR_\mathrm{o,klarerHimmel}=5.68\,\text{dB}$ am Ausgang des RF-Bereiches ist sehr gering. Die empfangenen Signale von Es'Hail-2 (QO-100) könnten nur schwer vom Rauschen unterschieden werden. Der Grund dafür ist die hohe Rauschleistung im RF-Bereich des Empfangssystems, welches hauptsächlich durch die äquivalente Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$ und damit vom RF-Bereich des Empfangssystem selbst verursacht wird. Die einzige Möglichkeit das Rauschen zu reduzieren ist die Reduzierung der Bandbreite $B$. Diese wird im nächsten Schritt auf $B=25\,\text{kHz}$ reduziert.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,klarerHimmel}\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot6.5\,\text{K}\cdot25\,\text{kHz}}=3901,9=35.9\,\text{dB}
+\end{split}
+    \label{eq:SNRi-klarer-Himmel-B25}
+\end{equation}
+Durch die deutliche Reduzierung der Bandbreite $B$ steigt wie erwartet der Signal-zu-Rauschabstand. Am Eingang liegt ein $SNR_\mathrm{i,klarerHimmel}=35.9\,\text{dB}$ an, was einer Steigerung von $13\,\text{dB}$ entspricht. 
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,klarerHimmel}+T_\mathrm{e,sys})\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(6.5\,\text{K}+336.63\,\text{K})\cdot25\,\text{kHz}}=73.91=18.69\,\text{dB}
+\end{split}
+    \label{eq:SNRo-klarer-Himmel-B25}
+\end{equation}
+Am Ausgang liegt ein $SNR_\mathrm{o,klarerHimmel}=18.69\,\text{dB}$ an. Im Vergleich zum $SNR_\mathrm{o,klarerHimmel}=5.68\,\text{dB}$ bei $B=500\,\text{kHz}$ entspricht das einer Steigerung von $13.01\,\text{dB}$. Durch diese Steigerung können die Signale im empfangenen Downlink von Es'Hail-2 (QO-100) vom Rauschen zu unterscheiden.\newline
+Soll nur eine einzigen Übertragung empfangen werden, kann die Bandbreite $B$ auf die maximale Bandbreite eines Signals reduziert werden. Diese beträgt beim Schmalbandtransponder auf Es'Hail-2 (QO-100) $B=2.7\,\text{kHz}$.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,klarerHimmel}\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot6.5\,\text{K}\cdot2.7\,\text{kHz}}=35401.11=45.49\,\text{dB}
+\end{split}
+    \label{eq:SNRi-klarer-Himmel-B2.7}
+\end{equation}
+Durch die weitere Reduzierung der Bandbreite auf $B=2.7\,\text{kHz}$ steigt der Signal-zu-Rauschabstand auf $SNR_\mathrm{i,klarerHimmel}=45.49\,\text{dB}$. Verglichen mit mit dem $SNR_\mathrm{i,klarerHimmel}=22.9\,\text{dB}$ bei $B=500\,\text{kHz}$ ist das ein Anstieg um $22.59\,\text{dB}$. Gegenüber dem $SNR_\mathrm{i,klarerHimmel}=35.9\,\text{dB}$ bei $B=25\,\text{kHz}$ ist es ein Anstieg von $9.59\,\text{dB}$.\newline
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,klarerHimmel}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,klarerHimmel}+T_\mathrm{e,sys})\cdot B}\\&=\frac{8.57\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(6.5\,\text{K}+336.63\,\text{K})\cdot2.7\,\text{kHz}}=670.61=28.26\,\text{dB}
+\end{split}
+    \label{eq:SNRo-klarer-Himmel-B2.7}
+\end{equation}
+Durch das hohe $SNR_\mathrm{i,klarerHimmel}=45.49\,\text{dB}$ ist genug Puffer für das zusätzlichen Rauschen des RF-Bereiches vom Empfangssystems. Das $SNR_\mathrm{o,klarerHimmel}$ am Ausgang des RF-Bereiches beträgt $SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$. Das ist ein Anstieg von $22.58\,\text{dB}$ gegenüber $SNR_\mathrm{o,klarerHimmel}=5.68\,\text{dB}$ bei $B=500\,\text{kHz}$, bzw. ein Anstieg von $9.57\,\text{dB}$ gegenüber $SNR_\mathrm{o,klarerHimmel}=18.69\,\text{dB}$ bei $B=25\,\text{kHz}$.\newline
+Mit einem Signal-zu-Rauschabstand von $ SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$ ist es problemlos möglich, das empfangene Signal zu demodulieren. Bei digitalen Modulationen bleibt die Bitfehlerrate $BER$ gering, wie es an Beispiel an einer n-QAM aus Abbildung \ref{fig:BeispielBER} entnommen werden kann.\newline
+Die Qualität des Downlinks bei klaren Himmel kann mit der Gleichung \ref{eq:Qualität-Downlink} bestimmt werden. Zuvor muss noch die Rauschtemperatur $T_\mathrm{S}$ mit Gleichung \ref{eq:Rauschen-Temperatur-System} bestimmt werden. Die Verluste des Empfangssystems betragen $L_\mathrm{sys}=7.01\,\text{dB}=5.02$. Die Antennentemperatur beträgt $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$, die physikalische Temperatur $T_\mathrm{0}=290\,\text{K}$ und die äquivalente Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$. 
+\begin{equation}
+\begin{split}
+     T_\mathrm{S}&=\frac{T_\mathrm{A,klarerHimmel}}{L_\mathrm{sys}}+T_\mathrm{0}\left(1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys}\\
+     &=\frac{6.5\,\text{K}}{5.02}+290\,\text{K}\left(1-\frac{1}{5.02}\right)+336.63\,\text{K}\\
+     &=570.16\,\text{K}
+\end{split}
+\label{eq:Rauschen-Temperatur-System-klarer-Himmel}
+\end{equation}
+Zusammen mit der Leistung am Ausgang des RF-Bereiches $P_\mathrm{RX}$ aus Gleichung \ref{eq:Ausgang-Leistung-klarer-Himmel} kann die Qualität des Downlinks bei einem klaren Himmel bestimmt werden.
+\begin{equation}
+C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S}}=\frac{5.4\cdot 10^{-7}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot570.16\,\text{K}}=6.86\cdot10^{13}\,\text{Hz}=138.37\,\text{dBHz}
+ \label{eq:Qualität-Downlink-klarer-Himmel}
+\end{equation}
+Je höher der Wert der von $C/N_\mathrm{o}$ ist, desto besser ist die Qualität des Downlinks. Mit einem Wert von $C/N_\mathrm{o}=138.37\,\text{dBHz}$ ist die Qualität des Downlinks sehr gut. Verantwortlich für die hohe Qualität des Downlinks hauptsächlich der hohe Gewinn $G_\mathrm{R,max}$ der Empfangsantenne und die Verstärkung $G_\mathrm{sys}$ des Empfangssystems. Die Empfangsantenne hat dabei einen großen Einfluss auf die Qualität des Downlinks. Während die äquivalente Rauschtemperatur des Empfangssystems $T_\mathrm{e,sys}$ eher fest ist, kann je nach Elevationswinkel $\varepsilon$ kann das eingefangene Rauschen in Form der Antennentemperatur $T_\mathrm{A}$ stark variieren, was zu einer drastischen Verschlechterung der Qualität des Downlinks führen kann. In diesem Fall ist die Antennentemperatur $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$ im Vergleich zur äquivalenten Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$ des Empfangssystem sehr gering.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Name & Variable & Wert & Einheit\\
+        \hline
+         Durchmesser Antenne& $d$                   & $0.9$             & $\text{m}$\\
+        Physikalische Fläche& $A_\mathrm{phy}$      & $0.667$ &\text{m}^2 \\
+         Effektive Fläche   & $A_\mathrm{E}$        & $0.472$            & $\text{m}^2$\\
+                Effizienz   & $\eta_\mathrm{ANT}$   & $0.708$            & \\
+                 Gewinn     & $G_\mathrm{R,max}$    & $38.6$            & $\text{dBi}$\\
+                            & $G_\mathrm{R,max}$    & $7244.36$         & \\
+    Antennentemperatur      & $T_\mathrm{A,klarerHimmel}$ & $6.5$       & $\text{K}$\\
+    Empfangsgüte            & $G/T$                 & $21.11$       & $\text{1/K}$\\
+                            & $G/T$                 & $13.24$       & $\text{dB/K}$ \\
+    Empfangene Leistung     & $P_\mathrm{R}$        & $8.57\cdot 10^{-15}$     & $\text{W}$\\
+                            & $P_\mathrm{R}$         & $-110.67$   & $\text{dBm}$ \\
+    Verstärkung des Empfangssystem  & $G_\mathrm{sys}$        & $77.99$ & $\text{dB}$\\
+                            & $G_\mathrm{sys}$      & $62.99\cdot 10^{6}$ \\
+    Leistung am Ausgang     & $P_\mathrm{RX}$        & $5.4\cdot 10^{-7}$  & $\text{W}$\\
+                            & $P_\mathrm{RX}$        & $-32.68$        & $\text{dBm}$\\
+    Äquivalente Rauschzahl  & $T_\mathrm{e,sys}$    & $336.63$          & $\text{K}$ \\
+    Bei $B=500\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $22.9$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $5.68$         & \text{dB} \\
+    Bei $B=25\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $35.9$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $18.69$         & \text{dB} \\
+    Bei $B=2.7\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $45.49$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $28.26$         & \text{dB} \\
+    Link Qualität           & $C/N_\mathrm{o}$ & $138.37$ & \text{dB/Hz} \\
+    \end{tabular}
+    \caption{Bestimmte Parameter der Bodenstation für das Link Budget bei klaren Himmel}
+    \label{tab:LinkBudet-Bodenstation-klarer-Himmel}
+\end{table}
+Die Tabelle \ref{tab:LinkBudet-Bodenstation-klarer-Himmel} ist eine Übersicht der bestimmte Parameter der Bodenstation für das Link Budget bei klaren Himmel. Die physikalische Fläche $A_\mathrm{phy}$, die effektive Fläche $A_\mathrm{E}$ und die Effizienz der Antenne sind in den Gleichungen \ref{eq:physikalische-Fläche-der-Empfangsantenne},\ref{eq:effektive-Antennenfläche-der-Empfangsantenne} und \ref{eq:Effizienz-der-Antennenfläche-der-Empfangsantenne} angegeben.\newline
+Die Empfangsgüte findet sich in Gleichung \ref{eq:Empfangsgüte-Bedingung-klarer-Himmel} und die Verstärkung des Empfangssystem ist in \ref{eq:Gesamtverstärkung-Empfangssystems} angegeben.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/LinkBudget_clear_Sky.png}
+    \caption{Grafische Darstellung des Link Budgets bei klaren Himmel}
+    \label{fig:Link-Budget-klarer-Himmel}
+\end{figure}
+Die Abbildung \ref{fig:Link-Budget-klarer-Himmel} repräsentiert das Link Budget bei klaren Himmel in übersichtlich in Form eines Graphen. Mit dem Link Budget wird eine Übersicht über die Verteilung der Dämpfungen und Verstärkungen in den unterschiedlichen Abschnitten des Downlinks gezeigt. Die größten Einfluss stellt dabei die Entfernung $D_\mathrm{SAT}$ zwischen Es'Hail-2 (QO-100) und der Bodenstation dar. Im Graphen wird diese durch die Freiraumdämpfung $L_\mathrm{FR}$ repräsentiert. Die Verluste durch die nicht optimale Ausrichtung von Sender und Empfänger zu einandere $L_\mathrm{\theta T}$ und $L_\mathrm{\theta R}$, sowie die Dämpfung durch Atmosphäre bei klaren Himmel $L_\mathrm{ATklarerHimmel}$ fallen, gegenüber der Freiraumdämpfung, eher weniger ins Gewicht.\newline
+Die einzigen auftretenden Verstärkungen im Downlink sind auf der Sendeseite der Gewinn der Sendeantenne $G_\mathrm{T}$ und auf der Empfangsseite der Gewinn der Empfangsantenne $G_\mathrm{R,max}$ und die Verstärkung des Empfangssystems $G_\mathrm{sys}$.\newline
+Das bestimmte Link Budget gilt für den größten Teil der Zeit. Es repräsentiert das best möglichste Link Budget für den betrachteten Downlink.
+
+
+
+
+
+
+
+\subsubsection*{Link Budget und Link Qualität für die Bedingung leichter Regen}
+Die bei der Wetterbedingung leichter Regen von der Antenne empfangene Leistung $P_\mathrm{R}$ lässt sich mithilfe der Gleichung \ref{eq:empfangene-Leistung} bestimmen. Die Dämpfung in der Atmosphäre bei leichten Regen ist in Gleichung \ref{eq:Dämpfung-in-der-Atmosphäre-leichter-Regen} mit $L_\mathrm{ATleichterRegen}=0.947\,\text{dB}=1.24$ angegeben.
+\begin{equation}
+\begin{split}
+        P_\mathrm{R}&=EIRP\cdot G_\mathrm{R,max}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{leichterRegen}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{1.24}\\
+        &=7.81\cdot 10^{-15}\,\text{W} =-111.07\,\text{dBm}
+\end{split}
+    \label{eq:empfangene-Leistung-leichter-Regen}
+\end{equation}
+Im Vergleich zur empfangenen Leistung bei klaren Himmel $P_\mathrm{R}=-110.668\,\text{dBm}$ sinkt die empfangene Leistung bei leichten Regen auf $P_\mathrm{R}=-111.07\,\text{dBm}$, was einem Verlust von $0.402\,\text{dBm}$ oder $8.87\,\%$ entspricht. Das zeigt, dass auch kleinere Regenschauer eine deutliche Auswirkungen auf die empfangene Leistung haben.\newline
+Da der Pegel des empfangene Signal mit $P_\mathrm{R}=-110.668\,\text{dBm}$ schwächer ist, als bei der Bedingung klarer Himmel, muss auch dieses verstärkt werden. Die Leistung am Ausgang des RF-Bereich des Empfangssystems kann mit der Gleichung \ref{eq:Ausgang-Leistung} bestimmt werden. Die Verstärkung des RF-Bereich ist in Gleichung \ref{eq:Gesamtverstärkung-Empfangssystems} mit $G_\mathrm{sys}=77.99\,\text{dB}=62.99\cdot10^{6}$ angegeben.
+\begin{equation}
+\begin{split}
+        P_\mathrm{RX}&=EIRP\cdot G_\mathrm{R,max}\cdot G_\mathrm{sys}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATleichterRegen}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot62.99\cdot10^{6}\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{1.24}\\
+        &=4.92\cdot 10^{-7}\,\text{W} =-33.07\,\text{dBm}
+\end{split}
+    \label{eq:Ausgang-Leistung-leichter-Regen}
+\end{equation}
+Nach der Verstärkung beträgt die Leistung am Ausgang des RF-Bereiches $P_\mathrm{RX}=-33.07\,\text{dBm}$. Der Verlust gegenüber der Ausgangsleistung bei klaren Himmel $P_\mathrm{RX}=-32.68\,\text{dBm}$ beträgt weiterhin ca. $0.4\,\text{dBm}$ oder $8.9\,\%$. Das ist bei gleichbleibender Verstärkung des Empfangssystems $G_\mathrm{sys}=77.99\,\text{dB}$ auch zu erwarten gewesen.\newline
+Um die mögliche Demodulation und Verarbeitung der Signale im empfangenen Downlink zu überprüfen, muss der Signal-zu-Rauschabstand am Ein- und Ausgang des Empfangssystems bestimmt werden. Mit der Gleichung \ref{eq:SNR-Eingang-Empfangsystem} wird der Signal-zu-Rauschabstand $SNR_\mathrm{i}$ am Eingang des Empfangssystems bestimmt. Die Antennentemperatur für die Bedienung leichter Regen ist in Gleichung \ref{eq:Antennentemperatur-leichterRegen} mit $T_\mathrm{A,leichterRegen}=19.29\,\text{K}$ angegeben. Die Bandbreite wird am Anfang wieder mit $B=500\,\text{kHz}$ angenommen.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,leichterRegen}\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot19.29\,\text{K}\cdot500\,\text{kHz}}\\
+    &=58.68=17.68\,\text{dB}
+\end{split}
+    \label{eq:SNRi-leichter-Regen-B500}
+\end{equation}
+Im Vergleich zum $SNR_\mathrm{i,klarerHimmel}=22.9\,\text{dB}$ bei $B=500\,\text{kHz}$ ist der Signal-zu-Rauschabstand am Eingang des Empfangssystems um $5.22\,\text{dB}$ auf $SNR_\mathrm{i,leicherRegen}=17.68\,\text{dB}$ gesunken. Gründe dafür sind die, durch leichte Regenschauer, gedämpfte Empfangsleistung $P_\mathrm{R}$ und die, durch die leichten Regenschauer, erhöhte eingefangene Rauschleistung. Diese wird durch die höhere Antennentemperatur $T_\mathrm{A,leichterRegen}=19.29\,\text{K}$ repräsentiert.\newline
+Ein Signal-zu-Rauschabstand von $SNR_\mathrm{i,leichterRegen}=17.69\,\text{dB}$ ist im ersten Moment ein zufriedenstellender Wert. Jedoch kann es mit der erhöhten Rauschleistung vom RF-Bereiches des Empfangssystem, repräsentiert durch die äquivalente Rauschleistung $T_\mathrm{e,sys}$, eng werden. Um Aussage um die Unterscheidbarkeit zwischen Signal und Rauschen treffen zu können, muss der Signal-zu-Rauschabstand $SNR_\mathrm{o,leichterRegen}$ am Ausgang des RF-Bereiches vom Empfangssystem bestimmt werden. Dieses kann mit der Gleichung \ref{eq:SNR-Ausgang-Empfangsystem} bestimmt werden. Die äquivalente Rauschtemperatur $T_\mathrm{e,sys}$ ist in Gleichung \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} angegeben.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,leichterRegen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(19.29\,\text{K}+336.63\,\text{K})\cdot500\,\text{kHz}}\\
+    &=3.18=5.02\,\text{dB}
+\end{split}
+    \label{eq:SNRo-leichter-Regen-B500}
+\end{equation}
+Wie bereits vermutet verschlechtert sich der Signal-zu-Rauschabstand durch den RF-Bereich um $12.66\,\text{dB}$ auf $SNR_\mathrm{o,leichterRegen}=5.02\,\text{dB}$. Der Grund für die Verschlechterung des Signal-zu-Rauschabstand ist die Rauschleistung des RF-Bereiches vom Empfangssystem, welche mit der äquivalenten Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$ angegeben wird.\newline
+Der Signal-zu-Rauschabstand ist, ähnlich wie bei der Bedienung klarer Himmel, mit$SNR_\mathrm{o,leichterRegen}=5.02\,\text{dB}$ zu niedrig, um verlässlich die Signale vom Rauschen zu unterscheiden. Aus diesem Grund kann die Bandbreite $B$ auf $B=25\,\text{kHz}$ reduziert werden, um so die Rauschleistung im Empfangssystem zu verringern.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,leichterRegen}\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot19.29\,\text{K}\cdot25\,\text{kHz}}\\
+    &=1136.42=30.56\,\text{dB}
+\end{split}
+    \label{eq:SNRi-leichter-Regen-B25}
+\end{equation}
+Durch die Reduzierung der Bandbreite $B$ auf $B=25\,\text{kHz}$ sinkt das eingefangene Rauschen, wodurch der Signal-zu-Rauschabstand um $12.88\,\text{dB}$ auf $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$ steigt.\newline
+Verglichen mit dem Signal-zu-Rauschabstand bei $B=25\,\text{kHz}$ und klaren Himmel $SNR_\mathrm{i,klarerHimmel}=35.9\,\text{dB}$ ist das $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$ um $5.34\,\text{dB}$ geringer, was einem Verlust des Singal-zu-Rauschabstand von $70.87\,\%$ bedeutet. Dennoch sollte der Signal-zu-Rauschabstand von $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$ bei $B=25\,\text{kHz}$ jetzt genug Puffer für die hohe Eigenrauschleistung des RF-Bereiches vom Empfangssystem bieten.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,leichterRegen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(19.29\,\text{K}+336.63\,\text{K})\cdot25\,\text{kHz}}\\
+    &=63.6=18.03\,\text{dB}
+\end{split}
+    \label{eq:SNRo-leichter-Regen-B25}
+\end{equation}
+Mit einem Signal-zu-Rauschabstand von $SNR_\mathrm{o,leichterRegen}=18.03\,\text{dB}$ können die Signale im empfangenen Downlink von Es'Hail-2 (QO-100) verlässlich vom Rauschen unterschieden werden. Im Vergleich zum Signal-zu-Rauschabstand bei $B=25\,\text{kHz}$ und klaren Himmel $SNR_\mathrm{o,klarerHimmel}=18.69\,\text{dB}$ ist dieser um $0.6\,\text{dB}$ gesunken, was einem Verlust von $13.9\,\%$ entspricht.\newline
+Für den Empfang eines einzelnen Signals vom Schmalbandtransponder von Es'Hail-2 (QO-100) wird die Bandbreite $B$ auf $B=2.7\,\text{kHz}$ reduziert. Dadurch wird der Signal-zu-Rauschabstand am Ein- und Ausgang des Empfangssystem weiter ansteigen.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,leichterRegen}\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot19.29\,\text{K}\cdot2.7\,\text{kHz}}=10870.63=40.36\,\text{dB}
+\end{split}
+    \label{eq:SNRi-klarer-Himmel-B2.7}
+\end{equation}
+Wie erwartet steigt durch die verringerter Bandbreite $B=2.7\,\text{kHz}$ der Signal-zu-Rauschabstand am Eingang des Empfangssystems auf $SNR_\mathrm{i,leichterRegen}=17.68\,\text{dB}$ an. Verglichen mit dem Signal-zu-Rauschabstand von $SNR_\mathrm{i,leichterRegen}=17.68\,\text{dB}$ bei $B=500\,\text{kHz}$ ist es um $22.68\,\text{dB}$ angestiegen. Gegenüber dem Signal-zu-Rauschabstand  $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$ bei $B=25\,\text{kHz}$ ist es um $9.8\,\text{dB}$ angestiegen.\newline
+Vergleicht man den Signal-zu-Rauschabstand mit dem vom klaren Himmel $SNR_\mathrm{i,klarerHimmel}=45.49\,\text{dB}$ ist es jedoch um $5.13\,\text{dB}$ gesunken. Das entspricht einem Verlust des Signal-zu-Rauschabstand von $69.29\,\%$.\newline
+Durch den deutlich höheren Signal-zu-Rauschabstand am Eingang des Empfangssystems sollte auch der Signal-zu-Rauschabstand am Ausgang vom RF-Bereich deutlich ansteigen.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,leichterRegen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,leichterRegen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{7.81\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(19.29\,\text{K}+336.63\,\text{K})\cdot2.7\,\text{kHz}}\\
+    &=589.16=27.7\,\text{dB}
+\end{split}
+    \label{eq:SNRo-leichter-Regen-B2.7}
+\end{equation}
+Wie erwartet ist der Signal-zu-Rauschabstand am Ausgang ebenfalls angestiegen. Dieser beträgt $SNR_\mathrm{o,leichterRegen}=27.7\,\text{dB}$, was einer Steigerung von $24.52\,\text{dB}$ gegenüber dem Signal-zu-Rauschabstand $SNR_\mathrm{o,leichterRegen}=3.18\,\text{dB}$ bei $B=500\,\text{kHz}$, bzw. einem Anstieg um $9.67\,\text{dB}$ gegenüber $SNR_\mathrm{o,leichterRegen}=18.03\,\text{dB}$ bei $B=25\,\text{kHz}$ entspricht.\newline
+Verglichen mit dem Signal-zu-Rauschabstand bei klaren Himmel $SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$ ist es jedoch ein Verlust von $0.56\,\text{dB}$ oder $12.2\,\%$.\newline 
+Der leichte Regen wird auch einen negativen Einfluss auf die Qualität des Downlinks haben. Bestimmt werden kann diese mithilfe der Gleichung \ref{eq:Qualität-Downlink}. Die dafür benötigte Rauschtemperatur $T_\mathrm{S}$ kann mithilfe \ref{eq:Rauschen-Temperatur-System} ermittelt werden. Die Antennentemperatur bei leichten Regen ist in Gleichung \ref{eq:Antennentemperatur-leichterRegen} mit $T_\mathrm{A,leichterRegen}=19.29\,\text{K}$ angegeben. Die Verluste des Empfangssystems betragen $L_\mathrm{sys}=7.01\,\text{dB}=5.02$. Die physikalische Temperatur beträgt $T_\mathrm{0}=290\,\text{K}$ und die äquivalente Rauschtemperatur des Empfangssystems kann aus Gleichung \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} mit $T_\mathrm{e,sys}=336.63\,\text{K}$ entnommen werden.
+\begin{equation}
+\begin{split}
+     T_\mathrm{S}&=\frac{T_\mathrm{A,leichterRegen}}{L_\mathrm{sys}}+T_\mathrm{0}\left(1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys}\\
+     &=\frac{19.29\,\text{K}}{5.02}+290\,\text{K}\left(1-\frac{1}{5.02}\right)+336.63\,\text{K}\\
+     &=572.71\,\text{K}
+\end{split}
+\label{eq:Rauschen-Temperatur-System-leichter-Regen}
+\end{equation}
+Die Rauschtemperatur $T_\mathrm{S}$ ist im Vergleich zur Rauschtemperatur bei klaren Himmel aus Gleichung \ref{eq:Rauschen-Temperatur-System-klarer-Himmel} um $2.55\,\text{K}$ gestiegen. Dieser Anstieg der Rauschtemperatur wird sich negativ auf die Qualität des Downlinks auswirken. Die Leistung am Ausgang des RF-Bereiches vom Empfangssystem wird mit $P_\mathrm{RX}=4.92\cdot 10^{-7}\,\text{W}$ in Gleichung \ref{eq:Ausgang-Leistung-leichter-Regen} angegeben.
+\begin{equation}
+C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S}}=\frac{4.92\cdot 10^{-7}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot572.71\,\text{K}}=6.23\cdot10^{13}\,\text{Hz}=137.94\,\text{dBHz}
+ \label{eq:Qualität-Downlink-leichter-Regen}
+\end{equation}
+Wie erwartet ist die Qualität des Downlinks bei leichten Regen in Gleichung \ref{eq:Qualität-Downlink-leichter-Regen} gegenüber der Qualität des Downlinks bei klaren Himmel in Gleichung \ref{eq:Qualität-Downlink-klarer-Himmel} um $0.43\,\text{dBHz}$ gesunken. Dafür ist die erhöhte Rauschtemperatur $T_\mathrm{S}$ verantwortlich. Trotz allem ist die Qualität des Downlinks, auch bei leichten Regenschauern, sehr zufriedenstellend.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Name & Variable & Wert & Einheit\\
+        \hline
+         Durchmesser Antenne& $d$                   & $0.9$             & $\text{m}$\\
+        Physikalische Fläche& $A_\mathrm{phy}$      & $0.667$ &\text{m}^2 \\
+         Effektive Fläche   & $A_\mathrm{E}$        & $0.472$            & $\text{m}^2$\\
+                Effizienz   & $\eta_\mathrm{ANT}$   & $0.708$            & \\
+                 Gewinn     & $G_\mathrm{R,max}$    & $38.6$            & $\text{dBi}$\\
+                            & $G_\mathrm{R,max}$    & $7244.36$         & \\
+    Antennentemperatur      & $T_\mathrm{A,leichterRegen}$ & $19.29$       & $\text{K}$\\
+    Empfangsgüte            & $G/T$                 & $20.35$       & $\text{1/K}$\\
+                            & $G/T$                 & $13.12$       & $\text{dB/K}$ \\
+    Empfangene Leistung     & $P_\mathrm{R}$        & $7.81\cdot 10^{-15}$     & $\text{W}$\\
+                            & $P_\mathrm{R}$         & $-111.07$   & $\text{dBm}$ \\
+    Verstärkung des Empfangssystem  & $G_\mathrm{sys}$        & $77.99$ & $\text{dB}$\\
+                            & $G_\mathrm{sys}$      & $62.99\cdot 10^{6}$ \\
+    Leistung am Ausgang     & $P_\mathrm{RX}$        & $4.92\cdot 10^{-7}$  & $\text{W}$\\
+                            & $P_\mathrm{RX}$        & $-33.07$        & $\text{dBm}$\\
+    Äquivalente Rauschzahl  & $T_\mathrm{e,sys}$    & $336.63$          & $\text{K}$ \\
+    Bei $B=500\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $17.68$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $3.18$         & \text{dB} \\
+    Bei $B=25\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $30.56$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $18.03$         & \text{dB} \\
+    Bei $B=2.7\,\text{kHz}$ & & & \\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $40.36$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $27.7$         & \text{dB} \\
+    Link Qualität           & $C/N_\mathrm{o}$ & $137.94$ & \text{dB/Hz} \\
+    \end{tabular}
+    \caption{Bestimmte Parameter der Bodenstation für das Link Budget bei leichten Regen}
+    \label{tab:LinkBudet-Bodenstation-leichter-Regen}
+\end{table}
+In der Tabelle \ref{tab:LinkBudet-Bodenstation-leichter-Regen} sind die Parameter der Bodenstation für das Link Budget bei leichten Regenschauern zur besseren Übersicht dargestellt. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/LinkBudget_light_Rain.png}
+    \caption{Grafische Darstellung des Link Budgets bei klaren Himmel}
+    \label{fig:Link-Budget-leichter_Regen}
+\end{figure}
+Der Graph in Abbildung \ref{fig:Link-Budget-leichter_Regen} repräsentiert das Link Budget für den Downlink bei leichten Regenschauern. Es gilt für Regenschauer mit einer Niederschlagsmenge $R_\mathrm{p}$ $(\text{mm/h})$, welche den Jahresdurchschnitt $(\text{mm/h})$ zu $p\leq5\,\%$ der Zeit überschreitet.\newline
+Gegenüber dem Link Budget bei einem klarer Himmel hat sich im Abschnitt der Übertragungsstrecke zwischen Es'Hail-2 (QO-100) die Dämpfung in der Atmosphäre $L_\mathrm{ATx}$ geändert. Durch die höhere Dämpfung $L_\mathrm{ATleichterRegen}=0.947\,\text{dB}$ verringert sich die empfangene Leistung $P_\mathrm{R}$ am Eingang des Empfangssystems. Dadurch ist auch die Leistung am Ausgang des RF-Bereiches $P_\mathrm{RX}$ geringer. \newline 
+Ebenfalls hat sich auch der Signal-zu-Rauschabstand am Ein- und Ausgang des Empfangssystems leicht reduziert. Bei einer Bandbreite von $B=500\,\text{kHz}$ ist es am Eingang von $SNR_\mathrm{i,klarerHimmel}=22.9\,\text{dB}$ auf $SNR_\mathrm{i,leichterRegen}=17.68\,\text{dB}$ gesunken. Am Ausgang hat sich der Signal-zu-Rauschabstand von $SNR_\mathrm{o,klarerHimmel}=5.68\,\text{dB}$ auf $SNR_\mathrm{o,klarerHimmel}=5.02\,\text{dB}$ reduziert. Eine Aufrechterhaltung des Downlinks ist bei beiden Wetterbedingung mit einer Bandbreite von $B=500\,\text{kHz}$ nicht möglich. Bei einer Bandbreite $B=25\,\text{kHz}$ reduziert sich der Signal-zu-Rauschabstand am Eingang von $SNR_\mathrm{i,klarerHimmel}=35.9\,\text{dB}$ auf $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$. Am Ausgang wiederum von $SNR_\mathrm{o,klarerHimmel}=18.69\,\text{dB}$ auf $SNR_\mathrm{o,leichterRegen}=18.03\,\text{dB}$ verschlechtert. Damit ist eine Aufrechterhaltung des Downlinks auch bei leichten Regenschauern möglich.\newline
+Beim empfangen eines einzigen Signals beträgt die Bandbreite $B=2.7\,\text{kHz}$. Bei leichten Regenfälle reduziert sich dabei der Signal-zu-Rauschabstand am Eingang des Empfangssystems von $SNR_\mathrm{i,klarerHimmel}=45.49\,\text{dB}$ auf $SNR_\mathrm{i,leichterRegen}=40.36\,\text{dB}$. Am Ausgang des RF-Bereiches reduziert es sich von $SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$ auf $SNR_\mathrm{o,leichterRegen}=27.7\,\text{dB}$
+
+
+
+
+
+
+
+
+
+\subsubsection*{Link Budget und Link Qualität für die Bedingung Regen}
+Die letzte betrachtete Bedingung ist die Wetterbedingung Regen. In dieser wird die Dämpfung $L_\mathrm{Regen}$ durch starke Niederschläge berücksichtigt.\newline
+Die unter dieser Bedingung von der Antenne empfangene Leistung $P_\mathrm{R}$ kann mithilfe der Gleichung \ref{eq:empfangene-Leistung} bestimmt werden. Die Dämpfung in der Atmosphäre ist in Gleichung \ref{eq:Dämpfung-in-der-Atmosphäre-Regen} mit $L_\mathrm{ATRegen}=9.61\,\text{dB}=9.14$ angegeben.
+\begin{equation}
+\begin{split}
+        P_\mathrm{R}&=EIRP\cdot G_\mathrm{R,max}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{Regen}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{9.14}\\
+        &=1.06\cdot 10^{-15}\,\text{W} =-119.74\,\text{dBm}
+\end{split}
+    \label{eq:empfangene-Leistung-Regen}
+\end{equation}
+Anhand des Ergebnisses in Gleichung \ref{eq:empfangene-Leistung-Regen} kann gesagt werden, dass starke Niederschläge einen großen Einfluss auf die empfangene Leistung $P_\mathrm{R}$ haben. Im Vergleich zur empfangenen Leistung bei klaren Himmel $P_\mathrm{R}=-110.67\,\text{dBm}$ ist die empfangene Leistung bei starken Niederschlägen um $87.63\,\%$ auf $P_\mathrm{R}=-119.74\,\text{dBm}$
+gesunken. Im Vergleich zur empfangenen Leistung bei leichten Niederschlägen $P_\mathrm{R}=-111.07\,\text{dBm}$ ist diese um $86.4\,\%$ geringer.\newline
+Der Pegel $P_\mathrm{RX}$ des Signals am Ausgang des RF-Bereiches kann mit der Gleichung \ref{eq:Ausgang-Leistung} bestimmt werden. Die Verstärkung des Systems ist in Gleichung \ref{eq:Gesamtverstärkung-Empfangssystems} angegeben und beträgt $G_\mathrm{sys}=77.99\,\text{dB}=62.99\cdot 10^{6}$.
+\begin{equation}
+\begin{split}
+        P_\mathrm{RX}&=EIRP\cdot G_\mathrm{R,max}\cdot G_\mathrm{sys}\cdot\frac{1}{L_\mathrm{FR}}\cdot\frac{1}{L_\mathrm{\theta T}}\cdot\frac{1}{L_\mathrm{\theta R}}\cdot\frac{1}{L_\mathrm{ATRegen}}\\
+        &=891.25\,\text{W}\cdot 7244.36\cdot62.99\cdot10^{6}\cdot\frac{1}{2.9\cdot10^{20}}\cdot\frac{1}{3.33}\cdot\frac{1}{0.69}\cdot\frac{1}{9.14}\\
+        &=6.68\cdot 10^{-8}\,\text{W} =-41.75\,\text{dBm}
+\end{split}
+    \label{eq:Ausgang-Leistung-Regen}
+\end{equation}
+Auch nach der Verstärkung des sehr schwachen Signals bleibt der Pegel mit $P_\mathrm{RX}=-41.75\,\text{dBm}$ niedrig. Bei einem klaren Himmel kann eine Ausgang des RF-Bereiches eine Leistung von $P_\mathrm{RX}=-32.68\,\text{dBm}$, bzw. $P_\mathrm{RX}=-33.07\,\text{dBm}$ bei leichten Regenschauern, erreicht.\newline
+Als nächstes kann der Signal-zu-Rauschabstand und damit auch die Rauschleistung im RF-Bereich des Empfangssystem ermittelt werden. So kann eine Aussage darüber getroffen werden, ob der Downlink von Es'Hail-2 (QO-100) Aufrechterhalten werden kann. Der Signal-zu-Rauschabstand $SNR_\mathrm{i,Regen}$ am Eingang des Empfangssystem kann mit der Gleichung \ref{eq:SNR-Eingang-Empfangsystem} bestimmt werden. Die Antennentemperatur bei starken Niederschlägen ist in \ref{eq:Antennentemperatur-bei-Regen} mit $T_\mathrm{A,Regen}=240.1\,\text{K}$. Aufgrund der hohen Antennentemperatur ist mit einem deutlich Anstieg der eingefangenen Rauschleistung zu rechnen. Die Bandbreite $B$ wird wie bei den anderen Bedienungen zuvor auch mit der Breite des Downlinks angenommen, bedeutet $B=500\,\text{kHz}$
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,Regen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,Regen}\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot240.1\,\text{K}\cdot500\,\text{kHz}}\\
+    &=0.64=-1.94\,\text{dB}
+\end{split}
+    \label{eq:SNRi-Regen-B500}
+\end{equation}
+Wie erwartet hat sich die eingefangene Rauschleistung deutlich erhöht, was zu einer deutlichen Reduzierung des Signal-zu-Rauschabstand führt. Verglichen mit dem Signal-zu-Rauschabstand bei klaren Himmel und  $B=500\,\text{kHz}$ Bandbreite $SNR_\mathrm{i,klarerHimmel}=22.9\,\text{dB}$ ist der Signal-zu-Rauschabstand um $24.84\,\text{dB}$ abgefallen auf $SNR_\mathrm{i,Regen}=-1,94\,\text{dB}$. Gegenüber dem Signal-zu-Rauschabstand bei leichten Regen $SNR_\mathrm{i,leichterRegen}=17.68\,\text{dB}$ um $19.62\,\text{dB}$. Ein negativer Signal-zu-Rauschabstand bedeutet, dass die Signale im empfangenen Downlink komplett vom Rauschen überlagert werden und darin untergehen. Eine Aufrechterhaltung des Downlink ist so nicht möglich. Die Gründe für den schlechten Signal-zu-Rauschabstand sind die deutlich geringere empfangene Leistung $P_\mathrm{R}=1.06\cdot10^{-15}\,\text{W}$ und das deutlich höhere empfangene Rauschen, repräsentiert durch die Antennentemperatur $T_\mathrm{A,Regen}=240.1\,\text{K}$. Beides wird durch die hohe Dämpfung durch starke Niederschläge
+$L_\mathrm{Regen}=8.86\,\text{dB}$ hervorgerufen.\newline
+Auch wenn das Signal-zu-Rauschabstand am Ausgang des RF-Bereich vom Emfpangssystem bei $B=500\,\text{kHz}$ kein positives Ergebnis bringen wird, wird es der Vollständigkeit zu gute trotzdem bestimmt. Dieses kann mit der Gleichung \ref{eq:SNR-Ausgang-Empfangsystem} bestimmt werden. Die äquivalente Rauschtemperatur des Empfangssystems ist in \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} mit $T_\mathrm{e,sys}=336.63\,\text{K}$ angegeben. 
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,Regen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,Regen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(240.1\,\text{K}+336.63\,\text{K})\cdot500\,\text{kHz}}\\
+    &=0.27=-5.69\,\text{dB}
+\end{split}
+    \label{eq:SNRo-Regen-B500}
+\end{equation}
+Wie erwartet hat sich der Signal-zu-Rauschabstand am Ausgang des RF-Bereiches weiter verschlechtert. Im Vergleich zum Signal-zu-Rauschabstand bei klaren Himmel und $500\,\text{kHz}$ Bandbreite $SNR_\mathrm{o,klarerHimmel}=5.68\,\text{dB}$ hat sich es um $11.37\,\text{dB}$ verschlechtert auf 
+$SNR_\mathrm{o,Regen}=-5.69\,\text{dB}$. Gegenüber dem Signal-zu-Rauschabstand bei leichten Regenfällen $SNR_\mathrm{o,leichterRegen}=3.18\,\text{dB}$ hat es sich um $8.87\,\text{dB}$ verschlechtert.\newline
+Wie zuvor auch kann zur Reduzierung der Rauschleistung die Bandbreite $B$ auf $B=25\,\text{dB}$ reduziert werden. 
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,Regen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,Regen}\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot240.1\,\text{K}\cdot25\,\text{kHz}}\\
+    &=12.8=11.07\,\text{dB}
+\end{split}
+    \label{eq:SNRi-Regen-B25}
+\end{equation}
+Eine Reduzierung der Bandbreite auf $B=25\,\text{kHz}$ hebt den Signal-zu-Rauschabstand aif $SNR_\mathrm{i,Regen}=11.07\,\text{dB}$ an. Das entspricht einem Anstieg von $9.13\,\text{dB}$.
+Verglichen mit dem Signal-zu-Rauschabstand bei klaren Himmel und einer Bandbreite von $B=25\,\text{kHz}$ $SNR_\mathrm{i,klarerHimmel}=35.9\,\text{dB}$, ist es um $24.83\,\text{dB}$ geringer. Das entspricht einem Verlust des Signal-zu-Rauschabstand von $99.67\,\%$. Gegenüber dem Signal-zu-Rauschabstand bei leichten Regen $SNR_\mathrm{i,leichterRegen}=30.56\,\text{dB}$ ist es um 
+ $19.49\,\text{dB}$ gesunken, was einem Verlust von $98.87\,\%$ gleichkommt. Der Signal-zu-Rauschabstand ist mit $SNR_\mathrm{i,Regen}=11.07\,\text{dB}$ sehr knapp und könnte möglicherweise nicht mehr genug Puffer für das Rauschen des Empfangssystem bieten. Eine Aussage über eine Mögliche Verarbeitung der empfangenen Signale kann mit dem Signal-zu-Rauschabstand am Ausgang des RF-Bereiches getätigt werden.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,Regen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,Regen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(240.1\,\text{K}+336.63\,\text{K})\cdot25\,\text{kHz}}\\
+    &=5.33=7.26\,\text{dB}
+\end{split}
+    \label{eq:SNRo-Regen-B25}
+\end{equation}
+Verglichen mit dem Signal-zu-Rauschabstand bei klaren Himmel $SNR_\mathrm{o,klarerHimmel}=18.69\,\text{dB}$ hat sich es um  $11.4\,\text{dB}$ auf $SNR_\mathrm{o,Regen}=7.26\,\text{dB}$ reduziert. 
+Das entspricht einem Verlust von $92.7\,\%$. Gegenüber dem Signal-zu-Rauschabstand am Ausgang des RF-Bereiches bei leichten Niederschlägen $SNR_\mathrm{o,leichterRegen}=18.03\,\text{dB}$ ist es ein Verlust von $10.77\,\text{dB}$ oder $91.6\,\%$.\newline
+Auch wenn der Signal-zu-Rauschabstand am Ausgang des RF-Bereiches mit $SNR_\mathrm{o,Regen}=7.26\,\text{dB}$ positiv ist, könnte es trotzdem zu wenig sein, um die empfangenen Signale verlässlich demodulieren zu können. Signale mit analogen Modulationen (AM, CW, FM) würden stark rauschen und bei digital modulierten Signalen (BPSK,n-QAM) würde die Bitfehlerrate $BER$ sehr hoch sein, wie in Abbildung \ref{fig:BeispielBER} zu sehen. Es davon auszugehen, dass der Downlink bei starken Niederschlägen so nicht aufrechterhalten werden kann.\newline
+Beim Empfang eines einzelnen Signals wiederum könnte der Downlink auch bei stärkeren Niederschläge aufrechterhalten werden. Die Bandbreite reduziert sich in diesem Fall auf $B=2.7\,\text{kHz}$.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{i,Regen}&=\frac{P_\mathrm{R}}{k\cdot T_\mathrm{A,Regen}\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot240.1\,\text{K}\cdot2.7\,\text{kHz}}\\
+    &=118.49=20.74\,\text{dB}
+\end{split}
+    \label{eq:SNRi-Regen-B2.7}
+\end{equation}
+Durch die Reduzierung der Bandbreite auf $B=2.7\,\text{kHz}$ steigt der Signal-zu-Rauschabstand am Eingang auf $SNR_\mathrm{i,Regen}=20.74\,\text{dB}$ an. Verglichen mit dem $SNR_\mathrm{i,Regen}=-1.94\,\text{dB}$ bei $B=500\,\text{kHz}$, bzw. $SNR_\mathrm{i,Regen}=11.07\,\text{dB}$ bei $B=25\,\text{kHz}$ entspricht das einem Anstieg von $22.68\,\text{dB}$ und $9.67\,\text{dB}$. Um eine Aussage über die mögliche Aufrechterhaltung treffen zu können, muss der Signal-zu-Rauschabstand am Ausgang des RF-Bereiches bestimmt werden. 
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,Regen}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,Regen}+T_\mathrm{e,sys})\cdot B}\\&=\frac{1.06\cdot 10^{-15}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(240.1\,\text{K}+336.63\,\text{K})\cdot2.7\,\text{kHz}}\\
+    &=49.33=16.93\,\text{dB}
+\end{split}
+    \label{eq:SNRo-Regen-B2.7}
+\end{equation}
+Durch das empfangen einer einzelnen Übertragung steigt der Signal-zu-Rauschabstand am Ausgang des RF-Bereiches auf $SNR_\mathrm{o,Regen}=16.93\,\text{dB}$ an. Im Vergleich zum $SNR_\mathrm{o,Regen}=-5.69\,\text{dB}$ bei $B=500\,\text{kHz}$ entspricht das einem Anstieg von $22.62\,\text{dB}$. Gegenüber dem $SNR_\mathrm{o,Regen}=7.26\,\text{dB}$ bei $B=25\,\text{kHz}$ ist das $SNR_\mathrm{o,Regen}=16.93\,\text{dB}$ bei $B=2.7\,\text{kHz}$ um $9.67\,\text{dB}$ größer.\newline
+Verglichen zu den Signal-zu-Rauschabständen $SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$ und $SNR_\mathrm{o,leichterRegen}=27.7\,\text{dB}$ bei $B=2.7\,\text{kHz}$ ist der Signal-zu-Rauschabstand bei stärkeren Niederschlägen $SNR_\mathrm{o,Regen}=16.93\,\text{dB}$ um $11.33\,\text{dB}$, bzw. um $10.77\,\text{dB}$ geringer. Das entspricht einem Verlust von $92.6\,\%$ und $91.6\,\%$.\newline
+Mit dem Anstieg des Signal-zu-Rauschabstand auf $SNR_\mathrm{o,Regen}=16.93\,\text{dB}$ kann das empfangene Signal problemlos demoduliert werden. \newline
+Zum Schluss kann noch die Qualität des Downlinks bestimmt werden. Wie auch bei den anderen Wetterbedingungen, muss zuerst die Rauschtemperatur $T_\mathrm{S}$ mit Gleichung \ref{eq:Rauschen-Temperatur-System} ermittelt werden. Aufgrund der hohen Antennentemperatur $T_\mathrm{A,Regen}=240.1\,\text{K}$ ist eine deutliche Erhöhung von der Rauschtemperatur $T_\mathrm{S}$ zu erwarten.
+\begin{equation}
+\begin{split}
+     T_\mathrm{S}&=\frac{T_\mathrm{A,Regen}}{L_\mathrm{sys}}+T_\mathrm{0}\left(1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys}\\
+     &=\frac{240.1\,\text{K}}{5.02}+290\,\text{K}\left(1-\frac{1}{5.02}\right)+336.63\,\text{K}\\
+     &=616.69\,\text{K}
+\end{split}
+\label{eq:Rauschen-Temperatur-System-Regen}
+\end{equation}
+Wie erwartet ist die Rauschtemperatur $T_\mathrm{S}$ bei Regen deutlich höher als bei einem klaren Himmel $T_\mathrm{S}=570.15\,\text{K}$ oder bei leichten Regen $T_\mathrm{S}=572.71\,\text{K}$. Die deutlich höhere Rauschtemperatur wird sich negativ auf die Qualtiät des Downlinks auswirken. Diese kann mit der Gleichung \ref{eq:Qualität-Downlink} und mit $P_\mathrm{RX}=6.79\cdot 10^{-8}\,\text{W}$ aus Gleichung \ref{eq:Ausgang-Leistung-Regen} bestimmt werden.
+\begin{equation}
+C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S}}=\frac{6.86\cdot 10^{-8}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot616.69\,\text{K}}=7.85\cdot10^{12}\,\text{Hz}=128.95\,\text{dBHz}
+ \label{eq:Qualität-Downlink-Regen}
+\end{equation}
+Im Vergleich zur Qualität des Downlinks bei einem klaren Himmel $C/N_\mathrm{o}=138.37\,\text{dBHz}$, wird die Qualität bei starken Niederschlägen um $9.42\,\text{dB}$ auf $C/N_\mathrm{o}=128.95\,\text{dBHz}$ gesenkt. Das entspricht einer Verschlechterung der Qualität um $88.4\,\%$. Verglichen zur Qualität bei leichten Regenschauern $C/N_\mathrm{o}=137.94\,\text{dBHz}$ verschlechtert sich die Qualität um $87.2\,\%$.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Name & Variable & Wert & Einheit\\
+        \hline
+         Durchmesser Antenne& $d$                   & $0.9$             & $\text{m}$\\
+        Physikalische Fläche& $A_\mathrm{phy}$      & $0.667$ &\text{m}^2 \\
+         Effektive Fläche   & $A_\mathrm{E}$        & $0.472$            & $\text{m}^2$\\
+                Effizienz   & $\eta_\mathrm{ANT}$   & $0.708$            & \\
+                 Gewinn     & $G_\mathrm{R,max}$    & $38.6$            & $\text{dBi}$\\
+                            & $G_\mathrm{R,max}$    & $7244.36$         & \\
+    Antennentemperatur      & $T_\mathrm{A,Regen}$ & $240.1$       & $\text{K}$\\
+    Empfangsgüte            & $G/T$                 & $12.56$       & $\text{1/K}$\\
+                            & $G/T$                 & $10.99$       & $\text{dB/K}$ \\
+    Empfangene Leistung     & $P_\mathrm{R}$        & $1.06\cdot 10^{-15}$     & $\text{W}$\\
+                            & $P_\mathrm{R}$         & $-119.74$   & $\text{dBm}$ \\
+    Verstärkung des Empfangssystem  & $G_\mathrm{sys}$        & $77.99$ & $\text{dB}$\\
+                            & $G_\mathrm{sys}$      & $62.99\cdot 10^{6}$ \\
+    Leistung am Ausgang     & $P_\mathrm{RX}$        & $6.68\cdot 10^{-8}$  & $\text{W}$\\
+                            & $P_\mathrm{RX}$        & $-41.75$        & $\text{dBm}$\\
+    Äquivalente Rauschzahl  & $T_\mathrm{e,sys}$    & $336.63$          & $\text{K}$ \\
+    Bei $B=500\,\text{kHz}$ & & &\\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $-1.94$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $-5.69$         & \text{dB} \\
+    Bei $B=25\,\text{kHz}$ & & &\\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $11.07$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $7.26$         & \text{dB} \\
+    Bei $B=2.7\,\text{kHz}$ & & &\\
+    $SNR$ am Eingang        & $SNR_\mathrm{i}$        &  $20.74$ & \text{dB}\\
+    $SNR$ am Ausgang        & $SNR_\mathrm{o}$ & $16.93$         & \text{dB} \\
+    Link Qualität           & $C/N_\mathrm{o}$ & $128.95$ & \text{dB/Hz} \\
+    \end{tabular}
+    \caption{Bestimmte Parameter der Bodenstation für das Link Budget bei stärkeren Niederschlägen}
+    \label{tab:LinkBudet-Bodenstation-Regen}
+\end{table}
+Die Tabelle \ref{tab:LinkBudet-Bodenstation-Regen} stellt die für die Bedingung Regen geltenden Parameter der Bodenstation übersichtlich da.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/LinkBudget_Rain.png}
+    \caption{Grafische Darstellung des Link Budgets bei starken Niederschlägen}
+    \label{fig:Link-Budget-Regen}
+\end{figure}
+Die Abbildung \ref{fig:Link-Budget-Regen} zeigt einen Graphen, welcher das Link Budget für den Downlink bei stärkeren Niederschläge repräsentiert. Gelten tut es für Niederschlagsmengen $R_\mathrm{p}$ $(\text{mm/h})$, welche den Jahresdurchschnitt $(\text{mm/h)}$ zu $p=0.01\,\%$ der Zeit überschreiten.\newline
+Im Vergleich zum Link Budget bei einem klaren Himmel, dargestellt in Abbildung \ref{fig:Link-Budget-klarer-Himmel}, und zum Link Budget bei leichten Regenschauern, zu sehen in Abbildung \ref{fig:Link-Budget-leichter_Regen}, tritt in der Atmosphäre eine deutlich höhere Dämpfung auf. Die Dämpfung in der Atmosphäre beträgt für diese Bedingung $L_\mathrm{ATRegen}=9.61\,\text{dB}$, wovon ein Großteil durch die Dämpfung der starken Niederschläge $L_\mathrm{Regen}=8.86\,\text{dB}$ hervorgerufen wird. Diese deutlich höhere Dämpfung führt zu einer deutlichen Reduzierung der empfangenen Leistung $P_\mathrm{R}$ und damit auch zu einer Reduzierung der Leistung $P_\mathrm{RX}$ am Ausgang des RF-Bereiches.\newline 
+Zusätzlich zur reduzierten empfangenen Leistung $P_\mathrm{R}$ steigt noch die von der Antenne eingefangene Rauschleistung. Die Antennentemperatur mit $T_\mathrm{A,Regen}=240.1\,\text{K}$ um ein vielfaches höher als bei einem klaren Himmel $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$ oder bei leichten Regenschauern mit $T_\mathrm{A,leichterRegen}=19.29\,\text{K}$.\newline 
+Durch die hohe Rauschleistung und niedrigere empfangene Leistung $P_\mathrm{R}$ kann der Downlink bei einer Bandbreite von $B=500\,\text{kHz}$ nicht Aufrecht erhalten werden. Das $SNR_\mathrm{i,Regen}=-1.94\,\text{dB}$ und $SNR_\mathrm{o,Regen}=-5.69\,\text{dB}$ bedeuten, dass die empfangenen Signale komplett vom Rauschen überlagert werden. Bei einer Reduzierung der Bandbreite auf $B=25\,\text{kHz}$ verbessern sich beide Signal-zu-Rauschabstände auf $SNR_\mathrm{i,Regen}=11.07\,\text{dB}$, bzw. $SNR_\mathrm{o,Regen}=7.26\,\text{dB}$. Die demodulierten Signale werden trotz der Verbesserung um $9.13\,\text{dB}$, bzw. $12.95\,\text{dB}$
+vom starken Rauschen und hohen Bitfehlerraten bei digital modulierten Signalen betroffen sein. Eine Aufrechterhaltung des Downlinks ist auch dann schwer möglich.\newline
+Durch die weitere Reduzierung auf $B=2.7\,\text{kHz}$ kann der Signal-zu-Rauschabstand weiter erhöht werden. Am Eingang steigt es auf $SNR_\mathrm{i,Regen}=20.74\,\text{dB}$ und am Ausgang auf $SNR_\mathrm{o,Regen}=16.93\,\text{dB}$. Dieser Signal-zu-Rauschabstand ermöglicht schlussendlich die Demodulation des empfangenen Signals. Bei digitalen Modulationen ist jedoch die Bitfehlerrate, im Vergleich zu den anderen beiden Wetterbedingung, höher, wie es aus Abbildung \ref{fig:BeispielBER} entnommen werden kann. Zwar kann nur noch ein einzelnes Signal des Downlinks empfangen werden, jedoch kann dieser dafür aufrechterhalten werden.\newline
+Diese Ergebnisse zeigen sehr gut, dass die mit starken Niederschlägen verbundene Dämpfung $L_\mathrm{Regen}=8.86\,\text{dB}$ und das höhere empfange Rauschen $T_\mathrm{A,Regen}=240.1\,\text{K}$ deutliche Auswirkung auf die Ausfallzeiten des Downlinks haben und somit nicht vernachlässigt werden dürfen.

@@ -1,57 +1,350 @@
-\subsection{Es’ Hail-2}
-Bei Es'Hail-2 handelt es sich um einen Kommunikationssatelliten, welcher von dem katarischen Unternehmen Es'hailSat betrieben wird.\newline
-Gebaut wurde der Satellit von der Mitsubishi Electric Company (Melco). Es'Hail-2 basiert dabei auf der Melco DS-2000 Plattform. Der Satellit starte am 15.11.2018 an Bord einer Falcon 9 Rakete vom Cape Canaveral Space Center in einen geostationären Testorbit um 24\degree East. Nach der Testphase wurde Es'Hail-2 in seinen endgültigen Geostationären Orbit um 25.9\degree East verschoben. Die geplanten Lebenszeit von Es'Hail-2 beträgt 15 Jahre.\cite{EsHail2}\newline
-An Bord von Es'Hail-2 befinden sich insgesamt 72 verschiedne Transponder für die L-, S-, X- Ku- und Ka-Bänder. Die Hauptaufgabe des Satelliten ist es, die Regionen Nord Afrika und den mittleren Osten mit TV- und Telekommunikationsdiensten zu versorgen. Die Nutzer sind dabei private Haushalte, Unternehmen oder Regierungsorganisationen.\newline
-Neben den Transponder für die kommerzielle Nutzung des Satelliten befinden sich auch zwei Amateurfunk Transponder an Bord von Es'Hail-2. Bei diesen Transponder handelt es sich um die ersten P4-A Transponder im Geostationären Orbit. Sie sind einer Zusammenarbeit zwischen Es'hailSat, dem Qatar Amateur Radio Club (QARS) und AMSAT Deutschland (AMSAT-DL) als technische Leitung entstanden. Vorhanden sind ein Schmallband- (Narrowband) und ein Breitband- (Wideband) Transponder. Die Transponder tragen den Rufnamen QO-100 (Qatar Oscar 100).\cite{EsHail2}\newline
+\subsection{Umlaufbahnen für Satelliten}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Umlaufbahnen.png}
+    \caption{Die verschiedenen Umlaufbahnen von Satelliten im Überblick \cite{Satellitenkommunikation}}
+    \label{fig:Umlaufbahnen}
+\end{figure}
+Die Abbildung \ref{fig:Umlaufbahnen} zeigt die verschiedenen Umlaufbahnen, welche von verschiedensten Satelliten verwendet werden. Die Umlaufbahnen unterscheiden sich dabei in Form (Kreis oder Ellipse), Höhe und Inklination zum Äquator. \cite{Satellitenkommunikation}\newline
+In welcher Umlaufbahn ein Satellit eingesetzt wird, hängt von seiner Aufgabe und geplanten Lebensdauer ab.\cite{Satellitenkommunikation}\newline
+Wettersatelliten zum Beispiel werden unter anderem möglichst nah an die Erdoberfläche platziert, um so den Detailgrad der Bilder zu erhöhen. Allerdings können Sie auch in weit entfernteren Umlaufbahnen angesiedelt werden. So kann mit geringer Anzahl an Satelliten ein Großteil der Erde abgedeckt werden.
+Mögliche Umlaufbahnen sind können die Erdnahe Umlaufbahn (engl. low earth orbit) LEO, die Polare Umlaufbahn (engl. polar earth Orbit) oder die geostationäre Umlaufbahn (engl. geostationary Orbit) GEO sein.\cite{Satellitenkommunikation}\newline
+Kommunikations- und Rundfunksatelliten sind meistens, bis auf wenige Ausnahmen (Starlink), in höheren Umlaufbahnen untergebracht. So kann mit wenigen Satelliten eine globale Abdeckung erreicht werden. Eine mögliche Umlaufbahn wäre dabei die geostationäre Umlaufbahn.\cite{Satellitenkommunikation}\newline
+Die geostationäre Kreisbahn ist eine besondere Umlaufbahn. Die Umlaufzeit eines Satelliten in der geostationäre Umlaufbahn entspricht der Dauer einer Rotation der Erde. So erscheint für einem Beobachter auf Erde der Satellit immer am gleichen Punkt im Himmel.\cite{Satellitenkommunikation}\newline
+
+\subsection{Kommunikation mit einem Satelliten}
+Sei es zum senden oder empfangen von Daten und Informationen oder zum steuern eines Satelliten. Damit ein Satellit einen Nutzen hat, muss die Möglichkeit bestehen mit diesem auch kommunizieren zu können. Eingesetzt werden dafür sogenannten Bodenstationen (engl. Groundstations).\newline
+Bei den Bodenstation handelt es sich um auf der Erdoberfläche befindliche, meistens ortsfeste, Stationen, welche zur Beobachtung, Überwachung, Kommunikation oder Steuerung von Flugkörpern inner- und außerhalb der Erdatmosphäre eingesetzt werden.\cite{Bodensationen}\newline
+Zur Erhöhung der Abdeckung und Kapazität werden meistens einzelne Bodenstation für mehrere verschiedene Anwendungen und Frequenzbänder ausgelegt und zu großen globalen Netzwerken miteinander verbunden\cite{Bodensationen}. Beispiele für solche Netzwerke sind das Estrack von ESA oder das Deep Space Network der NASA.\newline
+Die Kommunikation mit Satelliten findet in den unterschiedlichsten Frequenzbänder statt. Eingeteilt und benannt werden diese durch die IEEE.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|p{6.5cm}}
+    \hline
+       Bezeichnung  & Frequenzbereich & Beispiele für das Frequenzband\\
+       HF  & $3-30\,\text{MHz}$ & Kurzwellen Radiosender \cite{FrequenzplanBundesnetzagentur}\\
+       VHF  & $30-300\,\text{MHz}$ & UKW Radio, BOS-Funk\cite{FrequenzplanBundesnetzagentur}\\
+       UHF  & $300-1000\,\text{MHz}$ & LoRa, DVB-T, LTE\cite{FrequenzplanBundesnetzagentur}\\
+       L  & $1-2\,\text{GHz}$ & Navigationsdienste (GPS, GLONASS, Galileo)\cite{FrequenzplanBundesnetzagentur} \\
+       S  & $2-4\,\text{GHz}$ & Erderkundungsfunkdienst, Radioastronomie, WLAN\cite{FrequenzplanBundesnetzagentur} \\
+       C  & $4-8\,\text{GHz}$ & Mobilfunk, Satellitenkommunikationsdienste, WLAN \cite{FrequenzplanBundesnetzagentur} \\
+       X  & $8-12\,\text{GHz}$ & Satellitenkommunikationsdienste, Amateurfunk\cite{FrequenzplanBundesnetzagentur}\\
+       Ku  & $12-18\,\text{GHz}$ & Satellitenrundfunk \cite{FrequenzplanBundesnetzagentur} \\
+       K  & $18-27\,\text{GHz}$ & Funkdienste \cite{FrequenzplanBundesnetzagentur} \\
+       Ka  & $27-40\,\text{GHz}$ &  Satellitenkommunikationsdienste\cite{FrequenzplanBundesnetzagentur}\\
+       V  & $40-75\,\text{GHz}$ & Militärische Navigationsdienste \cite{FrequenzplanBundesnetzagentur}\\
+       W  & $75-110\,\text{GHz}$ &Amateurfunkdienst über Satelliten \cite{FrequenzplanBundesnetzagentur} \\
+       mm  & $110-300\,\text{GHz}$ & Radioastronomie \cite{FrequenzplanBundesnetzagentur}\\
+    \end{tabular}
+    \caption{Einteilung der Radarbänder nach IEEE 521-2002 (R2009)\cite{Frequenzbänder}}
+    \label{tab:Einteilung-der-Frequenzbänder}
+\end{table}
+In der Tabelle \ref{tab:Einteilung-der-Frequenzbänder} sind die einzelnen Bezeichnungen der Frequenzbänder und ihr jeweiliger Frequenzbereich nach IEEE IEEE 521-2002 (R2009) aufgeführt. Ebenso sind einige Funkdienste des jeweiligen Frequenzbandes als Beispiel aufgeführt. Diese stammen aus dem Frequenznutzungsplan der Bundesnetzagentur (Stand 2022).
+
+\subsection{Positionsbestimmung von Satelliten}
+Um Informationen und Daten von einem Satelliten empfangen zu können wird eine Antenne benötigt. Diese muss gegebenenfalls direkt auf den Satelliten ausgerichtet werden. Aus diesem Grund muss die Position des Satelliten im Bezug auf die Position der Antenne in einem geeigneten Koordinatensystem angegeben werden.\newline
+Verwendet werden dafür sogenannte astronomische Koordinatensysteme. Es gibt dabei mehrere verschiedene, welche sich dabei in ihrem Ursprung und in der Ermittlung der Koordinaten unterscheiden.
+
+\begin{itemize}
+    \item Horizontales System: Der Bezugspunkt in diesem System ist der Standort der Antenne. Die Position des Satelliten wird also relativ auf den Standpunkt der Antenne beschrieben. Dafür werden zwei Koordinaten, der Höhenwinkel $\varepsilon$ (Elvation) und der Kurs $\varphi$ (Azimut), verwendet.\cite{astronomischeKoordinatensysteme}\cite{Satellitenkommunikation}
+    \item Äquatoriales System: Anders als bei horizontalen Koordinatensystem wird die Position des Satelliten beim äquatorialen Koordinatensystem im Bezug auf den Himmelsäquator beschrieben. Die beiden verwendeten Hauptkoordinaten sind die Deklination $\delta$ und der Stundenwinkel $t$.\cite{astronomischeKoordinatensysteme}
+    \item Ekliptales System: Im ekliptikalen System wird als Bezugspunkt die Bahnebene der Erde um die Sonne, die Ekliptik, verwendet. Das Koordinatensystem verwendet dafür die beiden Hauptkoordinaten ekliptikale Länge und ekliptikale Breite.\cite{astronomischeKoordinatensysteme}
+\end{itemize}
+Zum Ausrichten von Antennen auf Satelliten kann am besten das horizontale Koordinatensystem verwendet werden, da es die Postion des Satelliten relativ zum Standort der Antenne beschreibt.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Horizontales Koordiantensystem.png}
+    \caption{Darstellung des horizontalen Koordinatensystems\cite{astronomischeKoordinatensysteme}}
+    \label{fig:horizontales-Koordinatensystem}
+\end{figure}
+In der Abbildung \ref{fig:horizontales-Koordinatensystem} ist das horizontale Koordinatensystem dargestellt. Der Ausgangspunkt ist dabei der Standort der Antenne. Der Punkt senkrecht über der Antenne ($\varepsilon=90\degree$) wird Zenit und der Punkt senkrecht unter der Antenne $(\varepsilon=-90\degree)$ wird Nadir genannt.\cite{astronomischeKoordinatensysteme}\newline
+Mit der Azimut $\varphi$ wird die Position des Satelliten entlang des Horizontes angegeben und entspricht dem Winkel zwischen dem Satelliten und einem Ausgangspunkt. Als Ausgangspunkt kann entweder der Nord oder Südpunkt angegeben werden.\cite{Sternwarte}\cite{TU-Dresden}\newline
+Im Bereich der Astronomie wird der Südpunkt als Bezugspunkt verwendet. Der Azimut $\varphi$ wird dann in Richtung Westen zählend angegeben. Wird der Nordpunk als Bezugspunkt verwendet, wird der Azimut $\varphi$ in Richtung Osten zählend angegeben. Beide Methoden sind $180\degree$ versetzt zueinander.\cite{astronomischeKoordinatensysteme}\cite{Sternwarte}\cite{TU-Dresden}\newline
+Bestimmt werden kann der Azimut $\varphi$ mit der Differenz $\Delta long$ zwischen dem Längengrad der Bodenstation und dem Längengrad des Satelliten, sowie des Breitengrades $lat_\mathrm{BS}$ der Bodenstation.\cite{rfwireless-poiting}
+\begin{equation}
+    \varphi=\arctan\left(\frac{\tan(\Delta long)}{\sin (lat_\mathrm{BS})}\right)
+    \label{eq:Azimut}
+\end{equation}
+Der Höhenwinkel (Elevation) $\varepsilon$ ist der Winkel zwischen dem Horizont und dem Satelliten. Dieser kann Werte zwischen $-90\degree$ (Nadir) und $90\degree$ (Zenit) annehmen.\cite{Sternwarte}\cite{TU-Dresden}\newline
+Für die Bestimmung der Elevation $\varepsilon$ wird der Radius der Erde $r_\mathrm{0}$, die Flughöhe des Satelliten $r$, sowie die Differenz $\Delta long$ zwischen dem Längengrad $long_\mathrm{BS}$ der Bodenstation und dem Längengrad $long_\mathrm{SAT}$ des Satelliten und den Breitengrad $lat_\mathrm{BS}$ der Bodenstation.\cite{rfwireless-poiting}\cite{easycalculation-satellite-antenna}
+\begin{equation}
+    \varepsilon=\arctan\left( \frac{\cos(lat_\mathrm{BS})\cdot \cos(\Delta long)-\frac{r_\mathrm{0}}{r_\mathrm{0}+r}}{\sqrt{1-\cos^2(lat_\mathrm{BS})\cdot \cos^2(\mathrm{\Delta long)}}}\right)
+    \label{eq:Elevation}
+\end{equation}
+Neben der Azimut $\varphi$ und der Elevation $\varepsilon$ ist auch die Neigung $Skew$ der Antenne wichtig. Die Neigung der Antenne ist wichtig, da sich die Polarisationsebene der vom Satelliten elektromagnetischen Wellen ,je nach Standpunkt auf der Erde, dreht. Um die Polarisationsebene der Antenne ideal auf die Polarisationsebene der eintreffenden EM-Welle auszurichten wird die Antenne um ihre eigene Achse gedreht. Eine nicht optimale Ausrichtung führt zum Leistungsverlust.\cite{skew}\newline
+Zur Bestimmung des $Skew$ wird die Differenz $\Delta long$ zwischen dem Längengrad $long_\mathrm{BS}$ der Bodenstation und dem Längengrad $long_\mathrm{SAT}$ des Satelliten und den Breitengrad $lat_\mathrm{BS}$ der Bodenstation, sowie das Offset der Antenne benötigt.\cite{skew}
+\begin{equation}
+    Skew = \arctan\left(\frac{\sin(\Delta long)}{\tan(lat_\mathrm{BS})}\right)-Offset
+    \label{eq:Skew}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Es’Hail-2 (QO-100)}
+Bei dem Satelliten Es'Hail-2 (QO-100) handelt es sich um einen Kommunikationssatelliten, welcher von dem katarischen Unternehmen Es'hailSat betrieben wird.\cite{EsHail2}\newline
+Basieren tut der Satellit auf Melco DS-200 Plattform, welche von der Japanische Firma Melco (Mitsubishi Electric Company) entwicklet wurde.\cite{EsHail2}
+Am 15.11.2018 startete der Satellit an Bord einer Falcon 9 Rakete vom Cape Canaveral Space Center in seinen geostationären Testorbit, welcher bei $24\degree\text{E}$ liegt. Nach einer Testphase ist Es'Hail-2 in seine endgültigen geostationäre Umlaufbahn bei $25.9\degree\text{E}$ transferiert worden. Die geplante Lebenszeit beträgt 15 Jahre.\cite{EsHail2}\newline
+Auf Es'Hail-2 befinden sich insgesamt 72 verschiedene Transponder, welche für die L-,S-,X-, Ku- und Ka-Bänder vorgesehen sind. Die Hauptaufgabe des Satelliten ist, die Regionen Nordafrika und den mittleren Osten mit TV- und Telekommunikationsdienste versorgen. Die Nutzer sind neben privaten Haushalten auch Unternehmen und Regierungsorganisationen.\cite{EsHail2}\newline
+Neben den Transpondern für die kommerzielle Nutzung befinden sich auch zwei Transponder für Amateurfunk an Bord von Es'Hail-2. Bei den Transpondern handelt es sich um ein Schmalbandtransponder (engl. Narrowbandtransponder) für den Amateurfunk und einen Breitbandtransponder (engl. Widebandtransponder) für Amateurfernsehen. Diese beiden Transponder sind die ersten Amateurfunk Transponder im geostationären Orbit und gehören zur P4-A Reihe von AMSAT. Sie sind in einer Zusammenarbeit zwischen Es'hailSat, dem Qatar Amateur Radio Club (QARS) und der AMSAT Deutschland (AMSAT-DL) entstanden. Die Transponder tragen den Rufnamen Qatar Oscar 100 (QO-100), woher der Name Es'Hail-2 (QO-100) stammt.\cite{EsHail2}
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/EsHail-2 Coverage.png}
-    \caption{Abdeckungsbereich der Amateurfunktranponder von Es'Hail-2\cite{CoverageEsHail2Amateur}}
-    \label{CoverageEsHail2Amateur}
+    \caption{Abdeckungsbereich der Amateurfunktransponder von Es'Hail-2 (QO-100)\cite{CoverageEsHail2Amateur}}
+    \label{fig:CoverageEsHail2Amateur}
 \end{figure}
-Die Karte in Abbildung \ref{CoverageEsHail2Amateur} zeigt den Abdeckungsbereich der Amateurfunktransponder von Es'Hail-2. Abgedeckt wird runter bis 5° Elevation, in einigen Bereichen auch bis 0°. Die Abdeckung reicht damit von Brasilien, Teile Grönlands und der Antarktis über Afrika und Europa bis nach Thailand. Je nach Region wird für den Optimalen Empfang eine Schüssel von 60cm bis 90 cm empfohlen. Die Regionen mittig in der Abdeckung benötigen nur eine Schüssel mit geringen Durchmesser. In den Regionen am Rand oder in regenreichen Gegenden sind größere Schüsseln vom Vorteil.\cite{EsHail2}.
+Die Karte in Abbildung \ref{fig:CoverageEsHail2Amateur} zeigt den abgedeckten Bereich der beiden Amateurfunktransponder auf Es'Hail-2 (QO-100). Abgedeckt sind Regionen bis zu einer Antennenelevationswinkel von $\varepsilon=5\degree$, in einigen Regionen auch bis $\varepsilon=0\degree$. Die Abdeckung reicht von Brasilien, über Afrika, Europa und Teile Grönlands und der Antarktis bis nach Thailand.\cite{EsHail2} 
+Im Zuge dieser Arbeit wird nur der Schmalbandtransponder von Interesse sein. Auf den Breitbandtransponder wird nicht weiter eingegangen.
 
-
-
-\subsubsection{Schmallband Transponder}
-Für den Schmallband Transponder wird ein linearer Transponder verwendet. Ein normaler Repeater empfängt ein Signal auf einer festen Frequenz und sendet dieses auch wieder auf einer Frequenz. Ein linearer Transponder hingegen empfängt und sendet Signale über ein breites Spektrum und hält  dabei ein festes Offset zwischen den empfangenen und gesendeten Signalen ein.\cite{EsHail2}\cite{linearTransponder}\newline
-Lineare Transponder werden häufig für Amateur- und Satellitenfunk verwendet. Ein linearer Transponder empfängt ein breites Spektrum an Frequenzen. Im falle von Es'Hail-2 liegt der Uplink im S-Band zwischen $2400.005$ MHz und $2400.490$ MHz. Der lineare Transponder hat somit eine Bandbreite von $500$ kHz.\cite{EsHail2}\cite{linearTransponder}
-\begin{itemize}
-    \item Mittenfrequenz: $f_{center}$ = $2400.175$ MHz
-    \item Bandbreite: $BW_{Narrow}$ = $0.5$ MHz
-    \item Polarisation: RHCP
-\end{itemize}
-Die empfangen Signale sendet der lineare Transponder dann wieder mit einem festen Offset auf einem anderen Frequenzband. Der Downlink von Es'Hail-2 liegt im X-Band zwischen $10489.500$ MHz
-und $10490$ MHz.\cite{EsHail2}\cite{linearTransponder}
-\begin{itemize}
-    \item Mittenfrequenz: $f_{center}$ = $2400.175$ MHz
-    \item Bandbreite: $BW_{Narrow}$ = $0.5$ MHz
-    \item Polarisation: RHCP
-\end{itemize}
-Wird ein Signal auf $2400.100$ MHz vom Transponder empfangen, wird es vom Transponder auf $10489.650$ MHz wieder versendet. Das Offset wird vom Transponder beibehalten.\cite{linearTransponder}
-Der Schmallband Transponder ist eine Reihe an verschiedenen Kommunikationsarten geeignet. Allgeimein wird dieser Transponder für Sprachübertragungen, Morse Code oder digitale Übertragungen mit geringer Leistung und Bandbreite verwendet. Wichtig ist, dass die dafür vorgsehenen Frequenzen verwendet werden.\cite{EsHail2}\newline
+\subsubsection*{Technische Daten und Voraussetzungen für den Schmalbandtransponder Schmalbandtransponde}
+Bei dem Schmalbandtransponder auf Es'Hail-2 (QO-100) handelt es sich um einen linearen Transponder. Ein linearer Transponder empfängt ein gesamtes Frequenzband, welches Uplink genannt wird, und versendet dieses empfangene Frequenzband wieder in einem anderen Frequenzbereich, welches Downlink genannt wird. Dabei hält der lineare Transponder den relative Position des Signals im empfangene Frequenzband und versendet dieses Signal wieder auf der gleichen relativen Positionen im Downlink. Lineare Transponder werden häufig in der Satellitenkommunikation und Amateurfunk eingesetzt.\cite{EsHail2}\cite{linearTransponder} 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{Bilder/AMSAT-QO-100-NB-Transponder-Bandplan-Graph.png}
-    \caption{Von AMSAT freigegebener Bandplan für den Schmallbandtransponder von QO-100\cite{EsHail2NarrowbandBandplan}}
-    \label{NB-Bandplan}
+    \caption{Vorgeschriebener Bandplan von AMSAT-DL des Schmalbandtransponder auf Es'Hail-2 (QO-100)\cite{EsHail2NarrowbandBandplan}}
+    \label{fig:NB-Bandplan}
 \end{figure}
-Die Abbildung \ref{NB-Bandplan} zeigt den Bandplan des Up- und Downlinks des Schmallband Transponder. Die drei rot gekennzeichnet Bereiche sind drei Beacons, welche den Frequenzbereich des Transponder eingrenzen. In diesem Bereich darf nicht gesendet werden. Die Beacons senden Daten mit 400 Bit/s mit verschiedensten Modulationen.\cite{EsHail2}\newline
-Der Bereich von $2400.005$ MHz bis $2400.040$ MHz im Uplink oder $10489.505$ bis $10489.540$ MHz im Downlink ist ausschließlich für Übertragungen mit einer CW-Modulation vorgesehen. Der nächste Bereich von $2400.40$ MHz bis $2400.080$ MHz(Up) und $10489.540$ MHz bis $10489.580$ MHz (Down) ist für schmallbandige digitale Kommunikation reserviert. Die maximale Bandbreite beträgt hier $500$ Hz. Auch der nächste Bereich von $2400.080$ MHz bis $2400.150$ MHz (Up) und $10489.580$ MHz bis $10489.650$ MHz (Down) ist für digitale Kommunikation vorgesehen. Allerdings beträgt die maximale Bandbreite in diesem Bereich 2700 Hz. Die Bereiche von $2400.150$ MHz bis $2400.245$ MHz (Up), $10489.650$ MHz bis $10489.745$ MHz (Down) und $2400.255$ bis $2400.350$ MHz (Up), $10489.755$ MHz bis $10489.850$ MHz (Down) ist für Signale mit einer Einseitenband-AM reserviert. Auch hier beträgt die maximale Bandbreite 2700 Hz. Der letzte Bereich von $2400.350$ MHz bis $2400.490$ MHz (Up) und $10489.850$ MHz bis $10489.990$ MHz ist für die Kommunikation mit verschiedensten Modulationen und für spezielle Anlässe vorgesehen. In diesem Bereich findet sich auch ein Kanal für Broadcast und ein Kanal für Notfälle. Auch finden in diesem Bereich verschiedenste Wettbewerbe statt. \cite{EsHail2NarrowbandBandplan}\newline
-Für den Schmalltransponder gibt es noch weitere Regelungen. Zu einem sollte auf eine Frequenz Modulation, in egal welchem Bereich, verzichtet werden. Frequenz modulierte Signale nehmen in Vergleich zu anderen Modulaktionsarten eine größere Bandbreite ein und benötigen auch eine größere Sendeleistung. Da sowohl die Bandbreite als auch die Leistung stark limitiert ist, sollte auf die Frequenz Modulation verzichtet werden. Erwünscht sind schmallbandige Modulationsverfahren wie CW, Einseitenband-AM oder PSK\cite{BarkerFM}\cite{EsHail2}\newline
-Unterhalb von $2400$ MHz, gekennzeichnet im Downlink durch den unteren CW-Beacon, darf keine Übertragung stattfinden. Für Amateur Satellitenfunk ist rechtlich nur der Bereich von $2400$ MHz bis $2450$ MHz vorgesehen und zulässig. So wird eine Störung anderer Dienste verhindert\cite{EsHail2}\cite{FrequenzplanBundesnetzagentur}
-Von AMSAT wird zum senden eine Full-Duplex Operation vorgeschrieben. Das bedeutet, dass der jeweilige Funker gleichzeitig senden und empfangen muss.\cite{EsHail2} Diese Vorschrift wird für den nächsten Punkt wichtig.\newline
-Weiterhin sollte die Sendeleistung so klein wie nötig gehalten werden. AMSAT empfiehlt die Sendeleistung in der gleichen größen Ordnung wie die der Beacon zu halten, da es sonst zu ungewünschte Verzerrungen und Übersteuerungen kommen kann.  Signale mit zu großer Leistung werden von der LEILA-Sirene im Downlink gekennzeichnet. LEILA ist ein Akronym und steht für Leistungs Limit Anzeige. Wird ein Signal mit der LEILA-Sirene gekennzeichnet, muss der jeweilige Funker seine Leistung umgehend reduzieren.\cite{EsHail2}\newline
-Das System für LEILA befindet sich in der Bodenstation bei Doha und in Bochum. Aufgrund der Verzögerung kann keine Bandsperre eingesetzt werden. Da aber zum senden eine Full-Duplex Verbindung vorgeschrieben ist, ist eine akustische Warneinrichtung ausreichend.\cite{EsHail2}
+Die Abbildung \ref{fig:NB-Bandplan} zeigt den von AMSAT-DL veröffentlichen Bandplan für den Schmalbandtransponder auf Es'Hail-2 (QO-100). Dieser Bandplan ist verpflichtend für die Nutzung des Schmalbandtransponder.\newline
+Im Falle von Es'Hail-2 (QO-100) liegt der Uplink im S-Band zwischen $2400.005\,\text{MHz}$ und $2400.490\,\text{MHz}$, was zu einer Bandbreite von $500\,\text{kHz}$ führt. Die Bandbreite reicht theoretisch für 100 gleichzeitige Nutzer\cite{EsHail2}\newline 
+Technische Details zum Uplink zum Schmalbandtransponder auf Es'Hail-2 (QO-100):\cite{EsHail2}
+\begin{itemize}
+    \item Mittenfrequenz: $f_\mathrm{center}$ = $2400.250\,\text{MHz}$ (S-Band)
+    \item Bandbreite des zugelassenen Bandes: $B=500\,\text{kHz}$ 
+    \item Polarisation: RHCP (Rechtshändig kreisförmig Polarisiert)
+    \item Maximale Sendeleistung: $2-5\,\text{W PEP} $ bei einem Antennengewinn von $G=22.5\,\text{dBi}$
+    \item Maximale zugelassene Bandbreite zum Senden: $B=2.7\,\text{kHz}$
+    \item Zugelassene Modulationen: Einseitenband-AM, CW, Schmalbandige Digitale Modulationen wie PSK oder BPSK. Keine Frequenzmodulation.
+\end{itemize}
+Der Downlink von Es'Hail-2 (QO-100) liegt im X-Band zwischen $10489.500\,\text{MHz}$ und $10490\,\text{MHz}$\cite{EsHail2}. Wird ein Signal im Uplink, zum Beispiel auf $2400.1\,\text{MHz}$, vom Schmalbandtransponder empfangen, wird dieses im Downlink $10489.650\,\text{MHz}$. So kann die Funktion des linearen Transponder am besten erklärt werden.\newline
+Technische Details zum Downlink vom Schmalbandtransponder auf Es'Hail-2 (QO-100):\cite{EsHail2}
+\begin{itemize}
+    \item Mittenfrequenz: $f_\mathrm{center}=10489.750\,\text{MHz}$ (X-Band)
+    \item Bandbreite des Downlink: $B=500\,\text{kHz}$
+    \item Polarisation: V (Vertikal linear)
+    \item Empfohlene größe der Parabolantenne: $90\,\text{cm}$ in Regenreichen Regionen und am Rand des Abgedeckten Bereiches (Thailand, Brasilien, etc.), $60\,\text{cm}$ im Zentrum des abgedeckten Bereiches, $75\,\text{cm}$ in Regionen bis zur $-2\,\text{dB}$ Grenze. Dazu gehören Teile Afrikas und Europa, sowie der mittlere Osten. 
+\end{itemize}
+Das $500\,\text{kHz}$ breite Frequenzband ist mehrere Bereiche unterteilt, welche für verschiedene Anwendungen vorgesehen sind.\newline
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|p{4cm}}
+        Uplink $\text{[MHz]}$ & Downlink $\text{[MHz]}$ & Bandbreite $\text{[kHz]}$ & Verwendung  \\
+        \hline
+         -& $10489.5\,\text{bis}\,10489.505$ & $5$ & Untere Funkbake mit CW-Modulation. Begrenzt das zugelassene Band  \\
+        $2400.005\,\text{bis}\,2400.04$ & $10489.505\,\text{bis}\,10489.54$ & $35$& Nur für Signale mit CW Modulation  \\
+        $2400.04\,\text{bis}\,2400.08$ & $10489.54\,\text{bis}\,10489.58$ & $40$& Nur für Signale mit digitaler Modulation und max. $B=0.5\,\text{kHz}$    \\
+        $2400.08\,\text{bis}\,2400.15$ & $10489.58\,\text{bis}\,10489.65$ & $70$& Nur für Signale mit digitaler Modulation und max. $B=2.7\,\text{kHz}$    \\
+        $2400.15\,\text{bis}\,2400.245$ & $10489.65\,\text{bis}\,10489.745$ & $95$& Nur für Signale mit Einseitenband-AM und max. $B=2.7\,\text{kHz}$    \\
+        -& $10489.745\,\text{bis}\,10489.755$ & $10$& Mittlere Funkbake mit $400\,\text{Bit/S}$ BSPK    \\
+        $2400.255\,\text{bis}\,2400.350$ & $10489.755\,\text{bis}\,10489.85$ & $95$& Nur für Signale mit Einseitenband-AM und max. $B=2.7\,\text{kHz}$    \\
+        $2400.35\,\text{bis}\,2400.495$ & $10489.85\,\text{bis}\,10489.995$ & $70$& Alle Arten an Modulation mit max $B=2.7\,\text{kHz}$ und für spezielle Events    \\
+        - & $10489.995\,\text{bis}\,10489$ & $5$& Obere experimentelle Funkbake. CW und andere Modulationen. Begrenzt das zugelassene Band   \\
+    \end{tabular}
+    \caption{Bandbelegung und Vorgesehene Verwendung des Schmalbandtransponder\cite{EsHail2}}
+    \label{tab:NB-Bandplan}
+\end{table}
+Die Tabelle \ref{tab:NB-Bandplan} beinhaltet den vorgesehenen Nutzungsplan für den Schmalbandtransponder auf Es'Hail-2 (QO-100). Für die Nutzung des Schmalbandtransponders gelten mehrere Regeln:
+\begin{enumerate}
+    \item Für eine gerechte und faire Nutzung für alle Amateurfunker zu ermöglichen, ist die maximale Bandbreite pro Nutzer auf $B=2.7\,\text{kHz}$ begrenzt.\cite{EsHail2}
+    \item Es darf keine FM-Modulation verwendet werden. Im Vergleich zu anderen Modulationen benötigt die FM-Modulation eine größere Bandbreite und mehr Sendeleistung. Da beide Faktoren begrenzt sind, ist auf eine FM-Modulation zu verzichten.\cite{EsHail2}\cite{BarkerFM}
+    \item Das zugelassene Band soll eingehalten werden. Im Bereich der Funkbaken darf nicht gesendet werden.\cite{EsHail2}
+    \item Eine Full-Duplex Kommunikation des Schmalbandtransponder ist vorgeschrieben. Jeder Nutzer muss zu jederzeit in der Lage sein, sein gesendetes Signal gleichzeitig auch zu empfangen.\cite{EsHail2}
+    \item AMSAT-DL empfiehlt die Sendeleistung auf dem gleichen Level der Funkbaken zuhalten. Zu starke Signale werden mit einer LEILA-Sirene (Leistungs Limit Anzeige) gekennzeichnet. Der jeweilige Nutzer muss daraufhin seine Sendeleistung reduzieren.\cite{EsHail2}
+\end{enumerate}
+Allgemein wird der Schmalbandtransponder für eine Reihe an verschiedenen Kommunikationsarten verwendet. Normale Sprachübertragungen mittels Einseitenband-AM, Digitale Kommunikationen und auch Morse Code mit CW-Modulation werden über den Schmalbandtransponder versendet. Wichtig ist nur, dass immer der dafür vorgesehene Bereich benutzt wird.
+
+\subsubsection*{Umlaufbahn von Es'Hail-2 (QO-100)}
+Der Satellit Es'Hail-2 (QO-100) befindet sich in einer einer geostationären Umlaufbahn um die Erde. Die Flughöhe von Es'Hail-2 (QO-100), gemessen vom Äquator der Erde, beträgt $r=35790\,\text{km}$\cite{EsHail2}. Für spätere Berechnung ist die Entfernung $D_\mathrm{SAT}$ von der Bodenstation am IAT zum Satelliten Es'Hail-2 (QO-100) von Bedeutung.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Entfernung Eshail2}
+    \caption{Skizze zeigt die Umlaufbahn und Entfernung zu Es'Hail-2}
+    \label{fig:EntfernungEsHail2}
+\end{figure}
+Die Abbildung \ref{fig:EntfernungEsHail2} zeigt eine Skizze der Umlaufbahn und der Entfernungen von der Bodenstation $D_\mathrm{SAT}$, sowie vom Äquator $r$ zum Satelliten Es'Hail-2 (QO-100). Für die Bestimmung der Entfernung $D_\mathrm{SAT}$ sind zunächst die Koordinaten der Bodenstation von Bedeutung. Diese können mittels Onlinekarten, wie z.B. Google Maps oder OpenStreetMap, ermittelt werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Position Bodenstation.png}
+    \caption{Koordinaten der Bodenstation\cite{KoordinatenBodensation}}
+    \label{fig:Koordinaten der Bodenstation}
+\end{figure}
+Die Bodenstation vom IAT befindet sich an den Koordinaten $53.055\degree, 8.78\degree$\cite{KoordinatenBodensation}, wobei die erste Zahl den Breitengrad und die zweite Zahl den Längengrad angibt.\newline
+Zur Bestimmung der Entfernung $D_\mathrm{SAT}$zwischen der Bodenstation am IAT und Es'Hail-2 muss zunächst die senkrechte Höhe $h$ der Bodenstation zum Äquator bestimmt werden. Diese kann mithilfe des Radius der Erde $r_\mathrm{0}$ und dem Winkel $\alpha$, welcher dem Breitengrad entspricht, bestimmt werden. Der Radius der Erde beträgt $r_\mathrm{0}=6378\space\text{km}$\cite{Satellitenkommunikation}
+\begin{equation*}
+h=r_\mathrm{0}\cdot\sin(\alpha)=6378\space\text{km}\cdot\sin(53.055\degree)=5100.39\space\text{km}
+\end{equation*}
+Mithilfe der Höhe $h$ kann über den Satz des Pythagoras der Teilradius $r_\mathrm{01}$ bestimmt werden, welcher benötigt wird um den Teilradius $r_\mathrm{02}$ zu bestimmen.
+\begin{equation*}
+    r_\mathrm{01}=\sqrt{r_\mathrm{0}^2-h^2}=\sqrt{(6378\space\text{km})^2-(5100.39\space\text{km})^2}=3829.49\space\text{km}
+\end{equation*}
+Damit beträgt dann der Teilradius $r_\mathrm{02}$
+\begin{equation*}
+    r_\mathrm{02} = r_\mathrm{0}-r_\mathrm{01}=6378\space\text{km}-3829.49\space\text{km}=2548.22\space\text{km}
+\end{equation*}
+Schlussendlich kann über den Satz des Pythagoras die Entfernung $D_\mathrm{SAT}$ zwischen der Bodenstation und Es'Hail-2, mithilfe der Höhe $h$ und den zusammengesetzten Radius $r+r_\mathrm{02}$ bestimmt werden.
+\begin{equation}
+\begin{split}
+    D_\mathrm{SAT}&=\sqrt{h^2+(r+r_\mathrm{02})^2}\\
+    &=\sqrt{(5100.39\space\text{km})^2+(35790\space\text{km}+2548.22\space\text{km})^2}\\
+    &=38676\space\text{km}
+\end{split}
+    \label{eq:EntfernungEsHail2}
+\end{equation}
+
+
+
 
 \subsection{Mischer}
+Ein Mischer ist ein elektrisches Bauteil, welches verwendet wird um ein elektrisches Signal von seinem ursprünglichen Frequenzband in ein höheres oder niedrigeres Frequenzband umzusetzen. Beim Umsetzen in ein höheres Frequenzband handelt es sich um einen Aufwärtsmischer (engl. Upconverter) und beim umsetzen in ein niedrigeres Frequenzband um einen Abwärtsmischer (engl. Downconverter).\cite{HEUERMANN_2018}\newline
+Anwendung findet der Mischer häufig im Bereich der HF-Technik und der Telekommunikation.
 
-Ein Mischer ist ein elektrisches Bauteil, welches unter anderem zur Frequenzumsetzung verwendet wird. Bei der Frequenzumsetzung werden elektrische Signale in höhere oder niedrigere Frequenzbänder umgesetzt. Das ist einer der Gründe, warum Mischer ein breite Anwendung in der Kommunikationstechnik findet.\newline
+\subsubsection*{Funktionsweise von Mischer}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Mischer}
+    \caption{Darstellung der beiden Anwendungsarten von Mischern}
+    \label{fig:Theoretische-Mischer}
+\end{figure}
+
+Die Abbildung \ref{fig:Theoretische-Mischer} zeigt die Verschaltung eines Mischers als Aufwärts- (links) und Abwärtsmischer (rechts). Ein idealer Mischer ist ein Dreitor Bauelement, wovon zwei als Eingang und eins als Ausgang fungieren. Die Beschaltung der Eingänge hängt von der gewollten Anwendungsart des Mischers ab.\cite{Microwave_Wiley}\newline
+Ein Mischer besteht aus nichtlinearen Bauelementen, wie z.B. Dioden oder Transistoren. Die Nichtlinearität dieser Bauelemente wird für die Frequenzumsetzung benötigt. Für die Frequenzumsetzung wird das Signal $s_\mathrm{IN}(t)$ am Eingang $\text{IN}_1$  mit dem Signal des lokalen Oszillator $s_\mathrm{LO}(t)$ multipliziert. Das Signal am Eingang $s_\mathrm{IN}(t)$ kann mit einer Kosinusfunktion definiert werden.\cite{Thiede_2013}
+\begin{equation}
+    s_\mathrm{IN}(t)=\hat{u}_\mathrm{IN}\cdot\cos(2\pi\cdot f_\mathrm{IN}\cdot t)
+    \label{def:Eingangssignal}
+\end{equation}
+Für die Durchführung der Multiplikation ist die nichtlineare Kennlinie erforderlich. Allerdings führt die nichtlineare Kennlinie zu einer Vielzahl an Oberwelle und harmonischen Schwingungen. Um diese zu reduzieren, sollte ein Mischer in einem möglichst linearen Arbeitspunkt betrieben werden. \cite{Thiede_2013}\newline
+Das Signal $s_\mathrm{LO}(t)$ des lokalen Oszillator (LO) kann folgend definiert werden.
+\begin{equation}
+    s_\mathrm{LO}(t)=\hat{u}_\mathrm{LO}\cdot\cos(2\pi\cdot f_\mathrm{LO}\cdot t)
+    \label{def:LO-Signal}
+\end{equation}
+Das LO-Signal $s_\mathrm{LO}(t)$ sollte eine stabile Frequenz $f_\mathrm{LO}$ und stabilen Pegel aufweisen. Schwankungen im Pegel können zu einer Verschiebung des Arbeitspunktes führen, was wiederum zu mehr Oberwellen im Mischprodukt $s_\mathrm{out}(t)$ führen kann. Bei Schwankungen in der Frequenz $f_\mathrm{LO}$ verschiebt sich die Frequenz des Mischproduktes $s_\mathrm{out}(t)$.\newline
+Das Mischprodukt $s_\mathrm{out}(t)$ am Ausgang des Mischers wird durch die Multiplikation des Eingangssignals $s_\mathrm{IN}(t)$ mit dem LO-Signal $s_\mathrm{LO}(t)$ bestimmt.\cite{Thiede_2013} 
+\begin{equation}
+    \begin{split}
+    s_\mathrm{out}(t)
+        &=s_\mathrm{IN}(t)\cdot s_\mathrm{LO}(t)\\
+        &=\frac{\hat{u}_\mathrm{IN}\cdot \hat{u}_\mathrm{LO}}{2}\left(\cos(2\pi\cdot( f_\mathrm{IN}+ f_\mathrm{LO})\cdot t)+ \cos(2\pi\cdot( f_\mathrm{IN}- f_\mathrm{LO})\cdot t)\right)
+    \end{split}
+    \label{eq:Multiplikation-Mischer}
+\end{equation}
+Nach der Beziehung in \ref{eq:Multiplikation-Mischer} besteht das Mischprodukt $ s_\mathrm{out}(t)$ aus mehreren Frequenzkomponenten. Diese Entsprechen der Summe und der Differenz der Frequenz des Eingangssignals $f_\mathrm{in}$ und der Frequenz $f_\mathrm{LO}$ lokalen Oszillator.\cite{Thiede_2013} 
+\begin{equation}
+    f_\mathrm{out} = |f_\mathrm{in} \pm f_\mathrm{LO}|
+    \label{eq:Frequenz-des-Mischproduktes}
+\end{equation}
+Je nach Anwendungsart des Mischers ist nur eins der beiden Mischprodukte erwünscht. Die zweite Frequenzkomponente kann mithilfe eines Filters entfernt werden.\cite{Microwave_Wiley}\cite{Thiede_2013}
+
+\subsubsection*{Anwendung als Aufwärtsmischer}
+Bei der Anwendung des Mischers als Aufwärtsmischer wird ein Signal aus dem niedrigen Frequenzband, dem Zwischenfrequenzbereich (ZF), in ein höheres Frequenzband verschoben. Das ZF-Signal $s_\mathrm{ZF}(t)$ kann zum Beispiel ein Datensignal oder ähnliches sein, welches mithilfe des LO-Signal aus Gleichung \ref{def:LO-Signal} in ein höheres Frequenzband verschoben wird, in welchem es zum Beispiel über eine Antenne abgestrahlt werden kann. Das LO-Signal dient dabei als Trägersignal für das LO-Signal und der Mischer kann als Modulator angesehen werden.\cite{Thiede_2013}\cite{Microwave_Wiley}. Das ZF-Signal kann folgend definiert werden.\newline
+\begin{equation*}
+    s_\mathrm{ZF}(t)=\hat{u}_\mathrm{ZF}\cdot\cos(2\pi\cdot f_\mathrm{ZF}\cdot t)
+\end{equation*}
+Die Verschaltung des Mischers als Aufwärtsmischer ist in Abbildung \ref{fig:Theoretische-Mischer} auf der linken Seite dargestellt. Das ZF-Signal $s_\mathrm{ZF}(t)$ liegt an Eingang $\text{IN}_1$ des Mischers an. Am zweiten Eingang des Mischers wird das LO-Signal
+$s_\mathrm{LO}(t)$ angeschlossen, wobei $f_\mathrm{LO}>> f_\mathrm{ZF}$ ist.\cite{Thiede_2013}\newline
+Am Ausgang des Mischers liegt das hochfrequente Signal $s_\mathrm{HF}(t)$ an, welches das Mischprodukt aus dem ZF-Signal und LO-Signal ist. Das HF-Signal kann mithilfe der Gleichung \ref{eq:Multiplikation-Mischer} bestimmt werden.\cite{Microwave_Wiley}
+\begin{equation*}
+    \begin{split}
+    s_\mathrm{HF}(t)
+        &=s_\mathrm{ZF}(t)\cdot s_\mathrm{LO}(t)\\
+        &=\frac{\hat{u}_\mathrm{ZF}\cdot \hat{u}_\mathrm{LO}}{2}\left(\cos(2\pi\cdot( f_\mathrm{ZF}+ f_\mathrm{LO})\cdot t)+ \cos(2\pi\cdot( f_\mathrm{ZF}- f_\mathrm{LO})\cdot t)\right)
+    \end{split}
+\end{equation*}
+Bei der Aufwärtsmischung ist nur die Summe der beiden Eingangsfrequenzen von Bedeutung. 
+\begin{equation*}
+    f_\mathrm{HF} = f_\mathrm{ZF} + f_\mathrm{LO}
+\end{equation*}
+Die Differenz kann mithilfe eines Filters entfernt werden.\cite{Thiede_2013}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Aufwärtsmischer.png}
+    \caption{Darstellung der Aufwärtsmischung im Frequenzspektrum}
+    \label{fig:Spektrum-von-shf}
+\end{figure}
+Die Abbildung \ref{fig:Spektrum-von-shf} zeigt die Aufwärtsmischung im Frequenzspektrum. Im oberen Plot sind das ZF-Signal bei $f_\mathrm{ZF}=50\,\text{MHz}$ und das LO-Signal bei $f_\mathrm{LO}=400\,\text{MHz}$ zu sehen. Der untere Plot zeigt das Mischprodukt $s_\mathrm{HF}(t)$, welches am Ausgang des Mischers anliegt. Zu erkennen ist die modulierende Wirkung des Mischers. Das ZF-Signal wird um die Frequenz $f_\mathrm{LO}$ des LO-Signal verschoben und weißt nun zwei Signale um die Frequenz des LO-Signals auf. Das zweite Signal entsteht aufgrund der Spiegelung des Fourierspektrum um $0\,\mathrm{Hz}$. Bei der Verschiebung des ZF-Signal mit der Frequenz $f_\mathrm{ZF}$ um die Frequenz $f_\mathrm{LO}$ des LO-Signal, wird das gespiegelte ZF-Signal mit der Frequenz $-f_\mathrm{ZF}$ ebenfalls um die Frequenz $f_\mathrm{LO}$ des LO-Signal verschoben.\newline
+Die beiden Signale um die Frequenz $f_\mathrm{LO}$ des LO-Signal werden Seitenbänder genannt. Das Seitenband bei $f_\mathrm{LO}+f_\mathrm{ZF}$ wird oberes Seitenband (engl. upper side band) USB und das Seitenband bei $f_\mathrm{LO}-f_\mathrm{ZF}$ wird unteres Seitenband (engl. lower side band) LSB genannt\cite{Microwave_Wiley}. Die Leistung beider Seitenbänder ist geringer als die Leistung des ursprünglichen ZF-Signal, da sich die Leistung auf zwei Signale aufteilt. Hinzu kommt aber auch die Leistung des LO-Signal, weshalb die Leistung der Seitenbänder nicht ganz halbiert ist.\newline
+Wie bereits erwähnt ist nur die $f_\mathrm{LO}+f_\mathrm{ZF}$ Frequenzkomponente, also das USB, bei der Aufwärtsmischung von Interesse, weshalb das LSB auch mit einem Hochpassfilter entfernt werden kann. \cite{Thiede_2013}
+
+
+\subsubsection*{Anwendung als Abwärtsmischer}
+Bei der Anwendung des Mischers als Abwärtsmischer wird ein hochfrequentes Signal $s_\mathrm{HF}(t)$ aus dem HF-Bereich in ein niedrigeres Frequenzband, dem ZF-Bereich, umgesetzt. Beim HF-Signal $s_\mathrm{HF}(t)$ kann es sich zum Beispiel um ein Datensignal handeln, welches mithilfe von einer Antenne empfangen wird und an einen Empfänger weitergegeben wird. Das HF-Signal $ s_\mathrm{HF}(t)$ kann folgend definiert werden.
+\begin{equation*}
+    s_\mathrm{HF}(t)=\hat{u}_\mathrm{HF}\cdot\cos(2\pi\cdot f_\mathrm{HF}\cdot t)
+\end{equation*}
+Dabei ist die Frequenz $f_\mathrm{HF}$ des HF-Signals $f_\mathrm{HF}>>f_\mathrm{ZF}$.Die Umsetzung des HF-Signals in den niedrigen ZF-Bereich hat mehrere Gründe. Zu einem kann der Empfänger unter Umständen nicht in der Lage sein, das HF-Signal mit seiner hohen Frequenz $f_\mathrm{HF}$ direkt zu verarbeiten, weshalb das HF-Signal erst in den niedrigeren ZF-Bereich umgesetzt werden muss. Auch können eventuell verwendete Filter, Verstärker oder andere Komponenten frequenzabhängige Eigenschaften besitzen. Um die optimale Leistungsfähigkeit der Komponenten zu erreichen, wird das HF-Signal in einem für die Komponenten vorteilhaften ZF-Bereich herabgesetzt. Auch können hohe Kosten ein Grund für die Umsetzung des HF-Signals in einen niedrigeren ZF-Bereich sein. Empfänger, welche sehr hohe Frequenzen direkt verarbeiten können, und Komponeten, welche für entsprechend hohe Frequenzen optimiert sind, können hohe Anschaffungskosten mit sich bringen.\newline
+Die Verschaltung des Mischers als Abwärtsmischer ist in der Abbildung \ref{fig:Theoretische-Mischer} auf der rechten Seite dargestellt. Am Eingang $\text{IN}_1$ liegt das HF-Signal $s_\mathrm{HF}(t)$ an. Am Eingang $\text{IN}_2$ liegt das LO-Signal $s_\mathrm{LO}(t)$ an. Das LO-Signal $s_\mathrm{LO}(t)$ kann folgend definiert werden.
+\begin{equation*}
+    s_\mathrm{LO}(t)=\hat{u}_\mathrm{LO}\cdot\cos(2\pi\cdot f_\mathrm{LO}\cdot t)
+\end{equation*}
+Dabei wird die Frequenz $f_\mathrm{LO}$ oft nahe der Frequenz $f_\mathrm{HF}$ des erwarteten HF-Signals gewählt. So kann das HF-Signal $s_\mathrm{HF}(t)$ möglichst weit herabgesetzt werden.\cite{Microwave_Wiley}\newline
+Ist die Frequenz $f_\mathrm{HF}$ des HF-Signal gleich der Frequenz $f_\mathrm{LO}$ des lokalen Oszillator, ist das resultierende Mischprodukt $s_\mathrm{ZF}(t)$ am Ausgang eine Gleichspannung. Man spricht dabei dann auch von einem Homodynmischer\cite{Thiede_2013}. Entspricht die Frequenz $f_\mathrm{HF}$ des HF-Signal nicht der Frequenz $f_\mathrm{LO}$ des lokalen Oszillator, wird das resultierende Mischprodukt $s_\mathrm{ZF}(t)$ am Ausgang Zwischenfrequenz (ZF) genannt. Beim Mischer handelt es sich dann um einen Heterodyn-Mischer.\cite{Thiede_2013}\newline
+ Nach der Gleichung \ref{eq:Multiplikation-Mischer} folgt für das Mischprodukt  $s_\mathrm{ZF}(t)$.
+\begin{equation*}
+    \begin{split}
+    s_\mathrm{ZF}(t)
+        &=s_\mathrm{HF}(t)\cdot s_\mathrm{LO}(t)\\
+        &=\frac{\hat{u}_\mathrm{HF}\cdot \hat{u}_\mathrm{LO}}{2}\left(\cos(2\pi\cdot( f_\mathrm{HF}+ f_\mathrm{LO})\cdot t)+ \cos(2\pi\cdot( f_\mathrm{HF}- f_\mathrm{LO})\cdot t)\right)
+    \end{split}
+\end{equation*}
+Das ZF-Signal besteht aus zwei Frequenzkomponenten, der Summe und der Differenz beider Eingangsfrequenzen $f_\mathrm{HF}$ und $f_\mathrm{LO}$. Die Summe $f_\mathrm{HF}+f_\mathrm{LO}$ entspricht nahezu $2\cdot f_\mathrm{HF}$, da die Frequenz des LO-Signal nahe der Frequenz des HF-Signal gewählt wird. Dafür ist aber die Frequenz  des ZF-Signals $f_\mathrm{ZF}<<f_\mathrm{HF}$. Bei der Abwärtsmischung ist nur die$f_\mathrm{HF}-f_\mathrm{LO}$ Komponente von Interesse.\cite{Microwave_Wiley}
+\begin{equation*}
+    f_\mathrm{ZF} = |f_\mathrm{HF} - f_\mathrm{LO}|
+\end{equation*}
+Die $f_\mathrm{HF}+f_\mathrm{LO}$ Komponente kann mithilfe eines Tiefpassfilters entfernt werden.\cite{Microwave_Wiley}\newline
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Abwärtsmischer.png}
+    \caption{Darstellung des Frequenzspektrums vom Mischprodukt $s_\mathrm{ZF}(t)$ nach der Abwärtsmischung}
+    \label{fig:Spektrum-von-szf}
+\end{figure}
+In der Abbildung \ref{fig:Spektrum-von-szf} ist das Frequenzspektrum der Abwärtsmischung dargestellt. Im oberen Plot ist das HF-Signal am Eingang $\text{IN}_1$ bei $f_\mathrm{HF}=200\,\text{MHz}$ und das Signal des lokalen Oszillator bei $f_\mathrm{LO}=150\,\text{MHz}$ zu sehen. Im unteren Plot ist das Frequenzspektrum des ZF-Signal am Ausgang des Mischer dargestellt. Zu erkennen sind die beiden Frequenzkomponenten $f_\mathrm{HF}+f_\mathrm{LO}$ und $f_\mathrm{HF}-f_\mathrm{LO}$. Die $f_\mathrm{HF}+f_\mathrm{LO}$ befindet sich bei $f_\mathrm{HF}+f_\mathrm{LO}=350\,\text{MHz}$, während sich die $|f_\mathrm{HF}-f_\mathrm{LO}|$ Komponente bei $|f_\mathrm{HF}-f_\mathrm{LO}|=50\,\text{MHz}$ befindet. Von Interesse ist hier nur die Differenz $|f_\mathrm{HF}-f_\mathrm{LO}|$. Die $f_\mathrm{HF}+f_\mathrm{LO}$ Komponente kann durch einen Tiefpassfilter entfernt werden.\newline
+
+\subsubsection*{Spiegelfrequenz}
+Die Frequenzumsetzung bei Abwärtsmischer ist jedoch nicht immer eindeutig.\cite{HEUERMANN_2018}\cite{Microwave_Wiley}\newline
+Um die Frequenz $f_\mathrm{LO}$ gibt es zwei Frequenzen, welche bei der Abwärtsmischung die gewünschte Zwischenfrequenz $f_\mathrm{ZF}$ ergeben.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Spiegelfrequenz.png}
+    \caption{Demonstration der Spiegelfrequenz $f_\mathrm{SP}$}
+    \label{fig:Demo-Spiegelfrequenz}
+\end{figure}
+Die Abbildung \ref{fig:Demo-Spiegelfrequenz} zeigt den Vorgang der Abwärtsmischung im Frequenzspektrum. Jedoch liegt zusätzlich zum HF-Signal ein weiteres Signal, das SP-Signal, am Eingang des Mischers an. Für eine bessere Demonstration hat das SP-Signal einen geringfügig kleineren Pegel.\newline
+Der obere Plot zeigt die beiden Eingangsignale $s_\mathrm{HF}(t)$ und $s_\mathrm{SP}(t)$ um das Signal des lokalen Oszillator. Die Frequenz der beiden Signale betragen $f_\mathrm{HF}=f_\mathrm{LO}+f_\mathrm{ZF}$ und $f_\mathrm{SP}=f_\mathrm{LO}-f_\mathrm{ZF}$. Beide Signale befinden sich also im Abstand von $f_\mathrm{ZF}$ um das LO-Signal. Bei der Abwärtsmischung des HF-Signals kommt mit Gleichung \ref{eq:Frequenz-des-Mischproduktes} das gewünschte ZF-Signal mit der Frequenz $f_\mathrm{ZF}$ raus, wie es im unteren Plot dargestellt ist. Bei der Abwärtsmischung des SP-Signal kommt es mit Gleichung \ref{eq:Frequenz-des-Mischproduktes} zu einer negative Frequenz $-f_\mathrm{ZF}$. Aufgrund der Spiegelung des Fourierspektrum um $0\,\mathrm{Hz}$ kommt es auch zu einer positiven Frequenz $f_\mathrm{ZF}$, welche das gewünschte ZF-Signal überlagert.\cite{Microwave_Wiley} 
+Dieser Effekt ist im unteren Plot bei $f=50\,\text{MHz}$ zu sehen. Das herabgesetzte SP-Signal (orange) überlagert das gewünschte ZF-Signal (blau).\newline
+Die Frequenz $f_\mathrm{SP}$ des SP-Signals vor dem herabsetzen wird auch Spiegelfrequenz (engl. Image Frequency) genannt. Ein an den Ausgang des Mischer angeschlossener Empfänger hat keine Möglichkeit die beiden Signale auseinander zuhalten, weshalb die Spiegelfrequenz vor dem Eingang des Mischers unterdrückt werden muss. Erreicht werden kann das mit Filtern oder sogenannten Einseitenbandmischer (engl. Image Rejection Mixer).\cite{HEUERMANN_2018}\cite{Microwave_Wiley}
+
+\subsubsection*{Rauschen und Verluste von Mischern}
+Die Ein- und Ausgänge des Mischers müssen auf die jeweilige Impedanz angepasst werden. Erschwert wird das durch die Vielzahl an Frequenzen und Oberwellen, welche während des Mischprozesses auftreten.\cite{Microwave_Wiley}\newline
+Im Idealfall werden alle drei Tore des Mischers auf ihre jeweilige Frequenz $f_\mathrm{in}$, $f_\mathrm{LO}$ und $f_\mathrm{out}$ angepasst und alle weiteren Frequenzkomponenten werden mithilfe von ohmschen Lasten absorbiert oder durch reaktive Lasten geblockt. Beide Methoden bringen Verluste mit sich. Weitere Verluste treten bei der Frequenzumsetzung durch die Entstehung von Oberwellen und harmonischen Schwingungen auf.\cite{Microwave_Wiley}.\newline
+In der Praxis ist für die Betrachtung der Verluste der Pfad vom LO-Signal nicht von Bedeutung. Interessant ist nur der Weg vom HF-Eingang zum ZF-Ausgang oder umgekehrt. Somit können die Verluste des Mischer wie bei einer lineare Schaltung, z.B. eines Dämpfungsglieds, über das Verhältnis der Eingangsleistung $P_\mathrm{IN}$ zu der Ausgangsleistung $P_\mathrm{OUT}$ beschrieben werden.\cite{HEUERMANN_2018}\cite{Microwave_Wiley}
+\begin{equation}
+    L_\mathrm{conv,dB}=10\cdot \log_{10}\left(\frac{P_\mathrm{IN}}{P_\mathrm{OUT}} \right)
+    \label{eq:Mischverluste}
+\end{equation}
+Im Konversationsverlust $L_\mathrm{conv,dB}$ werden alle ohmschen, sowie Verluste bei Frequenzumsetzung, berücksichtigt. Die Gleichung \ref{eq:Mischverluste} kann sowohl bei Aufwärts-, als auch bei Abwärtsmischung verwendet werden.\cite{Microwave_Wiley}\newline
+Das Rauschen eines Mischers kann über seine Rauschzahl $F$ ausgedrückt werden. Die Rauschzahl $F$ eines Mischers entspricht näherungsweise seiner Konversationsverluste \newline $L_\mathrm{conv,dB}$.\cite{HEUERMANN_2018}
+\begin{equation}
+    F_\mathrm{Mischer,dB}\approx L_\mathrm{conv,dB}
+\end{equation}
+Neben den Konversationsverlusten $L_\mathrm{conv}$ und der Rauschzahl $F_\mathrm{Mischer}$ kann ein Mischer auch über den Frequenzbereich, den notwendigen Pegel des lokalen Oszillator, der Isolation zwischen den Toren, seiner Linearität ($IIP_\mathrm{3}$) und seiner Impedanzanpassung seiner Tore beschrieben werden.\cite{HEUERMANN_2018}\cite{Microwave_Wiley}
 
 
 
-\subsubsection{Anwendung von Mischern}
-\subsubsection{Rauschen und Verluste}
+
+
+
+
+
+
+
 
 
 

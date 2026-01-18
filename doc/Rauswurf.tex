@@ -1,0 +1,148 @@
+\subsubsection*{Kreuzpolarisationseffekte}
+In der Satellitenkommunikation werden oft Frequenzen mehrfach verwendet. Die EM-Wellen der einzelnen Satelliten werden dann eine orthogonal Polarisation zueinander. So kann die Kapazität der möglichen Links erhöht werden.\cite{ITU-RP.618-14}\newline
+Neben der Dämpfung $L_\mathrm{Regen}$ hat der Regen auch eine depolarisierende Wirkung auf die EM-Wellen. Wenn EM-Wellen durch Regengebieten laufen, kann sich ihre Polarisierungsebene verändern. Der Grund liegt in der unterschiedlichen Form der Regentropfen.\cite{Satellite_Communications_Systems}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Formen von Regentropfen.png}
+    \caption{Unterschiedliche Formen der Regentropfen, basierend auf ihrem\\ Durchmesser\cite{Regentropfen}}
+    \label{FormenvonRegentropfen}
+\end{figure}
+Die Regentropfen nehmen je nach Größe unterschiedliche Formen an, wie es in Abbildung \ref{FormenvonRegentropfen} dargestellt ist. Während kleine Regentropfen mit einem Durchmesser von $1-2\,\text{mm}$ als Kugelförmig angenommen werden können, nehmen Regentropfen mit größerem Durchmesser stark nicht kugelförmige Formen an. Ein oft verwendetes Referenzmodel für Regentropfen ist ein abgeflachter Rotationskörper.\cite{Satellite_Communications_Systems}\newline
+Aufgrund ihrer Form wirken Regentropfen wie anisotrope Streuer, was zwei Effekte mit sich bringt.\cite{Satellite_Communications_Systems}
+\begin{itemize}
+    \item Differentielle Dämpfung: Die horizontale und vertikale Polarisationskomponente erfahren unterschiedliche Dämpfungen.\cite{Satellite_Communications_Systems}
+    \item Differentielle Phasenverschiebung: Die Phase der horizontalen und vertikalen Polarisationskomponente werden unterschiedlich stark verschoben.\cite{Satellite_Communications_Systems}
+\end{itemize}
+Beide Effekte führen zusammen zu einer Rotation in der Polarisationsebene und erzeugen damit eine Kreuzpolarisation.\cite{Satellite_Communications_Systems}\newline
+Bei einer Kreuzpolarisation wird Energie zwischen zwei orthogonal zueinander polarisierten EM-Wellen ausgetauscht. Die Kreuzpolarisation verringert also die Isolation zwischen zwei orthogonal zueinander EM-Wellen.\cite{Satellite_Communications_Systems}
+Auch Eis in den Wolken nah der $0\degree\text{C}$ isothermische Grenze verursacht ebenfalls eine Kreuzpolarisation.\cite{Satellite_Communications_Systems}\newline
+Die Verringerung der Isolation durch die Kreuzpolarisation wird mit $XPD(p)\,[\text{dB}]$ ausgedrückt. Dabei wird die Isolation $XPD(p)\,[\text{dB}]$ nicht für $p\,\%$ der gegebenden Zeit, z.B. eines Jahres, überschritten.\cite{Satellite_Communications_Systems}\cite{ITU-RP.618-14}
+\begin{equation}
+    \label{EqIsolationKreuz}
+    XPD(p)=XPD_\mathrm{Regen}-C_\mathrm{Eis}
+\end{equation}
+Dabei ist $XPD_\mathrm{Regen},\left[\text{dB}\right]$ der Kreuzpolarisationsanteil durch Regen und $C_\mathrm{Eis},\left[\text{dB}\right]$ der durch Eis in den Wolken\cite{Satellite_Communications_Systems}.\newline
+Die folgende Bestimmung von $XPD(p)$ gilt für gleichen Pfad der Dämpfung durch Regen und kann für Frequenzen $6\,\text{GHz}\leq f \leq55\,\text{GHz}$ und einem Elevationswinkel der Antenne $\epsilon\leq60\degree$. $XPD_\mathrm{Regen}$ ist von mehreren Termen abhängig. \cite{ITU-RP.618-14}\newline
+\begin{equation}
+    \label{EqXPDRegen}
+    XPD_\mathrm{Regen}=C_\mathrm{f}-C_\mathrm{A}+C_\mathrm{\tau}+C_\mathrm{\theta}+C_\mathrm{\sigma}
+\end{equation}
+Der Term $C_\mathrm{f}$ ist von der Frequenz $f,\left[\text{GHz}\right]$ abhängig.\cite{ITU-RP.618-14}
+\begin{equation}
+    C_\mathrm{f}=
+    \begin{cases}
+        60\cdot \log(f)-28.3 &,6\,\text{GHz}\leq f \leq9\,\text{GHz}\\
+        26\cdot \log(f)+4.1 &,9\,\text{GHz}\leq f \leq36\,\text{GHz}\\
+        35.9\cdot \log(f)-11.3 &,36\,\text{GHz}\leq f \leq55\,\text{GHz}\\
+    \end{cases}
+\end{equation}
+Der von der Dämpfung durch Regen $L_\mathrm{Regen}$ abhängige Term $C_\mathrm{A}$ wird wie folgt bestimmt.\cite{ITU-RP.618-14}
+\begin{equation}
+    C_\mathrm{A}=V(f)\cdot\log_{10}(L_\mathrm{Regen\,p})
+\end{equation}
+Wobei $V(f)$ von der Frequenz $f\,\left[\text{GHz}\right]$ abhängig ist.\cite{ITU-RP.618-14}
+\begin{equation}
+    V(f)=
+    \begin{cases}
+        30.8\cdot f^{-0.21}&,6\,\text{GHz}\leq f\leq9\,\text{GHz}\\
+        12.8\cdot f^{0.19}&,9\,\text{GHz}\leq f\leq20\,\text{GHz}\\
+        22.6&,20\,\text{GHz}\leq f\leq40\,\text{GHz}\\
+        13\cdot f^{0.15}&,40\,\text{GHz}\leq f\leq55\,\text{GHz}\\
+    \end{cases}
+\end{equation}
+Der Term $C_\mathrm{\tau}$ gibt die Verschlechterung der Polarisation an.\cite{ITU-RP.618-14}
+\begin{equation}
+    C_\mathrm{\tau}=-10\cdot\log_{10}[1-0.484(1+\cos(4\tau)]\\
+\end{equation}
+Dabei ist $\tau$ der Winkel zwischen der EM-Welle und dem Boden. Dieser Winkel entspricht auch dem Neigung (engl. Skew) der Antenne. Dieser wird später in Kapitel \ref{Ausrichten der Antenne} bestimmt.\newline
+Der Term $C_\mathrm{\theta}$ ist vom Elevationswinkel $\epsilon$ der Antenne abhängig. Auch dieser wird später in Kapitel \ref{Ausrichten der Antenne} bestimmt.\cite{ITU-RP.618-14}
+\begin{equation}
+    C_\mathrm{\theta}=-40\cdot\log_{10}(\cos{\epsilon})
+\end{equation}
+Der letzte Term $C_\mathrm{\sigma}$ gibt die Standardvariation der Verteilung des Einfallswinkels der Regentropfen auf die EM-Wellen an.\cite{Satellite_Communications_Systems}\cite{ITU-RP.618-14}
+\begin{equation}
+    C_\mathrm{\sigma}=0.0052\sigma^2
+\end{equation}
+Dabei nimmt $\sigma$ Werte von $\sigma=0\degree,5\degree,10\degree,15\degree$ für $p=1\,\%,0.1\,\%,0.01\,\%,0.001\%$ an.\cite{ITU-RP.618-14}\cite{Satellite_Communications_Systems}\newline
+$C_\mathrm{Eis}\,\left[\text{dB}\right]$ der Anteil des Eises in den Wolken.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    \label{EqCeis}
+    C_\mathrm{Eis}=\frac{XPD_\mathrm{Regen}(0.3+0.1\cdot\log_{10}(p))}{2}
+\end{equation}
+Mit den Gleichungen \ref{EqIsolationKreuz} bis \ref{EqCeis} kann mithilfe von Python die Verschlechterung der Isolation zwischen zwei orthogonal zueinander Polarisierten Wellen bestimmt werden. Für $XPD_\mathrm{Regen},\,\left[\text{dB}\right]$ in Gleichung \ref{EqXPDRegen} ergibt sich für eine Frequenz von $f\approx10.5\,\text{GHz}$, mit der Dämpfung durch starke Regenschauer $L_\mathrm{Regen,0.01}=8.792\,\text{dB}$, einer Neigung der EM-Welle von $\tau=-12.412\degree$, einer Elevation $\epsilon=27.888\degree$ für $p=0.01\,\%$ 
+\begin{equation*}
+        XPD_\mathrm{Regen}=C_\mathrm{f}-C_\mathrm{A}+C_\mathrm{\tau}+C_\mathrm{\theta}+C_\mathrm{\sigma}=
+\end{equation*}
+Damit ergibt sich der Beitrag durch Eis in Wolken zu
+\begin{equation}
+    C_\mathrm{Eis}=\frac{XPD_\mathrm{Regen}(0.3+0.1\cdot\log_{10}(p))}{2}=
+\end{equation}
+Was zu einer Verschlechterung der Isolation zwischen den orthogonal zueinander polarisierten EM-Wellen
+\begin{equation*}
+    XPD(0.01\,\%)=XPD_\mathrm{Regen}-C_\mathrm{Eis}=
+\end{equation*}
+führt. Für leichte Regenschauer $p=5\,\%$ ergibt sich eine Verschlechterung von 
+\begin{equation}
+    XPD(5\,\%)=XPD_\mathrm{Regen}-C_\mathrm{Eis}=
+\end{equation}
+Die Verschlechterung der Isolation zwischen den orthogonal zueinander polarisierten EM-Wellen kann gegebenfalls zu einer Verschlechterung des SNR führen.->Maybe
+
+
+
+
+
+
+
+
+
+
+
+
+
+Das $SNR_\mathrm{o,klarerHimmel}=6.67\,\text{dB}$ ist sehr gering. Grund dafür ist die hohe äquivalente Rauschtemperatur $T_\mathrm{e,sys}$ des Systems. Das erste Zweitor im Empfangssystem ist eine Koaxialleitung. Da eine Koaxialleitung ein passives Zweitor ist, bringt sie eine Gewisse Dämpfung mit sich. Dadurch fließt die äquivalente Rauschtemperatur vom zweiten Zweitor, des LNC, mit einer kleinen Verstärkung in die gesamte äquivalente Rauschtemperatur $T_\mathrm{e,sys}$ des RF-Bereiches ein. Diese Gegebenheit ist der Grund für hohe Rauschen und damit das niedrige $SNR_\mathrm{o}$ des Empfangssystem. Signale mit digitaler Modulation würden eine hohe Bitfehlerrate aufweisen.\newline
+Um die Rauschleistung $N_\mathrm{o,klarerHimmel}$ zu verringern könnte z.B. das erste Zweitor der RF-Bereiches durch eine rauscharmen Verstärker (LNA) gebildet werden, welcher dann mit der Koaxialleitung mit dem LNC verbunden wird. Dadurch könnte die äquivalente Rauschtemperatur des RF-Bereiches $T_\mathrm{e,sys}$ deutlich reduziert werden. 
+\begin{equation}
+    T_\mathrm{e,sys-mit-LNA}=T_\mathrm{eLNA}+\frac{T_\mathrm{e1}}{G_\mathrm{LNA}}+\frac{T_\mathrm{eLNC}}{G_\mathrm{LNA}\cdot G_\mathrm{1}}+\dots=108.998\,\text{K}
+    \label{eq:Te-mit-LNA}
+\end{equation}
+Das Ergebnis in Gleichung \ref{eq:Te-mit-LNA} ist durch die Erweiterung der Gleichung \ref{eq:äquivalente-Rauschtemperatur-Empfangsystem} um einen theoretischen LNA mit $G_\mathrm{LNA}=30\,\text{dB}$ und $T_\mathrm{eLNA}=100\,\text{K}$ als erstes Zweitor entstanden.\newline
+Durch das einfügen des LNA kann die äquivalente des Empfangssystems theoretisch auf $T_\mathrm{e,sys-mit-LNA}=108.998\,\text{K}$ reduziert werden.
+\begin{equation}
+\begin{split}
+    SNR_\mathrm{o,verbessert}&=\frac{P_\mathrm{R}}{k\cdot (T_\mathrm{A,klarerHimmel}+T_\mathrm{e,sys-mit-LNA})\cdot B}\\&=\frac{5.93\cdot 10^{-17}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(6.5\,\text{K}+108.998\,\text{K})\cdot2.7\,\text{kHz}}=13.77=11.39\,\text{dB}
+\end{split}
+    \label{eq:SNRo-klarer-Himmel}
+\end{equation}
+Durch die verbesserte äquivalente Rauschtemperatur $T_\mathrm{e,sys-mit-LNA}$ könnte das $SNR_\mathrm{o}$ auf $SNR_\mathrm{o,verbessert}=11.39\,\text{dB}$ verbessert werden. Dieses $SNR$ wäre deutlich besser für die Demodulation und würde die Bitfehlerrate deutlich verringern.\newline
+
+
+Die Qualität des Downlinks bei klaren Himmel kann mit der Gleichung \ref{eq:Qualität-Downlink} bestimmt werden. Zuvor muss noch die Rauschtemperatur $T_\mathrm{S}$ mit Gleichung \ref{eq:Rauschen-Temperatur-System} bestimmt werden. Die Verluste des Empfangssystems betragen $L_\mathrm{sys}=7.01\,\text{dB}=5.02$. Die Antennentemperatur beträgt $T_\mathrm{A,klarerHimmel}=6.5\,\text{K}$, die physikalische Temperatur $T_\mathrm{0}=290\,\text{K}$ und die äquivalente Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$. 
+\begin{equation}
+\begin{split}
+     T_\mathrm{S}&=\frac{T_\mathrm{A,klarerHimmel}}{L_\mathrm{sys}}+T_\mathrm{0}\left(1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys}\\
+     &=\frac{6.5\,\text{K}}{5.02}+290\,\text{K}\left(1-\frac{1}{5.02}\right)+336.63\,\text{K}\\
+     &=570.07\,\text{K}
+\end{split}
+\label{eq:Rauschen-Temperatur-System-klarer-Himmel}
+\end{equation}
+Zusammen mit der Leistung am Ausgang des RF-Bereiches $P_\mathrm{RX}$ aus Gleichung \ref{eq:Ausgang-Leistung-klarer-Himmel} kann die Qualität des Downlinks bei einem klaren Himmel bestimmt werden.
+\begin{equation}
+C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S}}=\frac{3.74\cdot 10^{-9}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot570.07\,\text{K}}=4.75\cdot10{11}\,\text{Hz}=117.3\,
+\text{dBHz}
+ \label{eq:Qualität-Downlink-klarer-Himmel}
+\end{equation}
+Wie bereits erwähnt könnte durch das Einbringen eines LNA in das Empfangssystem die Qualität des Downlinks verbessert werden. Mit der in Gleichung \ref{eq:Te-mit-LNA} bestimmten äquivalenten Rauschtemperatur $T_\mathrm{e,sys-mit-LNA}$ könnte die Rauschtemperatur $T_\mathrm{S}$ verringert werden.
+\begin{equation}
+\begin{split}
+     T_\mathrm{S,verbessert}&=\frac{T_\mathrm{A,klarerHimmel}}{L_\mathrm{sys}}+T_\mathrm{0}\left(1-\frac{1}{L_\mathrm{sys}}\right)+T_\mathrm{e,sys-mit-LNA}\\
+     &=\frac{6.5\,\text{K}}{5.02}+290\,\text{K}\left(1-\frac{1}{5.02}\right)+108.998\,\text{K}\\
+     &=342,52\,\text{K}
+\end{split}
+\label{eq:Rauschen-Temperatur-System-klarer-Himmel-verbessert}
+\end{equation}
+Die theoretische Rauschtemperatur $T_\mathrm{S,verbessert}=342,52\,\text{K}$ ist $227.55\,\text{K}$ niedriger als die eigentliche Rauschtemperatur $T_\mathrm{S}=570.07\,\text{K}$. Das würde sich positiv auf die Qualität des Downlinks auswirken.
+\begin{equation}
+C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S,verbessert}}=\frac{5.93\cdot10^{-17}\,\text{W}}{1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot342,52\,\text{K}}=7537.85\,\text{Hz}=38.77\,
+\text{dBHz}
+ \label{eq:Qualität-Downlink-klarer-Himmel}
+\end{equation}

@@ -1,11 +1,177 @@
-\subsection{Ausrichten der Antenne}
 
-Um die Antenne auf den Satelliten ausrichten zu können, muss dessen Position bekannt und durch geeignetes Koordinatensystem beschrieben sein. Dafür werden sogenannte astronomische Koordinatensystem verwendet, wovon es mehrere verschiedene gibt. Diese unterscheiden sich dabei in ihrem Ursprung und in der Ermittlung der Koordinaten.\newline
 
-Gängige Systeme sind dabei:
+
+
+\subsection{Aufstellen und Ausrichten der Antenne}\label{Ausrichten der Antenne}
+Die Antenne wird an einem Metallrohr auf dem Dach der Hochschule montiert. Der neue Antennenfeed wird mithilfe des alten Feedhalters im Fokuspunkt der Parabolschüssel montiert. Für die Anbringung des neuen Antennenfeeds wird ein Adapter entwickelt, welcher mithilfe eines 3D-Druckers angefertigt wird.\newline
+-> Bild der Antenne auf dem Dach\newline
+Die Antenne muss anschließend noch auf Es'Hail-2 (QO-100) ausgerichtet werden. Mit Gleichung \ref{eq:Azimut} kann der Azimut $\varphi$ bestimmt werden. Die Koordinaten der Bodenstation können aus der Abbildung \ref{fig:Koordinaten der Bodenstation} entnommen werden. Die Bodenstation befindet sich an den Koordinaten $53.055\degree,8.78\degree$. Der Satellit Es'Hail-2 (QO-100) befindet sich bei  $25.9\degree \text{E}$\cite{EsHail2}. Damit beträgt die Längengraddifferenz $\Delta long=53,055\degree-25.8\degree=27.255\degree$.
+\begin{equation}
+    \varphi=\arctan\left(\frac{\tan(\Delta long)}{\sin(lat_\mathrm{BS})} \right)=\arctan\left(\frac{\tan(27.255\degree)}{\sin(8.78\degree)} \right)=159.04\degree
+    \label{eq:Azimut-Antenne}
+\end{equation}
+Für die Ermittlung der Elevation der Antenne wird die Gleichung \ref{eq:Elevation} verwendet. Der Radius der Erde beträgt $r_\mathrm{0}=6378\,\text{km}$\cite{Satellitenkommunikation} und die Flughöhe von Es'Hail-2 (QO-100) $r=35790\,\text{km}$.
+\begin{equation}
+\begin{split}
+    \varepsilon&=\arctan\left(\frac{\cos(lat_\mathrm{BS})\cdot\cos(\Delta long)-\frac{r_\mathrm{0}}{r_\mathrm{0}+r}}{\sqrt{1-\cos^2(lat_\mathrm{BS})\cdot\cos^2(\Delta long)}} \right)\\
+    &=\arctan\left(\frac{\cos(8.78\degree)\cdot\cos(27.255\degree)-\frac{6378\,\text{km}}{6378\,\text{km}+35790\,\text{km}}}{\sqrt{1-\cos^2(8.78\degree)\cdot\cos^2(27.255\degree)}} \right)\\
+    &=27.36\degree
+\end{split}
+    \label{eq:Elevation-Antenne}
+\end{equation}
+Zum Schluss muss noch die Drehung des Antennenfeeds um seine eigene Achse $Skew$ ermittelt werden. Dieser kann mit der Gleichung \ref{eq:Skew} bestimmt werden. Der Offset des Antennenfeeds beträgt $0\degree$
+\begin{equation}
+    Skew = \arctan\left(\frac{\sin(\Delta long)}{\tan (lat_\mathrm{BS})}\right)-Offset=\arctan\left(\frac{\sin(27.255\degree)}{\tan (8.78\degree)}\right)=-12.4\degree
+\end{equation}
+Das Pythonskript zur Berechnung der Azimut $\varphi$, Elevation $\varepsilon$ und Drehung $Skew$ der Antenne ist im Github-Repository und im Anhang \ref{lst:Antenne-berechnung-python}hinterlegt. Mithilfe eines Kompass wird die Azimut der Antenne eingestellt. Die Elevation kann mithilfe einer Skala an der Antenne ausgerichtet werden. Für die Messung der Drehung des Antennenfeeds wird ein Geodreieck verwendet. Für den Ursprung wird der SMA-Anschluss am Antennenfeed gewählt.
+
+\subsection{Abwärtsmischer, Fernspeiseweiche und Verkabelung im Serverschrank}
+Der rauscharme Abwärtsmischer MKU LNC 10 QO-100 wird ebenfalls auf dem Dach der Hochschule nahe der Antenne montiert. Um diesen vor Wettereinflüssen, wie Regen und Schnee, zu schützen, wird dieser in einem wasserdichten Gehäuse untergebracht. Das Gehäuse bietet mehrere Durchführungsmöglichkeiten für die Koaxialleitungen.\newline
+->Bild vom Abwärtsmischer im Gehäuse.\newline
+Mit der S\_04212\_B Koaxialleitung wird der Antennenfeed an den HF-Eingang des Abwärtsmischer angeschlossen. Über die LMR 400 FR Koaxialleitung wird der herabgesetzte Downlink von Es'Hail-2 (QO-100) vom ZF-Ausgang des Abwärtsmischer mit der Fernspeiseweiche im Serverschrank verbunden. Von der Fernspeiseweiche wiederum führt eine LMR 400 FR Leitung zum Patchfeld im Serverschrank.\newline
+Um den Downlink von Es'Hail-2 (QO-100) in einen niedrigeren Frequenzbereich umzusetzen, soll der MKU LNC 10 QO-100 im QO-100 SSB Betriebsmodus betrieben werden. Der HF-Bereich des Abwärtsmischer liegt in dieser Konfiguration zwischen $10489\,\text{MHz}$ und $10490\,\text{MHz}$. Dafür muss über die Fernspeiseweiche eine Versorgungsspannung von  $V_\mathrm{CC}=12-17\,\text{V}$ eingespeist werden. Über die beiden Anschlusspins an der Fernspeiseweiche wird mit einem Labornetzteil eine Spannung von $V_\mathrm{CC}=15\,\text{V}$ an den MKU LNC 10 QO-100 weitergegeben. Ist ein anderer Betriebsmodus erwünscht, muss die Spannung am Labornetzteil entsprechend eingestellt werden.\newline
+->Bild Fernspeiseweiche und Labornetzteil im Serverschrank
+Mit den beiden Hyperflex 5 Koaxialleitungen wird dann das Patchfeld mit der RF-Schaltmatrix verbunden und diese anschließend an das Software Defined Radio angeschlossen.\newline 
+->Bild von der Verkabelung im Serverschrank.
+
+
+\subsection{Erstellen einer SDR-Software mit GNU Radio Companion}\label{kap:SDR Software}
+Um das Software Defined Radio steuern und den Downlink von Es'Hail-2 (QO-100) verarbeiten zu können, wird mithilfe von GNU Radio Companion eine, für diese Anwendung spezifische, SDR-Software erstellt.\newline
+GNU Radio ist ein freies und Open-Source Framework, welches Nutzern die Möglichkeit bietet Radio Systeme zu entwickeln, simulieren und anzuwenden. Der GNU Radio Companion ist das zugehörige Programm, mit welchen einfache Signalflussgraphen zur digitalen Signalverarbeitung erstellt werden können.\cite{GNU-Radio}
+
+\subsubsection{Herstellen der Verbindung zum USRP X310, einstellen der Frequenz und Ausgabe des Frequenzspektrums}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Eingang.png}
+    \caption{Verwendeter Quellblock und variable Frequenzeinstellung in GNU Radio}
+    \label{fig:Eingang}
+\end{figure}
+Die Abbildung \ref{fig:Eingang} zeigt den Anfangsbereich des Signalflussgraphen der erstellten SDR-Software. Den Anfang des Signalflussgraphen bildet ein Quellblock (engl. Source Block). Dieser wird benötigt, um eine Verbindung mit dem USRP X310 herzustellen.In GNU Radio gibt es mehrere verschiedene Quellblöcke zur Auswahl. Welcher verwendet werden kann hängt vom verwendeten SDR ab. Der verwendete USRP X310 bietet Unterstützung für den UHD-Treiber, weshalb als Quellblock ein UHD: URSP Quellblock verwendet wird.\cite{USRP-X310-Doku}\cite{GNU-Radio-USRP-Source}\newline
+Über den Quellblock können viele verschiedene Einstellung des USRP X310 angepasst werden. Allerdings werden nicht alle Einstellmöglichkeiten benötigt. Wichtige Einstellungen sind:
 \begin{itemize}
-    \item Horizontales Koordinatensystem: Beim horizontalen Koordinatensystem wird die Position eines Himmelskörpers, einen Satelliten in diesem Fall, im Bezug auf einen Beobachter auf der Erde beschrieben. Es werden dabei zwei Hauptkoordinate, den Höhenwinkel $\varepsilon$ (Elevation)  und der Kurs $\varphi$ (Azimut) , verwendet.\cite{Starwalk}\cite{Satellitenkommunikation}
-    \item Äquatoriales Koordinatensystem: Anders als bei horizontalen Koordinatensystem wird die Position des Satelliten beim äquatorialen Koordinatensystem im Bezug auf den Himmelsäquator beschrieben. Die beiden verwendeten Hauptkoordinaten sind die Deklation Dec und Rektaszension RAC.\cite{Starwalk}
-    \item Ekliptales Koordinatensystem: Im ekliptikalen Koordinatensystem wird die Position eines Satelliten im Bezug auf die Ekliptik angegeben. Bei der Ekliptik handelt es sich um die scheinbare Bahn oder Bewegung der Sonne, welche sich laufe eines Jahres am Himmel der Erde abzeichnet. Das Koordinatensystem verwendet dafür die beiden Hauptkoordinaten ekliptikale Länge und ekliptikale Breite.\cite{Starwalk}-> Quelle für Ekliptik finden
+    \item Sample Rate: Stellt die Abtastrate des ADC ein. Diese entspricht ebenfalls der gewünschten Bandbreite $B$. Ist die gewünschte Abtastrate und damit die Bandbreite $B$ nicht verfügbar, gibt der Quellblock einen Fehler aus.\cite{GNU-Radio-USRP-Source}\newline
+    Da der Downlink von Es'Hail-2 (QO-100) maximal $B=500\,\text{kHz}$ breit ist, wird eine Abtastrate von $1\,\text{MS/s}$ verwendet.
+    \item Num Channels: Legt die Anzahl der verwendbaren Kanäle fest.\cite{GNU-Radio-USRP-Source}\newline
+    Für die Verarbeitung des Downlinks wird nur ein Kanal benötigt, weshalb die Anzahl der verwendbaren Kanäle auf $1$ gesetzt wird.
+    \item Chx Center Frequency: Über diese Einstellung kann die Mittenfrequenz in $\text{Hz}$ für den jeweiligen Kanal angegeben werden.\cite{GNU-Radio-USRP-Source}\newline
+    Der Abwärtsmischer wird im QO-100 SSB-Betrieb verwendet. Damit liegt der ZF-Bereich zwischen $433\,\text{MHz}$ und $434\,\text{MHz}$. Als Grundeinstellung wird daher für die Mittenfrequenz ein Wert $433.5\,\text{MHz}$ gewählt. Diese kann aber während des Betriebs über eine Eingabe oder einen Schieber verändert werden.
+    \item Chx Gain Value: Stellt die Verstärkung des URSP X310 ein. Dieser kann entweder als absolute zwischen $0$ und $G_\mathrm{SDR,max}$ oder normalisiert zwischen $0$ und $1$ angegeben werden.\cite{GNU-Radio-USRP-Source}\newline
+    Die Verstärkung des SDR kann variable über eine Eingabe oder durch einen Schieber zwischen $0\,\text{dB}$ und $30\,\text{dB}$ in Einser Schritten verändert werden. Der Standardwert wird auf $0\,\text{dB}$ gesetzt.
+    \item Chx Bandwidth: Legt die Bandbreite des Antialiasing Filter vom USRP X310 fest. Wird in das Feld eine $0$ eingetragen, wird die Standardeinstellung verwendet\cite{GNU-Radio-USRP-Source}. Diese wird auch in dieser Anwendung auch verwendet.
+    \item Chx Antenna: Wenn mehrere Antennen über verschiedene Kanäle angeschlossen werden, können diese in diesem Feld benannt werden\cite{GNU-Radio-USRP-Source}. Da nur eine Antenne im System verwendet wird, wird das Feld leer gelassen.
+    \item Devices Address: Hier kann die Geräte Adresse (z.B. IP-Adresse) des jeweilige USRP eingetragen werden. Das Feld wird leer gelassen. Damit wird der erste vom Programm gefundene USRP verwendet.\cite{GNU-Radio-USRP-Source}.
 \end{itemize}
-Zum Ausrichten von Antennen auf Satelliten kann am besten das horizontale Koordinatensystem verwendet werden, da es die Postion des Satelliten aus dem Punkt des Beobachters beschreibt.\newline
+Das empfangene Frequenzspektrum wird mithilfe eines Wasserfalldiagramm und eines FFT-Spektrum dargestellt. Dafür gibt der Quellblock die Abtastwerte an einen Wasserfallblock (QT GUI Waterfall Sink) und einen FFT-Spektrumblock (QT GUI Frequency Sink) weiter\cite{GNU-Radio-Frequency-Sink}\cite{GNU-Radio-Waterfall-Sink}. Die Mittenfrequenz in beiden Spektren entspricht dabei der Mittenfrequenz des vom Quellblock ausgegeben Spektrums. Bei der Veränderung der Variable Mittenfrequenz verändert sich dementsprechend auch die dargestellte Mittenfrequenz.\newline
+Der Multipliziererblock am Ausgang des Quellblocks wird als Mischer eingesetzt. Die Signalquelle fungiert dabei als lokaler Oszillator. Mit diesen beiden Blöcken besteht die Möglichkeit eine beliebige Frequenz im, vom Quellblock ausgegeben, Frequenzspektrum auszuwählen. Diese Frequenz wird Kanalfrequenz bezeichnet und kann über eine Eingabe oder durch einen Schieber im Betrieb verändert werden. Die Frequenz des lokalen Oszillator entspricht der Differenz zwischen der Mittenfrequenz und der Kanalfrequenz.\newline
+Über einen folgenden Auswahlblock kann die Art der Demodulation ausgewählt werden. Zur Verfügung stehen dabei Einseitenband Amplitudenmodulation (SSB) mit oberen (USB) Seitenband und unteren (LSB) Seitenband, Frequenzmodulation (FM) und kontinuierliche Welle (engl. Continious Wave) CW.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Ausgabebereich.png}
+    \caption{Ausgabe des Audiosignals in GNU Radio}
+    \label{fig:Ausgabe}
+\end{figure}
+Die Abbildung \ref{fig:Ausgabe} zeigt die möglichen Ausgabemöglichkeiten des Audiosignals. Das Audiosignal stammt dabei von dem jeweiligen angewendeten Demodulationsverfahren und wird über einen Auswahlblock an die Audio Ausgabe weitergegeben.\newline
+Über einen FFT-Frequenzspektrum Block wird das Frequenzspektrum des Audiosignals angezeigt. Das FFT-Spektrum zeigt dabei nur die positiven Frequenzen ab $0\,\text{Hz}$ an.\cite{GNU-Radio-Frequency-Sink}\newline
+Das Audiosignal hat eine Abtastrate von $48\,\text{kS/s}$ und wird über eine Audio Senke an die Standard Ausgabe des Systems weitergegeben.\cite{GNU-Radio-Audiosink}\newline 
+Die Lautstärke wird über den Multipliziererblock festgelegt. Sein Wert kann über einen Schieber im Betrieb zwischen $0$ und $1$ angepasst werden. Dabei entspricht $0$ stumm geschaltet und $1$ volle Lautstärke.\newline
+Auch besteht die Möglichkeit das Audio Signal als eine 16-Bit .wav abzuspeichern. Verwendet wird dafür eine .wav Datei Senke (Wav File Sink). Der Abspeicherort, sowie der Name der .wav Datei muss vor dem Start der Software in diesem Block angeben werden. Die Abtastrate des Audio Signals wird auf $48\,\text{kS/s}$ gestellt. \cite{GNU-Radio-WAV}\newline
+Über einen Auswahlblock kann im Betrieb der Software die Aufnahme dann gestartet oder gestoppt werden.
+\subsubsection{FM-Demodulaton}
+Bei der Frequenzmodulation (FM) werden die Informationen aus dem Basisband der Phase des Trägersignals auf moduliert.\cite{Nachrichtentechnik}\newline
+\begin{equation*}
+\begin{split}
+        s_\mathrm{FM}(t)&=\hat{u}_\mathrm{T}\cdot \cos(\Psi_\mathrm{FM}(t))\\
+        &=\hat{u}_\mathrm{T}\cdot \cos\left(\omega_\mathrm{T}+2\pi\cdot\Delta F\cdot\int u( \tau)d\tau\right)
+\end{split}
+\end{equation*}
+Das Spektrum des FM-Signal kann nicht einfach angegeben werden, da es sich um ein nichtlineares Modulationsverfahren handelt. Die Anzahl der Nebenschwingungen neben dem Träger resultieren aus der Besselfunktion 0-ter Ordnung.\cite{Nachrichtentechnik}\newline
+Für die Demodulation der FM-Signale wird eine erweiterte Version einer Beispielschaltung aus GNU Radio Dokumentation verwendet.\cite{GNU-Radio-FM}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/FM-Demodulator.png}
+    \caption{Angewendeter FM Demodulator in GNU Radio}
+    \label{fig:FM-Demodulator}
+\end{figure}
+Im ersten Schritt wird mit einem Tiefpassfilter das Frequenzspektrum begrenzt. So wird nur das gewünschte FM-Signal an den Demodulator weitergegeben. Die Grenzfrequenz des Tiefpasses kann über die Variable Filterbreite mit einem Schieber oder einer Eingabe verändert werden. Bei einer Radiostation beträgt die Bandbreite des FM-Signals ca. $120\,\text{kHz}$.\newline
+Im nächsten Schritt wird mit einem rationalen Resampler die Abtastrate von $1\,\text{MS/s}$ auf $480\,\text{kS/s}$ reduziert.\cite{GNU-Radio-FM}\cite{GNU-Radio-Resampler}
+\begin{equation*}
+    \text{Faktor}=\frac{480000}{1000000}=\frac{12}{25}
+\end{equation*}
+Die Abtastrate wird erst um den Faktor $12$ erhöht und anschließend um den Faktor $10$ reduziert.\newline
+Anschließend wird das FM-Signal mit dem FM-Demod Block von GNU Radio demoduliert.\cite{GNU-Radio-FM}. Die Kanalrate (engl. Channel Rate) wird auf die $480\,\text{kS/s}$ gestellt und die Audio Reduzierung auf $10$. Damit beträgt die Abtastrate des Audiosignals am Ausgang $48\,\text{kS/s}$. Somit kann das Audiosignal an die Audio Ausgabe weitergegeben werden.\cite{GNU-Radio-FM}\newline
+Der FM-Demodulator wird mit in die SDR-Software aufgenommen, da mit diesem der Umgang mit dem SDR erprobt werden kann. Dieser kann verwendet werden um Radiostation zu empfangen und so z.B. neue Funktionen der Software zu testen.
+
+\subsubsection{Einseitenband-Demodulation}
+Bei der Amplitudenmodulation (AM), wozu die Einseitenbandmodulation gehört, werden Information aus dem Basisband mit einem Mischer auf die Amplitude eines sinusförmigen Trägersignals auf moduliert. Das Trägersignal liegt dabei in einem für die Übertragung geeigneten Frequenzbereich.\cite{Nachrichtentechnik}\newline
+\begin{equation*}
+    \begin{split}
+         s_\mathrm{AM}(t)&=s_\mathrm{BB}(t)\cdot s_\mathrm{T}(t)\\
+         &=\frac{\hat{u}_\mathrm{BB}\cdot \hat{u}_\mathrm{T}}{2}\cdot (\cos((\omega_\mathrm{T}-\omega_\mathrm{BB})\cdot t)+\cos((\omega_\mathrm{T}+\omega_\mathrm{BB})\cdot t)
+    \end{split}
+\end{equation*}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.4\linewidth]{Bilder/AM-Signal}
+    \caption{Spektrum eines AM-Signals}
+    \label{fig:AM-Signal}
+\end{figure}
+Durch den Mischvorgang entstehen zwei Frequenzkomponenten links uns rechts neben dem Trägersignal, wie in Abbildung \ref{fig:AM-Signal} zu sehen. Diese beiden Frequenzkomponenten werden oberes und unteres Seitenband (engl. Upper- and Lower Sideband) genannt. Dabei befindet sich das obere Seitenband in der Regellage und das untere Seitenband in der Kehrlage\cite{Nachrichtentechnik}\newline
+Beide Frequenzkomponenten enthalten dabei die gleichen Informationen aus dem Basisband, sprich sie sind identisch zu einander. Aus diesem Grund kann bei der Übertragung oder bei der Demodulation auf eins der beiden Seitenbänder verzichtet werden.\cite{Nachrichtentechnik}\newline
+Um ein Einseitenbandsignal im Downlink von Es'Hail-2 (QO-100) demodulieren zu können, muss dieses zurück in das Basisband gebracht werden. Das resultierende komplexe Basisbandsignal muss dann nur noch mit einem Tief- oder Bandpass begrenzt werden. Für die Umsetzung des Einseitenbanddemodulators in GNU Radio wird eine angepasste Version eines Einseitenbanddemodulators aus der GNU Radio Dokumentation verwendet.\cite{GNU-Radio-SSB}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Bilder/SSB-Demodulator.png}
+    \caption{Signalflussgraph des umgesetzten Einseitenbanddemodulator in GNU Radio}
+    \label{fig:SBB-Demodulator}
+\end{figure}
+Die Abbildung \ref{fig:SBB-Demodulator} zeigt den in GNU Radio umgesetzten Einseitenbanddemodulator. Das Herzstück des Demodulators ist ein Frequenz-umsetzender FIR Filter (Frequency Xlating FIR Filter). Dieser FIR Filter kombiniert mehrere Funktionen in einem Block. Das am Eingang anliegende Signal wird von diesem Filter Block in das Basisband verschoben. In den Eigenschaften des Blocks kann mit der Mittenfrequenz auch ein Offset zum gewünschten Signal eingestellt werden. Die bei der Frequenzverschiebung entstehenden hochfrequenten Anteile bei $\pm2\omega_\mathrm{T}$ können mit einem Filter, welcher über die Einstellung Taps definiert werden kann, entfernt werden. Auch kann über einen Faktor die Abtastrate des Signals dezimiert werden.\cite{GNU-Radio-SSB}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|p{4cm}}
+       Einstellung  & Eingestellter Wert & Beschreibung\\
+       \hline
+       Dezimierung & $1$ & Keine Verringerung der Abtastrate\\
+       Taps & $20$ & kein Filter, 20-fache Verstärkung\\
+       Mittenfrequenz  & $0$ & kein Offset\\
+       Abtastrate & $1\,\text{MS/s}$ & Abtastrate des eingehenden Signals
+    \end{tabular}
+    \caption{Getroffene Einstellungen des Frequenz-umsetzenden FIR Filter }
+    \label{tab:Einstellungen-FIR-Filter}
+\end{table}
+Die Tabelle \ref{tab:Einstellungen-FIR-Filter} zeigt die verwendeten Einstellungen für den 
+Frequenz-umsetzenden FIR Filter.\newline
+Nachdem Frequenz-umsetzenden FIR Filter wird das Basisbandsignal in einen rationalen Resampler geführt, welcher die Abtastrate von $1\,\text{MS/s}$ auf $48\,\text{kS/s}$ reduziert. Die Abtastrate von $48\,\text{kS/s}$ entspricht der Standard Abtastrate von Audiosignalen.\cite{GNU-Radio-Resampler}
+\begin{equation*}
+    \text{Faktor}=\frac{48000}{1000000}=\frac{6}{125}
+\end{equation*}
+Die Abtastrate muss erst um den Faktor $6$ interpoliert und anschließend um den Faktor $125$ dezimiert werden.\newline
+Bei dem Signal handelt es sich bisher um ein komplexes Signal im Basisband, welches ein oberes und unteres Seitenband enthalten kann. Das obere Seitenband liegt nach der Verschiebung in das Basisband im positiven Frequenzbereich und bildet die In-Phase Komponente. Das untere Seitenband liegt im negativen Frequenzbereich und bildet die Quadratur Komponente. Um das untere Seitenband nutzen zu können, muss die In-Phase Komponente mit der Quadratur Komponete getauscht werden. In GNU Radio kann diese Operation mit einem IQ-Tauschblock (Swap IQ) umgesetzt werden.\cite{GNU-Radio-SwapIQ}\newline
+Mit einem nachfolgende Bandpassfilter wird das jeweiligen Seitenband in seiner Bandbreite begrenzt. Die untere Grenze des Bandpassfilters liegt bei $f_\mathrm{g}=200\,\text{Hz}$. Die obere kann während des Betriebes über eine Eingabe oder einen Schieber verändert werden. Die Wahl eines Bandpasses anstelle eines Tiefpasses kann mit der engen Bandbreite von $B=2.7\,\text{kHz}$ über den Schmalbandtransponder und dem Hauptsprachbereich der menschlichen Stimme erklärt werden. Dieser liegt zwischen $200\,\text{Hz}$ und $\approx3000\,\text{Hz}$\cite{Sprachbereich}. Durch den Einsatz des Bandpasses kann die volle Bandbreite von $B=2.7\,\text{kHz}$ auf den natürlichen Sprachbereich eines Menschen angepasst werden. Der Übergangsbereich des Bandpasses wird auf $150\,\text{Hz}$ gesetzt. Die Abtastrate bleibt bei $1\,\text{MS/s}$.\newline
+Nach dem jeweiligen Bandpass kann über einen Auswahlblock das jeweiligen Seitenband ausgewählt werden. Das kann auch während der Benutzung der Software verwendet werden. Nach dem Auswahlblock wird das ausgewählte Seitenband von automatischen Verstärkungseinheit auf ein Referenzlevel angehoben oder reduziert. Die Angriffsrate (engl. Attack Rate) und die Abfallrate (engl. Decay Rate) bestimmen dabei die Rate, mit der das Audiosignal auf das Referenzlevel pro Abtastwert angehoben oder abgesenkt wird. Die Angriffsrate wird auf $0.01$ und die Abfallrate auf $0.1$ gesetzt. Die Abfallrate wird höher gewählt, um zu große Signale schneller abzuschwächen. Die Verstärkung oder Dämpfung pro Abtastwert liegt bei $0.1$. Zum Schluss wird das komplexe Audiosignal in ein reales Audiosignal umgewandelt. Anschließend wird das Audiosignal an den Ausgabebereich weitergegeben.  
+\subsubsection{CW-Demodulation}
+Bei der CW-Modulation handelt es sich um eine Sonderform der Amplitudenmodulation. Bei einer herkömmlichen Amplitudenmodulationen werden Informationen (z.B. Audio) in Form von Basisbandsignalen mit einem kontinuierlichen Träger übertragen. Die Basisbandsignale bilden dabei die beiden Seitenbänder. Bei der CW-Modulation erfolgt die Übermittlung von Informationen durch das Ein- und Ausschalten des Trägers. Es werden keine Basisbandsignale selbst auf den Träger auf moduliert.\cite{CW}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.4\linewidth]{Bilder/AM zu CWsvg}
+    \caption{Vergleich zwischen einem Signal mit AM (oben) und einem Signal mit CW (unten) im Zeitbereich}
+    \label{fig:Vegleich-AM-CW}
+\end{figure}
+Eingesetzt wird diese Art der Kommunikation bei der Telegrafie (Morse Code).\cite{CW}\newline
+Eine umfangreiche Demodulation ist bei Signalen mit CW Modulation nicht erforderlich. Sie müssen jegendlich in das Basisband verschoben werden und mit einem Tiefpass in ihrer Bandbreite begrenzt werden. Der Durchbruchsbereich des Tiefpasses ist möglichst eng zu wählen $(f_\mathrm{g}\leq2\,\text{kHz})$, um Rauschen und Einflüsse durch andere Signale zu minimieren.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Bilder/CW Demodulator.png}
+    \caption{Signalflussgraph des in GNU Radio umgesetzten CW-Demodulators}
+    \label{fig:CW-Demodulator}
+\end{figure}
+Die Abbildung \ref{fig:CW-Demodulator} zeigt den in GNU Radio umgesetzten Demodulator für CW-Signale. Ähnlich zum Demodulator für Einseitenband, wird für die für die Verschiebung des CW-Signals in das Basisband ein Frequenzumsetzender FIR Filter verwendet.\cite{GNU-Radio-SSB} Es wird kein Filter definiert, aber eine 20-fache Verstärkung eingestellt. Ebenso wird keine Dezimierung der Abtastrate mit dem Frequenzumsetzender FIR Filter vorgenommen.\newline
+Die Reduzierung der Abtastrate wird mit einem folgenden rationalen Resampler durchgeführt. Mit diesem wird die Abtastrate von $1\,\text{MS/s}$ auf $48\,\text{kS/s}$, was der Abtastrate eines Audiosignals entspricht, herabgesetzt.\cite{GNU-Radio-Resampler}
+\begin{equation*}
+    \text{Faktor}=\frac{48000}{1000000}=\frac{6}{125}
+\end{equation*}
+Der Abtastrate wird erst um den Faktor $6$ interpoliert und anschließend um den Faktor $125$ dezimiert.\newline
+Mit einem nachfolgenden Tiefpass wird das Basisband in seiner Breite begrenzt. Seine Grenzfrequenz $f_\mathrm{g}$ kann über die Bandbreite mit einer Eingabe oder Schieber während des Betriebes verändert werden. Bei CW-Signalen sollte ein möglichst schmaler Durchbruchsbereich  $(f_\mathrm{g}\leq2\,\text{kHz})$ gewählt werden. Der Übergangsbereich ist $150\,\text{Hz}$ breit.\newline
+Die automatische Verstärkungseinheit hält den Pegel des Audiosignals auf einem gleichbleibenden Referenzlevel. In diesem Fall $0.5$. Die Angriffsrate wird auf $0.01$ und die Verfallsrate auf $0.1$ gesetzt. Dadurch werden Audiosignale mit zu großen Pegel schneller gedämpft. Die maximale Verstärkung pro Abtastwert liegt bei $0.1$. Anschließend wird das komplexe Audiosignal in ein reales umgewandelt. Damit kann es an den Ausgabebereich weitergegeben werden.
+
+
+\subsection{Aufgenommene Werte}

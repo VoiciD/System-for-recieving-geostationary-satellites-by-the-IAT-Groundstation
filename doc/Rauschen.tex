@@ -1,99 +1,222 @@
 \subsection{Rauschen}
-In jedem System tritt neben dem gewünschten Nutzsignal s(t) zusätzlich noch Rauschen auf. Einfach gesagt ist Rauschen eine unerwünschte Form an Energie, welches das Nutzsignal s(t) überlagert und das  Übertragen, Empfangen stört und die Weiterverarbeitung des Signals s(t) erschwert.\newline
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\linewidth]{Bilder/Example SNR good.png}
-    \caption{Ein von Rauschen überlagertes Signal s(t) mit einer Frequenz von 50 Hz im Zeit- und Frequenzbereich}
-    \label{ExampleNoise}
-\end{figure}
-Genauer betrachtet handelt es sich beim Rauschen um einen stochastischen Prozess. Das bedeutet, dass der Verlauf des Rauschens nicht periodisch und zufällig ist und keine brauchbaren Informationen enthält.\cite{HEUERMANN_2018}\newline
-Bei der Planung und Entwicklung von Kommunikationssystemen spielt das Rauschen ein wichtige Rolle. Damit das Nutzsignal s(t) problemlos gesendet, übertragen , empfangen oder verarbeitet werden kann muss zwischen der Leistung $P_{\text{Signal}}$ des Nutzsignals s(t) und der Leistung $P_{\text{Rausch}}$ einer gewisser Abstand eingehalten werden. Diesen Abstand zwischen der Rauschleistung $P_{\text{Rausch}}$ und der Leistung $P_{\text{Signal}}$ des Nutzsignals s(t) oder das Verhältnis der beiden Leistungen zueinander nennt man Signal-zu-Rausch-Abstand (engl. Signal-to-Noise-Ratio) oder kurz SNR.\newline
+In jedem System tritt neben dem gewünschten Nutzsignal $s(t)$, welches die gewünschte Informationen enthält, zusätzlich Rauschen auf. Einfach gesagt handelt es sich beim Rauschen um eine unerwünschte Form an Energie, welche auch als eine Signal $n(t)$ angesehen werden kann. Das Rauschsignal $n(t)$ überlagert das Nutzsignal $s(t)$ und erschwert so das Empfangen und die anschließende Weiterverarbeitung des Nutzsignals $s(t)$.\newline
+Genauer betrachtet handelt es sich beim Rauschen um einen stochastischen Prozess. Das bedeutet, dass der Verlauf des Rauschens nicht periodisch und damit zufällig ist. Der Verlauf, sowie die Amplitude des Rauschens können nicht vorhergesagt werden. Zudem enthält Rauschen keine brauchbaren Informationen.\cite{HEUERMANN_2018}\newline
+In der Planung und Entwicklung von Kommunikationssystemen spielt das Rauschen eine wichtige Rolle. Für eine problemlose Übertragung, Empfang und Weiterverarbeitung des Nutzsignals $s(t)$ muss zwischen der Leistung des Nutzsignals $P_\mathrm{Signal}$ und der Rauschleistung $P_\mathrm{Rausch}$ eine gewisse Differenz eingehalten werden. Das Verhältnis der Leistung des Signals $P_\mathrm{Signal}$ zu der Rauschleistung $P_\mathrm{Rausch}$ wird Signal-zu-Rausch-Abstand (engl. Signal-to-Noise-Ratio), kurz $SNR$, genannt.\newline
 \begin{equation}
+    \label{eq:SNR}
     SNR=\frac{P_{\text{Signal}}}{P_{\text{Rausch}}}=\frac{S}{N}
 \end{equation}
 Das SNR kann auch logarithmisch in dB angeben werden.
 \begin{equation}
+    \label{eq:SNRdB}
     SNR_{\text{dB}}=10\cdot \log_{10}\left(\frac{P_{\text{Signal}}}{P_{\text{Rausch}}}\right)=S_{\text{dB}}-N_{\text{dB}}
 \end{equation}
-Das SNR ist ein Maß für die Qualität des Nutzsignals s(t). Auch wenn die Rauschleistung N im Vergleich zur Leistung S des Nutzsignals s(t) in den meisten Fällen sehr gering ist, ist diese letztendlich der limitierende Faktor in einem Kommunikationssystems. Um zum Beispiel ein problemloses Empfangen und die anschließende Weiterverarbeitung des Nutzsignals s(t) zu gewährleisten muss dafür das Nutzsignal s(t) gut vom Rauschen unterscheidbar sein. Mit steigendem SNR steigt auch der Abstand zwischen dem Signal s(t) und dem Rauschen. Je größer das SNR ist, desto besser kann das Nutzsignal s(t) vom Rauschen unterschieden werden. Im unteren Plot der Abbildung \ref{ExampleNoise} ist das Frequenzspektrum zu sehen. Das Nutzsignal s(t) hat einen Abstand von ca. 20 dB zum Rauschen und kann daher gut vom Rauschen unterschieden werden.\newline
-Sinkt das SNR, so sinkt auch der Abstand zwischen dem Nutzsignal s(t) und dem Rauschen. Wird das SNR zu gering kann das Signal s(t) nicht mehr zuverlässig vom Rauschen unterschieden werden.\newline
-
-In Abbildung \ref{BADSNR} ist ein Beispiel für ein sehr niedriges SNR dargestellt. Das Rauschen überlagert das Signal s(t) fast vollständig und es kann nicht mehr einwandfrei vom Rauschen unterschieden werden.\newline
+Das $SNR$ ist ein Maß für die Qualität der Übertragung, Empfangs und Weiterverarbeitung des Nutzsignals $s(t)$. Auch wenn die Rauschleistung $N$ im Vergleich zur Leistung $S$ des Nutzsignals $s(t)$ sehr gering ist, ist die Rauschleistung $N$ letztendlich der limitierende Faktor in jedem Kommunikationssystem.\newline
+Ist der Abstand zwischen der Signalleistung $S$ zum Rauschen $N$ und damit auch das $SNR$ zu gering, kann das Nutzsignal $s(t)$ eventuell nicht mehr einwandfrei vom Rauschen unterschieden werden. Das führt zu Fehlern in der Weiterverarbeitung oder zu Aussetzern in der Übertragung. Mit einem steigenden $SNR$ wird auch der Abstand zwischen der Signalleistung $S$ und Rauschleistung $N$ immer größer. Dadurch kann das Nutzsignal $s(t)$ besser vom Rauschen unterschieden werden und die Fehler in der Weiterverarbeitung und die Ausfallzeit in der Übertragung sinken.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{Bilder/Example SNR bad.png}
-    \caption{Das Signal s(t) verschwindet im Rauschen}
-    \label{BADSNR}
+    \includegraphics[width=0.75\linewidth]{Bilder/GoodSNR.png}
+    \caption{Ein von Rauschen überlagertes Nutzsignal $s(t)$ mit einer Frequenz von $f=50\,\text{Hz}$ im Zeit- und Frequenzbereich}
+    \label{fig:GoodSNR}
 \end{figure}
-In Fällen von Signalen mit digitalen Modulationen steigt mit sinkendem SNR die Bitfehlerrate (engl. Bit-Error-Rate), auch BER genannt. Je kleiner also das SNR wird, desto mehr Bitfehler treten auf und erschweren die Kommunikation.\newline
--> Quelle für BER finden und passende Grafik.\newline
-Die Verteilung der Rauschleistung $N$ über das Frequenzspektrum wird mit dem Leistungsdichtespektrum $S_\text{N}(f)$ angegeben.
+Die Abbildung \ref{fig:GoodSNR} zeigt ein sinusförmiges Nutzsignal $s(t)$ mit einer Frequenz $f=50\,\text{Hz}$, welches von Rauschen überlagert wird. Der mittlere Plot zeigt die Kombination beider Signale im Zeitbereich. Das Rauschen hat einen geringfügigen Einfluss auf die Form des Nutzsignals, jedoch kann immer noch ein sinusförmiger Verlauf erahnt werden. Im unteren Plot ist das Frequenzspektrum des von Rauschen überlagerte Signal dargestellt. Hier ist Nutzsignal $s(t)$ bei $f=50\,\text{Hz}$, dank des hohen $SNR\approx20\,\text{dB}$, klar vom Rauschen unterscheidbar. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/BadSNR.png}
+    \caption{Das Nutzsignal $s(t)$ verschwindet im Rauschen}
+    \label{fig:BadSNR}
+\end{figure}
+Die Abbildung \ref{fig:BadSNR} zeigt das gleiche Nutzsignal $s(t)$ wie in Abbildung \ref{fig:GoodSNR}. Jedoch ist Rauschen diesmal deutlich stärker. Im Zeitbereich hat das Rauschen nicht zu vernachlässigende Auswirkungen auf das Nutzsignal. Es kann eine sinusförmiger Verlauf des Nutzsignals erkannt werden. Auch im Frequenzspektrum kann das Nutzsignal $s(t)$ nicht vom Rauschen unterschieden werden.\newline
+In diesem Fall wäre eine Weiterverarbeitung des Nutzsignals $s(t)$ nicht möglich, da es zu vielen Fehlern kommen würde. Bei digitalen Modulationen hängt die Bitfehlerrate (engl. Bit-error-rate) $BER$ vom $SNR$ ab.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/BER und SNR.png}
+    \caption{Beispiel für die $BER$ anhand einer n-QAM\cite{Bild-BER}}
+    \label{fig:BeispielBER}
+\end{figure}
+Die Abbildung \ref{fig:BeispielBER} zeigt die BER anhand für verschiedene QAM. Zu erkennen ist, dass bei steigendem $SNR$ die Fehlerrate immer stärker sinkt.\newline
+Die Verteilung der Rauschleistung $N$ über das Frequenzspektrum wird mit dem Leistungsdichtespektrum $S_\text{N}(f)$ angegeben. Die Einheit des Leistungsdichtespektrum ist $\left[\frac{\text{W}}{\text{Hz}}\right]$. Herleiten lässt sich das Leistungsdichtespektrum mithilfe der Fouriertransformation aus der Autokorrelationsfunktion (AKF) und einer Normallast von $1 \Omega$.\cite{Thiede_2013}
 \begin{equation}
-    S_\text{N}(f)=\frac{N}{2\cdot B} = \frac{k\cdot T}{2}=\frac{n_\text{0}}{2}
-    \label{PDS-Funktion}
+    S_\text{N}(f)=\frac{N}{2\cdot B} = \frac{k\cdot T_\mathrm{0}}{2}=\frac{n_\text{0}}{2}
+    \label{eq:PDS-Funktion}
 \end{equation}
-Die Einheit des Leistungsdichtespektrum ist W/Hz. Herleiten lässt sich das Leistungsdichtespektrum mithilfe der Fouriertransformation aus der Autokorrelationsfunktion (AKF) und einer Normallast von $1 \Omega$.\cite{Thiede_2013}
+Dabei ist $n_\mathrm{0}$ das thermischen Grundrauschen. Bei Raumtemperatur $T_\mathrm{0}=290\,\text{K}$ beträgt das thermischen Grundrauschen $n_\mathrm{0}=1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot 290\,\text{K}=4\cdot10^{-21}\text{J}=-174\,\frac{\text{dBm}}{\text{Hz}}$
+
 \subsection{Arten und Quellen von Rauschen}
-Rauschen kann sehr vielfältig sein. Es gibt verschiedene Arten von Rauschen, welche in unterschiedlichen Bereich auftreten und auch unterschiedliche Rauschquellen aufweisen. Hauptsächlich kann zwischen internen und externen Rauschquellen unterschieden werden, wobei diese sich wieder auf künstliche oder natürliche Rauschquellen aufteilen lassen. Zu den internen Rauschquellen gehören unter anderem thermisches Rauschen, Schrotrauschen und 1/f-Rauschen. Zu externen Rauschquellen gehören Atmosphärisches- und Industrielles Rauschen und Hintergrundrauschen, welche in Form der Antennentemperatur ausgedrückt werden können.
-\subsubsection*{Thermisches Rauschen (Thermal Noise)}
-Alle Metalle und elektrische Bauteile, wie Widerstände und Halbleiter, erzeugen ab einer Temperatur $T>0\text{K}$ eigenständig eine Rauschenergie. Dieses Rauschen wird auch als thermisches oder Gaußsches Rauschen bezeichnet.\newline
-Zurückführen lässt sich das thermische Rauschen auf die zufällige Bewegung von Elektronen und Löchern innerhalb der Metalle und elektrischen Bauteile. Bei einer Temperatur $T=0\text{K}$ stehen alle Ladungsträger und es wird damit auch kein Rauschen generiert. Ab einer Temperatur $T>0\text{K}$
-fangen sich die Ladungsträger an in zufällige Richtungen zu Bewegen, was zum Rauschen führt.\cite{HEUERMANN_2018}\newline
--> Grafik einbinden \newline
-An den Anschlüssen eines Widerstandes oder einer anderen beliebigen Impedanz liegt aufgrund der Bewegung der Ladungsträger eine gewisse Spannung $U_{\text{Rausch}}$ an.\cite{HEUERMANN_2018} Das Rauschen kann als ein Signal n(t) angesehen werden dessen Spannung $U_{\text{Rausch}}$ im Mittelwert. 
-\begin{equation}
+Rauschen kann sehr vielfältig sein. Es gibt viele verschiedene Arten an Rauschen, welches aus verschiedenen Quellen stammt und in den unterschiedlichsten Bereichen auftritt. Bei den Rauschquellen kann hauptsächlich zwischen natürlichen und künstlichen Rauschquellen unterschieden werden. Zu den natürliche Rauschquellen gehören unter anderem thermisches Rauschen, Schrotrauschen und 1/f-Rauschen. Aber auch Atmosphärisches- und kosmisches Hintergrundrauschen gehören mit zu den natürlichen Rauschquellen. Zum künstlichen Rauschen würde das Rauschen zählen, welches durch elektronische Geräte, z.B. bei der Spannungswandlung oder Datenübertragungen, erzeugt wird. Das künstliche Rauschen kann auch industrielles Rauschen genannt werden.
+\subsubsection*{Thermisches Rauschen}
+Alle Metalle und elektrische Bauteile, wie Widerstände und Halbleiter, erzeugen ab einer Temperatur $T_\mathrm{0}>0\,\text{K}$ eigenständig eine Rauschenergie. Dieses Rauschen wird auch als thermisches oder Gaußsches Rauschen bezeichnet.\newline
+Zurückführen lässt sich das thermische Rauschen auf die zufällige Bewegung von Elektronen und Löchern innerhalb der Metalle und elektrischen Bauteile. Bei einer Temperatur $T_\mathrm{0}=0\,\text{K}$ stehen alle Ladungsträger. Damit wird auch kein Rauschen durch die Ladungsträger generiert. Ab einer Temperatur $T_\mathrm{0}>0\,\text{K}$ fangen die Ladungsträger an sich in zufällige Richtungen zu Bewegen, was zu der Entstehung von Rauschen führt.\cite{HEUERMANN_2018}\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/thermal noise}
+    \caption{Rauschspannung durch thermisches Rauschen}
+    \label{fig:rauschspannung-thermischesRauschen}
+\end{figure}
+An den Anschlüssen eines Widerstandes oder einer anderen beliebigen Impedanz liegt aufgrund der Bewegung der Ladungsträger eine gewisse Spannung $U_{\text{Rausch}}$ an.\cite{HEUERMANN_2018} Das Rauschen kann als ein Signal $n(t)$ angesehen werden dessen Spannung $U_{\text{Rausch}}$ im Mittelwert 
+\begin{equation*}
     \overline{U}_{\text{Rausch}}=\lim_{T\to\infty}\frac{1}{T}\int^T_0n(t)\space dt = 0
-\end{equation}
-entspricht. Über den quadratische Mittelwert oder Niquist-Gleichung allerdings lässt sich der Effektivwert der Spannung ermitteln.\cite{Thiede_2013}\newline
+\end{equation*}
+entspricht. Über den quadratische Mittelwert oder Niquist-Gleichung allerdings lässt sich der Effektivwert der Spannung ermitteln.\cite{NoiseFigur}\cite{Thiede_2013}\newline
+\begin{equation*}
+    U_\text{Rausch,eff.}=\sqrt{4\cdot k\cdot T_\mathrm{0}\cdot B\cdot R}
+\end{equation*}
+Über den Effektivwert $U_\text{Rausch,eff}$ der Spannung , welche auch Niquistgleichung genannt wird, lässt sich die Leistung des Rauschens ermitteln.\cite{NoiseFigur}
 \begin{equation}
-    U_\text{Rausch,eff}=\sqrt{4\cdot k\cdot T\cdot B\cdot R}
+    N_\text{T}=P_\text{Rausch}= \frac{U_\text{Rausch,eff.}^2}{4R} = \frac{4R \cdot T_\mathrm{0}\cdot B}{4R}= k\cdot T_\mathrm{0}\cdot B
+    \label{eq:thermisches-Rauschen}
 \end{equation}
-Über den Effektivwert $U_\text{Rausch,eff}$ der Spannung , welche auch Niquistgleichung genannt wird, lässt sich die Leistung des Rauschens ermitteln
-\begin{equation}
-    N_\text{T}=P_\text{Rausch}= \frac{U_\text{Rausch,eff}^2}{4R} = \frac{4R \cdot T\cdot B}{4R}= k\cdot T\cdot B
-    \label{ThermalNoiseGl}
-\end{equation}
-Die Leistung des thermischen Rauschen $N_\text{T}$ ist letztendlich unabhängig von dem Widerstand $R$ und nur noch abhängig von der Boltzmannkonstante $k=1,38\cdot 10^{-23}\frac{\text{J}}{\text{K}}$, der Temperatur T und der gewählten Bandbreite B.\cite{HEUERMANN_2018}\cite{Thiede_2013}\newline
-Die Gleichung \ref{ThermalNoiseGl} kann auf verschiedene Zweitore angewendet werden, um zum Beispiel das Rauschen am Ausgang eines LNA zu bestimmen. Die Temperatur $T$ wird dabei durch die äquivalente Rauschtemperatur $T_\text{e}$ ersetzt.\cite{HEUERMANN_2018}
-
-
+Die Leistung des thermischen Rauschen $N_\text{T}$ ist letztendlich unabhängig von dem Widerstand $R$ und nur noch abhängig von der Boltzmannkonstante $k=1,38\cdot 10^{-23}\,\frac{\text{J}}{\text{K}}$, der Temperatur $T_\mathrm{0}$ und der gewählten Bandbreite $B$.\cite{NoiseFigur}\cite{HEUERMANN_2018}\cite{Thiede_2013}\newline
+Die Gleichung \ref{eq:thermisches-Rauschen} kann auch verwendet werden, um das von Zweitoren erzeugte Rauschen, z.B. am Ausgang eines rauscharmen Verstärkers, zu bestimmen. Die Temperatur $T_\mathrm{0}$ wird dabei durch die äquivalente Rauschtemperatur $T_\text{e}$ ersetzt.\cite{HEUERMANN_2018}\newline
 Die Leistung des thermischen Rauschen ist unabhängig von der Frequenz $f$ und ist gleichmäßig über das gesamte Frequenzspektrum verteilt. Somit ist das Leistungsdichtespektrum $S_\text{N}(f)$ des thermischen Rauschens konstant. Damit handelt es sich beim thermischen Rauschen um sogenanntes weißes Rauschen\cite{Thiede_2013} Die thermische Rauschleistung $N_\text{T}$ in einem System steigt mit der gewählten Bandbreite $B$.
 
 \subsubsection*{Schrotrauschen (Shot Noise)}
 Erwähnt wird das Schrotrauschen erstmals von Schottky im Jahre 1918, weshalb es auch Schottky-Rauschen genannt wird. Auftreten tut das Schrotrauschen in Halbleiterbauelemente, wie z.B. Dioden, zusätzlich zum thermischen Rauschen.\cite{HEUERMANN_2018}\newline
 Seinen Ursprung hat das Schrotrauschen in der zufälligen Bewegung von Ladungsträgern zwischen dem Leitungs- und Valenzband. Die damit verbundene Fluktuation von Energie erzeugt das Rauschen. Der energetische Abstand zwischen den beiden Bändern wird Potentialschwelle genannt.\cite{HEUERMANN_2018}\newline
--> Bild einfügen von den Bändern und der Potentialschwelle
-\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Potentialschwelle}
+    \caption{Darstellung der Potentialschwelle zwischen dem Leitungs- und Valenzband}
+    \label{fig:Potentialschwelle}
+\end{figure}
 In einem Halbleiter erfolgt der Transport von Energie durch gequantelte Ladungsträger statt. Bei gequantelten Ladungsträgern handelt es sich um Teilchen, wie Elektronen oder Löcher, deren Ladung der elementar Ladung $e = 1.602 \cdot 10^{-19}\text{As}$ oder ein vielfaches davon entspricht.\cite{HEUERMANN_2018}\cite{leifiphysik-elementarladung}\newline
 Das Schrotrauschen ist proportional zum mittleren fließenden Strom in dem jeweiligen Halbleiter. Da sich der mittlere fließende Strom je nach Halbleiter und Anwendung unterscheidet, muss das Schrotrauschen immer individuell betrachtet werden.\cite{HEUERMANN_2018}\cite{Thiede_2013}\newline
-->Vielleicht Beispiel anhand einer Schottkydiode\newline
 
 \subsubsection*{1/f-Rauschen (Flicker Noise)}
-Eine weitere Rauschquelle in einem Halbleiter geht vom 1/f-Rauschen (engl. Flicker Noise) aus. Beim 1/f-Rauschen handelt es sich um sogenanntes pinkes Rauschen.\cite{liquid-flicker} Anders als beim weißen Rauschen, wie z.B. thermisches Rauschen, was eine gleichbleibende Leistungsdichte über das gesamte Frequenzspektrum aufweist, nimmt beim pinken Rauschen mit steigender Frequenz $f$ die Leistungsdichte ab.\cite{liquid-flicker}\newline
-->Graphen von 1/f-Rauschen einfügen \newline
-Daher stammt auch der Name 1/f-Rauschen. Die Leistungsdichte des 1/f-Rauschen dominiert im niedrigen Frequenzbereich bis zu einer Grenzfrequenz $f_\text{c}$ gegenüber der Leistungsdichte des thermischen Rauschen. Ab der Grenzfrequenz $f_\text{c}$ geht das 1/f-Rauschen im thermischen Rauschen unter.\cite{Thiede_2013} \cite{HEUERMANN_2018}\newline
-Die Leistungsdichte und die Grenzfrequenz $f_\text{c}$ des 1/f-Rauschen unterscheiden sich je nach Halbleitermaterial, z.b. Germanium und Silizium, und Bauelement, wie z.B. Diode oder MOSFET. Im Falle von Bipolartransistoren dominiert das 1/f-Rauschen bis zu einer Grenzfrequenz $0.1\text{ Hz} \leq f_\text{c} \leq 1 \text{ kHz}$. Bei MOSFETs kann das 1/f-Rauschen in einigen Fällen bis zu einer Grenzfrequenz $f_\text{c}=10 \text{ MHz}$ das thermischen Rauschen dominieren.\cite{HEUERMANN_2018}\newline
-Eine genaue Erklärung für das 1/f-Rauschen gibt es nicht.\cite{HEUERMANN_2018} Es gibt aber verschiedene Theorien zur Entstehung des 1/f-Rauschen. Eine einfache Theorie besagt, dass ein Transistor in tiefen Frequenzen mit das Rauschen mit einer Verstärkung $G=\frac{1}{f}$ verstärkt und so das Grundrauschen anhebt.\cite{HEUERMANN_2018} Eine weitere Theorie ist, das das 1/f-Rauschen aus der zufälligen Bewegung der Ladungsträger und damit verbundenen Fluktuation von Energie und Änderung der Ladungsträgerkonzentration hervorgeht. Diese Fluktuationen entstehen durch Defekte in der Gitterstruktur des Halbleiters. Diese Defekte treten überwiegend an der Oberfläche des Halbleiters, auch Interface genannt, auf. Die Ladungsträger werden von diesen Defekten "gefangen" oder "freigelassen" (engl. trapping und detrapping). Dieser Vorgang soll zum Rauschen führen.\cite{liquid-flicker}\cite{Thiede_2013}\newline
+Das 1/f-Rauschen ist ein weiteres Rauschen, welches zusätzlich zum thermischen Rauschen und Schrotrauschen, vor allem in niedrigen Frequenzbereichen, auftritt. Es nicht nur limitiert auf elektronische Bauteile, sondern tritt auch in Musik, Biologie und in der Wirtschaft auf.\cite{Analog-Devices-Flicker-Noise}\newline
+Beim 1/f-Rauschen handelt es sich um sogenanntes pinkes Rauschen\cite{liquid-flicker}. Anders als beim weißen Rauschen, wie thermisches Rauschen, welches eine gleichbleibende Leistungsdichte $S(f)$ über das gesamte Frequenzspektrum aufweist, nimmt beim 1/f-Rauschen die Leistungsdichte $S(f)$ mit steigender Frequenz $f$ immer weiter abnimmt. Daher stammt auch der Name 1/f-Rauschen.\cite{liquid-flicker}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/1f-Rauschen.png}
+    \caption{Darstellung des 1/f-Rauschen eines ADA4622-2\cite{Analog-Devices-Flicker-Noise}}
+    \label{fig:1/f-Rauschen}
+\end{figure}
+Der Graph in Abbildung \ref{fig:1/f-Rauschen} zeigt den Verlauf des 1/f-Rauschens eines ADA4622-2 mit zunehmender Frequenz $f$. Im niedrigen Frequenzbereich $f\leq60\,\text{Hz}$ dominiert die Leistungsdichte $S(f)$ des 1/f-Rauschen gegenüber dem thermischen Rauschen. Ab einer Grenzfrequenz $f_\mathrm{c}=60\,\text{Hz}$ geht das 1/f-Rauschen langsam im thermischen Rauschen unter.\cite{Thiede_2013} \cite{HEUERMANN_2018}\newline
+Die Leistungsdichte $S(f)$ und die Grenzfrequenz $f_\text{c}$ des 1/f-Rauschen unterscheiden sich je nach Halbleitermaterial, z.b. Germanium und Silizium, und Bauelement, wie z.B. Diode oder MOSFET.\cite{HEUERMANN_2018}\newline
+Eine genaue Erklärung für das 1/f-Rauschen gibt es nicht\cite{HEUERMANN_2018}\cite{Analog-Devices-Flicker-Noise}. Es gibt aber verschiedene Theorien zur Entstehung des 1/f-Rauschen. Eine einfache Theorie besagt, dass ein Transistor in tiefen Frequenzen mit das Rauschen mit einer Verstärkung $G=\frac{1}{f}$ verstärkt und so das Grundrauschen anhebt\cite{HEUERMANN_2018}. Eine weitere Theorie zur Quelle des 1/f-Rauschen besagt, dass das 1/f-Rauschen aus der zufälligen Bewegung der Ladungsträger und der damit verbundenen Änderung der Ladungsträgerkonzentration hervorgeht. Diese Fluktuationen der Energie entstehen durch Defekte in der Gitterstruktur des Halbleiters. Auftreten tun diese Defekte überwiegend an der Oberfläche des Halbleiters, auch Interface genannt. Die Ladungsträger werden von diesen Defekten \dq gefangen\dq{} oder \dq freigelassen\dq{} (engl. trapping und detrapping). Dieser Vorgang soll zum Rauschen führen.\cite{liquid-flicker}\cite{Thiede_2013}\newline
 Auch wenn das 1/f-Rauschen nur niedrigen Frequenzbereich auftrifft, muss es auch für Anwendungen in höheren Frequenzbereichen berücksichtigt werden. Durch die nichtlineare Eigenschaften von nichtlinearen Bauteilen, wie z.B. Dioden, welche auch in einem Mischer eingesetzt werden um Signale in verschiedene Frequenzbereiche umzusetzen, kann auch das Rauschen durch den Prozess der Frequenzumsetzung in höheren Frequenzbereiche umgesetzt werden und den Rauschpegel anheben.\cite{HEUERMANN_2018}
 
-\subsubsection*{Antennentemperatur}
-
-
-
 \subsubsection*{Äquivalente Rauschtemperatur}
-Bei der äquivalenten Rauschtemperatur $T_\text{e}$ handelt es sich nicht um eine physikalische Temperatur sonder um eine rein fiktive Temperatur, welche als Rechengröße verwendet wird.\newline
-Mit den bisherigen Erkenntnissen lässt sich schlussfolgern, das jedes Bauteil, egal ob Widerstand oder Halbleiter, rauscht. Auf Bauteilebene kann das Rauschen in seinen einzelnen Formen mit thermischen Rauschen, 1/f-Rauschen, Schrotrauschen, etc. beschrieben werden. In komplexeren Schaltungen kann die Beschreibung des Rausches in all seinen verschiedenen Formen sehr aufwendig werden. Mithilfe einer äquivalente Rauschtemperatur $T_\text{e}$ lässt sich das Rauschen eines einzelnen Bauteils, Zweitores oder ganzen Systemen in einer Erhöhung der Temperatur ausdrücken.\newline
--> Grafik einfügen \newline
-Die Gleichung \ref{xxx} zeigt ein Beispiel für die äquivalente Rauschtemperatur $T_\text{e}$. Am Eingang des Zweitors liegt die Rauschleistung $N_\text{i}$ an. Diese geht von einer angepassten Rauschquelle, wie ein Widerstand, aus und entspricht dem thermischen Rauschen. Das zusätzlichen Rauschen des Zweitors wird in der Rauschleistung $N_\text{0}$ an dessen Ausgang durch die Addition einer fiktiven Erhöhung der Temperatur $T_\text{e}$ berücksichtigt.\cite{Thiede_2013} 
+Bei der äquivalenten Rauschtemperatur $T_\mathrm{e}$ handelt es sich nicht um eine physikalische Temperatur, sondern um eine rein fiktive Erhöhung der Temperatur, welche als Rechengröße verwendet wird.\newline
+Mit den bisherigen Erkenntnissen lässt sich schlussfolgern, das jedes Bauteil, egal ob Widerstand oder Halbleiter, rauscht. Auf Bauteilebene kann das Rauschen in seinen einzelnen Formen mit thermischen Rauschen, 1/f-Rauschen, Schrotrauschen, etc. beschrieben werden. In komplexeren Schaltungen kann die Beschreibung des Rausches in all seinen verschiedenen Formen sehr aufwendig werden. Mithilfe einer äquivalente Rauschtemperatur $T_\text{e}$ lässt sich das Rauschen eines einzelnen Bauteils, Zweitores oder ganzen Systemen in einer theoretischen Erhöhung der Temperatur ausdrücken.\newline
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Äquivalente Rauschtemperatur}
+    \caption{Beispiel für die Äquivalente Rauschtemperatur}
+    \label{fig:Beispiel-Äquivalente-Rauschtemperatur}
+\end{figure}
+Die Grafik in Abbildung \ref{fig:Beispiel-Äquivalente-Rauschtemperatur} zeigt ein Beispiel für die äquivalente Rauschtemperatur $T_\mathrm{e}$. Die Grafik zeigt ein Zweitor, an wessen Eingang die Rauschleistung $N_\mathrm{i}=k\cdot T_\mathrm{0}\cdot B$ anliegt. Dabei wird von einer angepassten Rauschquelle ausgegangen. Das zusätzliche Rauschen des Zweitors wird in der Rauschleistung am Ausgang $N_\mathrm{o}=k\cdot(T_\mathrm{0}+T_\mathrm{e})\cdot B\cdot G$ durch die fiktive Erhöhung der Temperatur um $T_\mathrm{e}$ ausgedrückt. Ebenfalls wird die Verstärkung $G$ des Zweitores berücksichtigt.\cite{Thiede_2013}
 \begin{equation}
-    N=k \cdot T_\text{f} \cdot B = k \cdot (T_\text{e}+T_\text{0}) \cdot B \cdot G
+    N_\mathrm{o}= k \cdot (T_\text{e}+T_\text{0}) \cdot B \cdot G
+    \label{eq:Rauschleistung-Ausgang-Zweitor}
 \end{equation}
-Bei dieser virtuellen Erhöhung der Temperatur handelt es um die äquivalente Rauschtemperatur $T_\text{e}$. Diese entspricht genau der Erhöhung der Temperatur, damit das Zweitor rechnerisch genau die Rauschleistung $N_\text{0}$ am Ausgang erzeugt, wie sie auch am Ausgang bei der tatsächlich Temperatur $T_\text{0}$ anliegt. Es wird die gleiche Gleichung wie für das thermische Rauschen verwendet. Ebenfalls wird auch die Verstärkung des Zweitores in der Gleichung berücksichtigt.\cite{Thiede_2013}
-Die äquivalente Rauschtemperatur $T_\text{e}$ kann umgekehrt auch aus der Rauschleistung $N_\text{0}$ am Ausgang des Zweitores gewonnen werden.
+Bei der fiktiven Erhöhung der Temperatur $T_\mathrm{0}$ um $T_\mathrm{e}$ handelt es sich in Summe genau um die Temperatur, bei welcher am Ausgang des Zweitors rechnerisch genau die Rauschleistung $N_\mathrm{o}$ anliegt, welche bei der tatsächlich Temperatur $T_\mathrm{0}$ des Systems gemessen wird.\cite{Thiede_2013}
+Die äquivalente Rauschtemperatur $T_\text{e}$ kann umgekehrt auch aus der Rauschleistung $N_\mathrm{o}$ am Ausgang des Zweitores gewonnen werden.
 \begin{equation}
-    T_\text{e}=\frac{N_\text{0}}{k\cdot B \cdot G}-T_\text{0}
+    T_\mathrm{e}=\frac{N_\mathrm{o}}{k\cdot B \cdot G}-T_\mathrm{0}
+    \label{eq:Äquivalente Rauschtemperatur}
 \end{equation}
-Die äquivalente Rauschtemperatur $T_\text{e}$ ist immer größer als die eigentliche Temperatur $T_0$, da es neben dem thermischen Rauschen auch alle weiteren Rauschquellen, wie 1/f-Rauschen und Schrotrauschen, berücksichtigt.\cite{Thiede_2013}
+Die Summe $(T_\mathrm{0}+T_\mathrm{e})$ wird Rauschtemperatur $T_\mathrm{R}$, bestehend aus der physikalischen Temperatur $T_\mathrm{0}$ des Systems und der äquivalenten Rauschtemperatur $T_\mathrm{e}$. Die Rauschtemperatur $T_\mathrm{R}$ ist immer größer als die physikalische Temperatur $T_\mathrm{0}$, da kein reales Zweitor frei von Rauschen ist und somit $T_\mathrm{e}>0\,\text{K}$.\cite{Thiede_2013}
+\subsubsection*{Rauschzahl}
+Die Rauschzahl $F$ gibt an, wie stark das $SNR$ durch das jeweilige Zweitor verschlechtert wird. Bei Raumtemperatur $(T_\mathrm{0}=290\,\mathrm{K})$ entspricht die Rauschzahl $F$ dem Verhältnis vom $SNR_\mathrm{in}$ am Eingang des Zweitors, zum $SNR_\mathrm{out}$ am Ausgang des Zweitores.\cite{HEUERMANN_2018}
+\begin{equation}
+    F=\frac{SNR_\mathrm{in}}{SNR_\mathrm{out}}
+    \label{eq:Rauschzahl-bei-T0}
+\end{equation}
+Bei der Weiterführung der Gleichung \ref{eq:Rauschzahl-bei-T0} kann die Rauschzahl $F$ nur mithilfe der physikalischen Temperatur $T_\mathrm{0}$ und der äquivalenten Rauschtemperatur $T_\mathrm{e}$ des Zweitores bestimmt werden.
+\begin{equation}
+        F=\frac{SNR_\mathrm{in}}{SNR_\mathrm{out}}=\frac{\frac{S_\mathrm{in}}{k\cdot T_\mathrm{0}\cdot B}}{\frac{S_\mathrm{in}\cdot G}{k\cdot (T_\mathrm{0}+T_\mathrm{e})\cdot B \cdot G}}=\frac{T_\mathrm{0}+T_\mathrm{e}}{T_\mathrm{0}}=1+\frac{T_\mathrm{e}}{T_\mathrm{0}}
+    \label{eq:Rauschzahl-aus-Te-und-T0}
+\end{equation}
+Ein ideales Zweitor hat eine äquivalente Rauschtemperatur $T_\mathrm{e}=0\,\text{K}$, was mit der Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0} zu einer Rauschzahl $F=1$ führt. Da jedes reale Zweitor rauscht, ist die äquivalente Rauschtemperatur $T_\mathrm{e}>\mathrm{0\,\text{K}}$ und damit die Rauschzahl $F>1$.\newline
+Die Gleichung \ref{eq:Rauschzahl-aus-Te-und-T0} zeigt auch, dass jedes reale Zweitor zwangsläufig das $SNR$ verschlechtert. Damit ein Zweitor ein größeres $SNR_\mathrm{out}$ am Ausgang aufweist, als das $SNR_\mathrm{in}$ am Eingang des Zweitores, müsste es eine äquivalente Rauschtemperatur $T_\mathrm{e}<0\,\text{K}$ aufweisen. Da das physikalisch nicht möglich ist, verschlechtert jedes reale Zweitor zwangsläufig das $SNR$.\cite{HEUERMANN_2018}\newline
+Ebenfalls kann die Rauschzahl logarithmisch in $[\text{dB}]$ angegeben werden.
+\begin{equation}
+    F_\mathrm{dB}=10\cdot\log_{10}\left(1+\frac{T_\mathrm{e}}{T_\mathrm{0}}\right)
+    \label{eq:Rauschzahl-dB}
+\end{equation}
+Die Rauschzahl $F$ passiver Zweitore, wie z.B. Koaxialleitungen, Dämpfungsglieder, etc., ist gleich ihrem Verlust $L$.\cite{HEUERMANN_2018}
+\begin{equation}
+    F=\frac{1}{G}=L
+    \label{eq:Rauschzahl-passives-Zweitor}
+\end{equation}
+Auch lässt sich in einem $50\,\Omega-\text{System}$ die Rauschzahl $F$ direkt aus den S-Parametern, genauer der Einfügedämpfung $S_\mathrm{21}$, bestimmen.\cite{HEUERMANN_2018}
+\begin{equation}
+    F_\mathrm{dB}=-S_\mathrm{21,dB}=20\cdot\log_{10}\left(\frac{1}{|S_\mathrm{21}|}\right)
+\end{equation}
+Bei der Verschaltung mehrere Zweitore ergibt sich für das Gesamtsystem eine Gesamtrauschzahl $F_\mathrm{ges}$, sowie eine gesamte äquivalente Rauschtemperatur $T_\mathrm{e,ges}$. Je nach Verschaltung der Zweitore wird die Rauschzahl $F_\mathrm{ges}$ und die Äquivalente Rauschtemperatur $T_\mathrm{e,ges}$ des Gesamtsystems unterschiedlich bestimmt.\newline
+-> Grafik Kettenschaltung
+\newline
+Beim Kaskadieren von mehreren Zweitoren, auch Kettenschaltung genannt, setzt sich die Gesamtrauschzahl $F_\mathrm{ges}$ aus der Summe der Rauschzahlen $F_\mathrm{x}$, wobei $x=1,2,3,\dots$, der einzelnen Zweitore, sowie deren Verstärkungen $G_\mathrm{x}$, zusammen.\cite{HEUERMANN_2018}
+\begin{equation}
+    F_\mathrm{ges}=F_\mathrm{1}+\frac{F_\mathrm{2}-1}{G_\mathrm{1}}+\frac{F_\mathrm{3}-1}{G_\mathrm{1}\cdot G_\mathrm{2}}+\dots
+    \label{eq:Gesamtrauschzahl-Kaskade}
+\end{equation}
+Die äquivalente Rauschtemperatur $T_\mathrm{e,ges}$ setzt sich ähnlich aus den äquivalenten Rauschzahlen $T_\mathrm{ex}$, wobei $x=1,2,3,\dots$, der einzelnen Zweitore, sowie deren Gewinn $G_\mathrm{x}$, zusammen.\cite{HEUERMANN_2018}
+\begin{equation}
+    T_\mathrm{e,ges}=T_\mathrm{e1}+\frac{T_\mathrm{e2}}{G_\mathrm{1}}+\frac{T_\mathrm{e3}}{G_\mathrm{1}\cdot G_\mathrm{2}}+\dots
+    \label{eq:Gesamt-äquivalente-Rauschtemperatur-Kaskade}
+\end{equation}
+Die beiden Gleichungen \ref{eq:Gesamtrauschzahl-Kaskade} und \ref{eq:Gesamt-äquivalente-Rauschtemperatur-Kaskade} werden auch Friis'sche Gleichungen genannt.\cite{HEUERMANN_2018}
+\subsubsection*{Antennentemperatur}
+Bei der Antennentemperatur $T_\mathrm{A}$ handelt es sich um eine fiktive Temperatur und nicht um die physikalische Temperatur $T_\mathrm{0}$ der Antenne. Eine Antenne ist eine Rauschquelle, welche mit einer äquivalenten Rauschtemperatur $T_\mathrm{A}$ beschrieben werden kann. Diese äquivalente Rauschtemperatur $T_\mathrm{A}$ wird Antennentemperatur genannt.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}\newline
+Das Rauschen einer verlustlosen Antenne stammt von aufgenommen Emissionen von rauschenden Objekten im Umfeld der Antenne. Wie viel und aus welchem Einfallwinkel $(\theta,\varphi)$ die Emissionen von der Antennen aufgenommen wird, hängt von ihrer Strahlungscharakteristik ab.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}\newline
+Die Antennentemperatur kann durch die Integration der Emissionen aller rauschender Objekte im Umfeld Antenne bestimmt werden.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{A}=\frac{1}{4\pi}\int^{2\pi}_0\int^{\pi}_0T_\mathrm{B}(\theta,\varphi)\cdot G(\theta,\varphi)\sin(\theta)\,d\theta\,d\varphi
+    \label{eq:eigentliche-Antennentemperatur}
+\end{equation}
+Dabei $T_\mathrm{B}$ die sogenannte Helligkeitstemperatur (engl. Brightness Temperatur). Die Helligkeitstemperatur $T_\mathrm{B}$ gibt die Intensität der Strahlungsleistung eines Objektes in Form einer äquivalenten Rauschtemperatur an. Je stärker ein Objekt rauscht, desto größer ist auch die von diesem ausgehende Strahlungsleistung. Das führt zu einer Erhöhung der Helligkeitstemperatur $T_\mathrm{B}$. Die Helligkeitstemperatur $T_\mathrm{B}$ ist abhängig von der physikalischen Temperatur $T_\mathrm{M}$ des jeweiligen Objektes und einem Abstrahlkoeffizienten $\epsilon$.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{B}(\varphi,\theta)= \varepsilon(\varphi,\theta)\cdot T_\mathrm{M}
+    \label{eq:Brightness-Temperatur}
+\end{equation}
+Die Helligkeitstemperatur $T_\mathrm{B}$ ist $T_\mathrm{B}\leq T_\mathrm{M}$, da der Abstrahlkoeffizient nur Werte $0\leq\epsilon\leq1$ annimmt.\cite{Balanis_2005}\newline
+Die Atmosphäre und das Wetter haben ebenfalls Einfluss auf die Antennentemperatur $T_\mathrm{A}$.\newline 
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.75\linewidth]{Bilder/Antennentemperatur Grafik}
+    \caption{Zusammensetzung der Antennentemperatur $T_\mathrm{A}$ und Einfluss durch Regen}
+    \label{fig:Antennentemperatur}
+\end{figure}
+
+
+Bei optimalen Voraussetzung, bedeutet klarer Himmel, setzt sich die Antennentemperatur $T_\mathrm{A}$ aus der Helligkeitstemperatur des Himmels $T_\mathrm{Sky}$ und des Bodens um die Antenne $T_\mathrm{Ground}$ zusammen.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{A}=T_\mathrm{Sky}+T_\mathrm{Ground}
+    \label{eq:Antennentemperatur-klarer-Himmel}
+\end{equation}
+Die Helligkeitstemperatur des Himmels $T_\mathrm{Sky}$ kann über die Gleichung \ref{eq:eigentliche-Antennentemperatur} bestimmt werden, wobei $T_\mathrm{B}$ die Helligkeitstemperatur in des jeweiligen Einfallwinkels $(\theta,\varphi)$ der Antenne ist. In der Praxis ist jedoch nur der Bereich des Himmels innerhalb der $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ der Antenne für die Helligkeitstemperatur relevant, da sich in diesem Bereich der maximale Gewinn $G_\mathrm{max}$ der Antenne befindet. Daher kann die Helligkeitstemperatur des Himmels $T_\mathrm{Sky}$ in Abhängigkeit der Frequenz $f$ für mehrere Elevationswinkel $\epsilon$ der Antenne in einem Graphen dargestellt werden.\cite{Satellite_Communications_Systems}\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/T_Sky.png}
+    \caption{Darstellung der Helligkeitstemperatur des Himmels in Abhängigkeit der Frequenz $f$ für mehrere Elevationswinkel $\epsilon$\cite{Satellite_Communications_Systems}}
+    \label{fig:Temperatur-Himmel}
+\end{figure}
+Das vom Boden ausgehende Rauschen wird von den Nebenkeulen der Antenne eingefangen und teilweise auch von der Hauptkeule, wenn der Elevationswinkel $\epsilon$ klein genug ist. Die Helligkeitstemperatur des Bodens $T_\mathrm{Ground}$ setzt sich dabei aus dem aufgenommen Rauschen aller Nebenkeulen zusammen. Der Beitrag einer einzelnen Nebenkeule kann mit folgenden Gleichung bestimmt werden.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{i}=G_\mathrm{i}\cdot T_\mathrm{G}\left(\frac{\Omega_i}{4\pi}\right)
+    \label{eq:Temperatur-Boden-über-Nebenkeulen}
+\end{equation}
+Dabei ist $G_\mathrm{i}$ der durchschnittliche Gewinn der betrachten Nebenkeulen, $\Omega_\mathrm{i}$ der Raumwinkel, welchen die Nebenkeule abdeckt und $T_\mathrm{G}$ die eigentlich Helligkeitstemperatur des Bodens. Diese kann als folgend angenommen werden.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{G}=
+    \begin{cases}
+    290\,\text{K}&,\epsilon\leq-10\degree\\
+    150\,\text{K}&,-10\degree\leq\epsilon\leq0\degree\\
+    50\,\text{K}&,0\degree\leq\epsilon\leq10\degree\\
+    10\,\text{K}&,10\degree\leq\epsilon\leq90\degree\\
+    \end{cases}
+    \label{eq:Helligkeitstemperatur-Boden}
+\end{equation}
+Im Falle von Regen muss zusätzlich die durch Regen hervorgerufene Dämpfung $L_\mathrm{Regen}$, sowie die physikalische Temperatur $T_\mathrm{m}$ der Wolken in der Antennentemperatur berücksichtigt werden.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    T_\mathrm{A}=\frac{T_\mathrm{Sky}}{L_\mathrm{Regen}}+T_\mathrm{m}\left(1-\frac{1}{L_\mathrm{Regen}}\right)+T_\mathrm{Ground}
+    \label{eq:Antennentemperatur-bei-Regen}
+\end{equation}
+Dabei kann die Temperatur der Wolken mit $T_\mathrm{m}=275\,\text{K}$ angenommen werden.\cite{Satellite_Communications_Systems}
+
+
 
 
 

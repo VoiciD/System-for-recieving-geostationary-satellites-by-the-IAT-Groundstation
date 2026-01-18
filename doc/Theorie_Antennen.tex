@@ -1,114 +1,151 @@
 \subsection{Antenne}
-Die Antenne ist mit der wichtigste Bestandsteil der Empfangskette an der Satellitenbodenstation. Erst mit einer geeigneten Antenne ist es mögliche die Signale vom Satelliten, welcher ebenfalls eine Antenne braucht um die Signale zu senden, zu empfangen. Die Antenne wandelt die leitungsgebundene Welle um und strahlt diese in den freien Raum ab oder empfängt die Wellen im freien Raum und gibt diese an die Leitung ab. Sie ist also das Verbindungsglied zwischen der leitungsgebundenen Welle und der Welle im freien Raum.\newline
-Die IEEE definiert eine Antenne als ein passives, lineares und reziprokes Bauelement, welches Radiowellen abstrahlen, als auch empfangen kann\cite{IEEE145-1993}\cite{Balanis_2005}.\newline
+Die Antenne ist mit der wichtigste Bestandsteil der Empfangskette an der Satellitenbodenstation. Erst mit einer geeigneten Antenne ist es mögliche die Signale vom Satelliten, welcher ebenfalls eine Antenne braucht um die Signale zu senden, zu empfangen. Die Antenne wandelt die leitungsgebundene Welle um und strahlt diese in den freien Raum ab oder empfängt die Wellen im freien Raum und gibt diese an die Leitung ab. Sie ist also das Verbindungsglied zwischen der leitungsgebundenen elektrischen Signal und der Welle im freien Raum.\cite{Balanis_2005}\newline
+Die IEEE definiert eine Antenne als ein passives, lineares und reziprokes Bauelement, welches Radiowellen abstrahlen, als auch empfangen kann.\cite{IEEE145-1993}\cite{Balanis_2005}\newline
 Eine Antenne kann über viele verschiedene Parameter beschrieben werden. Diese Parameter helfen dabei eine geeignete Antenne für die jeweilige Anwendung zu finden.
+\subsubsection*{Strahlungsleistungsdichte}
+Mit der Strahlungsleistungsdichte $S$ kann die, auf eine Oberfläche mit der Fläche $A$ im Fernfeld der Antenne, einwirkende Leistungsdichte beschrieben werden. Ihre Einheit ist 
+$\text{W}/\text{m}^2$.\newline
+Betrachtet wird dabei Leistungsdichte der elektromagnetischen Wellen welche sich im jeweiligen Raumwinkel $\frac{A}{r^2}$ befinden.\cite{Satellite_Communications_Systems}
+Bei einem isotropen Kugelstrahler werden die elektromagnetischen Wellen mit der Sendeleistung $P_\mathrm{T}$ gleichmäßig in alle Richtungen $(\theta,\varphi)$ abgestrahlt. Daher ergibt sich kein spezifischer Raumwinkel für den isotropen Kugelstrahler, weshalb die Strahlungsdichte $S_\mathrm{0}$ des isotropen Kugelstrahler über die sich ausbreitende Kugeloberfläche betrachtet wird.\cite{Satellite_Communications_Systems}\newline
+\begin{equation}
+    S_0=\frac{P_\mathrm{TX}}{4\cdot \pi \cdot r^2 }
+    \label{eq:isotroperkugelstrahler-strahlungsleistungsdichte}
+\end{equation}
+Bei einer realen Antenne gibt es eine bevorzugte Abstrahlrichtung $(\theta,\varphi)$, in welche die Antenne mit einem bestimmten Gewinn $G(\theta,\varphi)$ die elektromagnetischen Wellen mit der Sendeleistung $P_\mathrm{T}$ abstrahlt.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    S(\theta,\varphi)=\frac{P_\mathrm{T}\cdot G(\theta,\varphi)}{4\cdot \pi \cdot r^2 }
+    \label{eq:reale-strahlungsleistungsdichte}
+\end{equation}
+
+
+
+
+
+
+
+
 
 \subsubsection*{Nah- und Fernfeld}
-Der Bereich um die Antenne kann in mehrere Bereiche aufgeteilt werden. Im mittelbaren Umfeld liegt das Nahfeld, auch Fresnel-Breich genannt\cite{Radartutorial-Nahundfernfeld}, der Antenne. Neben den abgestrahlten elektromagnetische Wellen wirken hier auch starke stationäre Felder, welche ebenfalls von der Antenne ausgehen. Beschreiben lassen sich die Felder durch die maxwellschen Gleichungen. Im Nahfeld wird die Berechnung der Felder aufgrund der hohen Ordnungen der Polynome erschwert\cite{Radartutorial-Nahundfernfeld}. Aus diesem Grund werden die Strahlungscharakteristiken einer Antenne im Fernfeld bestimmt. \cite{Balanis_2005}.\newline
-Das Fernfeld, auch Fraunhofer-Bereich genannt, ist geometrisch deutlich größer als das Nahfeld. Es beginnt da, wo sich die elektromagnetischen Wellen frei im Raum ausbreiten können. Der Übergang zum Fernfeld kann Näherungsweise bestimmt werden. Für Antennen, welche in ihren geometrischen Abmessung kleiner als ihre Wellenlänge $\lambda$ sind, gilt\cite{Radartutorial-Nahundfernfeld}:
+Der Bereich um die Antenne kann in mehrere Bereiche aufgeteilt werden. Im mittelbaren Umfeld liegt das Nahfeld, auch Fresnel-Gebiet genannt, der Antenne. Neben den abgestrahlten elektromagnetische Wellen wirken hier auch starke stationäre Felder, welche ebenfalls von der Antenne ausgehen. Beschreiben lassen sich die Felder durch die maxwellschen Gleichungen.\cite{Radartutorial-Nahundfernfeld}\cite{Balanis_2005}\newline 
+Im Nahfeld wird die Berechnung der Felder aufgrund der hohen Ordnungen der Polynome erschwert\cite{Radartutorial-Nahundfernfeld}. Aus diesem Grund werden die Strahlungscharakteristiken einer Antenne im Fernfeld bestimmt. \cite{Balanis_2005}\newline
+Das Fernfeld, auch Fraunhofer-Bereich genannt, ist geometrisch deutlich größer als das Nahfeld. Es beginnt da, wo sich die elektromagnetischen Wellen frei im Raum ausbreiten können. Der Übergang zum Fernfeld kann Näherungsweise bestimmt werden.\cite{Radartutorial-Nahundfernfeld}:
 \begin{equation}
-    r_{fern}=2\cdot\lambda
-    \label{Nahfeld}
+    r_\mathrm{fern}=2\cdot\lambda
+    \label{eq:Nahfeld}
 \end{equation}
-Bei größeren Antennen, zum Beispiel Parabolantennen, gilt\cite{Radartutorial-Nahundfernfeld}:
+Die Gleichung \ref{eq:Nahfeld} gilt für Antennen, welche in ihren Geometrischen Abmessung kleiner als ihre Wellenlänge $\lambda$ sind.\cite{Radartutorial-Nahundfernfeld}
+Bei größeren Antennen, zum Beispiel Parabolantennen wird die geometrische Abmessung $L$ der Antenne mit berücksichtigt.\cite{Radartutorial-Nahundfernfeld}:
 \begin{equation}
-    r_{fern}=\frac{2\cdot L^2}{\lambda}
-    \label{Fernfeld}
+    r_\mathrm{fern}=\frac{2\cdot L^2}{\lambda}
+    \label{eq:Fernfeld}
 \end{equation}
-Dabei gibt die Variable L die geometrische Abmessung der Antenne an. Als sichere Faustformel kann ab einem Abstand $r>5\cdot\lambda$ vom Fernfeld ausgegangen werden.\newline
-Im Fernfeld existieren nur die Felder der elektromagnetische Welle, was die Berechnung der Felder deutlich vereinfacht. Die elektrische und magnetische Komponente der EM-Welle befinden sich Phase zu einander und stehen orthogonal zur Ausbreitungsrichtung. Über das Verhältnis vom elektrischen und magnetischen Feld kann der Freiraumwiderstand $\eta_0$ bestimmt werden.
+Als sichere Faustformel kann ab einem Abstand $r>5\cdot\lambda$ vom Fernfeld ausgegangen werden.\newline
+Im Fernfeld existieren nur die Felder der elektromagnetische Welle, was die Berechnung der Felder deutlich vereinfacht. Die elektrische und magnetische Komponente der EM-Welle befinden sich Phase zu einander und stehen orthogonal zur Ausbreitungsrichtung. Über das Verhältnis vom elektrischen und magnetischen Feld kann der Freiraumwiderstand $\eta_\mathrm{0}$ bestimmt werden.
 \begin{equation}
-    \eta_0=\frac{\left|\vec{E}\right|}{\left|\vec{H}\right|}=\sqrt{\frac{\mu_0}{\varepsilon_0}}=\mu_0\sqrt{\frac{1}{\mu_0\cdot\varepsilon_0}}=377\Omega
-    \label{GleichungFreimraumwiderstand}
+    \eta_\mathrm{0}=\frac{\left|\vec{E}\right|}{\left|\vec{H}\right|}=\sqrt{\frac{\mu_0}{\varepsilon_0}}=\mu_0\sqrt{\frac{1}{\mu_\mathrm{0}\cdot\varepsilon_\mathrm{0}}}=377\,\Omega
+    \label{eq:Freimraumwiderstand}
 \end{equation}
 Bis zur Entfernung $r=\frac{L^2}{2\cdot \lambda}$ um die Antenne liegt die sogenannte Rayleigh-Zone. In diesem Bereich strahlt Antenne nicht nur Energie ab, sondern nimmt auch einen Teil der abgestrahlten Energie als Blindleistung wieder auf.\cite{Radartutorial-Nahundfernfeld}
 
-\subsubsection*{Antennen-/Richtdiagramm}
-Ein Antennen- oder Richtdiagramm stellt die Strahlungscharakteristik einer Antenne grafisch dar. Die Strahlungscharakteristik einer Antenne umfasst dabei die Strahlungsleistungsdichte, die Feldstärke, Intensität, Richtfaktor, Phasenlage und Polarisation.\cite{Balanis_2005} In den meisten Fällen wird im Antennendiagramm allerdings die Intensität der abgestrahlten Energie oder ihre Feldstärke in Abhängigkeit der Richtung dargestellt\cite{Radartutorial-Antennendiagramm}. Da Antennen reziproke Elemente sind gilt ein Antennendiagramm gleichermaßen für das Senden und auch für das Empfangen mit der jeweiligen Antenne. Im Sendefall gibt das Antennendiagramm die richtungsabhängige Ausstrahlung der Antenne an und im Empfangsfall die richtungsabhängige Empfangsempfindlichkeit.\cite{Radartutorial-Antennendiagramm}\newline
+\subsubsection*{Antennen- und Richtdiagramm}
+Ein Antennen- oder Richtdiagramm stellt die Strahlungscharakteristik einer Antenne grafisch dar. Die Strahlungscharakteristik einer Antenne umfasst dabei die Strahlungsleistungsdichte, die Feldstärke, Intensität, Richtfaktor, Phasenlage und Polarisation.\cite{Balanis_2005}\newline
+In den meisten Fällen wird im Antennendiagramm allerdings die Intensität der abgestrahlten Energie oder ihre Feldstärke in Abhängigkeit der Richtung dargestellt.\cite{Radartutorial-Antennendiagramm}\newline
+Da Antennen reziproke Elemente sind gilt ein Antennendiagramm gleichermaßen für das Senden und auch für das Empfangen mit der jeweiligen Antenne. Im Sendefall gibt das Antennendiagramm die richtungsabhängige Ausstrahlung der Antenne an und im Empfangsfall die richtungsabhängige Empfangsempfindlichkeit.\cite{Radartutorial-Antennendiagramm}\newline
 Auch besteht die Möglichkeit die Strahlungscharakteristik der Antenne mithilfe einer mathematische Funktion zu definieren.\cite{Balanis_2005}\newline
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Antennendiagramm.png}
     \caption{Ein Beispiel für ein horizontales Antennendiagramm im Polarkoordinatensystem\cite{Radartutorial-Antennendiagramm}}
-    \label{Antennendiagrammbeispiel}
+    \label{fig:Antennendiagrammbeispiel}
 \end{figure}
-Für das Antennendiagramm kann in unterschiedlichen Formen und in verschiednen Ebenen dargestellt werden. Ein Antennendiagramm kann im 2D-Raum entlang der horizontalen (Azimuth), als auch entlang der vertikalen Ebene (Elevation) der Antenne erstellt werden. Auch kann ein Antennendiagramm im 3D-Raum erstellt werden. Die Abbildung \ref{Antennendiagrammbeispiel} zeigt ein horizontales Antennendiagramm im polaren Koordinatensystem.\newline
+Für das Antennendiagramm kann in unterschiedlichen Formen und in verschiednen Ebenen dargestellt werden. Ein Antennendiagramm kann im 2D-Raum entlang der horizontalen (Azimuth), als auch entlang der vertikalen Ebene (Elevation) der Antenne erstellt werden. Auch kann ein Antennendiagramm im 3D-Raum erstellt werden. Die Abbildung \ref{fig:Antennendiagrammbeispiel} zeigt ein horizontales Antennendiagramm im polaren Koordinatensystem.\newline
 Neben dem polaren Koordinatensystem kann auch das kartesische Koordinatensystem verwendet werden, jedoch kann im polaren Koordinatensystem die Richtwirkung der Antenne besser dargestellt werden.
 \cite{Radartutorial-Antennendiagramm}.
 \subsubsection*{Haupt- und Nebenkeulen}\label{Keulen}
-Im Antennendiagramm in Abbildung \ref{Antennendiagrammbeispiel} lassen sich verschiedene Muster in der Strahlungscharakteristik der Antenne erkennen, welche auch Keulen genannt werden. Dabei werden die Keulen weiter in Haupt- und Nebenkeulen unterteilt. \newline
+Im Antennendiagramm in Abbildung \ref{fig:Antennendiagrammbeispiel} lassen sich verschiedene Muster in der Strahlungscharakteristik der Antenne erkennen, welche auch Keulen genannt werden. Dabei werden die Keulen weiter in Haupt- und Nebenkeulen unterteilt. \newline
 Bei der Hauptkeule handelt es sich um den Bereich einer Antenne, in dessen Richtung am meisten Energie abgestrahlt oder, im Empfangsfall, empfangen wird.\cite{Balanis_2005}
-Bei einigen Antennen können auch mehrere Hauptkeulen vorhanden sein. Ein Beispiel dafür sind Loop- oder Dipolantennen, welche zwei Hauptkeule im Antennendiagramm aufweisen. Diese Hauptkeulen sind im 180\degree versetzt zu einander. Die Hauptkeulen stellen die bevorzugte Anwendungsrichtung einer Antenne dar, egal ob die Antenne im Sende- oder Empfangsbetrieb verwendet wird.\newline
+Bei einigen Antennen können auch mehrere Hauptkeulen vorhanden sein. Ein Beispiel dafür sind Loop- oder Dipolantennen, welche zwei Hauptkeule im Antennendiagramm aufweisen. Diese Hauptkeulen sind im $180\degree$ versetzt zu einander. Die Hauptkeulen stellen die bevorzugte Anwendungsrichtung einer Antenne dar, egal ob die Antenne im Sende- oder Empfangsbetrieb verwendet wird.\newline
 Die Nebenkeulen handelt es sich um alle Keulen, welche nicht die Hauptkeule darstellen. Diese sind jedoch deutlich kleiner und sollte auch so klein wie möglich sein. Nebenkeule sind meistens unerwünscht, da sie Enegie in ungewollte Richtungen abstrahlen und so weniger Energie durch die Hauptkeule abgestrahlt wird oder da sie im Empfangsfall dafür sorgen, dass die Antenne aus eventuell unerwünschten Richtungen Signale aufnimmt und so den Empfang stören.\cite{Balanis_2005}. Die größten beiden größten Nebenkeulen werden auch Seitenkeulen genannt.\cite{Balanis_2005}.\newline
 Der Abstand von der Hauptkeule zur größten Nebenkeule ist die Nebenkeulendämpfung. Je größer der Wert ist, desto kleiner sind die Nebenkeulen. Die Nebenkeulendämpfung ist ein wichtiger Parameter für Richtantennen, da damit die Richtschärfe ausgedrückt werden kann.\newline
 Die Haupt- und Nebenkeulen bilden sich bei jeder Antenne, welche kein isotropischer Kugelstrahler ist.
 
 \subsubsection*{Strahlbreite}
 Im Zusammenhang mit dem Strahlungsmuster einer Antenne kann ein weiterer Parameter hergeleitet werden. Die Stahlbreite beschreibt den Öffnungswinkel der Hauptkeule. Gemessen wird die Strahlbreite an zwei identischen Punkten auf beiden Seiten des Maximums der Hauptkeule\cite{Balanis_2005}.\newline
-Oft verwendet wird die 3dB-Strahlbreite, auch Half-Power Beamwidth genannt. Diese wird von der IEEE definiert als der Winkel zwischen den zwei Punkten an der Hauptkeule, wo die abgestrahlte Leistung nur noch die Hälfte des Maximums der Hauptkeule beträgt\cite{Balanis_2005}.\newline
+Viel Verwendung findet die $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ (engl. Half-Power Beamwidth) oder kurz HPBW. Diese entspricht dem Winkel zwischen zwei Punkten an der Hauptkeule,an welchen die abgestrahlte Leistung in jene Richtung nur noch die Hälfte des Maximums entspricht.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}\newline
+Ebenfalls entspricht die $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ dem Verhältnis von $\frac{k\cdot\lambda}{D}$. Dabei ist $D$ der Richtfaktor der Antenne und $k$ ein Koeffizient, welcher vom gewählten Abstandsgesetz (engl. Illumination Law) abhängt\cite{Satellite_Communications_Systems}. Das Gesetzt beschreibt die Verteilung der abgestrahlten EM-Wellen über die Antennenapertur. Bei einer einheitlichen Abstrahlung entspricht $k=58.5\degree$. Bei einer nicht einheitlichen Abstrahlung kommt es zu einer Dämpfung an Rändern der Antennenapertur, was zu einer Vergrößerung der $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ führt. Für den Koeffizient $k$ wird meistens $k=70\degree$ gewählt.\cite{Satellite_Communications_Systems}
+\begin{equation}
+    \theta_\mathrm{3dB}=\frac{70\cdot\lambda}{D}
+    \label{eq:3dB-Strahlbreite}
+\end{equation}
 Es gibt auch noch andere Strahlbreite wie die First Null Beamwith (FNBW), diese findet aber in der Praxis keine große Anwendung\cite{Balanis_2005}.\newline
 Die Strahlbreite ist gerade für Richtantennen ein wichtiger Parameter, da die Strahlbreite ihr Auflösungsvermögen beschreibt. Mit einer kleineren Strahlbreite kann im Empfangsfall eine größere Winkelauflösung erreicht werden. Eine größere Winkelauflösung hilft einer Antenne dabei zwischen mehreren benachbarten Strahlungsquellen zu unterscheiden. Mit einem größeren Öffnungswinkel neigt die Antenne dazu benachbarte Quellen als eine wahrzunehmen. Das kann für zum Beispiel Radaranlagen wichtig sein\cite{Balanis_2005}. Allerdings wachsen mit geringere Strahlbreite auch die Nebenkeulen, was unerwünschte Effekte, wie in \ref{Keulen} beschrieben, führt \cite{Balanis_2005}.
 
 \subsubsection*{Antennengewinn}
-Ein weiterer nützlicher Parameter, welcher für die Beschreibung von Antennen verwendet werden kann, ist der Antennengewinn $G$. Der Antennengewinn ist eng mit dem Richtfaktor und dem Wirkungsrad der Antenne verbunden\cite{Balanis_2005}.\newline
-Eine reale Antenne strahlt die eingespeiste Leistung $P_S$ nicht gleichmäßig in alle Richtungen ab. Eine reale Antenne weißt bevorzugte Richtungen $(\phi,\theta)$ auf, gekennzeichnet durch die Haupt- und Nebenkeulen im Antennendiagramm, in welche sie die Leistung abstrahlt oder aus welcher sie Leistung aufnimmt.\newline
-Im Sendefall entspricht der Antennengewinn $G(\varphi,\theta)$ dem Verhältnis der abgestrahlten Strahlungsleistungsdichte $S(\phi,\theta)$ der Antenne zu der abgestrahlten Strahlungsleistungsdichte $S_{ref}(\phi,\theta)$ einer Referenzantenne bei gleicher eingespeisten Leistung $P_S$, Richtung $(\phi,\theta)$ und Entfernung $r$\cite{Balanis_2005}.
+Anders als ein isotroper Kugelstrahler, strahlt eine reale Antenne die elektromagnetische Wellen nicht gleichmäßig in alle Richtungen ab. Eine reale Antenne weißt, wie in Abbildung \ref{fig:Antennendiagrammbeispiel} zuerkennen, bevorzugte Abstrahlrichtungen $(\theta,\varphi)$. Diese sind durch die Haupt und Nebenkeulen im Antennendiagramm zu erkennen.\newline
+Gegenüber einem isotropen Kugelstrahler weisen reale Antennen einen gewissen Gewinn $G(\theta,\varphi)$ auf. Der Gewinn ist definiert als das Verhältnis der Strahlungsleistungsdichte $S(\theta,\varphi)$ der betrachteten Antenne in die gegebene Richtung $(\theta,\varphi)$ zu der Strahlungsleistungsdichte $S_\mathrm{0}$ eines isotropen Kugelstrahlers bei gleicher abgestrahlter Leistung $P_\mathrm{TX}$ und gleicher Entfernung $r$.\cite{Balanis_2005}
 \begin{equation}
-    G(\phi,\theta)=\frac{S(r,\phi,\theta)}{S_{ref}(r,\phi,\theta)}
-    \label{Grunddefinition Antennengewinn}
+    G(\theta,\varphi)=\frac{S(r,\theta,\varphi)}{S_\mathrm{0}(r)}=\frac{S(\theta,\varphi)}{S_\mathrm{0}}
+    \label{eq:Antennengewinn}
 \end{equation}
-Die Entfernung r kürzt sich aus der Gleichung raus. Sie ist für den Antennengewinn nicht entscheidend.\newline
-Da Antennen reziproke Elemente sind gilt die Gleichung \ref{Grunddefinition Antennengewinn} gleichermaßen für den Empfangsbetrieb. Im Empfangsbetrieb entspricht der Antennengewinn $G$ dem Verhältnis der empfangenen Leistung $P_E(\phi,\theta)$ der jeweiligen Antenne zu der empfangenen Leistung $P_{Eref}(\phi,\theta)$ einer Referenzantenne bei gleicher Sendequelle mit fester Sendeleistung $P_S$ und Entfernung $r$ und gleichen Empfangswinkel $(\phi,\theta)$.\newline
+Der Gewinn $G(\theta,\varphi)$ ist unabhängig von der Entfernung $r$. Wird die Richtung $(\theta,\varphi)$ nicht weiter spezifiziert, wird der Gewinn $G$ in Richtung der maximalen Strahlungsleistungsdichte $S$ angegeben, welche durch die Hauptkeule im Antennendiagramm gekennzeichnet ist.\cite{Balanis_2005}\newline
+Der Antennengewinn $G(\theta,\varphi)$ wird meist auch logarithmisch in $\text{[dBi]}$ angegeben. Dabei bezieht sich das i in $\text{[dBi]}$ auf den isotropen Kugelstrahler.
 \begin{equation}
-    G(\phi,\theta)=\frac{P_E(\phi,\theta)}{P_{Eref}(\phi,\theta)}
-    \label{Antennengewinn Empfangsfall}
+    G_\mathrm{dBi}(\theta,\varphi)=10 \cdot \log_{10}\left( \frac{S(\theta,\varphi)\cdot 4\cdot \pi \cdot r^2}{P_\mathrm{TX}} \right)
+    \label{eq:AntennengewinndBi}
 \end{equation}
-Als Referenzantenne in beiden Fällen eine beliebige Antenne gewählt werden. In den meisten Fällen wird als Referenzantenne der isotrope Kugelstrahler verwendet. Allerdings kann auch der einfache hertzsche Dipol verwendet werden\cite{Balanis_2005}.\newline
-Der isotrope Kugelstrahler ist eine rein theoretische Antenne. Der isotrope Kugelstrahler strahlt die eingespeiste Leitung $P_S$ in alle Richtungen gleichmäßig aus und empfängt auch aus allen Richtungen die gleiche Leistung $P_E$. Aus diesem Grund eignet sich der isotrope Kugelstrahler besonders gut als Referenzantenne. Für die Strahlungsleistungsdichte eines isotrope Kugelstrahler gilt:
+Die Gleichung \ref{eq:AntennengewinndBi} ergibt sich aus der Gleichung \ref{eq:Antennengewinn} und der Gleichung \ref{eq:isotroperkugelstrahler-strahlungsleistungsdichte} für die Strahlungsleistungsdichte eines isotropen Kugelstrahlers.\newline
+Der Antennengewinn $G(\theta,\varphi)$ ist eng mit dem Richtfaktor $D$ und dem Wirkungsrad $\eta$ der Antenne verbunden\cite{Balanis_2005}\cite{Satellite_Communications_Systems}.
+Innerhalb der $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ kann der Gewinn $G$ in einem bestimmten Winkel $\theta$ mithilfe des maximalen Gewinns $G_\mathrm{max}$ bestimmt werden.\cite{Satellite_Communications_Systems}
 \begin{equation}
-    S_0=\frac{P_S}{4\cdot \pi \cdot r^2 }
-    \label{Strahlungsleistungsdichte isotroper Kugelstrahler}
+    G_\mathrm{dBi}(\theta)=G_\mathrm{max,dBi}-12 \left(\frac{\theta}{\theta_\mathrm{3dB}}\right)^2
+    \label{eq:Gewinn-aus-3dB-Strahlbreite}
 \end{equation}
-Der Gewinn wird meistens logarithmisch in dBi angegeben. Das i in dBi bedeutet, dass der Gewinn auf einen isotropen Kugelstrahler bezogen angeben wird. Aus der Gleichung \ref{Grunddefinition Antennengewinn} und \ref{Strahlungsleistungsdichte isotroper Kugelstrahler} folgt dann für die logarithmische Darstellung:
+Die Gleichung \ref{eq:Gewinn-aus-3dB-Strahlbreite} gilt nur für $0\leq\theta\leq\frac{\theta_\mathrm{3dB}}{2}$. Der maximale Gewinn $G_\mathrm{max}$ kann mit dem Wirkungsgrad $\eta$ der Antenne ebenfalls aus der $3\,\text{dB-Strahlbreite}$ $\theta_\mathrm{3dB}$ gewonnen werden.\cite{Satellite_Communications_Systems}
 \begin{equation}
-    G=10 \cdot \log_{10}\left( \frac{S(\phi,\theta)\cdot 4\cdot \pi \cdot r^2}{P_S} \right)
-    \label{GewinndBi}
+    G_\mathrm{max}=\eta\left(\frac{\pi\cdot D \cdot f}{c}\right)^2=\eta\left(\frac{\pi\cdot 70 }{\theta_\mathrm{3dB}}\right)^2
+    \label{eq:max-Gewinn-aus-3dB-Strahlbreite}
 \end{equation}
-Wird nichts weiter angegeben, kann im Datenblatt einer Antenne beim Gewinn $G(\varphi,\theta)$ vom Gewinn in Richtung der Hauptkeule ausgegangen werden, da diese auch die bevorzugte Anwendnugsrichtung der Antenne darstellt.\cite{Balanis_2005}
 
 \subsubsection*{Richtfaktor und Wirkungsgrad}
-Beim Richtfaktor $D$ einer Antenne handelt es sich um  das Verhältnis der Strahlungsintensität bei einem bestimmten Abstrahlwinkel $(\varphi,\theta)$ zu der durchschnittliche Strahlungsintensität der Antenne in alle Richtungen. Dabei wird meistens als Abstrahlwinkel $(\varphi,\theta)$ der Winkel von der maximalen Strahlungsintensität, also der Hauptkeule der Antenne, verwendet.\cite{Balanis_2005}
+Beim Richtfaktor $D$ einer Antenne handelt es sich um  das Verhältnis der Strahlungsintensität bei einem bestimmten Abstrahlwinkel $(\theta,\varphi)$ zu der durchschnittliche Strahlungsintensität der Antenne in alle Richtungen. Dabei wird meistens als Abstrahlwinkel $(\theta,\varphi)$ der Winkel von der maximalen Strahlungsintensität, also der Hauptkeule der Antenne, verwendet.\cite{Balanis_2005}
 \begin{equation}
     D=\frac{\text{Maximale Strahlungsintensität}}{\text{Durchschnittliche Strahlungsintensität}}=\frac{\phi_\mathrm{max}}{\phi_\mathrm{\varnothing}}
-    \label{RichtfakotrD}
+    \label{eq:Richtfaktor}
 \end{equation}
-Die durchschnittliche Strahlungsintensität kann über die von der Antenne abgestrahlten Leistung $P_\mathrm{rad}$ bestimmt werden.\cite{Balanis_2005}
+Die durchschnittliche Strahlungsintensität kann über die von der Antenne abgestrahlten Leistung $P_\mathrm{TX}$ bestimmt werden.\cite{Balanis_2005}
 \begin{equation}
-    \phi_\mathrm{\varnothing}=\frac{P_\mathrm{rad}}{4\pi}
+    \phi_\mathrm{\varnothing}=\frac{P_\mathrm{TX}}{4\pi}
+    \label{eq:durchschnittliche-Strahlungsintensität}
 \end{equation}
 Mit dem Richtfaktor $D$ und mithilfe des Antennenwirkungsgrad $\eta$ kann der Gewinn $G$ einer Antenne ermittelt werden.
 \begin{equation}
     G=\eta\cdot D = \eta\cdot\frac{\phi_\mathrm{max}}{\phi_\mathrm{\varnothing}}
+    \label{eq:Gewinn-aus-Richtfaktor}
 \end{equation}
-Der Antennenwirkungsgrad $\eta$ berücksichtigt Verluste, welche innerhalb der Antenne auftreten. Zusammensetzen tut sich der Antennenwirkungsgrad $\eta$ aus den ohmschen Verlusten $\epsilon_\mathrm{R}$, den Verlusten durch Reflexion $\epsilon_\mathrm{\Gamma}$ und den dielektrischen Verlusten $\epsilon_\mathrm{d}$.\cite{Balanis_2005}
+Der Wirkungsgrad $\eta$ einer Antenne setzt sich aus mehrere einzelnen Verlusten zusammen. Der Wirkungsgrad $\eta$ kann Werte zwischen $0$ und $1$ annehmen, was sich zu $0\,\%$ und $100\,\%$ übersetzen lässt. Bei verlustlosen Antennen gilt $\eta=1$, was zu $G=D$ führt.\cite{Balanis_2005}\cite{Satellite_Communications_Systems}
 \begin{equation}
-    \eta=\epsilon_\mathrm{R}\cdot\epsilon_\mathrm{\Gamma}\cdot\epsilon_\mathrm{d}
+    \eta=\eta_\mathrm{illum}\cdot\eta_\mathrm{spill}\cdot\eta_\mathrm{surface}\cdot \eta_\mathrm{miss}\cdot \dots
+    \label{eq:Effiziens-Antenne}
 \end{equation}
-Bei verlustlosen Antennen gilt $G=D$, da $\eta=1$. -> Mehr zu den Verlusten raus suchen.
+Die Effizienz der Aperaturausleuchtung $\eta_\mathrm{illum}$ der Antenne gibt das Ausleuchtung des Reflektor im Bezug auf eine gleichmäßige Ausleuchtung an. Eine hohe Effizienz der Aperaturausleuchtung $\eta_\mathrm{illum}=1$ und damit eine gleichmäßige Ausleuchtung ist nicht unbedingt erwünscht. Eine gleichmäßige Ausleuchtung hat auch großen Nebenkeulen zur Folge, welche bei Antennen mit hoher Richtwirkung $D$ nicht vom Vorteil sind. Ein Kompromiss kann durch eine Dämpfung der Ausleuchtung am Rande des Reflektor erzielt werden.\cite{Satellite_Communications_Systems}\newline
+Mit der Spill-over-Effizienz $\eta_\mathrm{spill}$ der Antenne wird die von der Primärquelle (Antennenfeed, etc.) abgestrahlte und vom Reflektor aufgenommene Leistung im Vergleich zur gesamten abgestrahlten Leistung angegeben. Die Differenz zwischen der aufgenommen und der abgestrahlten Leistung ist der Spill-over Verlust. Je größer der vom Reflektor eingenommene Raumwinkel im Strahlungsmuster der Primärquelle ist, desto mehr Leistung wird vom Reflektor aufgenommen und desto größer ist auch $\eta_\mathrm{spill}$ . Jedoch wird mit wachsendem eingenommen Raumwinkel des Reflektor ist Aperaturausleuchtung am Rande des Reflektor immer geringer, was zu einem Abfall der Aperaturausleuchtungseffizienz führt. Ein Kompromiss zwischen $\eta_\mathrm{illum}$ und $\eta_\mathrm{spill}$ führt zu einer Spill-over-Effizienz von $\eta_\mathrm{spill} \approx 0.8$.\cite{Satellite_Communications_Systems}\newline
+Auch wird in der Effizienz der Antenne $\eta$ der Einfluss auf den Gewinn $G(\theta,\varphi)$ der Antenne durch die Beschaffenheit der Oberfläche  mit $\eta_\mathrm{surface}$ berücksichtigt. Weiterhin kann mit $\eta_\mathrm{miss}$ der Einfluss durch nicht angepasste Impedanzen in der Antenneneffizienz $\eta$ berücksichtigt. Auch können noch viele weitere Verluste mit in die Antenneneffizienz eingebracht werden.\cite{Satellite_Communications_Systems}
+
 
 \subsubsection*{Äquivalente Strahlungsleistung}
-Die äquivalente Strahlungsleistung oder auch effektive Strahlungsleistung (ERP) ist eine nützliche Größe um die die Auswirkung des Gewinns $G(\varphi,\theta)$ einer Antenne zu verdeutlichen.\newline
-Die äquivalente Strahlungsleistung gibt die Leistung an welche eine Referenzantenne abstrahlen müsste, um die gleiche Strahlungsleistungsdichte $S(\varphi,\theta)$ der Bezugsantenne in einem bestimmten Abstrahlwinkel $(\varphi,\theta)$ zu erreichen. Beim Abstrahlwinkel $(\varphi,\theta)$ der Bezugsantenne wird in der Regel von Hauptkeule der Antenne ausgegangen.\cite{Radartutorial-ERP}\newline
-Als Referenzantenne kann eine beliebige Antenne verwendet werden. In der Praxis werden für gewöhnlich eine Dipolantenne oder ein isotroper Kugelstrahler als Referenz gewählt. Wird ein Dipol als Referenz gewählt, wird die äquivalente Strahlungsleistung als ERP angegeben. Wird jedoch ein isotroper Kugelstrahler als Referenzantenne verwendet, wird die äquivalente Strahlungsleistung als EIRP angeben. EIRP steht für equivalente isotropic radiated power oder äquivalente isotropische Strahlungsleistung.\cite{Radartutorial-ERP}\newline
+Die äquivalente Strahlungsleistung, auch effektive Strahlungsleistung (engl. effectiv radiated Power) ERP genannt, ist eine nützliche Größe um die die Auswirkung des Gewinns $G(\theta,\varphi)$ einer Antenne zu verdeutlichen.\newline
+Mit ihr wird die Sendeleistung $P_\mathrm{T}$ angegeben, welche eine Referenzantenne abstrahlen müsste, um die gleiche Strahlungsleistungsdichte $S(\theta,\varphi)$ der Bezugsantenne in eine bestimmte Richtung $(\theta,\varphi)$ zu erreichen. Dabei wird meistens von der Richtung $(\theta,\varphi)$ der Hauptkeule ausgegangen.\cite{Radartutorial-ERP}\newline
+Als Referenzantenne kann dabei eine beliebige Antenne gewählt werden. In der Praxis werden meist eine gewöhnliche Dipolantenne oder ein rein theoretischer isotroper Kugelstrahler als Referenzantenne gewählt.\cite{Radartutorial-ERP}\newline
+Bei der Wahl eines isotopen Kugelstrahlers wird die äquivalente Strahlungsleistung in bezug auf den isotropen Kugelstrahler angegeben. Dann ist von der äquivalenten isotropen Strahlunsgleistung (engl. effective isotropic radiated power) EIRP die Rede.\cite{Radartutorial-ERP}\newline
 Das EIRP setzt sich aus der Sendeleistung $P_\mathrm{T}$ und dem Gewinn $G$ in Richtung der Hauptkeule und den Verlusten der Antenne $L_\mathrm{ANT}$ zusammen.\cite{Radartutorial-ERP}
 \begin{equation}
     EIRP=P_\mathrm{T}\cdot \frac{G}{L_\mathrm{ANT}}
-    \label{EIRPdBm}
+    \label{eq:EIRP}
 \end{equation}
-Das EIRP kann auch logarithmisch, z.B. in dBm, angeben werden.
+Das EIRP kann auch logarithmisch, z.B. in $\text{dBm}$, angeben werden.
 \begin{equation}
     EIRP_\mathrm{dBm}=10 \cdot \log_{10} \left( \frac{P_\mathrm{T}\cdot \frac{G}{L_\mathrm{ANT} }}{1\cdot 10^{-3}}\right) = P_\mathrm{T,dBm}+G_\mathrm{dBi}-L_\mathrm{ANT,dB}
-    \label{EIRPdBm}
+    \label{eq:EIRPdBm}
 \end{equation}
 Das EIRP und ERP hängen über den Gewinn $G=1.64$ der Dipolantenne gegenüber dem isotropen Kugelstrahler miteinander zusammen.\cite{Radartutorial-ERP}
 \begin{equation*}
@@ -117,32 +154,41 @@ Das EIRP und ERP hängen über den Gewinn $G=1.64$ der Dipolantenne gegenüber d
 Mithilfe des ERP und EIRP kann die scheinbare Leistung eines Senders quantifiziert werden. Anwendung findet das im Bereich der Telekommunikationstechnik. Die Bundesnetzagentur gibt mit dem EIRP die maximale zulässige Sendeleistung im sogenannten Frequenznutzungsplan \cite{FrequenzplanBundesnetzagentur} an. So soll eine gemeinschaftliche Nutzung der einzelnen Frequenzbänder garantiert und gegenseitige Störungen minimiert werden.\cite{Radartutorial-ERP}
 
 \subsubsection*{Effektive Antennenfläche}
-Die effektive Antennenfläche $A_\mathrm{E}$ ist ein wichtiger Parameter für Antennen, welche als Empfangsantennen betrieben werden.\newline
-Die effektive Antennenfläche, auch Absoprtionsfläche oder Wirkläche genannt, ist rein theoretische Fläche. Diese kann gleich oder kleiner als die reale Fläche der jeweiligen Antenne sein.\newline
-Bestimmt wird die effektive Antennenfläche $A_\mathrm{E}$, bei verlustlosen Antennen, über das Verhältnis von der am Fuße der Antenne verfügbaren Leistung $P_\mathrm{E}$ zu der Strahlungsleistungsdichte $S_\mathrm{E}$ von der auf die Antenne eintreffende Welle.\cite{Balanis_2005}
+Die effektive Antennenfläche, auch Absorbtions- oder Wirkfläche genannt, ist eine rein theoretische Fläche. Die effektive Antennenfläche $A_\mathrm{E}$ kann maximal gleich der physikalische Fläche der Antenne $A_\mathrm{phy}$ sein, ist aber bei realen Antenne meistens kleiner.\newline
+Bestimmt werden kann die effektive Antennenfläche $A_\mathrm{E}$ einer verlustlosen Antenne über das Verhältnis der von der Antenne aufgenommen Leistung $P_\mathrm{R}$ und der Strahlungsleistungsdichte $S_\mathrm{R}$ der auf die Antenne einfallenden elektromagnetischen Welle.\cite{Balanis_2005}
 \begin{equation}
-    A_\mathrm{E}=\frac{P_\mathrm{E}}{S_\mathrm{E}}
+    A_\mathrm{E}=\frac{P_\mathrm{R}}{S_\mathrm{R}}
+    \label{eq:effektive-Antennenfläche}
 \end{equation}
-Dank der Reziprozität von Antennen kann aus der effektiven Antennenfläche $A_\mathrm{E}$ auch der Gewinn $G$ der Antenne ermittelt werden und umgekehrt.\newline
--> weiter ausführen
-
-
-
+Die Einheit der effektiven Antennenfläche ist $[\text{m}^2]$. Auch kann die effektive Antennenfläche aus dem maximalen Richtfaktor $D$ und folglich auch aus dem maximalen Gewinn $G$ und der Effizienz der Antenne $\eta$ gewonnen werden.\cite{Balanis_2005}
+\begin{equation}
+    A_\mathrm{E}=\frac{\lambda^2}{4\pi}D=\eta\frac{\lambda^2}{4\pi}G_\mathrm{max}
+    \label{eq:effektive-Antennenfläche-aus-Gewinn}
+\end{equation}
+Der Faktor $\frac{\lambda^2}{4\pi}$ folgt aus der maximalen effektiven Antennenfläche eines isotropen Kugelstrahlers.\cite{Balanis_2005}\newline
+Auch kann die Effizienz der effektiven Antennenfläche $A_\mathrm{E}$ bestimmt werden. Die Effizienz der effektiven Antennenfläche $A_\mathrm{E}$, auch Aperatureffizienz $\eta_\mathrm{AE}$ genannt, entspricht dem Verhältnis der effektiven Antennenfläche $A_\mathrm{E}$ zu der physikalischen Fläche $A_\mathrm{phy}$ der Antenne.\cite{Balanis_2005}
+\begin{equation}
+    \eta_\mathrm{AE}=\frac{A_\mathrm{E}}{A_\mathrm{phy}}
+    \label{eq:Effizienz-effektive-Antennenfläche}
+\end{equation}
+Bei einer verlustlosen Antenne entspricht Aperatureffizienz $\eta_\mathrm{AE}$ der Effizienz der gesamten Antenne $\eta$.
 
 \subsubsection*{Polarisation}
-
-
-
-Eine Antenne fungiert als eine Schnittstelle zwischen elektrischen Signalen und elektromagnetischen Wellen im freien Raum. Sie wandelt leitungsgebunde Energie in elektromagnetischen Wellen um oder umgekehrt.\newline
-Im freien Raum existieren zwei verschiedene Arten von Wellen, die Transversal- und Longitudinalwellen. Bei einer transversalen Welle erfolgen die Schwingungen senkrecht zur Ausbreitungsrichtung. Die Schwingungen einer Longitudinalwelle erfolgen in Richtung der Ausbreitung.\cite{Wellentypen}\newline
--> Bild der Wellentypen \newline
-Bei elektromagnetischen Wellen handelt es sich um Transversalwellen. Im Gegensatz zu Lognitudalwellen können Transversalwellen polarisiert werden.\cite{Wellentypen}
+Eine Antenne fungiert als eine Schnittstelle zwischen elektrischen Signalen und elektromagnetischen Wellen im freien Raum. Sie wandelt die leitungsgebundene Energie in elektromagnetischen Wellen um oder umgekehrt.\newline
+Im freien Raum existieren zwei verschiedene Arten von Wellen, die Transversal- und Longitudinalwellen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Bilder/Wavetypes.png}
+    \caption{Vergleich von Transversal- und Longitudinalwelle}
+    \label{VergleichvonTransversalundLongitudinalwelle}
+\end{figure}
+Die Abbildung \ref{VergleichvonTransversalundLongitudinalwelle} zeigt die Transveral- und die Longitudinalwelle im Vergleich zueinander. Bei einer transversalen Welle erfolgen die Schwingungen senkrecht zur Ausbreitungsrichtung. Die Schwingungen einer Longitudinalwelle erfolgen in Richtung der Ausbreitung.\cite{Wellentypen}\newline
+Bei elektromagnetischen Wellen handelt es sich um Transversalwellen. Im Gegensatz zu Longitudinalwellen können Transversalwellen polarisiert werden.\cite{Wellentypen}
 Die Polarisierung $E$ einer elektromagnetischen Welle kann als eine Funktion der Zeit $t$ angesehen werden. Sie beschreibt die Veränderung der Richtung und relative Amplitude des E-Feld Vektors, indem sie in gleichmäßigen zeitlichen Intervallen $n$ die Extremstellen der Schwingungen entlang der Ausbreitungsrichtung der elektromagnetischen Welle im Raum darstellt.\cite{Balanis_2005}\newline
 ->Bild der Polarisierung einfügen\newline
-Die Polarisierung einer Antenne kann mit der Polarisierung der von ihr abgestrahlten EM-Welle beschrieben werden. Jedoch kann die Bauform und Ausrichtung einer Antenne zu unterschiedlichen Polarisierung innerhalb ihrer Strahlungscharakteristik führen. Demnach ist die Polarisierung einer Antenne abhängig vom Abstrahlwinkel $(\varphi,\theta)$, kann aber mit der Polarisierung der aus diesem Winkel abgestrahlten EM-Welle beschrieben werden.\cite{Balanis_2005}
+Die Polarisierung einer Antenne kann mit der Polarisierung der von ihr abgestrahlten EM-Welle beschrieben werden. Jedoch kann die Bauform und Ausrichtung einer Antenne zu unterschiedlichen Polarisierung innerhalb ihrer Strahlungscharakteristik führen. Demnach ist die Polarisierung einer Antenne abhängig vom Abstrahlwinkel $(\theta,\varphi)$, kann aber mit der Polarisierung der aus diesem Winkel abgestrahlten EM-Welle beschrieben werden.\cite{Balanis_2005}
 Im Fernfeld einer Antenne kann die von ihr abgestrahlte elektromagnetische Welle an jedem Punkt auf dem Ausbreitungspfad durch eine ebene Welle mit derselben Ausbreitungsrichtung und elektrischen Feldstärke $\vec{E}$
-angenähert werden. Dies gilt jedoch nur für Punkte, die sich tatsächlich im Fernfeldbereich und entlang des Ausbreitungspfads der Welle befinden. Im Nahfeld wirken zusätzlich statische und induktive Feldkomponenten, weshalb die Wellenfront hier noch gekrümmt ist. Mit wachsender Entfernung zur Antenne vergrößert sich der Krümmungsradius der Wellenfront. Der Einfluss der Nahfeldanteile nimmt also mit wachsender Entfernung zur Quelle ab. Für sehr große Entfernungen wird die Wellenfront lokal praktisch eben, und die elektromagnetische Welle kann hinsichtlich Ausbreitung und Polarisationsverhalten wie eine ebene Welle betrachtet werden. Diese Eigenschaft erlaubt es, die Polarisation der abgestrahlten Welle im Fernfeld durch die Polarisationsrichtung einer ebenen elektromagnetischen Welle eindeutig zu charakterisieren.\cite{Balanis_2005}\newline
-Für eine auf eine Antenne einfallende elektromagnetische Welle wird die Polarisierung als die Polarisierung einer ebenen Welle definiert, die aus einer gegebenen Richtung mit fester Leistungsflussdichte einfällt und die maximale verfügbare Leistung an den Antennenklemmen liefert.\cite{Balanis_2005}\newline
+angenähert werden. Dies gilt jedoch nur für Punkte, die sich tatsächlich im Fernfeldbereich und entlang des Ausbreitungspfads der Welle befinden. Im Nahfeld wirken zusätzlich statische und induktive Feldkomponenten, weshalb die Wellenfront hier noch gekrümmt ist. Mit wachsender Entfernung zur Antenne vergrößert sich der Krümmungsradius der Wellenfront. Der Einfluss der Anteile des Nahfelds nimmt also mit wachsender Entfernung zur Quelle ab. Für sehr große Entfernungen wird die Wellenfront lokal praktisch eben, und die elektromagnetische Welle kann hinsichtlich Ausbreitung und Polarisationsverhalten wie eine ebene Welle betrachtet werden. Diese Eigenschaft erlaubt es, die Polarisation der abgestrahlten Welle im Fernfeld durch die Polarisationsrichtung einer ebenen elektromagnetischen Welle eindeutig zu charakterisieren.\cite{Balanis_2005}\newline
 Die Polarisierung von Antennen und EM-Wellen können in drei Arten klassifiziert. Eine Antenne oder EM-Wellen kann entweder linear, zirkular/kreisförmig oder elliptisch polarisiert sein.\cite{Balanis_2005}\newline
 Bei einer linearen Polarisierung bleibt die Richtung der Schwingung unverändert. Nur die relative Amplitude des E-Feld Vektors ändert periodisch ihren Betrag und Vorzeichen. Damit der E-Feld Vektor nur ein einer Ebene entland der Ausbreitungsrichtung der EM-Welle schwingt darf dieser nur aus einer Komponente oder aus zwei Komponenten bestehen, welche entweder in Phase oder ein vielfaches von $180\degree$ oder $\pi$ außer Phase zu einander sind.\cite{Balanis_2005}
 \begin{figure}[H]
@@ -155,14 +201,15 @@ Die Abbildung \ref{LinearePolarisation} zeigt die unterschiedlichen Arten der li
 Im Falle einer zirkularen oder kreisförmigen Polarisation bleibt die realtive Amplitude des E-Feld Vektors konstant. Jedoch rotiert der E-Feld Vektor mit konstanter Winkelgeschwindigkeit senkrecht zur Ausbreitungsrichtung. Am Ort des Beobachters zeigt E-Feld Vektor damit einen Kreis auf.\cite{Balanis_2005}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Bilder/Rising_circular.png}
+    \includegraphics[width=0.4\linewidth]{Bilder/Rising_circular.png}
     \caption{Zusammensetzung einer zirkularen Polarisation\cite{circular_polarization_image}}
     \label{ZusammensetzungZirkular}
 \end{figure}
-In Abbildung \ref{ZusammensetzungZirkular} sind die Komponenten des E-Feld Vektors (blauer Pfeil) dargestellt. Der E-Feld Vektor setzt sich aus zwei einzelnen E-Feld Vektoren (Rot und Blau) zusammen, welche orthogonal zu einander stehen. Die Phasendifferenz zwischen den roten und blauen E-Feld Vektoren beträgt dabei $90\degree$ oder $\frac{\pi}{2}$ oder ein ungerade vielfaches davon.\cite{Balanis_2005}\newline
+In Abbildung \ref{ZusammensetzungZirkular} sind die Komponenten des E-Feld Vektors (blauer Pfeil) dargestellt. Der E-Feld Vektor setzt sich aus zwei einzelnen linearen E-Feld Vektoren (Rot und Blau) zusammen, welche orthogonal zu einander stehen. Die Phasendifferenz zwischen den roten und blauen E-Feld Vektoren beträgt dabei $90\degree$ oder $\frac{\pi}{2}$ oder ein ungerade vielfaches davon.\cite{Balanis_2005}\newline
 Der Vektor des E-Feldes kann dabei gegen den Uhrzeigersinn oder im Uhrzeigersinn rotieren. Ist eine Welle im Uhrzeigersinn polarisiert, nennt man diese auch rechtshändig polarisiert (engl. right hand circularly polarized) oder auch RHCP. Ist die Welle gegen den Uhrzeigersinn polarisiert, ist von einer linkshändig polarisierten Welle (engl. left hand circularly polarized) oder LHCP die Rede.\cite{Balanis_2005}\newline
-
-
+Bei einer elliptischen Polarisation handelt es sich um eine Kombination aus linearer und zirkularer Polarisation.  Der E-Feld Vektor rotiert mit konstanter Geschwindigkeit senkrecht zur Ausbreitungsrichtung und gleichzeitig verändert sich die relative Amplitude des E-Feld Vektors. Am Ort des Beobachters zeichnet sich eine elliptische Form ab.\cite{Balanis_2005}
+Der E-Feld Vektor setzt sich bei der elliptischen Polarisation aus zwei einzelnen linearen Komponenten zusammen. Diese können die gleiche Amplitude aufweisen, ist aber keine Voraussetzung. Wenn die beiden linearen Komponenten unterschiedliche Amplituden haben, darf die Phasendifferenz zwischen den beiden Komponenten nicht $0\degree$ oder ein vielfaches von $180\degree$ sein, da sonst der zusammengesetzte E-Feld Vektor eine lineare Polarisation aufweisen würde. Bei gleicher Amplitude darf die Phasendifferenz kein vielfaches von $90\degree$ sein, da sonst der zusammensetzte E-Feld Vektor eine zirkulare Polarisation aufweisen würde.\cite{Balanis_2005}\newline
+Eine Antenne ist nur für eine Polarisationsebene ausgelegt und kann EM-Wellen weder ausstrahlen noch empfangen, wenn diese orthogonal zu ihrer eigenen Polarisation stehen.\cite{Satellite_Communications_Systems} Diese Eigenschaft macht es möglich über die gleiche Übertragungsstrecke zwei verschiedene Links mit der gleichen Frequenz $f$ zu betreiben. Dafür müssen an beiden Ende der Übertragungsstrecke zwei verschiedene Antenne mit orthogonaler Polarisation zu einander oder jeweils eine Antenne, welche beide Polarisationen unterstützt.\cite{Satellite_Communications_Systems}
 
 
 
