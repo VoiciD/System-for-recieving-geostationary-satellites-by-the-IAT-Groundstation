@@ -9,8 +9,8 @@ Created on Mon Nov  3 10:56:20 2025
 import numpy as np
 
 
-lat_ant = np.deg2rad(53.055)
-long_ant = np.deg2rad(8.78)
+lat_ant = np.deg2rad(50.025)
+long_ant = np.deg2rad(-5.19)
 
 lat_sat = np.deg2rad(0)
 long_sat = np.deg2rad(25.8)

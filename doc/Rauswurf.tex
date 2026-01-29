@@ -146,3 +146,92 @@ C/N_\mathrm{o}=\frac{P_\mathrm{RX}}{k\cdot T_\mathrm{S,verbessert}}=\frac{5.93\c
 \text{dBHz}
  \label{eq:Qualität-Downlink-klarer-Himmel}
 \end{equation}
+
+
+
+
+
+
+
+
+
+\newline
+Die Leistung am Ausgang des Empfangssystems $P_\mathrm{RX}$ in Goonhilly kann mithilfe einer Leistungsanzeige über die Weboberfläche ermittelt werden.\cite{OnlineMonitor}\newline
+Bei zwei Einseitenbandübertagungen werden in einem Abstand von $10\,\text{s}$ 10 Messwerte aufgenommen. Bei den Messwerten handelt es sich um die momentane Spitzenleistung, welche von dem Leistungsmesser angezeigt wird. Die Bandbreite wird dabei auf die maximale zulässige Bandbreite bei Einseitenbandübertragungen von $B=2.7\,\text{kHz}$ eingestellt. Mit dem gleichen Prinzip wird das Rauschen am Ausgang des Empfangssystems gemessen. Dafür wird eine freie Frequenz im Downlink ausgewählt. Die Bandbreite beträgt hier ebenfalls $B=2.7\,\text{kHz}$. Anschließend wird für die jeweilige Messreihe der Durchschnitt in dB und in dBm ermittelt.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+      Wert  & Übertragung 1 (dB) & Übertragung 2 (dB) & Rauschen (dB) \\
+        \hline
+      1  & $-67.1$ & $-70.9$ & $-85.4$ \\
+      2  & $-72.4$ & $-71.1$ & $-85.6$ \\
+      3  & $-73.1$ & $-69.9$ & $-84.9$ \\
+      4  & $-71.6$ & $-69.2$ & $-86$ \\
+      5  & $-74.3$ & $-70.6$ & $-85.1$ \\
+      6  & $-65.3$ & $-72$ & $-85.3$ \\
+      7  & $-75$ & $-69.2$ & $-85.6$ \\
+      8 & $-68.1$ & $-71.4$ & $-85.5$ \\
+      9  & $-67.9$ & $-72.8$ & $-85.4$ \\
+      10  & $-69$ & $-73.4$ & $-86.4$ \\
+      \hline
+      Durchschnitt (dB) & $-70.38$ &$-71.05$ & $-85.52$\\ 
+      Durchschnitt (dBm) & $-40.38$& $-41.05$ & $-55.52$ \\ 
+    \end{tabular}
+    \caption{Aufgenommene Messwerte des Empfangssystems an der Goonhilly Bodenstation}
+    \label{tab:Messwerte-Goonhilly}
+\end{table}
+Die Tabelle \ref{tab:Messwerte-Goonhilly} zeigt die aufgenommenen Messwerte, sowie die Durchschnittswerte. Die durchschnittliche Leistung am Ausgang des Empfangssystems beträgt bei den Einseitenbandübertagungen $P_\mathrm{RX}=-40.38\,\text{dBm}$, bzw. $P_\mathrm{RX}=-41.05\,\text{dBm}$. Die Korrektheit der Messwerte kann mit dem Gewinn des Empfangssystems $G_\mathrm{LNB,max}=65\,\text{dB}$ und der Eingangsleistung $P_\mathrm{R}=-107.77\,\text{dBm}$ ermittelt werden.
+\begin{equation}
+    P_\mathrm{RX}=P_\mathrm{R}+ G_\mathrm{LNB,max}=-107.77\,\text{dBm}+65\,\text{dB}=-42.77\,\text{dBm}
+    \label{eq:theoretische-Ausgangsleistung-Goonhilly}
+\end{equation}
+Die theoretische ermittelt Leistung am Ausgang des Empfangssystems $P_\mathrm{RX}=-42.77\,\text{dBm}$ deckt sich ungefähr mit der gemessene Leistung am Ausgang des Empfangssystems $P_\mathrm{RX}=-40.38\,\text{dBm}$, bzw. $P_\mathrm{RX}=-41.05\,\text{dBm}$. Aus diesem Grund können die gemessenen Werte als korrekt angenommen werden. Für weitere Rechnungen und Vergleichen wird der Mittelwert $P_\mathrm{RX}=-40.72\,\text{dBm}$ verwendet.\newline
+Verglichen mit der theoretischen Ausgangsleistung bei einem klaren Himmel des Empfangssystems am IAT $P_\mathrm{RX}=-31.18\,\text{dBm}$ ist die Ausgangsleistung am des Empfangssystems in Goonhilly $P_\mathrm{RX}=-40.72\,\text{dBm}$ um $9.54\,\text{dB}$. Erklärt werden kann das mit der niedrigeren Verstärkung des Empfangssystems in Goonhilly $G_\mathrm{LNB,max}=65\,\text{dB}$, verglichen mit der Verstärkung $G_\mathrm{sys}=79.49\,\text{dB}$ des Empfangssystems am IAT. Auffällig dabei ist, dass die beiden Ausgangsleistungen nicht um die Differenz der beiden Verstärkungen von $14.49\,\text{dB}$ auseinander liegen. Mögliche Gründe können dabei ein höherer Antennengewinn $G_\mathrm{R,Goonhilly}$ der an der Goonhilly Bodenstation verwendeten Antenne oder eine weitere Verstärkende Komponente im Empfangssystem, welche nicht auf der Webseite angeben wird.
+
+Als nächstes kann das Rauschen der beiden Empfangssysteme und damit auch der Signal-zu-Rauschabstand an den Ein- und Ausgängen der beiden Empfangssysteme miteinander verglichen werden.\newline
+Für die Ermittlung der Rauschleistung am Eingang des Empfangssystems $N_\mathrm{i}$ Goonhilly muss zunächst die Antennentemperatur $T_\mathrm{A,Goonhilly}$ ermittelt werden, welche wiederum vom Elevationswinkel $\varepsilon$ der Antenne abhängig ist. Der Elevationswinkel $\varepsilon$ kann mit den Koordinaten $50.05\degree,-5.18\degree$ der Bodenstation mit der Gleichung \ref{eq:Elevation} in Python bestimmt werden. Das verwendete Python-Skript ist im GitHub-Repository und im Anhang unter \ref{lst:Antenne-berechnung-python} hinterlegt.
+\begin{equation}
+\begin{split}
+    \varepsilon&=\arctan\left(\frac{\cos(lat_\mathrm{BS})\cdot\cos(\Delta long)-\frac{r_\mathrm{0}}{r_\mathrm{0}+r}}{\sqrt{1-\cos^2(lat_\mathrm{BS})\cdot\cos^2(\Delta long)}} \right)\\
+    &=\arctan\left(\frac{\cos(-5.18\degree)\cdot\cos(50.05\degree-25.8\degree)-\frac{6378\,\text{km}}{6378\,\text{km}+35790\,\text{km}}}{\sqrt{1-\cos^2(-5.18\degree)\cdot\cos^2(50.05\degree-25.8\degree)}} \right)\\
+    &=25.56\degree
+\end{split}
+    \label{eq:Elevation-Antenne-Goonhilly}
+\end{equation}
+Aus dem Graphen in Abbildung \ref{fig:Temperatur-Himmel} kann für eine ideale Antenne mit dem Elevationswinkel $\varepsilon=25.56\degree\approx25\degree$ eine Antennentemperatur von $T_\mathrm{A,Goonhilly}\approx8\,\text{K}$ entnommen werden. Damit ist die Antennentemperatur $T_\mathrm{A,Goonhilly}$ des Empfangssystems an der Goonhilly Bodenstation um $1.5\,\text{K}$ höher als die Antennentemperatur $T_\mathrm{A}=6.5\,\text{K}$ des Empfangssystem am IAT. Die Steigerung in der Antennentemperatur kann mit den niedrigeren Elevationswinkel erklärt werden, wodurch mehr Rauschen vom Boden empfangen wird. Die leicht höhere Antennentemperatur kann zu einer minimalen Erhöhung der empfangenen Rauschleistung $N_\mathrm{i}$ führen und damit zu einer Absenkung des Signal-zu-Rauschabstand $SNR_\mathrm{i,Goonhilly}$ am Eingang des Empfangssystems. Dieses kann mithilfe der Gleichung \ref{eq:SNR-Eingang-Empfangsystem} bestimmt. Von Interesse ist die maximale Bandbreite eines Signals, sprich $B=2.7\,\text{kHz}$.
+\begin{equation}
+    SNR_\mathrm{i,Goonhilly}=\frac{P_\mathrm{R}}{N_\mathrm{i}}=\frac{1.67\cdot 10^{-14}\,\text{W}}{1.38\cdot 10^{-23}\frac{\text{J}}{\text{K}}\cdot 8\,\text{K}\cdot2.7\,\text{kHz}}=56025.23=47.48\,\text{dB}
+    \label{eq:SNRi-Goonhilly}
+\end{equation}
+Obwohl die empfangene Rauschleistung $N_\mathrm{i}$ größer ist als die des Empfangssystems am IAT, weist das Empfangssystem an der Goonhilly Bodenstation mit 
+$SNR_\mathrm{i,Goonhilly}=47.48\,\text{dB}$ einen um $1.9\,\text{dB}$ größeren Signal-zu-Rauschabstand gegenüber des $SNR_\mathrm{i}=45.49\,\text{dB}$ vom Empfangssystem am IAT auf. Erklärt werden kann dieser Wert mit der größeren empfangenen Leistung von $P_\mathrm{R}=1.67\cdot10^{-14}\,\text{W}$ des Goonhilly Empfangssystems im Vergleich zur 
+empfangenen Leistung $P_\mathrm{R}=8.57\cdot10^{-15}\,\text{W}$ des Empfangssystems am IAT.\newline
+Für die erfolgreiche Demodulation der empfangenen Signale ist der Signal-zu-Rauschabstand am Ausgang des Empfangssystems $SNR_\mathrm{o,Goonhilly}$ relevant. Dieser kann über die messtechnisch erfassten Werte für die Ausgangsleistung $P_\mathrm{RX}$ und Ausgangsrauschleistung $N_\mathrm{o}$ in Tabelle \ref{tab:Messwerte-Goonhilly} bestimmt werden.
+\begin{equation}
+    SNR_\mathrm{o,Goonhilly}=P_\mathrm{RX,dBm}-N_\mathrm{o,dBm}=-40.72\,\text{dBm}-(-55.52\,\text{dBm})=\mathrm{14.8\,\text{dB}}
+    \label{eq:SNRo-Goonhilly}
+\end{equation}
+Mit $SNR_\mathrm{o,Goonhilly}=14.8\,\text{dB}$ ist der Signal-zu-Rauschabstand des Empfangssystem der Goonhilly Bodenstation um $13.46\,\text{dB}$ kleiner als der Signal-zu-Rauschabstand $SNR_\mathrm{o}=28.26\,\text{dB}$ vom Empfangssystem am IAT. Der einzige Grund kann dafür nur ein sehr hohes Eigenrauschen des Empfangssystems sein. Die äquivalente Rauschtemperatur $T_\mathrm{e,Goonhilly}$ kann aus der Rauschleistung $N_\mathrm{o}=-55.52\,\text{dBm}=2.81\cdot10^{-9}\,\text{W}$ über die Gleichung \ref{eq:Äquivalente Rauschtemperatur} ermittelt werden.
+\begin{equation}
+\begin{split}
+        T_\mathrm{e,Goonhilly}&=\frac{N_\mathrm{o}}{k\cdot B\cdot G_\mathrm{LNB,max}}-T_\mathrm{A,Goonhilly}\\
+        &=\frac{2.81\cdot10^{-9}\,\text{W}}{1.38\cdot10^{-23}\frac{\text{J}}{\text{K}}\cdot2.7\,\text{kHz}\cdot 10471.29}-8\,\text{K}\\
+        &=23840.63\,\text{K}
+\end{split}
+\label{eq:Te-Goonhilly}
+\end{equation}
+Wie erwartet weißt das Empfangssystem der Goonhilly Bodenstation ein deutlich höheres Eigenrauschen auf, welches in Form der äquivalenten Rauschtemperatur $T_\mathrm{e,Goonhilly}$ in \ref{eq:Te-Goonhilly} angegeben ist. Im Vergleich zur äquivalenten Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$ des Empfangssystems am IAT, ist die äquivalente Rauschtemperatur des Empfangssystems in Goonhilly ein vielfaches, genauer um $23504\,\text{K}$, höher. Eine solch hohe äquivalente Rauschtemperatur ist sehr unrealistisch und deutet auf einen Fehler in der Messwertaufnahme über die Webseite hin. Der Fehler konnte bis zum Abschluss der Arbeit nicht ermittelt werden. Ein realistischer Wert wäre im Bereich von $300\,\text{K}$ bis $400\,\text{K}$. Aus diesem Grund kann die Korrektheit der gemessenen und ermittelten Werte nicht garantiert werden.\newline
+Mit der äquivalenten Rauschtemperatur $T_\mathrm{A,Goonhilly}=8\,\text{K}$, der äquivalenten Rauschtemperatur $T_\mathrm{e,Goonhilly}=23840.63\,\text{K}$ und dem Antennengewinn $G_\mathrm{R,Goonhilly}=40.2\,\text{dBi}=10471.29$ kann mit der Gleichung \ref{eq:Empfangsgüte} die Empfangsgüte $G/T$ des Downlinks zum Empfangssystem an der Goonhilly Bodenstation ermittelt werden.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,Goonhilly}}{T_\mathrm{A,Goonhilly}+T_\mathrm{e,Goonhilly}}=\frac{10471.29}{8\,\text{K}+23840.63\,\text{K}}=0.44\,\text{1/K}=-3.57\,\text{dB/K}
+    \label{eq:Empfangsgüte-Goonhilly}
+\end{equation}
+Aufgrund der fehlerhaften äquivalenten Rauschtemperatur $T_\mathrm{e,Goonhilly}=23840.63\,\text{K}$ kommt eine negative Empfangsgüte von $G/T=-3.57\,\text{dB/K}$ raus. Wie bereits erwähnt kann dieser Wert nicht korrekt sein. Unter der Annahme, dass die äquivalente Rauschtemperatur des Empfangssytems der Goonhilly Bodenstation gleich der äquivalenten Rauschtemperatur $T_\mathrm{e,sys}=336.63\,\text{K}$ ist, kann eine Schätzung für die Empfangsgüte des Empfangssystem der Goonhilly Bodenstation getroffen werden.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,Goonhilly}}{T_\mathrm{A,Goonhilly}+T_\mathrm{e,Goonhilly}}=\frac{10471.29}{8\,\text{K}+336.63\,\text{K}}=30.38\,\text{1/K}=14.83\,\text{dB/K}
+    \label{eq:Empfangsgüte-Schätzung-Goonhilly}
+\end{equation}
+Mit der Schätzung, dass $T_\mathrm{e,Goonhilly}=T_\mathrm{e,sys}=336.63\,\text{K}$ ist, kann eine Empfangsgüte von $G/T=14.83\,\text{dB/K}$ bestimmt werden. Im Vergleich zum Empfangssystem am IAT $G/T=13.24\,\text{dB/K}$ ist die Empfangsgüte an Goonhilly Bodenstation um $1.59\,\text{dB/K}$ oder $43.9\%$ besser. Das kann mit der größeren Antenne und des damit größeren Antennengewinns erklärt werden.\newline
+Da die Verluste des Empfangssystems an der Goonhilly Bodenstation nicht bekannt sind, kann die Rauschtemperatur $T_\mathrm{S}$ und damit die Link Qualität nicht bestimmt werden.
+

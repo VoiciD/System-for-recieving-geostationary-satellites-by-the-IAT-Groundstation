@@ -1,0 +1,64 @@
+Die in den einzelnen Kapiteln berechnete und gemessene Empfangsparameter können anschließend noch übersichtlich zusammengefasst werden.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+       Empfangsparameter  & Klarer Himmel & Regen & Differenz\\
+       \hline
+       Freiraumdämpfung $L_\mathrm{FR}$ & $204.61\,\text{dB}$ & $204.61\,\text{dB}$  & - \\
+        Sendeseitige Ausrichtungsverluste $L_\mathrm{\theta T}$ & $5.23\,\text{dB}$ & $5.23\,\text{dB}$ & - \\
+        Empfangsseitige Ausrichtungsverluste $L_\mathrm{\theta R}$ & $0.69\,\text{dB}$ & $0.69\,\text{dB}$ & -\\
+        Antennengewinn $G_\mathrm{R}$ & $38.6\,\text{dBi}$ &  $38.6\,\text{dBi}$ & -\\
+        Maximale Verstärkung $G$ & $79.49\,\text{dB}$ & $79.49\,\text{dB}$ & - \\
+        Dämpfung in der Atmosphäre $L_\mathrm{AT}$ & $0.547\,\text{dB}$& $9.61\,\text{dB}$ & $9.063\,\text{dB}$\\
+        Antennentemperatur $T_\mathrm{A}$ & $6.5\,\text{K}$ & $240.1\,\text{K}$ & $233.6\,\text{K}$\\
+        Empfangene Leistung $P_\mathrm{R}$ & $-110.67\,\text{dBm}$ & $-119.74\,\text{dBm}$ & $9.07\,\text{dB}$\\
+        $SNR_\mathrm{i}$ am Eingang & $45.49\,\text{dB}$ & $20.74\,\text{dB}$& $24.75\,\text{dB}$ \\
+        Leistung am Ausgang & $-31.18\,\text{dBm}$ & $-40.25\,\text{dBm}$ & $9.07\,\text{dB}$\\
+        $SNR_\mathrm{o}$ am Ausgang & $28.26\,\text{dB}$ & $16.93\,\text{dBm}$& $11.33\,\text{dB}$ \\
+        Empfangsgüte $G/T$  & $13.24\,\text{dB/K}$ & $10.99\,\text{dB/K}$ & $2.25\,\text{dB/K}$\\
+        Link Qualität $C/N_\mathrm{0}$& $138.37\,\text{dB/Hz}$ & $130.45\,\text{dB/Hz}$ & $7.92\,\text{dB/Hz}$\\
+    \end{tabular}
+    \caption{Vergleich vom best möglichsten zum ungünstigsten Link Budget}
+    \label{tab:Vergleich-Link-Budget}
+\end{table}
+In der Tabelle \ref{tab:Vergleich-Link-Budget} wird das Link Budget bei einem klaren Himmel mit den Link Budget bei starken Niederschlägen Verglichen. Dabei handelt es sich bei den beiden Link Budgets um das best möglichste und um das ungünstige Link Budget für den betrachteten Downlink von Es'Hail-2 (QO-100). Die Unterschiede treten erst ab der Atmosphäre auf. Der Einfluss durch starke Niederschläge macht sich deutlich bemerkbar und der Vergleich in der Tabelle zeigt, dass diese nicht vernachlässigt werden dürfen. Durch die um $9.063\,\text{dB}$ höhere Dämpfung bei starken Niederschlägen reduziert sich die empfangene Leistung und damit auch die Leistung am Ausgang des Empfangssystems. In Kombination mit der hohen Antennentemperatur und damit höherere Rauschleistung verschlechtert sich der Signal-zu-Rauschabstand am Ein- und Ausgang. Die hohe Rauschleistung hat auch eine deutliche Verschlechterung der Empfangsgüte und Link Qualität zur Folge.\newline
+Auch wenn sich die Empfangsparameter bei starken Niederschlägen teils sehr stark verschlechtern, kann Downlink von Es'Hail-2 (QO-100) auch bei starken Niederschlägen aufrecht erhalten werden.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+       Empfangsparameter  & Theorie & Praktisch Erreicht & Differenz\\
+       \hline
+        Leistung am Ausgang $P_\mathrm{RX}$ & $-31.18\,\text{dBm}$ & $-43.05\,\text{dBm}$ & $11.87\,\text{dB}$ \\
+        Rauschleistung am Ausgang $N_\mathrm{o}$ & $-59.43\,\text{dBm}$ & $-58.5\,\text{dBm}$ & $0.93\,\text{dB}$ \\
+        $SNR_\mathrm{o}$ am Ausgang & $28.26\,\text{dB}$ & $15.45\,\text{dB}$ & $12.81\,\text{dB}$\\
+        Empfangsgüte $G/T$ &$13.24\,\text{dB/K}$ & $12.31\,\text{dB/K}$& $0.93\,\text{dB/K}$ \\
+    \end{tabular}
+    \caption{Vergleich der rechnerisch bestimmten und der in der Praxis erreichten Werten}
+    \label{tab:Vergleich-Theorie-Praxis}
+\end{table}
+In der Tabelle \ref{tab:Vergleich-Theorie-Praxis} werden die in der Theorie bestimmten Werte am Ausgang des Empfangssystems mit den in der Praxis erreichten Werten verglichen. Genauer wird mit den Werte bei einem klaren Himmel verglichen, da dass dem Wetter zum Zeitpunkt der Messung am nächsten kommt. Auffallend ist die deutlich niedrigere Leistung am Ausgang $P_\mathrm{RX}$ und damit auch der niedrigere Signal-zu-Rauschabstand $SNR_\mathrm{o}$.  Da die in der Theorie bestimmte Rauschleistung $N_\mathrm{o}$ nahe der gemessenen Rauschleistung liegt, wird als Grund für die verringerte Leistung am Ausgang $P_\mathrm{RX}$ eine nicht optimale Ausrichtung auf Es'Hail-2 (QO-100) vermutet. Aufgrund der nicht so guten Handhabung und hohen Richtwirkung der Antenne konnte keine bessere Ausrichtung der Antenne erreicht werden. Es ist davon auszugehen, dass bei einer besseren Ausrichtung die gemessenen Werte deutlich näher an den in der Theorie bestimmten Werten liegen wird.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Empfangsparameter & IAT  & Goonhilly & Differenz zu IAT\\
+        \hline
+        Freiraumdämpfung $L_\mathrm{FR}$ & $204.61\,\text{dB}$ & $204.34\,\text{dB}$ & $0.27\,\text{dB}$ \\
+        Sendeseitige Ausrichtungsverluste $L_\mathrm{\theta T}$ & $5.23\,\text{dB}$ & $1.91\,\text{dB}$ & $3.32\,\text{dB}$ \\
+        Empfangsseitige Ausrichtungsverluste $L_\mathrm{\theta R}$ & $0.69\,\text{dB}$ & $0.69\,\text{dB}$ & -\\
+        Antennengewinn $G_\mathrm{R}$ & $38.6\,\text{dBi}$ & $40.2\,\text{dBi}$ & $1.6\,\text{dB}$ \\
+        Maximale Verstärkung $G$ & $79.49\,\text{dB}$ & $65\,\text{dB}$ & $14.49\,\text{dB}$ \\
+        Empfangene Leistung $P_\mathrm{R}$ & $-110.67\,\text{dBm}$ & $-107.77\,\text{dBm}$ & $2.9\,\text{dB}$ \\
+        Empfangene Rauschleistung $N_\mathrm{i}$ & $-156.16\,\text{dBm}$ & $-155.26\,\text{dBm}$ & $1.1\,\text{dB}$ \\
+        $SNR_\mathrm{i}$ am Eingang & $45.49\,\text{dB}$ & $47.48\,\text{dB}$ & $1.99\,\text{dB}$\\
+        Leistung am Ausgang $P_\mathrm{RX}$ & $-43.05\,\text{dBm}$  & $-42.77\,\text{dBm}$ & $0.28\,\text{dB}$ \\
+        Leistung am Ausgang (Theorie) $P_\mathrm{RX}$ & $-31.18\,\text{dBm}$ & $-42.77\,\text{dBm}$ & $11.59\,\text{dB}$\\
+        Rauschleistung am Ausgang $N_\mathrm{o}$ & $-59.44\,\text{dBm}$ &  &  \\
+        $SNR_\mathrm{o}$ am Ausgang & $28.26\,\text{dB}$ &  & \\
+        Äquivalente Rauschtemperatur $T_\mathrm{e}$ & $336.63\,\text{K}$ &  & \\
+        Rauschzahl $F$& $3.34\,\text{dB}$ &  & \\
+        Empfangsgüte $G/T$ & $13.24\,\text{dB/K}$ &  & \\
+    \end{tabular}
+    \caption{Vergleich der Empfangsparameter des Empfangssystem am IAT mit den Empfangssystem an der Goonhilly Bodenstation bei klaren Himmel}
+    \label{tab:Vergleich-IAT-Goonhilly}
+\end{table}
+Die Tabelle \ref{tab:Vergleich-IAT-Goonhilly} vergleicht die Empfangsparameter des Empfangssystem am IAT mit den ermittelten Empfangsparameter des Empfangssystem an der Goonhilly Bodenstation. Durch die geographische bessere Lage zu Es'Hail-2 (QO-100) ist die Freiraumdämpfung zur Goonhilly Bodenstation um $0.27\,\text{dB}$ und die sendeseitige Ausrichtungsverluste um $3.32\,\text{dB}$ geringer. Zusammen mit dem um $1.6\,\text{dB}$ höheren Antennengewinn ist die empfangene Leistung am Empfangssystem an der Goonhilly Bodenstation um $2.9\,\text{dB}$ höher, als die des Empfangssystem am IAT. Dadurch ist auch der Signal-zu-Rauschabstand am Eingang minimal besser. Durch die um $14.49\,\text{dB}$ höhere Verstärkung des Empfangssystems am IAT ist die Leistung am Ausgang des Empfangssystem um $11.59\,\text{dB}$ höher, als die des Empfangssystem in Goonhilly. Die Rauschleistung am Ausgang und die damit verbundene Parameter wie $SNR_\mathrm{o}$, äquivalente Rauschzahl $T_\mathrm{e,Goonhilly}$, Rauschzahl $F_\mathrm{Goonhilly}$ und die Empfangsgüte $G/T$ für das Empfangssystem in Goonhilly konnten nicht ermittelt werden, weshalb da kein Vergleich stattfinden kann.

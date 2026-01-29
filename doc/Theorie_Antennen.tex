@@ -1,4 +1,4 @@
-\subsection{Antenne}
+\subsection{Antennenparameter}
 Die Antenne ist mit der wichtigste Bestandsteil der Empfangskette an der Satellitenbodenstation. Erst mit einer geeigneten Antenne ist es mögliche die Signale vom Satelliten, welcher ebenfalls eine Antenne braucht um die Signale zu senden, zu empfangen. Die Antenne wandelt die leitungsgebundene Welle um und strahlt diese in den freien Raum ab oder empfängt die Wellen im freien Raum und gibt diese an die Leitung ab. Sie ist also das Verbindungsglied zwischen der leitungsgebundenen elektrischen Signal und der Welle im freien Raum.\cite{Balanis_2005}\newline
 Die IEEE definiert eine Antenne als ein passives, lineares und reziprokes Bauelement, welches Radiowellen abstrahlen, als auch empfangen kann.\cite{IEEE145-1993}\cite{Balanis_2005}\newline
 Eine Antenne kann über viele verschiedene Parameter beschrieben werden. Diese Parameter helfen dabei eine geeignete Antenne für die jeweilige Anwendung zu finden.
@@ -171,7 +171,7 @@ Auch kann die Effizienz der effektiven Antennenfläche $A_\mathrm{E}$ bestimmt w
     \eta_\mathrm{AE}=\frac{A_\mathrm{E}}{A_\mathrm{phy}}
     \label{eq:Effizienz-effektive-Antennenfläche}
 \end{equation}
-Bei einer verlustlosen Antenne entspricht Aperatureffizienz $\eta_\mathrm{AE}$ der Effizienz der gesamten Antenne $\eta$.
+Bei einer verlustlosen Antenne entspricht die Aperatureffizienz $\eta_\mathrm{AE}$ der Effizienz der gesamten Antenne $\eta$.
 
 \subsubsection*{Polarisation}
 Eine Antenne fungiert als eine Schnittstelle zwischen elektrischen Signalen und elektromagnetischen Wellen im freien Raum. Sie wandelt die leitungsgebundene Energie in elektromagnetischen Wellen um oder umgekehrt.\newline
@@ -185,31 +185,27 @@ Im freien Raum existieren zwei verschiedene Arten von Wellen, die Transversal- u
 Die Abbildung \ref{VergleichvonTransversalundLongitudinalwelle} zeigt die Transveral- und die Longitudinalwelle im Vergleich zueinander. Bei einer transversalen Welle erfolgen die Schwingungen senkrecht zur Ausbreitungsrichtung. Die Schwingungen einer Longitudinalwelle erfolgen in Richtung der Ausbreitung.\cite{Wellentypen}\newline
 Bei elektromagnetischen Wellen handelt es sich um Transversalwellen. Im Gegensatz zu Longitudinalwellen können Transversalwellen polarisiert werden.\cite{Wellentypen}
 Die Polarisierung $E$ einer elektromagnetischen Welle kann als eine Funktion der Zeit $t$ angesehen werden. Sie beschreibt die Veränderung der Richtung und relative Amplitude des E-Feld Vektors, indem sie in gleichmäßigen zeitlichen Intervallen $n$ die Extremstellen der Schwingungen entlang der Ausbreitungsrichtung der elektromagnetischen Welle im Raum darstellt.\cite{Balanis_2005}\newline
-->Bild der Polarisierung einfügen\newline
-Die Polarisierung einer Antenne kann mit der Polarisierung der von ihr abgestrahlten EM-Welle beschrieben werden. Jedoch kann die Bauform und Ausrichtung einer Antenne zu unterschiedlichen Polarisierung innerhalb ihrer Strahlungscharakteristik führen. Demnach ist die Polarisierung einer Antenne abhängig vom Abstrahlwinkel $(\theta,\varphi)$, kann aber mit der Polarisierung der aus diesem Winkel abgestrahlten EM-Welle beschrieben werden.\cite{Balanis_2005}
-Im Fernfeld einer Antenne kann die von ihr abgestrahlte elektromagnetische Welle an jedem Punkt auf dem Ausbreitungspfad durch eine ebene Welle mit derselben Ausbreitungsrichtung und elektrischen Feldstärke $\vec{E}$
-angenähert werden. Dies gilt jedoch nur für Punkte, die sich tatsächlich im Fernfeldbereich und entlang des Ausbreitungspfads der Welle befinden. Im Nahfeld wirken zusätzlich statische und induktive Feldkomponenten, weshalb die Wellenfront hier noch gekrümmt ist. Mit wachsender Entfernung zur Antenne vergrößert sich der Krümmungsradius der Wellenfront. Der Einfluss der Anteile des Nahfelds nimmt also mit wachsender Entfernung zur Quelle ab. Für sehr große Entfernungen wird die Wellenfront lokal praktisch eben, und die elektromagnetische Welle kann hinsichtlich Ausbreitung und Polarisationsverhalten wie eine ebene Welle betrachtet werden. Diese Eigenschaft erlaubt es, die Polarisation der abgestrahlten Welle im Fernfeld durch die Polarisationsrichtung einer ebenen elektromagnetischen Welle eindeutig zu charakterisieren.\cite{Balanis_2005}\newline
-Die Polarisierung von Antennen und EM-Wellen können in drei Arten klassifiziert. Eine Antenne oder EM-Wellen kann entweder linear, zirkular/kreisförmig oder elliptisch polarisiert sein.\cite{Balanis_2005}\newline
-Bei einer linearen Polarisierung bleibt die Richtung der Schwingung unverändert. Nur die relative Amplitude des E-Feld Vektors ändert periodisch ihren Betrag und Vorzeichen. Damit der E-Feld Vektor nur ein einer Ebene entland der Ausbreitungsrichtung der EM-Welle schwingt darf dieser nur aus einer Komponente oder aus zwei Komponenten bestehen, welche entweder in Phase oder ein vielfaches von $180\degree$ oder $\pi$ außer Phase zu einander sind.\cite{Balanis_2005}
+Die Polarisierung einer Antenne kann der mit der Polarisierung der von ihr abgestrahlten elektromagnetische Welle im Fernfeld beschrieben werden. Dabei haben die Bauform, Ausrichtung und der betrachtete Abstrahlwinkel $(\theta,\varphi)$ Auswirkungen auf die Polarisierung der Welle. Eine Antenne kann je nach Abstrahlwinkel verschiedene Polarisierungen in ihrer Strahlungscharakteristik aufweisen.\cite{Balanis_2005}\newline
+Auch kann je nach Entfernung zur Antenne die elektromagnetische Welle eine unterschiedliche Polarisierung aufweisen. Im Nahfeld der Antenne wirkt noch das statische elektromagnetische Feld der Antenne auf die elektromagnetische Welle ein, weshalb die Wellenfront im Nahfeld noch gekrümmt ist. Mit wachsender Entfernung zur Antenne vergrößert sich der Krümmungsradius der elektromagnetische Wellen, bis diese eine planare Form annimmt. Aus diesem Grund kann die Polarisierung einer Antenne oder elektromagnetischen Welle nur im Fernfeld der Antenne charakterisiert werden.\cite{Balanis_2005}\newline
+Es gibt drei Mögliche Polarisierung mit der eine Antenne oder elektromagnetische Welle charakterisiert werden können - linear, zirkular/Kreisförmig oder elliptisch.\cite{Balanis_2005}\newline
+Bei einer lineare Polarisierung bleibt die Richtung der Schwingung unverändert. Der E-Feld Vektor schwingt senkrecht zur Ausbreitungsrichtung, wobei sich periodisch die relative Amplitude des E-Feld Vektor verändert.\cite{Balanis_2005}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Bilder/Linearly_Polarized_Wave.png}
     \caption{Arten an linearen Polarisationen\cite{linear_polarization_image}}
-    \label{LinearePolarisation}
+    \label{fig:Lineare-Polarisation}
 \end{figure}
-Die Abbildung \ref{LinearePolarisation} zeigt die unterschiedlichen Arten der linearen Polarisation. Im Bezug zu der Erdoberfläche kann eine EM-Welle vertikal linear polarisiert (blau), horizontal linear polarisiert (grün) oder schräg linear polarisiert (rot) sein.\newline
-Im Falle einer zirkularen oder kreisförmigen Polarisation bleibt die realtive Amplitude des E-Feld Vektors konstant. Jedoch rotiert der E-Feld Vektor mit konstanter Winkelgeschwindigkeit senkrecht zur Ausbreitungsrichtung. Am Ort des Beobachters zeigt E-Feld Vektor damit einen Kreis auf.\cite{Balanis_2005}
+In der Abbildung \ref{fig:Lineare-Polarisation} sind die unterschiedlichen Arten der linearen Polarisation dargestellt. Im Bezug zur Erdoberfläche kann eine elektromagnetische Welle oder Antenne linear vertikal blau), linear horizontal (grün) oder linär schräg (rot) polarisiert werden.\newline
+Im Falle einer zirkularen oder kreisförmigen Polarisation bleibt die relative Amplitude des E-Feld Vektors konstant. Jedoch rotiert der E-Feld Vektor mit konstanter Winkelgeschwindigkeit senkrecht zur Ausbreitungsrichtung. Am Ort des Beobachters zeigt E-Feld Vektor damit einen Kreis auf.\cite{Balanis_2005}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{Bilder/Rising_circular.png}
     \caption{Zusammensetzung einer zirkularen Polarisation\cite{circular_polarization_image}}
-    \label{ZusammensetzungZirkular}
+    \label{fig:zirkulare-Polarisation}
 \end{figure}
-In Abbildung \ref{ZusammensetzungZirkular} sind die Komponenten des E-Feld Vektors (blauer Pfeil) dargestellt. Der E-Feld Vektor setzt sich aus zwei einzelnen linearen E-Feld Vektoren (Rot und Blau) zusammen, welche orthogonal zu einander stehen. Die Phasendifferenz zwischen den roten und blauen E-Feld Vektoren beträgt dabei $90\degree$ oder $\frac{\pi}{2}$ oder ein ungerade vielfaches davon.\cite{Balanis_2005}\newline
-Der Vektor des E-Feldes kann dabei gegen den Uhrzeigersinn oder im Uhrzeigersinn rotieren. Ist eine Welle im Uhrzeigersinn polarisiert, nennt man diese auch rechtshändig polarisiert (engl. right hand circularly polarized) oder auch RHCP. Ist die Welle gegen den Uhrzeigersinn polarisiert, ist von einer linkshändig polarisierten Welle (engl. left hand circularly polarized) oder LHCP die Rede.\cite{Balanis_2005}\newline
+Die Abbildung \ref{fig:zirkulare-Polarisation} zeigt die Zusammensetzung der zirkulare Polarisation. Bei einer zirkularen Polarisation setzt sich der E-Feld Vektor aus zwei linearen Schwingungen, welche orthogonal zu einander stehen, zusammen. Die Rotation des E-Feld Vektors kann dabei links und rechtsläufig sein. Bei einer links läufigen Rotation handelt es sich im eine linkshändig polarisierten (engl. left hand polarized) Welle oder kurz LHCP. Ist die Rotation rechts läufig, so handelt es sich um eine rechtshändig polarisierte (engl. right hand polarized) Welle oder RHCP.\cite{Balanis_2005}\newline
 Bei einer elliptischen Polarisation handelt es sich um eine Kombination aus linearer und zirkularer Polarisation.  Der E-Feld Vektor rotiert mit konstanter Geschwindigkeit senkrecht zur Ausbreitungsrichtung und gleichzeitig verändert sich die relative Amplitude des E-Feld Vektors. Am Ort des Beobachters zeichnet sich eine elliptische Form ab.\cite{Balanis_2005}
-Der E-Feld Vektor setzt sich bei der elliptischen Polarisation aus zwei einzelnen linearen Komponenten zusammen. Diese können die gleiche Amplitude aufweisen, ist aber keine Voraussetzung. Wenn die beiden linearen Komponenten unterschiedliche Amplituden haben, darf die Phasendifferenz zwischen den beiden Komponenten nicht $0\degree$ oder ein vielfaches von $180\degree$ sein, da sonst der zusammengesetzte E-Feld Vektor eine lineare Polarisation aufweisen würde. Bei gleicher Amplitude darf die Phasendifferenz kein vielfaches von $90\degree$ sein, da sonst der zusammensetzte E-Feld Vektor eine zirkulare Polarisation aufweisen würde.\cite{Balanis_2005}\newline
-Eine Antenne ist nur für eine Polarisationsebene ausgelegt und kann EM-Wellen weder ausstrahlen noch empfangen, wenn diese orthogonal zu ihrer eigenen Polarisation stehen.\cite{Satellite_Communications_Systems} Diese Eigenschaft macht es möglich über die gleiche Übertragungsstrecke zwei verschiedene Links mit der gleichen Frequenz $f$ zu betreiben. Dafür müssen an beiden Ende der Übertragungsstrecke zwei verschiedene Antenne mit orthogonaler Polarisation zu einander oder jeweils eine Antenne, welche beide Polarisationen unterstützt.\cite{Satellite_Communications_Systems}
+
 
 
 

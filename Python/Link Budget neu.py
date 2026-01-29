@@ -33,7 +33,7 @@ L_OR_dB = 0.69
 
 G_R = 7244.36
 G_LNC = 316227.76
-G_SDR = 1000
+G_SDR = 1412.54
 
 L_sys = 5.02  
 G_sys = G_LNC*G_SDR*(1/L_sys)

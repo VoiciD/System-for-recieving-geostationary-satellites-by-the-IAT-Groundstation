@@ -145,9 +145,13 @@ Auch lässt sich in einem $50\,\Omega-\text{System}$ die Rauschzahl $F$ direkt a
     F_\mathrm{dB}=-S_\mathrm{21,dB}=20\cdot\log_{10}\left(\frac{1}{|S_\mathrm{21}|}\right)
 \end{equation}
 Bei der Verschaltung mehrere Zweitore ergibt sich für das Gesamtsystem eine Gesamtrauschzahl $F_\mathrm{ges}$, sowie eine gesamte äquivalente Rauschtemperatur $T_\mathrm{e,ges}$. Je nach Verschaltung der Zweitore wird die Rauschzahl $F_\mathrm{ges}$ und die Äquivalente Rauschtemperatur $T_\mathrm{e,ges}$ des Gesamtsystems unterschiedlich bestimmt.\newline
--> Grafik Kettenschaltung
-\newline
-Beim Kaskadieren von mehreren Zweitoren, auch Kettenschaltung genannt, setzt sich die Gesamtrauschzahl $F_\mathrm{ges}$ aus der Summe der Rauschzahlen $F_\mathrm{x}$, wobei $x=1,2,3,\dots$, der einzelnen Zweitore, sowie deren Verstärkungen $G_\mathrm{x}$, zusammen.\cite{HEUERMANN_2018}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.7\linewidth]{Bilder/Kettenschaltung Zweitore}
+    \caption{Kaskadierung von mehreren Zweitoren}
+    \label{fig:Kettenschaltung-Zweitore}
+\end{figure}
+Beim Kaskadieren von mehreren Zweitoren, wie in Abbildung \ref{fig:Kettenschaltung-Zweitore} dargestellt, setzt sich die Gesamtrauschzahl $F_\mathrm{ges}$ aus der Summe der Rauschzahlen $F_\mathrm{x}$, wobei $x=1,2,3,\dots$, der einzelnen Zweitore, sowie deren Verstärkungen $G_\mathrm{x}$, zusammen.\cite{HEUERMANN_2018}
 \begin{equation}
     F_\mathrm{ges}=F_\mathrm{1}+\frac{F_\mathrm{2}-1}{G_\mathrm{1}}+\frac{F_\mathrm{3}-1}{G_\mathrm{1}\cdot G_\mathrm{2}}+\dots
     \label{eq:Gesamtrauschzahl-Kaskade}
@@ -190,7 +194,7 @@ Die Helligkeitstemperatur des Himmels $T_\mathrm{Sky}$ kann über die Gleichung 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{Bilder/T_Sky.png}
-    \caption{Darstellung der Helligkeitstemperatur des Himmels in Abhängigkeit der Frequenz $f$ für mehrere Elevationswinkel $\epsilon$\cite{Satellite_Communications_Systems}}
+    \caption{Darstellung der Helligkeitstemperatur des Himmels in Abhängigkeit der Frequenz $f$ für mehrere Elevationswinkel $\epsilon$.\cite{Satellite_Communications_Systems}}
     \label{fig:Temperatur-Himmel}
 \end{figure}
 Das vom Boden ausgehende Rauschen wird von den Nebenkeulen der Antenne eingefangen und teilweise auch von der Hauptkeule, wenn der Elevationswinkel $\epsilon$ klein genug ist. Die Helligkeitstemperatur des Bodens $T_\mathrm{Ground}$ setzt sich dabei aus dem aufgenommen Rauschen aller Nebenkeulen zusammen. Der Beitrag einer einzelnen Nebenkeule kann mit folgenden Gleichung bestimmt werden.\cite{Satellite_Communications_Systems}

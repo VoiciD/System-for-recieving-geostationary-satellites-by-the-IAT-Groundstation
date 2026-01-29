@@ -1,3 +1,145 @@
-\subsection{Vergleich von Theorie und Praxis}
+\subsection{Empfangen des Downlinks und vergleichen der theoretischen Empfangsparameter mit den erreichten Empfangsparametern}
+Nach dem Aufstellen und Ausrichten der Antenne, sowie dem Aufbau des restlichen Empfangssystems kann über den USRP X310 mit der erstellten SDR-Software der empfangene Downlink grafisch dargestellt und demoduliert werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Spektrum Downlink.png}
+    \caption{Mit dem Empfangssystem am IAT empfangener Downlink des Schmalbandtransponder auf Es'Hail-2 (QO-100)}
+    \label{fig:Empfangener-Downlink-EsHail2}
+\end{figure}
+Die Abbildung \ref{fig:Empfangener-Downlink-EsHail2} zeigt den mit dem am IAT aufgebauten Empfangssystem empfangenen Downlink des Schmalbandtransponders auf Es'Hail-2 (QO-100) als Wasserfalldiagramm (oben) und als FFT-Spektrum (unten). In der SDR-Software ist die Verstärkung des USRP X310 auf $G_\mathrm{SDR}=25\,\text{dB}$ eingestellt um einen möglichst guten Kontrast der Signale zum Rauschen im Wasserfalldiagramm zu erzielen. Gut zu erkennen sind die untere und obere Funkbarke bei $343.5\,\text{MHz}$, bzw. $344\,\text{MHz}$. Auch die mittlere Funkbarke bei $433.75\,\text{MHz}$ ist zu erkennen. Auch konnte eine Einseitenbandübertragung empfangen und demoduliert werden. Die Audioaufnahme ist im GitHub-Repository hinterlegt.\newline
+Um die rechnerisch bestimmten Empfangsparameter auf ihre Korrektheit zu überprüfen, werden diese mit den in der Praxis erreichten Empfangsparametern verglichen. Mithilfe eines Spektrumanalysator anstelle des USRP X310 können, unter Berücksichtigung der um $G_\mathrm{SDR,max}=31.5\,\text{dB}$ verringerten Verstärkung, die Leistung $P_\mathrm{RX}$, die Rauschleistung $N_\mathrm{o}$ und der Signal-zu-Rauschabstand $SNR_\mathrm{o}$ am Ausgang gemessen werden.
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.5\linewidth]{Bilder/Messaufbau Spektrum}
+    \caption{Verwendeter Messaufbau}
+    \label{fig:Messaufbau-Spektrum}
+\end{figure}
+Die Abbildung \ref{fig:Messaufbau-Spektrum} zeigt den angewendeten Messaufbau. Als Spekrumanalysator wird ein Rohde \& Schwarz ZVL verwendet. Gemessen wird mit einer $RBW=3\,\text{kHz}$ und einer $VBW=3\,\text{kHz}$. Das Referenzlevel wird auf $-20\,\text{dBm}$ gesetzt und die Dämpfung auf $0\,\text{dB}$. Das Wetter zum Zeitpunkt der Messung ist es bewölkt gewesen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Spektrum EsHail-2_002.PNG}
+    \caption{Mit dem Spektrumanalysator aufgenommenes Frequenzspektrum des empfangenen Downlinks von Es'Hail-2 (QO-100)}
+    \label{fig:Empfangener-Downlink-EsHail-2}
+\end{figure}
+Die Abbildung \ref{fig:Empfangener-Downlink-EsHail-2} zeigt den empfangenen Downlink des Schmalbandtransponders auf Es'Hail-2 (QO-100). Der Marker 1 sitzt bei $433.75\,\text{MHz}$ auf der mittleren BPSK Funkbarke, welche sich im HF-Bereich bei $10489.75\,\text{MHz}$ befindet. Die Marker 2 und 3 sitzen auf den äußeren Funkbarken bei $433.5\,\text{MHz}$ und $434\,\text{MHz}$, bzw. $10489.5\,\text{MHz}$ und $10490\,\text{MHz}$ im HF-Bereich. 
+\begin{equation*}
+    \Delta f=f_\mathrm{HF,center}-f_\mathrm{ZF,center}=10489.75\,\text{MHz}-433.75\,\text{MHz}=10056\,\text{MHz}
+\end{equation*}
+Die Frequenzdifferenz zwischen der mittleren Funkbarke im HF-Bereich und im ZF-Bereich beträgt $\Delta f=10056\,\text{MHz}$ und entspricht damit der gewünschten Frequenz des lokalen Oszillator von $f_\mathrm{LO}=10056\,\text{MHz}$. Somit kann von einer korrekten Funktionsweise des LNC ausgegangen werden.\newline
+Der Marker 4 markiert eine digitale Übertragung im Downlink bei $433.628\,\text{MHz}$. Diese wird zum Vergleich der in Theorie bestimmten Empfangsparameter verwendet. Gemessen wird an diesem Signal ein Pegel von $-74.56\,\text{dBm}$. Mit der Berücksichtigung der Verstärkung des USRP X310 $G_\mathrm{SDR}=31.5\,\text{dB}$ kann die reale Leistung am Ausgang des Empfangssystems $P_\mathrm{RX}$ bestimmt werden.
+\begin{equation}
+    P_\mathrm{RX,real}=-74.56\,\text{dBm}+31.5\,\text{dB}=-43.05\,\text{dBm}
+    \label{eq:reale-Ausgangsleistung}
+\end{equation}
+Die reale Leistung am Ausgang liegt bei $P_\mathrm{RX,real}=-43.05\,\text{dBm}$. Die reale Ausgangsleistung liegt damit $2.8\,\text{dB}$ unter der bestimmten Ausgangsleistung für starke Niederschläge $P_\mathrm{RX}=-40.25\,\text{dBm}$ und $11.87\,\text{dB}$ unter der empfangenen Leistung bei klaren Himmel $P_\mathrm{RX}=-31.18\,\text{dB}$ Um weitere Aussagen treffen zu können, kann die Rauschleistung am Ausgang und der Signal-zu-Rauschabstand begutachtet werden. Gemessen wird eine Rauschleistung von $N_\mathrm{o}\approx-90\,\text{dBm}$, was nach der Verstärkung durch den SDR einer Rauschleistung von $N_\mathrm{o,real}=-58.5\,\text{dBm}$ entsprechen würde. Da es zum Zeitpunkt der Messung bewölkt gewesen ist, Wolken aber keinen großen Einfluss auf das Rauschen oder die Dämpfung $(0.2\,\text{dB})$ haben, wird es mit der Rauschleistung bei einem klaren Himmel verglichen.
+\begin{equation}
+\begin{split}
+        N_\mathrm{o,klarerHimmel}&=k\cdot (T_\mathrm{A}+T_\mathrm{e,sys})\cdot B \cdot G\\
+        &=1.38\cdot10^{-23}\,\frac{\text{J}}{\text{K}}\cdot(6.5+336.63\,\text{K})\cdot2.7\,\text{kHz}\cdot 10^{\frac{55\,\text{dB}}{10}}\\
+        &=1.14\cdot10^{-9}\,\text{W}=-59.43\,\text{dBm}
+\end{split}
+\label{eq:rechnerische-Rauschleistung}
+\end{equation}
+Rechnerisch kann eine Rauschleistung bei einem klaren Himmel von $N_\mathrm{o,real}=-59.43\,\text{dBm}$ bestimmt werden. Die gemessene Rauschleistung liegt damit $0.97\,\text{dB}$ über und damit sehr nah an der rechnerisch bestimmten Rauschleitung. Mit der Rauschleistung
+$N_\mathrm{o}=-58.5\,\text{dBm}$ und der Leistung am Ausgang $P_\mathrm{RX,real}=-43.05\,\text{dBm}$ kann der reale Signal-zu-Rauschabstand am Ausgang des Empfangssystems $SNR_\mathrm{o,real}$ bestimmt werden.
+\begin{equation}
+    SNR_\mathrm{o,real}=-43.05\,\text{dBm}-(-58.5\,\text{dBm})= 15.45\,\text{dB}
+    \label{eq:realer-Signal-zu-Rauschabstand}
+\end{equation}
+Der reale Signal-zu-Rauschabstand am Ausgang beträgt $SNR_\mathrm{o,real}
+= 15.45\,\text{dB}$. Dieser ist um $12.81\,\text{dB}$ geringer, als der rechnerisch bestimmte Signal-zu-Rauschabstand bei einem klaren Himmel $SNR_\mathrm{o,klarerHimmel}=28.26\,\text{dB}$. Grund dafür ist die um $11.87\,\text{dB}$ verringerte Leistung am Ausgang $P_\mathrm{RX}$ und die um $0.97\,\text{dB}$ leicht höhere Rauschleistung. Da die berechnete Rauschleistung $N_\mathrm{o}$ nahezu mit der gemessenen Rauschleistung $N_\mathrm{o,real}$ übereinstimmt ist davon auszugehen, dass die Antenne noch nicht optimal mit der Hauptkeule auf den Satelliten ausgerichtet ist, was zu einer Verringerung der empfangenen Leistung $P_\mathrm{R}$ und damit auch zu einer Reduzierung der Leistung am Ausgang $P_\mathrm{RX}$ und dem Signal-zu-Rauschabstand führt. Durch die hohe Richtwirkung ist der Bereich, indem ein Signal von Es'Hail-2 (QO-100) empfangen wird, sehr schmal. In Kombination mit der Unhandlichkeit der Antenne ist eine genaue Ausrichtung der Hauptkeule mit dem maximalen Gewinn $G_\mathrm{R,max}=38.6\,\text{dBi}$ schwer. Weitere Versuche die Antenne besser auszurichten und damit die Leistung am Ausgang $P_\mathrm{RX}$ zu erhöhen, blieben erfolglos.\newline
+Abschließend kann aus der Rauschleistung $N_\mathrm{o,real}=-58.5\,\text{dBm}=1.41\cdot10^{-9}\,\text{W}$ die Rauschtemperatur $T_\mathrm{S}=T_\mathrm{A}+T_\mathrm{e,sys}$ bestimmt werden.
+\begin{equation}
+    T_\mathrm{S,real}=\frac{N_\mathrm{o,real}}{k\cdot B \cdot G}=\frac{
+    1.41\cdot10^{-9}\,\text{W}}{1.38\cdot10^{-23}\frac{\text{J}}{\text{K}}\cdot 2.7\,\text{kHz}\cdot10^{\frac{79.49\,\text{dB}}{10}}}=425.58\,\text{K}
+    \label{eq:reale-Rauschtemperatur}
+\end{equation}
+Die Rauschtemperatur $T_\mathrm{S,real}=425.58\,\text{K}$ ist $95.45\,\text{K}$ höher, als die theoretische Rauschtemperatur $T_\mathrm{S}=6.5\,\text{K}+336.63\,\text{K}=343.13\,\text{K}$. Grund dafür wird mit großer Wahrscheinlichkeit eine höhere Antennentemperatur $T_\mathrm{A}$ sein, da bei der Berechnung von einer idealen Antenne ohne Nebenkeule in Richtung des Bodens ausgegangen wird.
+\begin{equation}
+    G/T=\frac{G_\mathrm{R,max}}{T_\mathrm{S,real}}=\frac{7244.36}{425.58\,\text{K}}=17.02\,\text{1/K}=12.31\,\text{dB/K}
+    \label{eq:reale-Empfangsgüte}
+\end{equation}
+Durch die höhere Rauschtemperatur $T_\mathrm{S,real}=425.58\,\text{K}$ wird die Empfangsgüte, verglichen mit der Empfangsgüte bei einem klaren Himmel $G/T=13.24\,\text{dB/K}$, um $0.93\,\text{dB/K}$ auf $G/T=12.31\,\text{K}$ reduziert, was einem Verlust von $19.3\%$ entspricht.\newline
+Insgesamt sind die Ergebnisse zufriedenstellend und decken sich in einem bestimmten Rahmen mit den in der Theorie bestimmten Empfangsparametern. Ausgenommen davon sind die empfangene Leistung $P_\mathrm{RX,real}=-43.05\,\text{dBm}$ und damit auch der Signal-zu-Rauschabstand von $SNR_\mathrm{o,real}=15.45\,\text{dB}$, was aber mit der nicht genauen Ausrichtung der Antenne erklärt werden kann.
 
-\subsection{Vergleich mit anderen Bodenstationen}
+
+
+
+
+
+
+\subsection{Vergleich der Empfangsparameter der IAT Bodenstation mit den Empfangsparameter der Goonhilly Bodenstation}
+Für eine bessere Einschätzung werden die Empfangsparameter des Empfangssystem am IAT mit den Empfangsparameter des Empfangssystems an der Goonhilly Bodenstation in Cornwall (England) verglichen.\newline 
+An der Goonhilly Bodenstation hat der Britisch Amateur Television Club (BATC) ein Empfangssystem für den Downlink des Schmal- und Breitbandtransponder auf Es'Hail-2 (QO-100) errichtet. Über eine Webseite kann jeder auf den empfangenen Downlink zugreifen. Von Interesse ist dabei die Webseite für den Downlink des Schmalbandtransponder.\cite{OnlineMonitor}\newline
+Als Antenne wird eine $1.3\,\text{m}$ Parabolantenne von Hirschmann verwendet, wobei das genaue Modell nicht benannt wird. Eine ähnlich wirkende Antenne mit gleichen Durchmesser und Hersteller weißt bei einer Frequenz von $11.5\,\text{GHz}$ einen Gewinn von $G_\mathrm{R,Goonhilly}=40.2\,\text{dBi}$ auf\cite{Empfangssystem_Goonhilly}\cite{Hirschmann}. Bei dem eingesetzten rauscharmen Signalumsetzer (LNB) handelt es sich Octagon Quad OQSLO Green LNB. Dieser verstärkt die empfangenen Signale um $G_\mathrm{LNB}=60-65\,\text{dB}$ und setzt diese anschließend in ein niedrigeres Frequenzband um.\cite{Octagon}\newline
+Als Software Defined Radio wird ein AirSpy SDR verwendet, wobei es sich wahrscheinlich um einen AirSpy R2 handelt. Für diesen konnte keine Verstärkungsparameter ermittelt werden, weshalb von einer Verstärkung von $G_\mathrm{SDR,Goonhilly}=0\,\text{dB}$ ausgegangen wird.\cite{Empfangssystem_Goonhilly}\cite{Airspy_R2}\newline
+Im ersten Schritt kann die von der Antenne empfangene Leistung $P_\mathrm{R}$ verglichen werden. Dafür müssen zunächst die Dämpfungen in der Übertragungsstrecke von Es'Hail-2 (QO-100) zu der Goonhilly Bodenstation ermittelt werden. Die größten Einfluss hat die Freiraumdämpfung $L_\mathrm{FR}$, welcher von der Entfernung $D_\mathrm{SAT,Goonhilly}$ des Satelliten zu der Bodenstation abhängig ist.\newline
+Die Goonhilly Bodenstation befindet sich an den Koordinaten $50.05\degree,-5.18\degree$. Mithilfe der Koordinaten kann die Entfernung zum Satelliten und damit auch die Freiraumdämpfung bestimmt werden werden. Vorgegangen wird dabei wie in Abbildung \ref{fig:EntfernungEsHail2}.
+\begin{equation*}
+    h=r_\mathrm{0}\cdot \sin(\alpha)=6378\,\text{km}\cdot \sin(50.05\degree)=4889.41\,\text{km}
+\end{equation*}
+Mit der Höhe $h$ wird die Höhe der Bodenstation über dem Äquator angegeben. Mithilfe dieser Höhe kann mit dem Satz des Pythagoras der Teilradius $r_\mathrm{01}$ bestimmt werden.
+\begin{equation*}
+    r_\mathrm{01}=\sqrt{r_\mathrm{0}^2- h^2}=\sqrt{(6378\,\text{km})^2-(4889.41\,\text{km})^2}=4095.43\,\text{km}
+\end{equation*}
+Über den Teilradius $r_\mathrm{01}$ kann der Teilradius $r_\mathrm{02}$ bestimmt werden.
+\begin{equation*}
+    r_\mathrm{02}=r_\mathrm{0}-r_\mathrm{01}=6378\,\text{km}-4889.41\,\text{km}=1488.6\,\text{km}
+\end{equation*}
+Im letzten Schritt wird mit der Höhe $h$, dem zusammengesetzten Radius $r+r_\mathrm{02}$ der Umlaufbahn von Es'Hail-2 (QO-100) zu der Bodenstation, die Entfernung $D_\mathrm{SAT,Goonhilly}$ zwischen der Bodenstation und Es'Hail-2 (QO-100) bestimmt.
+\begin{equation}
+    \begin{split}
+      D_\mathrm{SAT,Goonhilly}&=\sqrt{h^2+(r+r_\mathrm{02})^2}\\
+    &=\sqrt{(4095.43\,\text{km})^2+(35790\,\text{km}+1488.6\,\text{km})^2}\\
+    &=37502.89\,\text{km}
+    \end{split}
+\end{equation}
+Verglichen mit der Entfernung von der Bodenstation am IAT aus $D_\mathrm{SAT}=38676\,\text{km}$ ist die Bodenstation bei Goonhilly $D_\mathrm{SAT,Goonhilly}=37502.89\,\text{km}$ etwas geringer. Die geringere Entfernung wird zu einer geringeren Freiraumdämpfung $L_\mathrm{FR}$ führen. Diese kann mit Gleichung \ref{eq:Freiraumdämpfung} und einer Wellenlänge $\lambda =\frac{c}{f_\mathrm{center}}=\frac{3\cdot 10^8\,\text{m/s}}{10489.750\,\text{MHz}}=0.0286\,\text{m}$ bestimmt werden.
+\begin{equation}
+    L_\mathrm{FR}=20\cdot \log_{10}\left(\frac{4\pi\cdot D_\mathrm{SAT,Goonhilly}}{\lambda}\right)=20\cdot \log_{10}\left(\frac{4\pi\cdot 37502.89\,\text{km}}{0.0286\,\text{m}}\right)=204.34\,\text{dB}
+    \label{eq:Freiraumdämpfung-Goonhilly}
+\end{equation}
+Im Vergleich zur Freiraumdämpfung zur Bodenstation am IAT $L_\mathrm{FR}=204.61\,\text{dB}$ ist die Dämpfung zur Bodenstation in Goonhilly mit $L_\mathrm{FR}=204.34\,\text{dB}$ um $0.27\,\text{dB}$ geringer. Diese Differenz wird sich aber nicht groß auf die empfangene Leistung auswirken.\newline
+Weitere Verluste treten durch die Fehlausrichtung von Sende- und Empfangsantenne aufeinander aus. Diese können mit der Gleichung \ref{eq:Berechnung-Fehlausrichtung-Sender}, bzw. mit \ref{eq:Berechnung-Fehlausrichtung-Empfänger} bestimmt werden. Der Winkel der Fehlausrichtung auf der Seite des Senders $\theta_\mathrm{T}$ entspricht dem Winkel $\beta$ in Abbildung \ref{fig:EntfernungEsHail2}. Dieser kann mit der Entfernung $r+r_\mathrm{02}$ und der Entfernung $D_\mathrm{SAT,Goonhilly}$ bestimmt werden.
+\begin{equation*}
+    \theta_\mathrm{T}=\beta=\arccos\left( \frac{r+r_\mathrm{02}}{D_\mathrm{SAT,Goonhilly}}\right) = \arccos\left( \frac{35790\,\text{km}+1488.6\,\text{km}}{37502.89\,\text{km}}\right)=6.26\degree
+\end{equation*}
+Mit dem Winkel $\theta_\mathrm{T}$ kann der Verlust durch die sendeseitige Fehlausrichtung bestimmt werden.
+\begin{equation}
+    L_\mathrm{\theta T}=12\cdot\left( \frac{\theta_\mathrm{T}}{\theta_\mathrm{3dB}}\right)^2=12\cdot\left( \frac{6.26\degree}{17.4\degree}\right)^2=1.91\,\text{dB}
+    \label{eq:Fehlausrichtung-Sender-Goonhilly}
+\end{equation}
+Der Winkel der empfangsseitigen Fehlausrichtung kann, wie bei der Bodenstation am IAT, mit $\theta_\mathrm{R}=1\degree$ angenommen werden.
+\begin{equation}
+    L_\mathrm{\theta R}=12\cdot\left( \frac{\theta_\mathrm{R}}{\theta_\mathrm{3dB}}\right)^2=12\cdot\left( \frac{1\degree}{17.4\degree}\right)^2=0.69\,\text{dB}
+    \label{eq:Fehlausrichtung-Empfänger-Goonhilly}
+\end{equation}
+Durch die geringere Entfernung $D_\mathrm{SAT,Goonhilly}$ zum Satelliten sinkt der Winkel der Fehlausrichtung zwischen der Sende- und der Empfangsantenne, was zur einer Reduzierung der Verluste führt. Im Vergleich zu den Verlusten der sendeseitigen Fehlausrichtung des Empfangssystems am IAT $L_\mathrm{\theta T}=5.23\,\text{dB}$, sind die Verluste an der Goonhilly Bodenstation $L_\mathrm{\theta T}=1.91\,\text{dB}$ um $3.32\,\text{dB}$ geringer. Das wird zu einer Verdopplung der empfangenen Leistung $P_\mathrm{R}$ gegenüber dem Empfangssystem am IAT führen.\newline
+Für die Dämpfung durch die Atmosphäre wird die Bedingung klarer Himmel verwendet, da zum Zeitpunkt des Vergleiches der theoretischen Empfangsparameter des Empfangssystem am IAT mit den erreichten Empfangsparameter des Empfangssystems an der Goonhilly Bodenstation ein Wolkenfreier Himmel, sowie kein Regen vorhergesagt gewesen sind. Daher wird die Dämpfung durch die Atmosphäre mit $L_\mathrm{ATklarerHimmel}=0.547\,\text{dB}$ aus Gleichung \ref{eq:Dämpfung-in-der-Atmosphäre-klarer-Himmel} angenommen. Zusammen mit der in Gleichung \ref{eq:Freiraumdämpfung-Goonhilly} Freiraumdämpfung, den Verlusten durch Fehlausrichtung \label{eq:Fehlausrichtung-Sender-Goonhilly} und \label{eq:Fehlausrichtung-Empfänger-Goonhilly}, sowie der Dämpfung in der Atmosphäre bei klaren Himmel in \ref{eq:Dämpfung-in-der-Atmosphäre-klarer-Himmel} und einem Antennengewinn $G_\mathrm{R,Goonhilly}=40.2\,\text{dBi}=10471.29$, kann mit Gleichung \ref{eq:empfangene-Leistung} die empfangene Leistung $P_\mathrm{R}$ bestimmt werden. Das $EIRP$ von Es'Hail-2 (QO-100) ist in Tabelle \ref{tab:LinkBudet-EsHail-2} mit $EIRP=891.25\,\text{W}$ angegeben.
+\begin{equation}
+\begin{split}
+        P_\mathrm{R}&=EIRP\cdot G_\mathrm{R,Goonhilly}\cdot \frac{1}{L_\mathrm{FR}}\cdot \frac{1}{L_\mathrm{\theta T}} \cdot \frac{1}{L_\mathrm{\theta R}} \cdot \frac{1}{L_\mathrm{ATklarerHimmel}}\\
+        &=891.25\,\text{W}\cdot 10471.29\cdot \frac{1}{2.72\cdot 10^{20}}\cdot\frac{1}{1.55}\cdot \frac{1}{1.17}\cdot \frac{1}{1.13}\\
+        &=1.67\cdot 10^{-14}\,\text{W}=-107.77\,\text{dBm}
+\end{split}
+\label{eq:Empfangene-Leistung-Goonhilly}
+\end{equation}
+Wie erwartet ist die empfangene Leistung an der Goonhilly Bodenstation mit $P_\mathrm{R}=-107.77\,\text{dB}$ um $2.9\,\text{dB}\approx3\,\text{dB}$ größer als die empfangene Leistung $P_\mathrm{R}=-110.67\,\text{dBm}$ des Empfangssystems am IAT. Grund die dafür sind die niedrigeren Verluste der sendeseitigen Fehlausrichtung $L_\mathrm{\theta T}$, welche mit der geographischen besseren Lage der Goonhilly Bodenstation erklärt werden können.\newline
+Mithilfe der Verstärkung von $G_\mathrm{LNB,max}=65\,\text{dB}$ kann die Leistung am Ausgang  $P_\mathrm{RX}$ des Goonhilly Empfangssystems rechnerisch bestimmt werden.
+\begin{equation}
+    P_\mathrm{RX}=P_\mathrm{R}+ G_\mathrm{LNB,max}=-107.77\,\text{dBm}+65\,\text{dB}=-42.77\,\text{dBm}
+    \label{eq:theoretische-Ausgangsleistung-Goonhilly}
+\end{equation}
+Die Leistung am Ausgang des Empfangssystem in Goonhilly ist mit $P_\mathrm{RX}=-42.77\,\text{dBm}$ um $0.28\,\text{dB}$ höher, als die Leistung am Ausgang $P_\mathrm{RX,real}=-43.05\,\text{dBm}$ des Empfangssystems am IAT. Grund dafür ist die nicht optimale Ausrichtung der Antenne am IAT auf den Satelliten. In der Theorie ist eine Ausgangsleitung von $P_\mathrm{RX}=-31.18\,\text{dBm}$ des Empfangssystem am IAT möglich. Die Differenz würde dann $11.59\,\text{dB}$ betragen. Grund für die in der Theorie größere Leistung am Ausgang ist die größere Verstärkung $G_\mathrm{sys}=79.49\,\text{dB}$, verglichen mit der Verstärkung $G_\mathrm{LNB,max}=65\,\text{dB}$ des Empfangssystem an der Goonhilly Bodenstation, des Empfangssystem am IAT.\newline
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Bilder/Vergleich Link Budget.png}
+    \caption{Vergleich des theoretischen Link Budgets des Empfangssystems an der Goonhilly Bodenstation (orange) und am IAT (blau).}
+    \label{fig:Vergleich-Link-Budget}
+\end{figure}
+In der Abbildung \ref{fig:Vergleich-Link-Budget} ist, zum besseren Vergleichen, das ermittelte Link Budget des Empfangssystems an der Goonhilly Bodenstation (orange) und das theoretische Link Budget des Empfangssystems am IAT (blau) dargestellt. Das verwendete Python-Skript ist im GitHub-Repository und im Anhang unter \ref{lst:Vergleich-Link-Budget} hinterlegt. Die Werte des Empfangssystem in Goonhilly sind unter den Linien und die Werte des Empfangssystems am IAT sind über den Linien dargestellt. Die Unterschiede machen sich ab der Übertragungsstrecke bemerkbar. Durch die geographische bessere Lage zu Es'Hail-2 (QO-100) ist die Freiraumdämpfung $L_\mathrm{FR}$, im Vergleich zum Link Budget des Empfangssystems an der IAT Bodenstation, um $0.27\,\text{dB}$ oder um $6\%$ geringer. Die geographisch bessere Lage des Empfangssystems an der Goonhilly Bodenstation hat auch niedrigere Verluste durch die Fehlausrichtung auf Seite des Senders $L_\mathrm{\theta T}$ zur Folge. Im Vergleich zu den Verlusten der senderseitigen Fehlausrichtung des Empfangssystems an der IAT Bodenstation $L_\mathrm{\theta T}=5.23\,\text{dB}$ sind die Verlusten der senderseitigen Fehlausrichtung des Empfangssystems in Goonhilly mit $L_\mathrm{\theta T}=1.91\,\text{dB}$ um $3.32\,\text{dB}$ geringer, was zu einer Verdopplung der empfangenen Leistung $P_\mathrm{R}=-107.77\,\text{dBm}$ gegenüber der empfangenen Leistung des Empfangssystems an der IAT Bodenstation $P_\mathrm{R}=-110.67\,\text{dBm}$ führt. Auch ist der Gewinn $G_\mathrm{R,Goonhilly}=40.2\,\text{dBi}$ der Antenne des Goonhilly Empfangssystems um $0.6\,\text{dB}$ höher, als der Antennengewinn $G_\mathrm{R,IAT}=38.6\,\text{dBi}$ der Antenne des Empfangssystems am IAT, was mit der größeren Antennenfläche erklärt werden kann. Auch das führt zu einer Erhöhung der empfangene Leistung $P_\mathrm{R}$ des Empfangssystem in Goonhilly. Durch die größere Verstärkung $G_\mathrm{sys}=79.49\,\text{dB}$ des Empfangssystems am IAT, ist die Ausgangsleistung mit $P_\mathrm{RX}=-31.18\,\text{dBm}$ um  $11.59\,\text{dB}$ größer, als die Ausgangsleistung $P_\mathrm{RX}=-42.77\,\text{dBm}$ des Empfangssystems an der Goonhilly Bodenstation.\newline
+Eine messtechnische Ermittlung der Ausgangsleistung des Empfangssystem an der Goonhilly Bodenstation ist nicht möglich. Der Leistungsmesser auf der Weboberfläche gibt nur Werte in dB ohne Bezug an. Ebenfalls kann das die Rauchleistung am Ausgang des Empfangssystems und damit auch der Signal-zu-Rauschabstand $SNR_\mathrm{o,Goonhilly}$ nicht bestimmt werden, da keine Information zum Eigenrauschen des Empfangssystems vorhanden sind. Auch kann ohne die äquivalente Rauschtemperatur $T_\mathrm{e,Goonhilly}$ die Empfangsgüte der Bodenstation nicht ermittelt werden.
+
+
+
+
